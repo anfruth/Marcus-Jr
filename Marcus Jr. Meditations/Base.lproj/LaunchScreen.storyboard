@@ -22,29 +22,28 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="arb-IT-wj2">
                                 <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Marcus Jr. Meditations" borderStyle="roundedRect" textAlignment="center" adjustsFontForContentSizeCategory="YES" minimumFontSize="15" translatesAutoresizingMaskIntoConstraints="NO" id="ByN-bE-nvZ">
-                                <rect key="frame" x="102" y="30" width="820" height="81"/>
-                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Jr. Meditations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svO-rE-ast">
+                                <rect key="frame" x="102" y="30" width="820" height="86"/>
+                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="72"/>
                                 <nil key="textColor"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="64"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
+                                <nil key="highlightedColor"/>
+                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="ByN-bE-nvZ" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="5xv-XZ-1qG"/>
                             <constraint firstItem="arb-IT-wj2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ja-DC-937"/>
+                            <constraint firstItem="svO-rE-ast" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H1K-wn-wmY"/>
                             <constraint firstItem="arb-IT-wj2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KCi-b1-rXF"/>
                             <constraint firstItem="arb-IT-wj2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Nfp-4V-kVX"/>
-                            <constraint firstItem="ByN-bE-nvZ" firstAttribute="width" secondItem="arb-IT-wj2" secondAttribute="width" multiplier="4/5" constant="0.80000000000000004" id="W3J-5c-7pW"/>
+                            <constraint firstItem="svO-rE-ast" firstAttribute="width" secondItem="arb-IT-wj2" secondAttribute="width" multiplier="4/5" constant="1" id="ow6-Z4-XgY"/>
                             <constraint firstItem="arb-IT-wj2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pcL-20-t7N"/>
-                            <constraint firstItem="ByN-bE-nvZ" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="zIr-wO-IGl"/>
+                            <constraint firstItem="svO-rE-ast" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="wCc-j9-cwH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="49.8046875" y="373.79209370424593"/>
+            <point key="canvasLocation" x="48.799999999999997" y="373.15270935960592"/>
         </scene>
     </scenes>
     <resources>

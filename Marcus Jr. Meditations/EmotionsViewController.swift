@@ -76,8 +76,10 @@ class EmotionsViewController: UICollectionViewController {
                     if let negativeEmotion = EmotionType.allValues[i] as? NegativeEmotion {
                         cell.emotionLabel?.text = negativeEmotion.rawValue
                         cell.imageView?.image = UIImage(named: negativeEmotion.rawValue)
+                        
                     } else if let positiveEmotion = EmotionType.allValues[i] as? PositiveEmotion {
                         cell.emotionLabel?.text = positiveEmotion.rawValue
+                        cell.imageView?.image = UIImage(named: positiveEmotion.rawValue)
                     }
                 default:
                     break
@@ -123,9 +125,9 @@ class EmotionsViewController: UICollectionViewController {
         if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader {
             
             if indexPath.section == 0 {
-                sectionHeader.sectionTitle?.text = "Negative Emotions"
+                sectionHeader.sectionTitle?.text = "Tackle Your Negative Emotions"
             } else {
-                sectionHeader.sectionTitle?.text = "Positive Emotions"
+                sectionHeader.sectionTitle?.text = "Improve Your Character"
             }
             
             return sectionHeader

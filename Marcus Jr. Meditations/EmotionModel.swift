@@ -8,50 +8,32 @@
 
 import Foundation
 
+protocol Emotion {
+    static var allValues: [Emotion] { get }
+}
 
-
-class Emotion {
+enum NegativeEmotion: String, Emotion {
     
-    enum DirectionOfEmotion {
-        case positive
-        case negative
-    }
+    case loss = "Loss"
+    case anger = "Anger"
+    case sadness = "Sadness"
+    case anxiety = "Anxiety"
+    case envy = "Envy"
     
-    let directionOfEmotion: DirectionOfEmotion
-    
-    init(directionOfEmotion: DirectionOfEmotion) {
-        self.directionOfEmotion = directionOfEmotion
+    static var allValues: [Emotion] {
+        return [NegativeEmotion.loss, NegativeEmotion.anger, NegativeEmotion.sadness, NegativeEmotion.anxiety, NegativeEmotion.envy]
     }
 }
 
-class NegativeEmotion: Emotion {
+enum PositiveEmotion: String, Emotion {
     
-    enum TypeOfNegativeEmotion {
-        case loss
-        case anger
-        case sadness
-        case anxiety
-        case envy
-    }
+    case perseverance = "Perseverance"
+    case discipline = "Discipline"
+    case empathy = "Empathy"
+    case courage = "Courage"
     
-    let emotion: TypeOfNegativeEmotion
-    
-    init(emotion: TypeOfNegativeEmotion) {
-        self.emotion = emotion
-        super.init(directionOfEmotion: .negative)
-    }
-    
+    static var allValues: [Emotion] = [PositiveEmotion.perseverance, PositiveEmotion.discipline, PositiveEmotion.empathy, PositiveEmotion.courage]
 }
-
-
-class PositiveEmotion: Emotion {
-
-    enum typeOfPositiveEmotion {
-        case perserverance
-        case discipline
-        case empathy
-        case courage
-    }
     
-}
+
 

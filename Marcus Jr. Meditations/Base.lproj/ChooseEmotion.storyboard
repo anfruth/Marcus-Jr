@@ -6,6 +6,7 @@
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
+        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <scenes>
@@ -16,7 +17,7 @@
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cnc-o9-fog">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" red="0.73776139617193492" green="0.82198740065854181" blue="0.89303451776504517" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wek-Xq-816">
                             <size key="itemSize" width="162" height="163"/>
                             <size key="headerReferenceSize" width="50" height="50"/>
@@ -31,20 +32,29 @@
                                     <rect key="frame" x="0.0" y="0.0" width="162" height="163"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="6Yi-MP-76S">
-                                            <rect key="frame" x="6" y="15" width="49" height="128"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Yi-MP-76S">
+                                            <rect key="frame" x="6" y="20" width="57.5" height="123"/>
                                         </imageView>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Sadness" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czW-mM-LBN">
-                                            <rect key="frame" x="76" y="68" width="66" height="23"/>
-                                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                            <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sadness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czW-mM-LBN">
+                                            <rect key="frame" x="66" y="73" width="89" height="17"/>
+                                            <fontDescription key="fontDescription" type="system" pointSize="14"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.89303451776504517" green="0.77492962839632151" blue="0.28915369685300751" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.26289458063688009" green="0.37376049612964368" blue="0.89303451776504517" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="centerY" secondItem="8fe-N7-yiD" secondAttribute="centerY" id="1hg-65-tf4"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Yi-MP-76S" secondAttribute="bottom" constant="20" id="KvI-3Z-FSd"/>
+                                    <constraint firstAttribute="trailing" secondItem="czW-mM-LBN" secondAttribute="trailing" constant="7" id="PwS-4N-ziZ"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="width" secondItem="8fe-N7-yiD" secondAttribute="width" multiplier="7/20" constant="1" id="WMN-6L-zZT"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="leading" secondItem="8fe-N7-yiD" secondAttribute="leading" constant="6" id="Zrq-RP-fgZ"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="top" secondItem="8fe-N7-yiD" secondAttribute="top" constant="20" id="bCS-CQ-YvR"/>
+                                    <constraint firstItem="czW-mM-LBN" firstAttribute="centerY" secondItem="8fe-N7-yiD" secondAttribute="centerY" id="eHu-u7-JVE"/>
+                                    <constraint firstItem="czW-mM-LBN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="6Yi-MP-76S" secondAttribute="trailing" constant="3" id="lBj-4p-8fl"/>
+                                    <constraint firstItem="czW-mM-LBN" firstAttribute="width" secondItem="8fe-N7-yiD" secondAttribute="width" multiplier="11/20" id="qIa-dJ-zUE"/>
+                                </constraints>
                                 <connections>
                                     <outlet property="emotionLabel" destination="czW-mM-LBN" id="Zhc-71-YfR"/>
                                     <outlet property="imageView" destination="6Yi-MP-76S" id="jaN-f5-nJs"/>
@@ -58,7 +68,7 @@
                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Negative Emotions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="RPu-wv-C2H">
                                     <rect key="frame" x="115.5" y="15" width="144" height="21"/>
                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                    <nil key="textColor"/>
+                                    <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                     <nil key="highlightedColor"/>
                                 </label>
                             </subviews>

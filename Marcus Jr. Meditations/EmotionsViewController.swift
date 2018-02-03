@@ -18,21 +18,12 @@ class EmotionsViewController: UICollectionViewController {
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
         
-        if let collectionView = collectionView {
-            //collectionView.collectionViewLayout = EmotionViewFlowLayout()
-        }
+//        if let collectionView = collectionView {
+//            collectionView.collectionViewLayout = EmotionViewFlowLayout()
+//        }
         
     }
 
-    /*
-    // MARK: - Navigation
-
-    // In a storyboard-based application, you will often want to do a little preparation before navigation
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        // Get the new view controller using [segue destinationViewController].
-        // Pass the selected object to the new view controller.
-    }
-    */
 
     // MARK: UICollectionViewDataSource
 
@@ -53,13 +44,47 @@ class EmotionsViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emotionCellIdentifier, for: indexPath) as? EmotionCell {
-            
-            cell.emotionLabel?.text = "Sadness"
-            
+    
+            adjustCellAttributes(cell: cell, indexPath: indexPath)
             return cell
         }
+        
     
         return UICollectionViewCell()
+    }
+    
+    private func adjustCellAttributes(cell: EmotionCell, indexPath: IndexPath) {
+        
+        for _ in 0..<2 {
+            
+            if indexPath.section == 0 {
+                addAttributesOnTypeOfEmotion(TypeOfEmotion: NegativeEmotion.self, cell: cell, indexPath: indexPath)
+            } else if indexPath.section == 1 {
+                addAttributesOnTypeOfEmotion(TypeOfEmotion: PositiveEmotion.self, cell: cell, indexPath: indexPath)
+            }
+            
+        }
+        
+    }
+    
+    private func addAttributesOnTypeOfEmotion<T: RawRepresentable>(TypeOfEmotion: T.Type, cell: EmotionCell, indexPath: IndexPath) where T.RawValue == String {
+
+        if let EmotionType = TypeOfEmotion as? Emotion.Type {
+            for i in 0..<EmotionType.allValues.count {
+                switch indexPath.item {
+                case i:
+                    if let negativeEmotion = EmotionType.allValues[i] as? NegativeEmotion {
+                        cell.emotionLabel?.text = negativeEmotion.rawValue
+                        cell.imageView?.image = UIImage(named: negativeEmotion.rawValue)
+                    } else if let positiveEmotion = EmotionType.allValues[i] as? PositiveEmotion {
+                        cell.emotionLabel?.text = positiveEmotion.rawValue
+                    }
+                default:
+                    break
+                }
+            }
+        }
+        
     }
 
     // MARK: UICollectionViewDelegate

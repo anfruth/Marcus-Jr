@@ -32,27 +32,27 @@
                                     <rect key="frame" x="0.0" y="0.0" width="317" height="211"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Yi-MP-76S">
-                                            <rect key="frame" x="6" y="20" width="159.5" height="171"/>
-                                        </imageView>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sadness" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontForContentSizeCategory="YES" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czW-mM-LBN">
                                             <rect key="frame" x="187" y="88" width="105" height="36"/>
                                             <fontDescription key="fontDescription" type="system" weight="ultraLight" pointSize="30"/>
                                             <nil key="textColor"/>
                                             <nil key="highlightedColor"/>
                                         </label>
+                                        <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="6Yi-MP-76S">
+                                            <rect key="frame" x="20" y="20" width="143.5" height="171"/>
+                                        </imageView>
                                     </subviews>
                                 </view>
                                 <color key="backgroundColor" red="0.30903570224473531" green="0.48195506554623696" blue="0.89303451776504517" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstItem="6Yi-MP-76S" firstAttribute="centerY" secondItem="8fe-N7-yiD" secondAttribute="centerY" id="1hg-65-tf4"/>
                                     <constraint firstItem="czW-mM-LBN" firstAttribute="leading" relation="greaterThanOrEqual" secondItem="8fe-N7-yiD" secondAttribute="leading" symbolic="YES" id="2VC-bZ-1VV"/>
-                                    <constraint firstAttribute="bottom" secondItem="6Yi-MP-76S" secondAttribute="bottom" constant="20" id="KvI-3Z-FSd"/>
                                     <constraint firstAttribute="trailing" secondItem="czW-mM-LBN" secondAttribute="trailing" constant="25" id="Q4S-dT-oOJ"/>
-                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="width" secondItem="8fe-N7-yiD" secondAttribute="width" multiplier="1/2" constant="1" id="WMN-6L-zZT"/>
-                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="leading" secondItem="8fe-N7-yiD" secondAttribute="leading" constant="6" id="Zrq-RP-fgZ"/>
-                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="top" secondItem="8fe-N7-yiD" secondAttribute="top" constant="20" id="bCS-CQ-YvR"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="width" secondItem="8fe-N7-yiD" secondAttribute="width" multiplier="9/20" constant="1" id="WMN-6L-zZT"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="leading" secondItem="8fe-N7-yiD" secondAttribute="leading" constant="20" id="Zrq-RP-fgZ"/>
+                                    <constraint firstAttribute="bottom" secondItem="6Yi-MP-76S" secondAttribute="bottom" constant="20" id="bYh-id-Zr3"/>
                                     <constraint firstItem="czW-mM-LBN" firstAttribute="centerY" secondItem="8fe-N7-yiD" secondAttribute="centerY" id="eHu-u7-JVE"/>
+                                    <constraint firstItem="6Yi-MP-76S" firstAttribute="top" secondItem="8fe-N7-yiD" secondAttribute="top" constant="20" id="xOc-bO-rQp"/>
                                 </constraints>
                                 <connections>
                                     <outlet property="emotionLabel" destination="czW-mM-LBN" id="Zhc-71-YfR"/>

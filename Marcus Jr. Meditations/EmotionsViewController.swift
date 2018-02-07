@@ -11,6 +11,7 @@ import UIKit
 class EmotionsViewController: UICollectionViewController {
     
     private let emotionCellIdentifier = "emotionCell"
+    private var selectedEmotion: String?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -25,6 +26,8 @@ class EmotionsViewController: UICollectionViewController {
 
             collectionView.delegate = layout
             collectionView.collectionViewLayout = layout
+            
+            layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: CGFloat(100))
         }
         
         
@@ -44,6 +47,12 @@ class EmotionsViewController: UICollectionViewController {
         }
         
         layout.invalidateLayout()
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if let meditationListTableVC = segue.destination as? MeditationListTableController {
+            meditationListTableVC.emotionTitle = selectedEmotion
+        }
     }
 
 
@@ -66,8 +75,13 @@ class EmotionsViewController: UICollectionViewController {
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         if let cell = collectionView.dequeueReusableCell(withReuseIdentifier: emotionCellIdentifier, for: indexPath) as? EmotionCell {
-    
-            adjustCellAttributes(cell: cell, indexPath: indexPath)
+            
+            var indexOfAllEmotionTypeArray = 0
+            if indexPath.section == 1 {
+               indexOfAllEmotionTypeArray = 5 // number of negativeEmotions
+            }
+            
+            addAttributesOnTypeOfEmotion(indexOfAllEmotionTypeArray: indexOfAllEmotionTypeArray, cell: cell, indexPath: indexPath)
             return cell
         }
         
@@ -75,72 +89,33 @@ class EmotionsViewController: UICollectionViewController {
         return UICollectionViewCell()
     }
     
-    private func adjustCellAttributes(cell: EmotionCell, indexPath: IndexPath) {
-        
-        for _ in 0..<2 {
-            
-            if indexPath.section == 0 {
-                addAttributesOnTypeOfEmotion(TypeOfEmotion: NegativeEmotion.self, cell: cell, indexPath: indexPath)
-            } else if indexPath.section == 1 {
-                addAttributesOnTypeOfEmotion(TypeOfEmotion: PositiveEmotion.self, cell: cell, indexPath: indexPath)
-            }
-            
-        }
-        
-    }
-    
-    private func addAttributesOnTypeOfEmotion<T: RawRepresentable>(TypeOfEmotion: T.Type, cell: EmotionCell, indexPath: IndexPath) where T.RawValue == String {
+    private func addAttributesOnTypeOfEmotion(indexOfAllEmotionTypeArray: Int, cell: EmotionCell, indexPath: IndexPath) {
 
-        if let EmotionType = TypeOfEmotion as? Emotion.Type {
-            for i in 0..<EmotionType.allValues.count {
-                switch indexPath.item {
-                case i:
-                    if let negativeEmotion = EmotionType.allValues[i] as? NegativeEmotion {
-                        cell.emotionLabel?.text = negativeEmotion.rawValue
-                        cell.imageView?.image = UIImage(named: negativeEmotion.rawValue)
-                        
-                    } else if let positiveEmotion = EmotionType.allValues[i] as? PositiveEmotion {
-                        cell.emotionLabel?.text = positiveEmotion.rawValue
-                        cell.imageView?.image = UIImage(named: positiveEmotion.rawValue)
-                    }
-                default:
-                    break
+        for (i, emotionType) in Emotion.getAllEmotionTypes().enumerated() {
+            if i - indexOfAllEmotionTypeArray == indexPath.item {
+                var rawValue: String = ""
+                
+                if let positiveEmotionType = emotionType as? PositiveEmotion.PositiveEmotionType {
+                    rawValue = positiveEmotionType.rawValue
+                } else if let negativeEmotionType = emotionType as? NegativeEmotion.NegativeEmotionType {
+                    rawValue = negativeEmotionType.rawValue
                 }
+                
+                cell.emotionLabel?.text = rawValue
+                cell.imageView?.image = UIImage(named: rawValue)
             }
         }
-        
     }
 
     // MARK: UICollectionViewDelegate
 
-    /*
-    // Uncomment this method to specify if the specified item should be highlighted during tracking
-    override func collectionView(_ collectionView: UICollectionView, shouldHighlightItemAt indexPath: IndexPath) -> Bool {
-        return true
+    override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
+        
+        if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell {
+            selectedEmotion = cell.emotionLabel?.text
+        }
+        
     }
-    */
-
-    /*
-    // Uncomment this method to specify if the specified item should be selected
-    override func collectionView(_ collectionView: UICollectionView, shouldSelectItemAt indexPath: IndexPath) -> Bool {
-        return true
-    }
-    */
-
-    /*
-    // Uncomment these methods to specify if an action menu should be displayed for the specified item, and react to actions performed on the item
-    override func collectionView(_ collectionView: UICollectionView, shouldShowMenuForItemAt indexPath: IndexPath) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, canPerformAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) -> Bool {
-        return false
-    }
-
-    override func collectionView(_ collectionView: UICollectionView, performAction action: Selector, forItemAt indexPath: IndexPath, withSender sender: Any?) {
-    
-    }
-    */
     
     override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
         

@@ -17,6 +17,8 @@
 		EA0FF08E20241BAC00688BC6 /* EmotionViewFlowLayout.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF08D20241BAC00688BC6 /* EmotionViewFlowLayout.swift */; };
 		EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF08F20241D3300688BC6 /* EmotionModel.swift */; };
 		EA0FF0922024312F00688BC6 /* SectionHeader.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0912024312F00688BC6 /* SectionHeader.swift */; };
+		EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */; };
+		EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +46,8 @@
 		EA0FF08D20241BAC00688BC6 /* EmotionViewFlowLayout.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionViewFlowLayout.swift; sourceTree = "<group>"; };
 		EA0FF08F20241D3300688BC6 /* EmotionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionModel.swift; sourceTree = "<group>"; };
 		EA0FF0912024312F00688BC6 /* SectionHeader.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SectionHeader.swift; sourceTree = "<group>"; };
+		EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListTableController.swift; sourceTree = "<group>"; };
+		EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMeditationCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -88,7 +92,9 @@
 				EA0FF0632023FAE100688BC6 /* AppDelegate.swift */,
 				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
 				EA0FF0892024141900688BC6 /* EmotionCell.swift */,
+				EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */,
 				EA0FF0672023FAE100688BC6 /* ChooseEmotion.storyboard */,
+				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
 				EA0FF0912024312F00688BC6 /* SectionHeader.swift */,
 				EA0FF08D20241BAC00688BC6 /* EmotionViewFlowLayout.swift */,
 				EA0FF08F20241D3300688BC6 /* EmotionModel.swift */,
@@ -213,8 +219,10 @@
 			files = (
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
+				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
 				EA0FF0922024312F00688BC6 /* SectionHeader.swift in Sources */,
 				EA0FF08E20241BAC00688BC6 /* EmotionViewFlowLayout.swift in Sources */,
+				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
 				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
 				EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */,
 			);

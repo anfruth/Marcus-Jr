@@ -8,32 +8,65 @@
 
 import Foundation
 
-protocol Emotion {
-    static var allValues: [Emotion] { get }
-}
+protocol EmotionType {}
 
-enum NegativeEmotion: String, Emotion {
+extension EmotionType {
     
-    case loss = "Loss"
-    case anger = "Anger"
-    case sadness = "Sadness"
-    case anxiety = "Anxiety"
-    case envy = "Envy"
-    
-    static var allValues: [Emotion] {
-        return [NegativeEmotion.loss, NegativeEmotion.anger, NegativeEmotion.sadness, NegativeEmotion.anxiety, NegativeEmotion.envy]
+    static func getAllEmotionTypes() -> [EmotionType] {
+        
+        return (NegativeEmotion.NegativeEmotionType.allValues as [EmotionType]) + (PositiveEmotion.PositiveEmotionType.allValues as [EmotionType])
     }
+    
 }
 
-enum PositiveEmotion: String, Emotion {
+class Emotion: EmotionType {}
+
+class NegativeEmotion: Emotion {
     
-    case perseverance = "Perseverance"
-    case discipline = "Discipline"
-    case empathy = "Empathy"
-    case courage = "Courage"
+    let emotion: NegativeEmotionType
     
-    static var allValues: [Emotion] = [PositiveEmotion.perseverance, PositiveEmotion.discipline, PositiveEmotion.empathy, PositiveEmotion.courage]
+    init(emotion: NegativeEmotionType) {
+        self.emotion = emotion
+    }
+    
+    enum NegativeEmotionType: String, EmotionType {
+        
+        case loss = "Loss"
+        case anger = "Anger"
+        case sadness = "Sadness"
+        case anxiety = "Anxiety"
+        case envy = "Envy"
+        
+        static var allValues: [NegativeEmotionType] {
+            return [NegativeEmotionType.loss, NegativeEmotionType.anger, NegativeEmotionType.sadness, NegativeEmotionType.anxiety, NegativeEmotionType.envy]
+        }
+    }
+    
 }
+
+class PositiveEmotion: Emotion {
+    let emotion: PositiveEmotionType
+    
+    init(emotion: PositiveEmotionType) {
+        self.emotion = emotion
+    }
+    
+    enum PositiveEmotionType: String, EmotionType {
+        
+        case perseverance = "Perseverance"
+        case discipline = "Discipline"
+        case empathy = "Empathy"
+        case courage = "Courage"
+        
+        static var allValues: [PositiveEmotionType] {
+            return [PositiveEmotionType.perseverance, PositiveEmotionType.discipline, PositiveEmotionType.empathy, PositiveEmotionType.courage]
+        }
+        
+    }
+
+}
+
+
     
 
 

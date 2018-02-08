@@ -17,5 +17,7 @@ class DailyMeditationCell: UITableViewCell {
         
         labelForDescription?.text = nil
     }
+    
+    
 
 }

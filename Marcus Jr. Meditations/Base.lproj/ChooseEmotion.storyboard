@@ -73,7 +73,6 @@
                                 <connections>
                                     <outlet property="emotionLabel" destination="czW-mM-LBN" id="Zhc-71-YfR"/>
                                     <outlet property="imageView" destination="6Yi-MP-76S" id="jaN-f5-nJs"/>
-                                    <segue destination="qXC-vA-YsL" kind="show" id="LY0-rb-tVg"/>
                                 </connections>
                             </collectionViewCell>
                         </cells>
@@ -110,7 +109,7 @@
         <!--Meditation List Table Controller-->
         <scene sceneID="rO5-cd-Ppg">
             <objects>
-                <tableViewController id="qXC-vA-YsL" customClass="MeditationListTableController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
+                <tableViewController storyboardIdentifier="meditationList" id="qXC-vA-YsL" customClass="MeditationListTableController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fnB-YO-I7c">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>

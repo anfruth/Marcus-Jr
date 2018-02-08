@@ -22,9 +22,7 @@ class EmotionsViewController: UICollectionViewController {
 
         if let collectionView = collectionView {
             
-            let layout = EmotionViewFlowLayout()
-
-            collectionView.delegate = layout
+            let layout = UICollectionViewFlowLayout()
             collectionView.collectionViewLayout = layout
             
             layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: CGFloat(100))
@@ -48,13 +46,6 @@ class EmotionsViewController: UICollectionViewController {
         
         layout.invalidateLayout()
     }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if let meditationListTableVC = segue.destination as? MeditationListTableController {
-            meditationListTableVC.emotionTitle = selectedEmotion
-        }
-    }
-
 
     // MARK: UICollectionViewDataSource
 
@@ -113,6 +104,12 @@ class EmotionsViewController: UICollectionViewController {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell {
             selectedEmotion = cell.emotionLabel?.text
+            let dailyMeditationStoryboard = UIStoryboard(name: "ChooseEmotion", bundle: Bundle.main)
+            if let dailyMeditationListVC = dailyMeditationStoryboard.instantiateViewController(withIdentifier: "meditationList") as? MeditationListTableController {
+            
+                navigationController?.pushViewController(dailyMeditationListVC, animated: true)
+                dailyMeditationListVC.emotionTitle = selectedEmotion
+            }
         }
         
     }
@@ -134,4 +131,24 @@ class EmotionsViewController: UICollectionViewController {
         
     }
 
+}
+
+extension EmotionsViewController: UICollectionViewDelegateFlowLayout {
+    
+    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let widthOfCollectionView = collectionView.bounds.width
+        
+        if UIScreen.main.traitCollection.horizontalSizeClass == .compact {
+            return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
+            
+        } else if UIScreen.main.traitCollection.horizontalSizeClass == .regular {
+            let lessThanHalfCollectionView = 0.495 * widthOfCollectionView
+            return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView)
+            
+        } else {
+            return CGSize()
+        }
+    }
+    
 }

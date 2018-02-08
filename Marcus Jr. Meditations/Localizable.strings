@@ -1,0 +1,23 @@
+/* 
+  Localizable.strings
+  Marcus Jr. Meditations
+
+  Created by Andrew Fruth on 2/7/18.
+  Copyright © 2018 Andrew Fruth. All rights reserved.
+*/
+
+universal_1 = "What is under your control and what is not"
+universal_2 = "Be unattached to things you do not control"
+universal_3 = "Desire things to be as they already are"
+universal_4 = "Nothing is an impediment to you"
+
+loss_1_anger_1_sadness_1 = "Remind yourself that things go wrong"
+anxiety_1_sadness_2 = "Our view of things, not things themselves, disturb us"
+loss_2_envy_1 = "Do not attach your happiness to the things you own"
+loss_3 = "Be ready for hardship"
+perseverance_1_discipline_1 = "Seek the strength and wisdom within yourself"
+loss_4_envy_2 = "You cannot lose what you do not own"
+anxiety_2 = "The price of anxiety is too high to pay"
+anxiety_3 = "Be indifferent to others judging you"
+anger_2_sadness_3 = ""
+

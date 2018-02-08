@@ -101,6 +101,9 @@
                         </connections>
                     </collectionView>
                     <navigationItem key="navigationItem" id="Ym5-sT-rO6"/>
+                    <connections>
+                        <segue destination="qXC-vA-YsL" kind="show" identifier="toMeditations" id="50I-Gx-FvV"/>
+                    </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dw-FY-9zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>

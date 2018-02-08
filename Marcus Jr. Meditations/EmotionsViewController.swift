@@ -35,6 +35,15 @@ class EmotionsViewController: UICollectionViewController {
         return UIStatusBarStyle.lightContent
     }
     
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toMeditations" {
+            if let meditationsVC = segue.destination as? MeditationListTableController {
+                
+                meditationsVC.emotionTitle = selectedEmotion
+            }
+        }
+    }
+    
     // MARK: UIContent Container Protocol
     
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
@@ -104,12 +113,7 @@ class EmotionsViewController: UICollectionViewController {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell {
             selectedEmotion = cell.emotionLabel?.text
-            let dailyMeditationStoryboard = UIStoryboard(name: "ChooseEmotion", bundle: Bundle.main)
-            if let dailyMeditationListVC = dailyMeditationStoryboard.instantiateViewController(withIdentifier: "meditationList") as? MeditationListTableController {
-            
-                navigationController?.pushViewController(dailyMeditationListVC, animated: true)
-                dailyMeditationListVC.emotionTitle = selectedEmotion
-            }
+            performSegue(withIdentifier: "toMeditations", sender: self)
         }
         
     }

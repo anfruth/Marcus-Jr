@@ -6,18 +6,63 @@
   Copyright © 2018 Andrew Fruth. All rights reserved.
 */
 
-universal_1 = "What is under your control and what is not"
-universal_2 = "Be unattached to things you do not control"
-universal_3 = "Desire things to be as they already are"
-universal_4 = "Nothing is an impediment to you"
+"universal_1" = "What is under your control and what is not";
+"universal_2" = "Be unattached to things you do not control";
+"universal_3" = "Desire things to be as they already are";
+"universal_4" = "Nothing is an impediment to you";
 
-loss_1_anger_1_sadness_1 = "Remind yourself that things go wrong"
-anxiety_1_sadness_2 = "Our view of things, not things themselves, disturb us"
-loss_2_envy_1 = "Do not attach your happiness to the things you own"
-loss_3 = "Be ready for hardship"
-perseverance_1_discipline_1 = "Seek the strength and wisdom within yourself"
-loss_4_envy_2 = "You cannot lose what you do not own"
-anxiety_2 = "The price of anxiety is too high to pay"
-anxiety_3 = "Be indifferent to others judging you"
-anger_2_sadness_3 = ""
+"loss_1_anger_1_sadness_1" = "Remind yourself that things go wrong";
+"anxiety_1_sadness_2" = "Our view of things, not things themselves, disturb us";
+"loss_2_envy_1" = "Do not attach your happiness to the things you own";
+"loss_3" = "Be ready for hardship";
+"perseverance_1_discipline_1" = "Seek the strength and wisdom within yourself";
+"loss_4_envy_2" = "You cannot lose what you do not own";
+"anxiety_2" = "The price of anxiety is too high to pay";
+"anxiety_3" = "Be indifferent to others judging you";
+"anger_2_sadness_3" = "Do not let other people control your happiness"; // 14
+
+"anxiety_4_envy_3" = "Be indifferent to circumstance and accept good things as they come";
+"empathy_1" "Be kind to those who are suffering but don't let it spread to you";
+"sadness_4_envy_4" = "Act the best you can given your position in life";
+"anxiety5_sadness5" = "Every circumstance brings advantages"; // 18
+"envy_5" = "Seek freedom, not status";
+"anger_3" = "You decide when you are provoked"; //20
+"Death makes life impermanent" // 21
+"Be prepared to be riduculed for your principles" //22
+"Externals should not be your chief aim" //23
+"Do not sacrifice integrity for status" // 24
+"The price of some externals may not be worth it" //25
+"React the same way we would tell others to under trying circumstances" //26
+"The evil we endure is our own doing" //27
+"Don't let others negatively influence your mind" //28
+"Understand the price of reason and pay it" //29
+"Be good to others even if they treat you poorly" //30
+"Good and evil only exist in things we control" //31
+"Be indifferent to future events that we have no control over" //32
+"Think clearly of the consequences before giving in to a guilty pleasure" //34
+"Do good without fear of others stopping you" //35
+"Appreciate others who do good things for you" // 36
+"Know your limits" // 37
+"Guard against influences that would compromise your integrity" //38
+"Moderation is key to avoiding pain" //39
+"Perceive your value from how virtuous you are" //40
+"Your main focus should be perfecting your reason" //41
+"Do not take others' judgments personally" //42
+"Use wisdom to avoid unnecessary conflict" //43
+"Superficial qualities like wealth do not determine your worth" //44
+"Dont judge others harshly or pompously" //45
+"Don't talk the talk, walk the walk" //46
+"Do not practice frugality for show" //47
+"You should look to yourself and not externals for help or causes of harm"; //48
+"Action matters, not your ability to understand complicated Stoic doctrines." //49
+"Put your philosophy into action" //50
+"Action over lofty argument"//51
+
+
+
+
+
+
+
+
 

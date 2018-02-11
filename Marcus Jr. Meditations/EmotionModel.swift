@@ -19,7 +19,13 @@ extension EmotionType {
     
 }
 
-class Emotion: EmotionType {}
+class Emotion: EmotionType {
+    
+    enum EmotionTypeGeneral: String, EmotionType {
+        case universal = "Universal"
+    }
+    
+}
 
 class NegativeEmotion: Emotion {
     
@@ -65,7 +71,6 @@ class PositiveEmotion: Emotion {
     }
 
 }
-
 
     
 

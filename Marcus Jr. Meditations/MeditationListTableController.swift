@@ -11,6 +11,12 @@ import UIKit
 class MeditationListTableController: UITableViewController {
     
     var emotionTitle: String?
+    
+    override func viewDidLoad() {
+        super.viewDidLoad()
+    
+        
+    }
 
     // MARK: - Table view data source
 

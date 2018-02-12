@@ -11,7 +11,7 @@ import UIKit
 class EmotionsViewController: UICollectionViewController {
     
     private let emotionCellIdentifier = "emotionCell"
-    private var selectedEmotion: String?
+    private var selectedEmotion: EmotionTypeEncompassing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,7 +39,7 @@ class EmotionsViewController: UICollectionViewController {
         if segue.identifier == "toMeditations" {
             if let meditationsVC = segue.destination as? MeditationListTableController {
                 
-                meditationsVC.emotionTitle = selectedEmotion
+                meditationsVC.emotion = selectedEmotion
             }
         }
     }
@@ -111,9 +111,11 @@ class EmotionsViewController: UICollectionViewController {
 
     override func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
         
-        if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell {
-            selectedEmotion = cell.emotionLabel?.text
-            performSegue(withIdentifier: "toMeditations", sender: self)
+        if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell, let cellTitle = cell.emotionLabel.text {
+            if let emotion: EmotionTypeEncompassing = Emotion.getEmotionFromRawValue(rawValue: cellTitle) {
+                selectedEmotion = emotion
+                performSegue(withIdentifier: "toMeditations", sender: self)
+            }
         }
         
     }

@@ -10,11 +10,30 @@ import Foundation
 
 struct MeditationListConfiguration {
     
-    static func castedEmotionType(emotions: [Any]) -> [EmotionType] {
-        var emotionList: [EmotionType] = []
+    static func getOrderedMeditationsByEmotion<T: EmotionType>(orderByEmotion: T) -> [Int] {
+        var indices: [Int] = []
+        
+        for (key, emotionList) in dict {
+
+            for emotion in emotionList {
+                if let emotion = emotion as? T {
+                    if orderByEmotion == emotion {
+                        indices.append(key)
+                    }
+                }
+            }
+            
+        }
+        
+        return indices
+        
+    }
+    
+    static func castedEmotionType(emotions: [Any]) -> [EmotionTypeEncompassing] {
+        var emotionList: [EmotionTypeEncompassing] = []
     
         for emotion in emotions {
-            if let emotion = emotion as? EmotionType {
+            if let emotion = emotion as? EmotionTypeEncompassing {
                 emotionList.append(emotion)
             } else {
                 fatalError("Meditation List Not Configured Correctly")
@@ -24,7 +43,7 @@ struct MeditationListConfiguration {
         return emotionList
     }
     
-    static let dict: [Int: [EmotionType]] = [1: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
+    static let dict: [Int: [EmotionTypeEncompassing]] = [1: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
                                              
        2: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
        3: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),

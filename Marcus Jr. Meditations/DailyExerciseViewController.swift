@@ -22,8 +22,13 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     @IBOutlet weak var fourthTime: UILabel!
     @IBOutlet weak var fifthTime: UILabel!
     
+    // reduce number of times logic in didSets called
     private var chosenNumberOfDays: Int = 1 {
         didSet {
+            
+            if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
+                UserDefaults.standard.set(chosenNumberOfDays, forKey: "\(emotion)_\(exercise)_times")
+            }
             
             if numberOfTimesPicked > chosenNumberOfDays {
                 numberOfTimesPicked = chosenNumberOfDays
@@ -40,6 +45,7 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
             var indicesToRemove: [Int] = []
             
             for (i, label) in timeLabels.enumerated() {
+                
                 if i + 1 > numberOfTimesPicked {
                     label.superview?.isHidden = true
                     if timesSelected.indices.contains(i) {
@@ -56,14 +62,22 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
         }
 
     }
-    
+    // in didSet, need to be able to save to particular emotion and exercise (use emotion string and exercise index?) "SelectedEmotion.choice_SelectedExercise.key"
     private var timeLabels: [UILabel] = []
-    private var timesSelected: [Date] = []
+    
+    private var timesSelected: [Date] = [] {
+        
+        didSet(oldValue) {
+            if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key, timesSelected != oldValue {
+                UserDefaults.standard.set(timesSelected, forKey: "\(emotion)_\(exercise)")
+            }
+        }
+        
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        
+            
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         
         for label in timeLabels {
@@ -73,6 +87,33 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
         numberOfDaysPicker.dataSource = self
         numberOfDaysPicker.delegate = self
     }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
+            
+            let timesADay = UserDefaults.standard.integer(forKey: "\(emotion)_\(exercise)_times")
+            chosenNumberOfDays = timesADay
+            
+            if let dates = UserDefaults.standard.array(forKey: "\(emotion)_\(exercise)") as? [Date] {
+                timesSelected = dates
+                numberOfTimesPicked = timesSelected.count
+                reorderTimesSelected()
+                for i in 0..<timesSelected.count {
+                    timeLabels[i].superview?.isHidden = false
+                }
+            }
+            
+            numberOfDaysPicker.selectRow(chosenNumberOfDays - 1, inComponent: 0, animated: true)
+            
+            if chosenNumberOfDays > numberOfTimesPicked {
+                selectTimeButton.isUserInteractionEnabled = true
+                selectTimeButton.setTitleColor(UIColor.blue, for: .normal)
+            }
+        }
+    }
+    
     
     @IBAction func selectTime(_ sender: UIButton) {
         
@@ -135,7 +176,6 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     // MARK: - UIPickerView Delegate
 
     func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
-        
         return String(row + 1)
     }
     

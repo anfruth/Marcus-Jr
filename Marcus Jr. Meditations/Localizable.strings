@@ -6,61 +6,65 @@
   Copyright © 2018 Andrew Fruth. All rights reserved.
 */
 
-"1" = "What is under your control and what is not";
-"2" = "Be unattached to things you do not control";
-"3" = "Desire things to be as they already are";
-"4" = "Nothing is an impediment to you";
+// number in key to make sure no duplicates, not using only number in case I or someone else accidentally inserted a meditation into the middle of the list and incremented meditations after. The key for user defaults then would change and cause issues. Key for user defaults must stay the same no matter what.
 
-"5" = "Remind yourself that things go wrong";
-"6" = "Our view of things, not things themselves, disturb us";
-"7" = "Do not attach your happiness to the things you own";
-"8" = "Be ready for hardship";
-"9" = "Seek the strength and wisdom within yourself";
-"10" = "You cannot lose what you do not own";
-"11" = "The price of anxiety is too high to pay";
-"12" = "Be indifferent to others judging you";
-"13" = "Do not let other people control your happiness";
+// never change numbers in keys even if put new key in middle of list and keys are out of order by number. That is ok.
 
-"14" = "Be indifferent to circumstance and accept good things as they come";
-"15" = "Be kind to those who are suffering but don't let it spread to you";
-"16" = "Act the best you can given your position in life";
-"17" = "Every circumstance brings advantages";
-"18" = "Seek freedom, not status";
-"19" = "You decide when you are provoked";
+"What_is1" = "What is under your control and what is not";
+"Be_unattached2" = "Be unattached to things you do not control";
+"Desire_things3" = "Desire things to be as they already are";
+"Nothing_is4" = "Nothing is an impediment to you";
 
-"20" = "Death makes life impermanent";
-"21" = "Be prepared to be riduculed for your principles";
-"22" = "Externals should not be your chief aim";
-"23" = "Do not sacrifice integrity for status";
-"24" = "The price of some externals may not be worth it";
-"25" = "React the same way we would tell others to under trying circumstances";
-"26" = "The evil we endure is our own doing";
-"27" = "Don't let others negatively influence your mind";
+"Remind_yourself5" = "Remind yourself that things go wrong";
+"Our_view6" = "Our view of things, not things themselves, disturb us";
+"Do_not7" = "Do not attach your happiness to the things you own";
+"Be_ready8" = "Be ready for hardship";
+"Seek the9" = "Seek the strength and wisdom within yourself";
+"You_cannot10" = "You cannot lose what you do not own";
+"The_price11" = "The price of anxiety is too high to pay";
+"Be_indifferent12" = "Be indifferent to others judging you";
+"Do_not13" = "Do not let other people control your happiness";
 
-"28" = "Understand the price of reason and pay it";
-"29" = "Be good to others even if they treat you poorly";
-"30" = "Good and evil only exist in things we control";
+"Be_indifferent14" = "Be indifferent to circumstance and accept good things as they come";
+"Be_kind15" = "Be kind to those who are suffering but don't let it spread to you";
+"Act_the16" = "Act the best you can given your position in life";
+"Every_circumstance17" = "Every circumstance brings advantages";
+"Seek_freedom18" = "Seek freedom, not status";
+"You_decide19" = "You decide when you are provoked";
 
-"31" = "Be indifferent to future events that we have no control over";
-"32" = "Think clearly of the consequences before giving in to a guilty pleasure";
-"33" = "Do good without fear of others stopping you";
-"34" = "Appreciate others who do good things for you";
-"35" = "Know your limits";
-"36" = "Guard against influences that would compromise your integrity";
-"37" = "Moderation is key to avoiding pain";
+"Death_makes20" = "Death makes life impermanent";
+"Be_prepared21" = "Be prepared to be riduculed for your principles";
+"Externals_should22" = "Externals should not be your chief aim";
+"Do_not23" = "Do not sacrifice integrity for status";
+"The_price24" = "The price of some externals may not be worth it";
+"React_the25" = "React the same way we would tell others to under trying circumstances";
+"The_evil26" = "The evil we endure is our own doing";
+"Don't_let27" = "Don't let others negatively influence your mind";
 
-"38" = "Perceive your value from how virtuous you are";
-"39" = "Your main focus should be perfecting your reason";
-"40" = "Do not take others' judgments personally";
-"41" = "Use wisdom to avoid unnecessary conflict";
-"42" = "Superficial qualities like wealth do not determine your worth";
-"43" = "Dont judge others harshly or pompously";
-"44" = "Don't talk the talk, walk the walk";
-"45" = "Do not practice frugality for show";
-"46" = "You should look to yourself and not externals for help or causes of harm";
-"47" = "Action matters, not your ability to understand complicated Stoic doctrines.";
-"48" = "Put your philosophy into action";
-"49" = "Action over lofty argument";
+"Understand_the28" = "Understand the price of reason and pay it";
+"Be_good29" = "Be good to others even if they treat you poorly";
+"Good_and30" = "Good and evil only exist in things we control";
+
+"Be_indifferent31" = "Be indifferent to future events that we have no control over";
+"Think_clearly32" = "Think clearly of the consequences before giving in to a guilty pleasure";
+"Do_good33" = "Do good without fear of others stopping you";
+"Appreciate_others34" = "Appreciate others who do good things for you";
+"Know_your35" = "Know your limits";
+"Guard_against36" = "Guard against influences that would compromise your integrity";
+"Moderation_is37" = "Moderation is key to avoiding pain";
+
+"Perceive_your38" = "Perceive your value from how virtuous you are";
+"Your_main39" = "Your main focus should be perfecting your reason";
+"Do_not40" = "Do not take others' judgments personally";
+"Use_wisdom41" = "Use wisdom to avoid unnecessary conflict";
+"Superficial_qualities42" = "Superficial qualities like wealth do not determine your worth";
+"Dont_judge43" = "Dont judge others harshly or pompously";
+"Don't_talk44" = "Don't talk the talk, walk the walk";
+"Do_not45" = "Do not practice frugality for show";
+"You_should46" = "You should look to yourself and not externals for help or causes of harm";
+"Action_matters47" = "Action matters, not your ability to understand complicated Stoic doctrines.";
+"Put_your48" = "Put your philosophy into action";
+"Action_over49" = "Action over lofty argument";
 
 
 

@@ -10,88 +10,77 @@ import Foundation
 
 struct MeditationListConfiguration {
     
-    static func getOrderedMeditationsByEmotion<T: EmotionType>(orderByEmotion: T) -> [Int] {
-        var indices: [Int] = []
+    static func getOrderedMeditationsByEmotion<T: EmotionType>(orderByEmotion: T) -> [String] {
+        var keys: [String] = []
         
         for (key, emotionList) in dict {
 
             for emotion in emotionList {
                 if let emotion = emotion as? T {
                     if orderByEmotion == emotion {
-                        indices.append(key)
+                        keys.append(key)
                     }
                 }
             }
             
         }
         
-        return indices
+        return keys
         
     }
     
-    static func castedEmotionType(emotions: [Any]) -> [EmotionTypeEncompassing] {
-        var emotionList: [EmotionTypeEncompassing] = []
-    
-        for emotion in emotions {
-            if let emotion = emotion as? EmotionTypeEncompassing {
-                emotionList.append(emotion)
-            } else {
-                fatalError("Meditation List Not Configured Correctly")
-            }
-        }
+    static let dict: [String: [EmotionTypeEncompassing]] = [
         
-        return emotionList
-    }
+       "What_is1":                  [Emotion.EmotionTypeGeneral.universal],
+       "Be_unattached2":            [Emotion.EmotionTypeGeneral.universal],
+       "Desire_things3":            [Emotion.EmotionTypeGeneral.universal],
+       "Nothing_is4":               [Emotion.EmotionTypeGeneral.universal],
+       "Remind_yourself5":          [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.sadness],
+       "Our_view6":                 [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness],
+       "Do_not7":                   [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.envy],
+       "Be_ready8":                 [NegativeEmotion.NegativeEmotionType.loss],
+       "Seek the9":                 [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline],
+       "You_cannot10":              [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.envy],
+       "The_price11":               [NegativeEmotion.NegativeEmotionType.anxiety],
+       "Be_indifferent12":          [NegativeEmotion.NegativeEmotionType.anxiety],
+       "Do_not13":                  [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness],
+       "Be_indifferent14":          [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.envy],
+       "Be_kind15":                 [PositiveEmotion.PositiveEmotionType.empathy],
+       "Act_the16":                 [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.envy],
+       "Every_circumstance17":      [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness],
+       "Seek_freedom18":            [NegativeEmotion.NegativeEmotionType.envy],
+       "You_decide19":              [NegativeEmotion.NegativeEmotionType.anger],
+       "Death_makes20":             [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness, PositiveEmotion.PositiveEmotionType.courage],
+       "Be_prepared21":             [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anxiety],
+       "Externals_should22":        [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anxiety],
+       "Do_not23":                  [PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.courage],
+       "The_price24":               [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.courage],
+       "React_the25":               [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.sadness],
+       "The_evil26":                [NegativeEmotion.NegativeEmotionType.anger],
+       "Don't_let27":               [NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness],
+       "Understand_the28":          [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.courage],
+       "Be_good29":                 [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy],
+       "Good_and30":                [NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.sadness],
+       "Be_indifferent31":          [NegativeEmotion.NegativeEmotionType.anxiety],
+       "Think_clearly32":           [PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.perseverance],
+       "Do_good33":                 [PositiveEmotion.PositiveEmotionType.courage, PositiveEmotion.PositiveEmotionType.perseverance],
+       "Appreciate_others34":       [PositiveEmotion.PositiveEmotionType.empathy],
+       "Know_your35":               [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.loss],
+       "Guard_against36":           [PositiveEmotion.PositiveEmotionType.discipline],
+       "Moderation_is37":           [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anger],
+       "Perceive_your38":           [PositiveEmotion.PositiveEmotionType.discipline],
+       "Your_main39":               [PositiveEmotion.PositiveEmotionType.discipline],
+       "Do_not40":                  [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy],
+       "Use_wisdom41":              [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy],
+       "Superficial_qualities42":   [NegativeEmotion.NegativeEmotionType.envy],
+       "Dont_judge43":              [PositiveEmotion.PositiveEmotionType.empathy, NegativeEmotion.NegativeEmotionType.anger],
+       "Don't_talk44":              [PositiveEmotion.PositiveEmotionType.discipline],
+       "Do_not45":                  [PositiveEmotion.PositiveEmotionType.discipline],
+       "You_should46":              [NegativeEmotion.NegativeEmotionType.envy],
+       "Action_matters47":          [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline],
+       "Put_your48":                [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline],
+       "Action_over49":             [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline]
     
-    static let dict: [Int: [EmotionTypeEncompassing]] = [1: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
-                                             
-       2: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
-       3: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
-       4: castedEmotionType(emotions: [Emotion.EmotionTypeGeneral.universal]),
-       5: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.sadness]),
-       6: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness]),
-       7: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.envy]),
-       8: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss]),
-       9: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline]),
-       10: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.envy]),
-       11: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety]),
-       12: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety]),
-       13: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness]),
-       14: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.envy]),
-       15: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.empathy]),
-       16: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.envy]),
-       17: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness]),
-       18: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.envy]),
-       19: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger]),
-       20: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness, PositiveEmotion.PositiveEmotionType.courage]),
-       21: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anxiety]),
-       22: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anxiety]),
-       23: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.courage]),
-       24: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.courage]),
-       25: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.loss, NegativeEmotion.NegativeEmotionType.sadness]),
-       26: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger]),
-       27: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.anxiety, NegativeEmotion.NegativeEmotionType.sadness]),
-       28: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.courage]),
-       29: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy]),
-       30: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger, NegativeEmotion.NegativeEmotionType.sadness]),
-       31: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anxiety]),
-       32: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline, PositiveEmotion.PositiveEmotionType.perseverance]),
-       33: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.courage, PositiveEmotion.PositiveEmotionType.perseverance]),
-       34: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.empathy]),
-       35: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.loss]),
-       36: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline]),
-       37: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.sadness, NegativeEmotion.NegativeEmotionType.anger]),
-       38: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline]),
-       39: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline]),
-       40: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy]),
-       41: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.anger, PositiveEmotion.PositiveEmotionType.empathy]),
-       42: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.envy]),
-       43: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.empathy, NegativeEmotion.NegativeEmotionType.anger]),
-       44: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline]),
-       45: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.discipline]),
-       46: castedEmotionType(emotions: [NegativeEmotion.NegativeEmotionType.envy]),
-       47: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline]),
-       48: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline]),
-       49: castedEmotionType(emotions: [PositiveEmotion.PositiveEmotionType.perseverance, PositiveEmotion.PositiveEmotionType.discipline])]
+    ]
     
 }

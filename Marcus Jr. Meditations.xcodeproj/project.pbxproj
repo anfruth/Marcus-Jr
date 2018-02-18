@@ -136,14 +136,14 @@
 			isa = PBXGroup;
 			children = (
 				EA0FF0632023FAE100688BC6 /* AppDelegate.swift */,
-				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
 				EA0FF0892024141900688BC6 /* EmotionCell.swift */,
 				EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */,
 				EA0FF0672023FAE100688BC6 /* ChooseEmotion.storyboard */,
-				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
 				EA0FF0912024312F00688BC6 /* SectionHeader.swift */,
 				EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */,
 				EA0FF08F20241D3300688BC6 /* EmotionModel.swift */,
+				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
+				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
 				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
 				EA0FF06A2023FAE100688BC6 /* Assets.xcassets */,
 				EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */,

@@ -8,9 +8,13 @@
 
 import UIKit
 
+struct SelectedExercise {
+    fileprivate(set) static var key: String?
+}
+
 class MeditationListTableController: UITableViewController {
 
-    private var indicesForEmotion: [Int]?
+    private var keysForEmotion: [String]?
     
     // MARK: - Table view data source
 
@@ -19,33 +23,32 @@ class MeditationListTableController: UITableViewController {
     }
 
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return 10
+        
+        if let emotion = SelectedEmotion.choice {
+            getAllKeysOfEmotionIfNeeded(emotion: emotion)
+            if let keysForEmotion = keysForEmotion {
+                return keysForEmotion.count
+            }
+        }
+        
+        return 0 // should never happen
     }
 
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "dailyMeditation", for: indexPath) as? DailyMeditationCell {
             
-            if indicesForEmotion == nil {
+            if keysForEmotion == nil { // only get all indices if do not have, should be nil only once
                 if let emotion = SelectedEmotion.choice {
-                    
-                    if let emotion = emotion as? Emotion.EmotionTypeGeneral {
-                        indicesForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
-                    } else if let emotion = emotion as? NegativeEmotion.NegativeEmotionType {
-                        indicesForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
-                    } else if let emotion = emotion as? PositiveEmotion.PositiveEmotionType {
-                        indicesForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
-                    }
-                    
+                    getAllKeysOfEmotionIfNeeded(emotion: emotion)
                 } else {
                     return UITableViewCell()
                 }
             }
             
-            let row = indexPath.row
-            if let indicesForEmotion = indicesForEmotion, row < indicesForEmotion.count {
-                let meditationTitleIndex = String(indicesForEmotion[row])
-                cell.labelForDescription.text = NSLocalizedString(meditationTitleIndex, comment: "")
+            if let keysForEmotion = keysForEmotion, indexPath.row < keysForEmotion.count { // prevents index out of range error (not that it should happen anyway)
+                let meditationKey = keysForEmotion[indexPath.row]
+                cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")
             }
             
             return cell
@@ -55,14 +58,30 @@ class MeditationListTableController: UITableViewController {
         return UITableViewCell()
     }
     
-    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
-        performSegue(withIdentifier: "toExercise", sender: self)
+    private func getAllKeysOfEmotionIfNeeded(emotion: EmotionTypeEncompassing) {
+        
+        if let emotion = emotion as? Emotion.EmotionTypeGeneral {
+            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
+            
+        } else if let emotion = emotion as? NegativeEmotion.NegativeEmotionType {
+            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
+            
+        } else if let emotion = emotion as? PositiveEmotion.PositiveEmotionType {
+            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
+        }
+        
     }
     
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        indicesForEmotion = nil
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        
+        if let keysForEmotion = keysForEmotion, indexPath.row < keysForEmotion.count {
+            let meditationKey = keysForEmotion[indexPath.row]
+            SelectedExercise.key = meditationKey
+        }
+        
+        performSegue(withIdentifier: "toExercise", sender: self)
     }
+
 
 }
 

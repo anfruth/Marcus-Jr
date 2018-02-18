@@ -8,10 +8,7 @@
 
 import UIKit
 
-
 class MeditationListTableController: UITableViewController {
-    
-    var emotion: EmotionTypeEncompassing?
 
     private var indicesForEmotion: [Int]?
     
@@ -30,7 +27,7 @@ class MeditationListTableController: UITableViewController {
         if let cell = tableView.dequeueReusableCell(withIdentifier: "dailyMeditation", for: indexPath) as? DailyMeditationCell {
             
             if indicesForEmotion == nil {
-                if let emotion = emotion {
+                if let emotion = SelectedEmotion.choice {
                     
                     if let emotion = emotion as? Emotion.EmotionTypeGeneral {
                         indicesForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
@@ -56,6 +53,10 @@ class MeditationListTableController: UITableViewController {
         }
 
         return UITableViewCell()
+    }
+    
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        performSegue(withIdentifier: "toExercise", sender: self)
     }
     
     override func viewWillDisappear(_ animated: Bool) {

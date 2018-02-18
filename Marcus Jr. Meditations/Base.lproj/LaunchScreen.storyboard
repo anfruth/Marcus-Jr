@@ -1,12 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="13771" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" launchScreen="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="01J-lp-oVM">
-    <device id="ipad12_9" orientation="portrait">
+    <device id="retina5_5" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="13772"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -16,34 +15,25 @@
             <objects>
                 <viewController id="01J-lp-oVM" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="Ze5-6b-2t3">
-                        <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="arb-IT-wj2">
-                                <rect key="frame" x="0.0" y="0.0" width="1024" height="1366"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="2Wg-kk-biL">
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="736"/>
                             </imageView>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Jr. Meditations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="none" minimumFontSize="14" adjustsFontForContentSizeCategory="YES" translatesAutoresizingMaskIntoConstraints="NO" id="svO-rE-ast">
-                                <rect key="frame" x="102" y="30" width="820" height="86"/>
-                                <fontDescription key="fontDescription" type="system" weight="thin" pointSize="72"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                         </subviews>
                         <constraints>
-                            <constraint firstItem="arb-IT-wj2" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="6Ja-DC-937"/>
-                            <constraint firstItem="svO-rE-ast" firstAttribute="centerX" secondItem="Ze5-6b-2t3" secondAttribute="centerX" id="H1K-wn-wmY"/>
-                            <constraint firstItem="arb-IT-wj2" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="KCi-b1-rXF"/>
-                            <constraint firstItem="arb-IT-wj2" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Nfp-4V-kVX"/>
-                            <constraint firstItem="svO-rE-ast" firstAttribute="width" secondItem="arb-IT-wj2" secondAttribute="width" multiplier="4/5" constant="1" id="ow6-Z4-XgY"/>
-                            <constraint firstItem="arb-IT-wj2" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="pcL-20-t7N"/>
-                            <constraint firstItem="svO-rE-ast" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="10" id="wCc-j9-cwH"/>
+                            <constraint firstItem="2Wg-kk-biL" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="7jC-cB-76K"/>
+                            <constraint firstItem="2Wg-kk-biL" firstAttribute="top" secondItem="Ze5-6b-2t3" secondAttribute="top" id="Nkt-TZ-ZYR"/>
+                            <constraint firstItem="2Wg-kk-biL" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="qfa-LV-SEK"/>
+                            <constraint firstItem="2Wg-kk-biL" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="r20-QB-qhf"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="iYj-Kq-Ea1" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="48.799999999999997" y="373.15270935960592"/>
+            <point key="canvasLocation" x="47.826086956521742" y="372.554347826087"/>
         </scene>
     </scenes>
     <resources>

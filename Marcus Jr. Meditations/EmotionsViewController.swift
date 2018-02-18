@@ -8,10 +8,13 @@
 
 import UIKit
 
+struct SelectedEmotion {
+    fileprivate(set) static var choice: EmotionTypeEncompassing?
+}
+
 class EmotionsViewController: UICollectionViewController {
     
     private let emotionCellIdentifier = "emotionCell"
-    private var selectedEmotion: EmotionTypeEncompassing?
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -33,15 +36,6 @@ class EmotionsViewController: UICollectionViewController {
     
     override var preferredStatusBarStyle: UIStatusBarStyle {
         return UIStatusBarStyle.lightContent
-    }
-    
-    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        if segue.identifier == "toMeditations" {
-            if let meditationsVC = segue.destination as? MeditationListTableController {
-                
-                meditationsVC.emotion = selectedEmotion
-            }
-        }
     }
     
     // MARK: UIContent Container Protocol
@@ -113,7 +107,7 @@ class EmotionsViewController: UICollectionViewController {
         
         if let cell = collectionView.cellForItem(at: indexPath) as? EmotionCell, let cellTitle = cell.emotionLabel.text {
             if let emotion: EmotionTypeEncompassing = Emotion.getEmotionFromRawValue(rawValue: cellTitle) {
-                selectedEmotion = emotion
+                SelectedEmotion.choice = emotion
                 performSegue(withIdentifier: "toMeditations", sender: self)
             }
         }

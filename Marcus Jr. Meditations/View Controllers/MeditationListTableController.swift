@@ -8,15 +8,31 @@
 
 import UIKit
 
+protocol ExerciseSettable{
+    func setExerciseKey(exerciseKey: String)
+}
+
+extension ExerciseSettable {
+    func setExerciseKey(exerciseKey: String) {
+        SelectedExercise.key = exerciseKey
+    }
+}
+
 struct SelectedExercise {
     fileprivate(set) static var key: String?
 }
 
-class MeditationListTableController: UITableViewController {
+class MeditationListTableController: UITableViewController, NotificationsVC {
 
     private var keysForEmotion: [String]?
     
     // MARK: - Table view data source
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setAsTopViewController()
+    }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
         return 1

@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 @UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
@@ -15,7 +16,28 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
 
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplicationLaunchOptionsKey: Any]?) -> Bool {
-        // Override point for customization after application launch.
+        
+        // should put alert letting people know why we need alerts
+        
+        let center = UNUserNotificationCenter.current()
+        center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
+            if !granted {
+                // show option of setting meditation times, but when click button to set, shows alert saying have to enable notifications in settings. Click here: settings link.
+                // can check before button pressed if notifications allow it ( so maybe this isn't needed at all!)
+            }
+            
+            let goToMeditationAction = UNNotificationAction(identifier: "goToMeditation", title: "Go to Meditation", options: .foreground)
+            
+            // localize.
+            let meditationCategory = UNNotificationCategory(identifier: "meditationCategory", actions: [goToMeditationAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "Time to Meditate. Head on over to your daily meditation.", options: UNNotificationCategoryOptions(rawValue: 0))
+            
+            center.setNotificationCategories([meditationCategory])
+        }
+        
+        center.delegate = NotificationsReceiver.sharedInstance
+        
+        
+        
         return true
     }
 

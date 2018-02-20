@@ -42,6 +42,8 @@
 		EA5106C32037ED21003135BA /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */; };
 		EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */; };
 		EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */; };
+		EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */; };
+		EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -94,6 +96,8 @@
 		EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Heavy.otf"; sourceTree = "<group>"; };
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
+		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
+		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -136,17 +140,13 @@
 			isa = PBXGroup;
 			children = (
 				EA0FF0632023FAE100688BC6 /* AppDelegate.swift */,
-				EA0FF0892024141900688BC6 /* EmotionCell.swift */,
-				EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */,
-				EA0FF0672023FAE100688BC6 /* ChooseEmotion.storyboard */,
-				EA0FF0912024312F00688BC6 /* SectionHeader.swift */,
-				EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */,
-				EA0FF08F20241D3300688BC6 /* EmotionModel.swift */,
-				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
-				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
-				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
-				EA0FF06A2023FAE100688BC6 /* Assets.xcassets */,
+				EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */,
+				EAC2F200203BA1FF007D97FC /* Models */,
+				EAC2F1FF203BA1DD007D97FC /* Views */,
+				EAC2F1FE203BA194007D97FC /* View Controllers */,
+				EAC2F201203BA22B007D97FC /* Other Controllers */,
 				EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */,
+				EA0FF06A2023FAE100688BC6 /* Assets.xcassets */,
 				EA0FF06F2023FAE100688BC6 /* Info.plist */,
 				EA0FF097202C181A00688BC6 /* Localizable.strings */,
 				EA5106992037ECF5003135BA /* fonts */,
@@ -189,6 +189,44 @@
 				EA5106AB2037ED21003135BA /* SanFranciscoText-SemiboldItalic.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		EAC2F1FE203BA194007D97FC /* View Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
+				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
+				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
+			);
+			path = "View Controllers";
+			sourceTree = "<group>";
+		};
+		EAC2F1FF203BA1DD007D97FC /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA0FF0892024141900688BC6 /* EmotionCell.swift */,
+				EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */,
+				EA0FF0912024312F00688BC6 /* SectionHeader.swift */,
+				EA0FF0672023FAE100688BC6 /* ChooseEmotion.storyboard */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
+		EAC2F200203BA1FF007D97FC /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				EA0FF08F20241D3300688BC6 /* EmotionModel.swift */,
+				EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */,
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		EAC2F201203BA22B007D97FC /* Other Controllers */ = {
+			isa = PBXGroup;
+			children = (
+				EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */,
+			);
+			path = "Other Controllers";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -316,11 +354,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */,
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
 				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
 				EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */,
 				EA0FF0922024312F00688BC6 /* SectionHeader.swift in Sources */,
+				EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */,
 				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
 				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
 				EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */,

@@ -8,17 +8,28 @@
 
 import UIKit
 
+protocol EmotionSettable {
+    func setChoice(emotion: EmotionTypeEncompassing)
+}
+
+extension EmotionSettable {
+    
+    func setChoice(emotion: EmotionTypeEncompassing) {
+        SelectedEmotion.choice = emotion
+    }
+    
+}
+
 struct SelectedEmotion {
     fileprivate(set) static var choice: EmotionTypeEncompassing?
 }
 
-class EmotionsViewController: UICollectionViewController {
+class EmotionsViewController: UICollectionViewController, NotificationsVC {
     
     private let emotionCellIdentifier = "emotionCell"
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -32,6 +43,12 @@ class EmotionsViewController: UICollectionViewController {
         }
         
         
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        
+        setAsTopViewController()
     }
     
     override var preferredStatusBarStyle: UIStatusBarStyle {

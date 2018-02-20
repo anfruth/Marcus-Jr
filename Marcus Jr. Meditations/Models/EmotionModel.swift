@@ -65,6 +65,20 @@ class Emotion {
         
     }
     
+    static func getRawValue(from emotion: EmotionTypeEncompassing) -> String? {
+        
+        if let emotion = emotion as? Emotion.EmotionTypeGeneral {
+            return emotion.rawValue
+        } else if let emotion = emotion as? NegativeEmotion.NegativeEmotionType {
+            return emotion.rawValue
+        } else if let emotion = emotion as? PositiveEmotion.PositiveEmotionType {
+            return emotion.rawValue
+        }
+        
+        return nil
+        
+    }
+    
     static func getAllEmotionTypes() -> [EmotionTypeEncompassing] {
         
         return NegativeEmotion.NegativeEmotionType.allValues as [EmotionTypeEncompassing] + PositiveEmotion.PositiveEmotionType.allValues as [EmotionTypeEncompassing]

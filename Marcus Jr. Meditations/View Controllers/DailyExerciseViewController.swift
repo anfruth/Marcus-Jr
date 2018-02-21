@@ -23,21 +23,19 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     @IBOutlet weak var fourthTime: UILabel!
     @IBOutlet weak var fifthTime: UILabel!
     
+    let center = UNUserNotificationCenter.current()
+    
     // reduce number of times logic in didSets called
-    private var pickerChosenDays: Int = 1 { // what the picker says
+    private var pickerChosenDays: Int = 1 { // what the picker says, when this happens should also delete dates if excessive labels showing
         didSet {
+            savePickerChosenDaysToDisk()
             
-            if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
-                if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                    UserDefaults.standard.set(pickerChosenDays, forKey: "\(emotionRawValue)$\(exercise)_times")
-                }
+            if pickerChosenDays > timesSelected.count {
+                enableSelectTimeButton()
+            } else if pickerChosenDays <= timesSelected.count {
+                removeExcessiveTimes()
+                disableSelectTimeButton()
             }
-            
-            if timesSelected.count >= pickerChosenDays {
-                selectTimeButton.isUserInteractionEnabled = false
-                selectTimeButton.setTitleColor(UIColor.lightGray, for: .normal)
-            }
-            
         }
     }
     
@@ -47,71 +45,25 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     private var timesSelected: [Date] = [] { // collection of dates chosen
         
         didSet(oldTimes) {
-            
-            // this removes notifications for deleted times
+
             if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key, timesSelected != oldTimes {
-                if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                    UserDefaults.standard.set(timesSelected, forKey: "\(emotionRawValue)$\(exercise)")
-                }
-                
-                let center = UNUserNotificationCenter.current()
-                
-                if oldTimes.count > timesSelected.count {
-                    // remove notification, loop through find, dates that are now gone.
-                    let removedDates = oldTimes.filter { timesSelected.index(of: $0) == nil }
-                    
-                    var notificationIdentifiers: [String] = []
-                    for date in removedDates {
-                        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                            notificationIdentifiers.append("\(emotionRawValue)$\(exercise)$\(date.description)")
-                        }
-                    }
-                    
-                    center.removePendingNotificationRequests(withIdentifiers: notificationIdentifiers)
+                saveTimesSelected(emotion: emotion, exercise: exercise)
+
+                if oldTimes.count > timesSelected.count { // handling labels, notifications, time selected button
+                    handleRemovedTimes(oldTimes: oldTimes, emotion: emotion, exercise: exercise)
+                } else if timesSelected.count > oldTimes.count {
+                    handleAddedTimes(oldTimes: oldTimes, emotion: emotion, exercise: exercise)
                 }
             }
         }
         
-    }
-    
-    private func addAdditionalLocalNotification(date: Date, emotion: EmotionTypeEncompassing, exercise: String) {
-        
-        let center = UNUserNotificationCenter.current()
-        
-        let content = UNMutableNotificationContent()
-        content.title = NSString.localizedUserNotificationString(forKey: "Time to Meditate!", arguments: nil)
-        if let key = SelectedExercise.key {
-            content.body = NSString.localizedUserNotificationString(forKey: NSLocalizedString(key, comment: "The meditation title"), arguments: nil)
-        }
-        content.categoryIdentifier = "meditationCategory"
-        content.sound = UNNotificationSound.default()
-        
-        let calendar = Calendar.current
-        let components: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute]
-        let dateComponents = calendar.dateComponents(components, from: date)
-        let trigger = UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
-        
-        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-            let request = UNNotificationRequest(identifier: "\(emotionRawValue)$\(exercise)$\(date.description)", content: content, trigger: trigger)
-            
-            center.add(request) { (error) in
-                #if DEBUG
-                    if let error = error {
-                        print(error.localizedDescription)
-                    }
-                #endif
-            }
-        }
     }
     
     override func viewDidLoad() {
         super.viewDidLoad()
             
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
-        
-        for label in timeLabels {
-            label.superview?.isHidden = true
-        }
+        _ = removeExcessiveLabels() // start all hidden
         
         numberOfDaysPicker.dataSource = self
         numberOfDaysPicker.delegate = self
@@ -124,97 +76,31 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
         if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
             
             if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                let storedNumberOfDays: Int = UserDefaults.standard.integer(forKey: "\(emotionRawValue)$\(exercise)_times")
-                pickerChosenDays = storedNumberOfDays == 0 ? 1 : storedNumberOfDays
-            }
-            
-            if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                if let dates = UserDefaults.standard.array(forKey: "\(emotionRawValue)$\(exercise)") as? [Date] {
-                    timesSelected = dates
-                    reorderTimesSelected()
-                    for i in 0..<timesSelected.count {
-                        timeLabels[i].superview?.isHidden = false
-                    }
-                }
+                // order of timesSelected before pickerChosenDays matters, if picker first, goes off incorrect value of timesSeleted, timesSelected doesnt touch pickerChosen
+                timesSelected = retrieveTimesSelectedFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
+                pickerChosenDays = retrievePickerChosenDaysFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
+                showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
             }
             
             numberOfDaysPicker.selectRow(pickerChosenDays - 1, inComponent: 0, animated: true)
-            
-            if pickerChosenDays > timesSelected.count {
-                selectTimeButton.isUserInteractionEnabled = true
-                selectTimeButton.setTitleColor(UIColor.blue, for: .normal)
-            }
         }
     }
     
-    
     @IBAction func selectTime(_ sender: UIButton) {
-        
-        if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key, timesSelected.count <= 5 {
-            
-            assert(pickerChosenDays >= timesSelected.count) // picker days more or equal to times picked
-            
-            let label = timeLabels[timesSelected.count]
-            
-            label.superview?.isHidden = false
-            let date = datePicker.date
-            timesSelected.append(date)
-            addAdditionalLocalNotification(date: date, emotion: emotion, exercise: exercise)
-            label.text = datePicker.date.description(with: Locale.current)
-            
-            if timesSelected.count >= pickerChosenDays {
-                selectTimeButton.isUserInteractionEnabled = false
-                selectTimeButton.setTitleColor(UIColor.lightGray, for: .normal)
-            }
+        assert(pickerChosenDays > timesSelected.count) // picker days more than times picked
 
-            reorderTimesSelected()
-        }
+        let date = datePicker.date
+        timesSelected.append(date)
     }
     
     @IBAction func eraseTime(_ sender: UIButton) {
-        
-        selectTimeButton.isUserInteractionEnabled = true
-        selectTimeButton.setTitleColor(UIColor.blue, for: .normal)
-        
         if let superview = sender.superview {
-        
+
             for view in superview.subviews {
                 if let view = view as? UILabel {
                     timesSelected.remove(at: view.tag - 1)
-                    removeExcessiveTimes() // will only hide labels, will not removed additional timesSelected due to conditional check in method
                 }
             }
-        }
-        
-        reorderTimesSelected()
-    }
-    
-    private func reorderTimesSelected() {
-        timesSelected.sort()
-        for (i, time) in timesSelected.enumerated() {
-            if let label = view.viewWithTag(i + 1) as? UILabel {
-                label.text = time.description(with: Locale.current)
-            }
-        }
-    }
-    
-    private func removeExcessiveTimes() {
-        // this deletes times and hides the labels
-        var indicesToRemove: [Int] = []
-        
-        for (i, label) in timeLabels.enumerated() {
-            
-            if i + 1 > timesSelected.count || i + 1 > pickerChosenDays { // if number of times labels exceed number of times picked, number of times reduced.
-                label.superview?.isHidden = true
-                if timesSelected.indices.contains(i) {
-                    indicesToRemove.append(i)
-                    timeLabels[i].superview?.isHidden = true // hides labels that no longer have a time
-                }
-            }
-        }
-        
-        if let lastIndex = indicesToRemove.last, indicesToRemove.count > 0 {
-            timesSelected.removeSubrange(ClosedRange(uncheckedBounds: (lower: indicesToRemove[0], upper: lastIndex)))
         }
     }
     
@@ -236,16 +122,167 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
         pickerChosenDays = row + 1
+    }
+    
+    private func handleAddedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
+        let addedTimes = timesSelected.filter { oldTimes.index(of: $0) == nil }
         
-        if pickerChosenDays > timesSelected.count {
-            selectTimeButton.isUserInteractionEnabled = true
-            selectTimeButton.setTitleColor(UIColor.blue, for: .normal)
-            
-        } else if pickerChosenDays < timesSelected.count {
-            removeExcessiveTimes()
-            selectTimeButton.isUserInteractionEnabled = false
-            selectTimeButton.setTitleColor(UIColor.lightGray, for: .normal)
+        for date in addedTimes {
+            addAdditionalLocalNotification(date: date, emotion: emotion, exercise: exercise)
+        }
+        
+        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+            showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
+        }
+        
+        if pickerChosenDays <= timesSelected.count {
+            disableSelectTimeButton()
         }
         
     }
+    
+    private func handleRemovedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
+        removeExcessiveTimes()
+        let removedTimes = oldTimes.filter { timesSelected.index(of: $0) == nil }
+        let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedTimes: removedTimes)
+        center.removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
+
+        if pickerChosenDays > timesSelected.count {
+            enableSelectTimeButton()
+        }
+    }
+    
+    private func disableSelectTimeButton() {
+        selectTimeButton.isUserInteractionEnabled = false
+        selectTimeButton.setTitleColor(UIColor.lightGray, for: .normal)
+    }
+    
+    private func enableSelectTimeButton() {
+        selectTimeButton.isUserInteractionEnabled = true
+        selectTimeButton.setTitleColor(UIColor.blue, for: .normal)
+    }
+    
+    private func reorderTimesSelected() {
+        timesSelected.sort()
+        for (i, time) in timesSelected.enumerated() {
+            if let label = view.viewWithTag(i + 1) as? UILabel {
+                label.text = time.description(with: Locale.current)
+            }
+        }
+    }
+    
+    private func removeExcessiveTimes() {
+        // this deletes times and hides the labels
+        let indicesToRemove = removeExcessiveLabels()
+        
+        if let lastIndex = indicesToRemove.last, indicesToRemove.count > 0 {
+            timesSelected.removeSubrange(ClosedRange(uncheckedBounds: (lower: indicesToRemove[0], upper: lastIndex)))
+        }
+    }
+    
+    private func removeExcessiveLabels() -> [Int] {
+        var indicesToRemove: [Int] = []
+        for (i, label) in timeLabels.enumerated() {
+            
+            if i + 1 > timesSelected.count || i + 1 > pickerChosenDays { // if number of times labels exceed number of times picked, number of times reduced.
+                label.superview?.isHidden = true
+                if timesSelected.indices.contains(i) {
+                    indicesToRemove.append(i)
+                    timeLabels[i].superview?.isHidden = true // hides labels that no longer have a time
+                }
+            }
+        }
+
+        reorderTimesSelected()
+
+        return indicesToRemove
+    }
+    
+    private func addAdditionalLocalNotification(date: Date, emotion: EmotionTypeEncompassing, exercise: String) {
+        
+        let content = getContentForNotification()
+        let trigger = getTriggerForNotification(date: date)
+        
+        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+            let request = UNNotificationRequest(identifier: "\(emotionRawValue)$\(exercise)$\(date.description)", content: content, trigger: trigger)
+            
+            center.add(request) { (error) in
+                #if DEBUG
+                    if let error = error {
+                        print(error.localizedDescription)
+                    }
+                #endif
+            }
+        }
+    }
+    
+    private func getContentForNotification() -> UNMutableNotificationContent {
+        let content = UNMutableNotificationContent()
+        content.title = NSString.localizedUserNotificationString(forKey: "Time to Meditate!", arguments: nil)
+        if let key = SelectedExercise.key {
+            content.body = NSString.localizedUserNotificationString(forKey: NSLocalizedString(key, comment: "The meditation title"), arguments: nil)
+        }
+        content.categoryIdentifier = "meditationCategory"
+        content.sound = UNNotificationSound.default()
+        
+        return content
+    }
+    
+    private func getTriggerForNotification(date: Date) -> UNCalendarNotificationTrigger {
+        let calendar = Calendar.current
+        let components: Set<Calendar.Component> = [.year, .month, .day, .hour, .minute]
+        let dateComponents = calendar.dateComponents(components, from: date)
+        return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
+    }
+    
+    private func savePickerChosenDaysToDisk() {
+        if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
+            if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+                UserDefaults.standard.set(pickerChosenDays, forKey: "\(emotionRawValue)$\(exercise)_times")
+            }
+        }
+    }
+    
+    private func saveTimesSelected(emotion: EmotionTypeEncompassing, exercise: String) {
+        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+            UserDefaults.standard.set(timesSelected, forKey: "\(emotionRawValue)$\(exercise)")
+        }
+    }
+    
+    private func retrievePickerChosenDaysFromDisk(emotionRawValue: String, exercise: String) -> Int {
+        let storedNumberOfDays: Int = UserDefaults.standard.integer(forKey: "\(emotionRawValue)$\(exercise)_times")
+        return storedNumberOfDays == 0 ? 1 : storedNumberOfDays
+    }
+    
+
+    private func retrieveTimesSelectedFromDisk(emotionRawValue: String, exercise: String) -> [Date] {
+        if let dates = UserDefaults.standard.array(forKey: "\(emotionRawValue)$\(exercise)") as? [Date] {
+            return dates
+        }
+        
+        return []
+    }
+
+    private func getNotificationsToDelete(emotion: EmotionTypeEncompassing, exercise: String, removedTimes: [Date]) -> [String] {
+        var notificationIdentifiers: [String] = []
+        for date in removedTimes {
+            if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+                notificationIdentifiers.append("\(emotionRawValue)$\(exercise)$\(date.description)")
+            }
+        }
+        
+        return notificationIdentifiers
+    }
+    
+    private func showLabels(emotionRawValue: String, exercise: String) {
+        for i in 0..<timesSelected.count {
+            timeLabels[i].superview?.isHidden = false
+        }
+        reorderTimesSelected()
+    }
+    
+    // save and retrive functionality from date model, times selected being set to hiding or showing labels
+    
+    // dates property, times picked property
+    
 }

@@ -18,11 +18,11 @@ extension EmotionType {
     
     static func ==(lhs: Self, rhs: Self) -> Bool {
         
-        if let lhs = lhs as? Emotion.EmotionTypeGeneral, let rhs = rhs as? Emotion.EmotionTypeGeneral {
+        if let lhs = lhs as? EmotionTypeGeneral, let rhs = rhs as? EmotionTypeGeneral {
             return lhs.rawValue == rhs.rawValue
-        } else if let lhs = lhs as? NegativeEmotion.NegativeEmotionType, let rhs = rhs as? NegativeEmotion.NegativeEmotionType {
+        } else if let lhs = lhs as? NegativeEmotionType, let rhs = rhs as? NegativeEmotionType {
             return lhs.rawValue == rhs.rawValue
-        } else if let lhs = lhs as? PositiveEmotion.PositiveEmotionType, let rhs = rhs as? PositiveEmotion.PositiveEmotionType {
+        } else if let lhs = lhs as? PositiveEmotionType, let rhs = rhs as? PositiveEmotionType {
             return lhs.rawValue == rhs.rawValue
         }
         
@@ -40,23 +40,23 @@ class Emotion {
         case "Universal":
             emotion = EmotionTypeGeneral.universal
         case "Loss":
-            emotion = NegativeEmotion.NegativeEmotionType.loss
+            emotion = NegativeEmotionType.loss
         case "Anger":
-            emotion = NegativeEmotion.NegativeEmotionType.anger
+            emotion = NegativeEmotionType.anger
         case "Sadness":
-            emotion = NegativeEmotion.NegativeEmotionType.sadness
+            emotion = NegativeEmotionType.sadness
         case "Anxiety":
-            emotion = NegativeEmotion.NegativeEmotionType.anxiety
+            emotion = NegativeEmotionType.anxiety
         case "Envy":
-            emotion = NegativeEmotion.NegativeEmotionType.envy
+            emotion = NegativeEmotionType.envy
         case "Perseverance":
-            emotion = PositiveEmotion.PositiveEmotionType.perseverance
+            emotion = PositiveEmotionType.perseverance
         case "Discipline":
-            emotion = PositiveEmotion.PositiveEmotionType.discipline
+            emotion = PositiveEmotionType.discipline
         case "Empathy":
-            emotion = PositiveEmotion.PositiveEmotionType.empathy
+            emotion = PositiveEmotionType.empathy
         case "Courage":
-            emotion = PositiveEmotion.PositiveEmotionType.courage
+            emotion = PositiveEmotionType.courage
         default:
             break
         }
@@ -67,11 +67,11 @@ class Emotion {
     
     static func getRawValue(from emotion: EmotionTypeEncompassing) -> String? {
         
-        if let emotion = emotion as? Emotion.EmotionTypeGeneral {
+        if let emotion = emotion as? EmotionTypeGeneral {
             return emotion.rawValue
-        } else if let emotion = emotion as? NegativeEmotion.NegativeEmotionType {
+        } else if let emotion = emotion as? NegativeEmotionType {
             return emotion.rawValue
-        } else if let emotion = emotion as? PositiveEmotion.PositiveEmotionType {
+        } else if let emotion = emotion as? PositiveEmotionType {
             return emotion.rawValue
         }
         
@@ -81,62 +81,43 @@ class Emotion {
     
     static func getAllEmotionTypes() -> [EmotionTypeEncompassing] {
         
-        return NegativeEmotion.NegativeEmotionType.allValues as [EmotionTypeEncompassing] + PositiveEmotion.PositiveEmotionType.allValues as [EmotionTypeEncompassing]
+        return NegativeEmotionType.allValues as [EmotionTypeEncompassing] + PositiveEmotionType.allValues as [EmotionTypeEncompassing]
     }
-    
-    enum EmotionTypeGeneral: String, EmotionType, EmotionTypeEncompassing {
-        typealias EmotionCategory = EmotionTypeGeneral
-        
-        case universal = "Universal"
-    }
-    
 }
 
-class NegativeEmotion: Emotion {
+enum EmotionTypeGeneral: String, EmotionType, EmotionTypeEncompassing {
+    typealias EmotionCategory = EmotionTypeGeneral
     
-    let emotion: NegativeEmotionType
-    
-    init(emotion: NegativeEmotionType) {
-        self.emotion = emotion
-    }
-    
-    enum NegativeEmotionType: String, EmotionType, EmotionTypeEncompassing {
-        typealias EmotionCategory = NegativeEmotionType
-    
-        case loss = "Loss"
-        case anger = "Anger"
-        case sadness = "Sadness"
-        case anxiety = "Anxiety"
-        case envy = "Envy"
-        
-        static var allValues: [NegativeEmotionType] {
-            return [NegativeEmotionType.loss, NegativeEmotionType.anger, NegativeEmotionType.sadness, NegativeEmotionType.anxiety, NegativeEmotionType.envy]
-        }
-    }
-    
+    case universal = "Universal"
 }
 
-class PositiveEmotion: Emotion {
-    let emotion: PositiveEmotionType
-    
-    init(emotion: PositiveEmotionType) {
-        self.emotion = emotion
-    }
-    
-    enum PositiveEmotionType: String, EmotionType, EmotionTypeEncompassing {
-        typealias EmotionCategory = PositiveEmotionType
-        
-        case perseverance = "Perseverance"
-        case discipline = "Discipline"
-        case empathy = "Empathy"
-        case courage = "Courage"
-        
-        static var allValues: [PositiveEmotionType] {
-            return [PositiveEmotionType.perseverance, PositiveEmotionType.discipline, PositiveEmotionType.empathy, PositiveEmotionType.courage]
-        }
-        
-    }
+enum NegativeEmotionType: String, EmotionType, EmotionTypeEncompassing {
+    typealias EmotionCategory = NegativeEmotionType
 
+    case loss = "Loss"
+    case anger = "Anger"
+    case sadness = "Sadness"
+    case anxiety = "Anxiety"
+    case envy = "Envy"
+    
+    static var allValues: [NegativeEmotionType] {
+        return [NegativeEmotionType.loss, NegativeEmotionType.anger, NegativeEmotionType.sadness, NegativeEmotionType.anxiety, NegativeEmotionType.envy]
+    }
+}
+    
+
+enum PositiveEmotionType: String, EmotionType, EmotionTypeEncompassing {
+    typealias EmotionCategory = PositiveEmotionType
+    
+    case perseverance = "Perseverance"
+    case discipline = "Discipline"
+    case empathy = "Empathy"
+    case courage = "Courage"
+    
+    static var allValues: [PositiveEmotionType] {
+        return [PositiveEmotionType.perseverance, PositiveEmotionType.discipline, PositiveEmotionType.empathy, PositiveEmotionType.courage]
+    }
+    
 }
 
     

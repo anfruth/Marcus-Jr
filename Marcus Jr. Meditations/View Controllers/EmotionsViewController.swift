@@ -106,9 +106,9 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
             if i - indexOfAllEmotionTypeArray == indexPath.item {
                 var rawValue: String = ""
                 
-                if let positiveEmotionType = emotionType as? PositiveEmotion.PositiveEmotionType {
+                if let positiveEmotionType = emotionType as? PositiveEmotionType {
                     rawValue = positiveEmotionType.rawValue
-                } else if let negativeEmotionType = emotionType as? NegativeEmotion.NegativeEmotionType {
+                } else if let negativeEmotionType = emotionType as? NegativeEmotionType {
                     rawValue = negativeEmotionType.rawValue
                 }
                 

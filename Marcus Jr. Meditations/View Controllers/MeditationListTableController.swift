@@ -76,13 +76,13 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
     
     private func getAllKeysOfEmotionIfNeeded(emotion: EmotionTypeEncompassing) {
         
-        if let emotion = emotion as? Emotion.EmotionTypeGeneral {
+        if let emotion = emotion as? EmotionTypeGeneral {
             keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
             
-        } else if let emotion = emotion as? NegativeEmotion.NegativeEmotionType {
+        } else if let emotion = emotion as? NegativeEmotionType {
             keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
             
-        } else if let emotion = emotion as? PositiveEmotion.PositiveEmotionType {
+        } else if let emotion = emotion as? PositiveEmotionType {
             keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
         }
         

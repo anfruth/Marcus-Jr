@@ -39,10 +39,10 @@
             </objects>
             <point key="canvasLocation" x="-2314" y="10"/>
         </scene>
-        <!--View Controller-->
+        <!--Opening View Controller-->
         <scene sceneID="bZo-fv-Ru9">
             <objects>
-                <viewController id="x9n-p6-Bpa" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="openingVC" id="x9n-p6-Bpa" customClass="OpeningViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P1F-y1-qBg">
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -58,7 +58,7 @@
                                         <fontDescription key="fontDescription" name="SanFranciscoDisplay-Light" family="San Francisco Display" pointSize="17"/>
                                         <state key="normal" title="Begin Journey to Freedom"/>
                                         <connections>
-                                            <segue destination="bfO-Hr-4kK" kind="show" identifier="" id="yNe-Y9-TVA"/>
+                                            <segue destination="bfO-Hr-4kK" kind="show" identifier="toChooseEmotion" id="yNe-Y9-TVA"/>
                                         </connections>
                                     </button>
                                 </subviews>

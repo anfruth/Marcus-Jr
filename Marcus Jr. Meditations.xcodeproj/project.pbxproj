@@ -19,6 +19,7 @@
 		EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */; };
 		EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */; };
 		EA0FF098202C181A00688BC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF097202C181A00688BC6 /* Localizable.strings */; };
+		EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E5C082041467700CC7BCE /* OpeningViewController.swift */; };
 		EA5106AF2037ED21003135BA /* SanFranciscoText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */; };
 		EA5106B02037ED21003135BA /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */; };
 		EA5106B12037ED21003135BA /* SanFranciscoText-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069C2037ED1E003135BA /* SanFranciscoText-RegularItalic.otf */; };
@@ -73,6 +74,7 @@
 		EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListTableController.swift; sourceTree = "<group>"; };
 		EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMeditationCell.swift; sourceTree = "<group>"; };
 		EA0FF097202C181A00688BC6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		EA3E5C082041467700CC7BCE /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-MediumItalic.otf"; sourceTree = "<group>"; };
 		EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
 		EA51069C2037ED1E003135BA /* SanFranciscoText-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -197,6 +199,7 @@
 				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
 				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
 				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
+				EA3E5C082041467700CC7BCE /* OpeningViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -355,6 +358,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */,
+				EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */,
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
 				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,

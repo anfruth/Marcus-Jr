@@ -12,9 +12,23 @@ import UserNotifications
 
 class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, EmotionSettable, ExerciseSettable {
     
+    weak var delegate: OpeningViewController?
+    
     static var sharedInstance: NotificationsReceiver = NotificationsReceiver()
     
-    weak var topViewController: UIViewController?
+    weak var topViewController: UIViewController? {
+        didSet(oldVC) {
+            if oldVC == nil {
+                if let response = notificationsResponse {
+                    determineIfTopViewControllerFlow(response: response)
+                    notificationsResponse = nil
+                }
+            }
+        }
+    }
+    
+    var didReceiveLocalNotification: Bool?
+    var notificationsResponse: UNNotificationResponse?
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, willPresent notification: UNNotification, withCompletionHandler completionHandler: @escaping (UNNotificationPresentationOptions) -> Void) {
         
@@ -23,17 +37,18 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
     
     func userNotificationCenter(_ center: UNUserNotificationCenter, didReceive response: UNNotificationResponse, withCompletionHandler completionHandler: @escaping () -> Swift.Void) {
         // navigationController case
+        determineIfTopViewControllerFlow(response: response)
+        completionHandler()
+    }
+    
+    private func determineIfTopViewControllerFlow(response: UNNotificationResponse) {
         if let topViewController = topViewController, let nav = topViewController.navigationController {
             proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
         } else {
-            if let nav = UIStoryboard(name: "ChooseEmotion", bundle: nil).instantiateViewController(withIdentifier: "meditationsNav") as? UINavigationController {
-                if let topViewController = nav.visibleViewController {
-                    proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
-                }
-            }
+            didReceiveLocalNotification = true
+            notificationsResponse = response
+            delegate?.handleReceivingLocalNotification() // if called prior to viewDidAppear, nothing happens and will be handled by viewDidAppaer. If called after, it will segue correctly.
         }
-        
-        completionHandler()
     }
     
     private func proceedToExerciseFromNav(topViewController: UIViewController, nav: UINavigationController, notification: UNNotification) {

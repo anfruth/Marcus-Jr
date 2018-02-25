@@ -24,7 +24,7 @@ struct SelectedExercise {
 
 class MeditationListTableController: UITableViewController, NotificationsVC {
 
-    private var keysForEmotion: [String]?
+    private var keysForSelectedEmotion: [String]?
     
     // MARK: - Table view data source
     
@@ -41,9 +41,10 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         
         if let emotion = SelectedEmotion.choice {
+            
             getAllKeysOfEmotionIfNeeded(emotion: emotion)
-            if let keysForEmotion = keysForEmotion {
-                return keysForEmotion.count
+            if let keysForSelectedEmotion = keysForSelectedEmotion {
+                return keysForSelectedEmotion.count + MeditationListConfiguration.universalEmotionKeys.count
             }
         }
         
@@ -54,7 +55,7 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "dailyMeditation", for: indexPath) as? DailyMeditationCell {
             
-            if keysForEmotion == nil { // only get all indices if do not have, should be nil only once
+            if indexPath.row >= 4 && keysForSelectedEmotion == nil { // only get all indices if do not have, should be nil only once
                 if let emotion = SelectedEmotion.choice {
                     getAllKeysOfEmotionIfNeeded(emotion: emotion)
                 } else {
@@ -62,13 +63,17 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
                 }
             }
             
-            if let keysForEmotion = keysForEmotion, indexPath.row < keysForEmotion.count { // prevents index out of range error (not that it should happen anyway)
-                let meditationKey = keysForEmotion[indexPath.row]
-                cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")
+            var meditationKey = ""
+            
+            if let keysForSelectedEmotion = keysForSelectedEmotion, indexPath.row >= MeditationListConfiguration.universalEmotionKeys.count {
+                meditationKey = keysForSelectedEmotion[indexPath.row - MeditationListConfiguration.universalEmotionKeys.count] // + 4 or whatever number of universals
+            } else if indexPath.row < MeditationListConfiguration.universalEmotionKeys.count {
+                meditationKey = MeditationListConfiguration.universalEmotionKeys[indexPath.row]
             }
             
-            return cell
+            cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")
             
+            return cell
         }
 
         return UITableViewCell()
@@ -76,22 +81,21 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
     
     private func getAllKeysOfEmotionIfNeeded(emotion: EmotionTypeEncompassing) {
         
-        if let emotion = emotion as? EmotionTypeGeneral {
-            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
-            
-        } else if let emotion = emotion as? NegativeEmotionType {
-            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
+        if let emotion = emotion as? NegativeEmotionType {
+            if keysForSelectedEmotion != nil { return }
+            keysForSelectedEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
             
         } else if let emotion = emotion as? PositiveEmotionType {
-            keysForEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
+            if keysForSelectedEmotion != nil { return }
+            keysForSelectedEmotion = MeditationListConfiguration.getOrderedMeditationsByEmotion(orderByEmotion: emotion)
         }
         
     }
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let keysForEmotion = keysForEmotion, indexPath.row < keysForEmotion.count {
-            let meditationKey = keysForEmotion[indexPath.row]
+        if let keysForSelectedEmotion = keysForSelectedEmotion, indexPath.row < keysForSelectedEmotion.count {
+            let meditationKey = keysForSelectedEmotion[indexPath.row]
             SelectedExercise.key = meditationKey
         }
         

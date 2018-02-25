@@ -11,11 +11,32 @@
 // never change numbers in keys even if put new key in middle of list and keys are out of order by number. That is ok.
 
 "00What_is" = "What is under your control and what is not";
+"00What_is_title" = "Enchiridion Chapter 1"
+"00What_is_quote" = "Seek at once, therefore, to be able to say to every unpleasing semblance, “You are but a semblance and by no means the real thing.” And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you."
+"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.
+"00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?
+
 "01Be_unattached" = "Be unattached to things you do not control";
+"01Be_unattached_title" = "Enchiridion Chapter 2"
+"01Be_unattached_quote" = "If, then, you shun only those undesirable things which you can control, you will never incur anything which you shun; but if you shun sickness, or death, or poverty, you will run the risk of wretchedness. Remove [the habit of] aversion, then, from all things that are not within our power, and apply it to things undesirable which are within our power."
+"01Be_unattached_commentary" = "Be indifferent to negative things happening in yor life that you do not control. By not attaching high stakes to a particular outcome, you risk the possbility of getting something you don't want. Focus instead on how you react to negative situations because that is in your control."
+"01Be_unattached_action" = "Can you think of anything that you're strongly attached to that is not in your control? If so, practice indifference, and focus on your reaction to the situation, not the situation itself."
+
 "02Desire_things" = "Desire things to be as they already are";
+"02Desire_things_title" = "Enchiridion Chapter 8"
+"02Desire_things_quote" = "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will go on well."
+"02Desire_things_commentary" = "In other words, change the way you react to the event. If you are successful in desiring things as they are, you won't only be indifferent to the outcome, but also pleased by it."
+
 "03Nothing_is" = "Nothing is an impediment to you";
+"03Nothing_is_title" =
 
 "04Remind_yourself" = "Remind yourself that things go wrong";
+"04Remind_yourself_title" = "Enchiridion Chapter 3"
+"04Remind_yourself_quotation" = "With regard to whatever objects either delight the mind or contribute to use or are tenderly beloved, remind yourself of what nature they are, beginning with the merest trifles: if you have a favorite cup, that it is but a cup of which you are fond of—for thus, if it is broken, you can bear it; if you embrace your child or your wife, that you embrace a mortal—and thus, if either of them dies, you can bear it."
+"04Remind_yourself_commentary" = "Remember the bad things happen and that some of those bad things, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have."
+"04Remind_yourself_action" = "Gently, not in an anxious manner, remind yourself of the negative realities of life. Know that things will go wrong, and you won't be so distraught when they do. You can handle them because you have chosen not to be affected by things you cannot control."
+
+
 "05Our_view" = "Our view of things, not things themselves, disturb us";
 "06Do_not" = "Do not attach your happiness to the things you own";
 "07Be_ready" = "Be ready for hardship";

@@ -11,47 +11,81 @@
 // never change numbers in keys even if put new key in middle of list and keys are out of order by number. That is ok.
 
 "00What_is" = "What is under your control and what is not";
-"00What_is_title" = "Enchiridion Chapter 1"
-"00What_is_quote" = "Seek at once, therefore, to be able to say to every unpleasing semblance, “You are but a semblance and by no means the real thing.” And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you."
-"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.
-"00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?
+"00What_is_title" = "Enchiridion Chapter 1";
+"00What_is_quotation" = "Seek at once, therefore, to be able to say to every unpleasing semblance, “You are but a semblance and by no means the real thing.” And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you.";
+"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.;
+"00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?;
 
 "01Be_unattached" = "Be unattached to things you do not control";
-"01Be_unattached_title" = "Enchiridion Chapter 2"
-"01Be_unattached_quote" = "If, then, you shun only those undesirable things which you can control, you will never incur anything which you shun; but if you shun sickness, or death, or poverty, you will run the risk of wretchedness. Remove [the habit of] aversion, then, from all things that are not within our power, and apply it to things undesirable which are within our power."
-"01Be_unattached_commentary" = "Be indifferent to negative things happening in yor life that you do not control. By not attaching high stakes to a particular outcome, you risk the possbility of getting something you don't want. Focus instead on how you react to negative situations because that is in your control."
-"01Be_unattached_action" = "Can you think of anything that you're strongly attached to that is not in your control? If so, practice indifference, and focus on your reaction to the situation, not the situation itself."
+"01Be_unattached_title" = "Enchiridion Chapter 2";
+"01Be_unattached_quotation" = "If, then, you shun only those undesirable things which you can control, you will never incur anything which you shun; but if you shun sickness, or death, or poverty, you will run the risk of wretchedness. Remove [the habit of] aversion, then, from all things that are not within our power, and apply it to things undesirable which are within our power.";
+"01Be_unattached_commentary" = "Be indifferent to negative things happening in yor life that you do not control. By not attaching high stakes to a particular outcome, you risk the possbility of getting something you don't want. Focus instead on how you react to negative situations because that is in your control.";
+"01Be_unattached_action" = "Can you think of anything that you're strongly attached to that is not in your control? If so, practice indifference, and focus on your reaction to the situation, not the situation itself.";
 
 "02Desire_things" = "Desire things to be as they already are";
-"02Desire_things_title" = "Enchiridion Chapter 8"
-"02Desire_things_quote" = "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will go on well."
-"02Desire_things_commentary" = "In other words, change the way you react to the event. If you are successful in desiring things as they are, you won't only be indifferent to the outcome, but also pleased by it."
+"02Desire_things_title" = "Enchiridion Chapter 8";
+"02Desire_things_quotation" = "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will go on well.";
+"02Desire_things_commentary" = "In other words, change the way you react to the event. If you are successful in desiring things as they are, you won't only be indifferent to the outcome, but also pleased by it.";
+"02Desire_things_action" = "Practice full acceptance of reality."
 
-"03Nothing_is" = "Nothing is an impediment to you";
-"03Nothing_is_title" =
+"03Nothing_is" = "Nothing is an impediment to you"; // chapter 9
+"03Nothing_is_title" = "Enchiridion Chapter 9";
+"03Nothing_is_quotation" = "Sickness is an impediment to the body, but not to the will unless itself pleases...and say this to yourself with regard to everything that happens. For you will find it to be an impediment to something else, but not truly to yourself";
+"03Nothing_is_commentary" = "Sickness and other bad things outside your control do not have to hamper your will. You are fully in control of your will and how you choose to react to any situation.";
+"03Nothing_is_action" = "Have you felt defeated or unmotivated recently? If so, choose to keep your spirits up. You do not have to allow anything to impede your will.";
 
-"04Remind_yourself" = "Remind yourself that things go wrong";
-"04Remind_yourself_title" = "Enchiridion Chapter 3"
-"04Remind_yourself_quotation" = "With regard to whatever objects either delight the mind or contribute to use or are tenderly beloved, remind yourself of what nature they are, beginning with the merest trifles: if you have a favorite cup, that it is but a cup of which you are fond of—for thus, if it is broken, you can bear it; if you embrace your child or your wife, that you embrace a mortal—and thus, if either of them dies, you can bear it."
-"04Remind_yourself_commentary" = "Remember the bad things happen and that some of those bad things, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have."
-"04Remind_yourself_action" = "Gently, not in an anxious manner, remind yourself of the negative realities of life. Know that things will go wrong, and you won't be so distraught when they do. You can handle them because you have chosen not to be affected by things you cannot control."
+"04Remind_yourself" = "Remind yourself that bad things happen."; //chapter 4
+"04Remind_yourself_title" = "Enchiridion Chapter 4";
+"04Remind_yourself_quotation" = "With regard to whatever objects either delight the mind or contribute to use or are tenderly beloved, remind yourself of what nature they are, beginning with the merest trifles: if you have a favorite cup, that it is but a cup of which you are fond of—for thus, if it is broken, you can bear it; if you embrace your child or your wife, that you embrace a mortal—and thus, if either of them dies, you can bear it.";
+"04Remind_yourself_commentary" = "Remember the bad things happen and that some of those bad things, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have.";
+"04Remind_yourself_action" = "Gently, not in an anxious manner, remind yourself of the negative realities of life. Know that things will go wrong, and you won't be so distraught when they do. You can handle them because you have chosen not to be affected by things you cannot control.";
 
 
-"05Our_view" = "Our view of things, not things themselves, disturb us";
-"06Do_not" = "Do not attach your happiness to the things you own";
-"07Be_ready" = "Be ready for hardship";
-"08Seek the" = "Seek the strength and wisdom within yourself";
-"09You_cannot" = "You cannot lose what you do not own";
-"10The_price" = "The price of anxiety is too high to pay";
-"11Be_indifferent" = "Be indifferent to others judging you";
-"12Do_not" = "Do not let other people control your happiness";
+"05Our_view" = "Our view of things, not things themselves, disturb us"; // chapter 5
+"05Our_view_title" = "Enchiridion Chapter 5";
+"05Our_view_quotation" = "Men are disturbed not by things, but by the views which they take of things...When, therefore, we are hindered or disturbed, or grieved, let us never impute it to others, but to ourselves - that is, to our own views.";
+// no commentary, self-explanatory.
+"05Our_view_action" = "Reflect on what bothers you. Understand it is your attitude towards that thing that bothers you.";
 
-"13Be_indifferent" = "Be indifferent to circumstance and accept good things as they come";
-"14Be_kind" = "Be kind to those who are suffering but don't let it spread to you";
-"15Act_the" = "Act the best you can given your position in life";
-"16Every_circumstance" = "Every circumstance brings advantages";
-"17Seek_freedom" = "Seek freedom, not status";
-"18You_decide" = "You decide when you are provoked";
+"06Do_not" = "Do not attach your happiness to the things you own"; // chapter 6 correct
+"06Do_not_title" = "Enchiridion Chapter 6";
+"06Do_not_quotation" = "Be not elated at any excellence not your own...What then is your own? The use of phenomena of existence. So that when you are in harmony with nature in this respect, you will be elated with some reason; for you will be elated at some good of your own.";
+"06Do_not_commentary" = "You may own something that you're proud to have, but do not be prideful over it. Instead, focus on \"living in harmony with nature\" or, in other words, acting rationally, pursuing wisdom, and being a good person.";
+"06Do_not_action" = "Find something you own that you're proud of. Try your best to stop being proud and focus on being a wise and good person instead.";
+
+"07Be_ready" = "Remind yourself of your mortality"; // ch 7
+"07Be_ready_title" = "Enchiridion Chapter 7";
+"07Be_ready_quotation" = "...thus likewise in life, if, instead of a truffle or shellfish, such a thing as a wife or child be granted you, there is no objection; but if the captain calls, run to the ship, leave all these things, and never look behind.";
+"07Be_ready_commentary" = "You may have a spouse or a child, but eventually you will die. Don't go fighting and screaming into death, but do so with acceptance.";
+"07Be_ready_action" = "Meditate on how you can become more comfortable with the idea of your own death. Try to be at peace with it.";
+
+"08Seek the" = "Seek the strength and wisdom within yourself"; //chapter 10
+"08Seek the_title" = "Enchiridion Chapter 10";
+"08Seek the_quotation" = "Upon every accident, remember to turn toward yourself and inquire what faculty you have for its use. If you encounter a handsome person, you will find continence the faculty needed; if pain, then fortitude; if reviling, then patience.";
+"08Seek the_commentary" = "You have a trait within you that can deal with any temptation. Do your best to employ those traits when called for.";
+"08Seek the_action" = "What bad habits do you have? What positive trait do you have within you to combat it?";
+
+"09You_cannot" = "You cannot lose what you do not own"; // chapter 11
+"09You_cannot_title" = "Enchiridion Chapter 11";
+"09You_cannot_quotation" = "Never say of anything, “I have lost it,” but, “I have restored it.” Has your child died? It is restored. Has your wife died? She is restored. Has your estate been taken away? That likewise is restored.";
+"09You_cannot_commentary" = "Do not see the people or things in your life as belonging to you. Everything exists only temporarily. Going back to non-existence is the natural state of all things. Understanding this truth will help soften the blow when the loss happens.";
+"09You_cannot_action" = "Consider the people and things you are attached to. Reflect on their impermanence.";
+
+"10The_price" = "The price of anxiety is too high to pay"; //chapter 12
+"10The_price_title" = "Enchiridion Chapter 12";
+"10The_price_quotation" = "If you would improve, lay aside such reasonings as these: “If I neglect my affairs, I shall not have a maintenance; if I do not punish my servant, he will be good for nothing.” For it were better to die of hunger, exempt from grief and fear, than to live in affluence with perturbation; and it is better that your servant should be bad than you unhappy.";
+"10The_price_commentary" = "Fear and worrying is worse than the negative imagined outcome happening. It is better to let that thing happen than to give up your tranquility.";
+"10The_price_action" = "Consider the torment you've put yourself through due to excessive worry. To stop worrying, accept that the bad thing could happen, but it is better that it does than for you to suffer worrying."
+
+"11Be_indifferent" = "Be indifferent to others judging you"; // 13
+"12Do_not" = "Do not let other people control your happiness"; // 14
+
+"13Be_indifferent" = "Be indifferent to circumstance and accept good things as they come"; // 15
+"14Be_kind" = "Be kind to those who are suffering but don't let it spread to you"; // chap 16
+"15Act_the" = "Act the best you can given your position in life"; // 17
+"16Every_circumstance" = "Every circumstance brings advantages"; // 18
+"17Seek_freedom" = "Seek freedom, not status"; // 19
+"18You_decide" = "You decide when you are provoked"; // 20
 
 "19Death_makes" = "Death makes life impermanent";
 "20Be_prepared" = "Be prepared to be riduculed for your principles";
@@ -64,28 +98,28 @@
 
 "27Understand_the" = "Understand the price of reason and pay it";
 "28Be_good" = "Be good to others even if they treat you poorly";
-"29Good_and" = "Good and evil only exist in things we control";
+"29Good_and" = "Good and evil only exist in things we control"; // 31
 
-"30Be_indifferent" = "Be indifferent to future events that we have no control over";
-"31Think_clearly" = "Think clearly of the consequences before giving in to a guilty pleasure";
-"32Do_good" = "Do good without fear of others stopping you";
-"33Appreciate_others" = "Appreciate others who do good things for you";
-"34Know_your" = "Know your limits";
-"35Guard_against" = "Guard against influences that would compromise your integrity";
-"36Moderation_is" = "Moderation is key to avoiding pain";
+"30Be_indifferent" = "Be indifferent to future events that we have no control over"; // 32 // good to here
+"31Think_clearly" = "Think clearly of the consequences before giving in to a guilty pleasure"; // 34
+"32Do_good" = "Do good without fear of others stopping you"; // 35
+"33Appreciate_others" = "Appreciate others who do good things for you"; // 36
+"34Know_your" = "Know your limits"; // 37
+"35Guard_against" = "Guard against influences that would compromise your integrity"; // 38
+"36Moderation_is" = "Moderation is key to avoiding pain"; // 39
 
-"37Perceive_your" = "Perceive your value from how virtuous you are";
-"38Your_main" = "Your main focus should be perfecting your reason";
-"39Do_not" = "Do not take others' judgments personally";
-"40Use_wisdom" = "Use wisdom to avoid unnecessary conflict";
-"41Superficial_qualities" = "Superficial qualities like wealth do not determine your worth";
-"42Dont_judge" = "Dont judge others harshly or pompously";
-"43Don't_talk" = "Don't talk the talk, walk the walk";
-"44Do_not" = "Do not practice frugality for show";
-"45You_should" = "You should look to yourself and not externals for help or causes of harm";
-"46Action_matters" = "Action matters, not your ability to understand complicated Stoic doctrines.";
-"47Put_your" = "Put your philosophy into action";
-"48Action_over" = "Action over lofty argument";
+"37Perceive_your" = "Perceive your value from how virtuous you are"; // 40
+"38Your_main" = "Your main focus should be perfecting your reason"; // 41
+"39Do_not" = "Do not take others' judgments personally"; // 42
+"40Use_wisdom" = "Use wisdom to avoid unnecessary conflict"; // 43
+"41Superficial_qualities" = "Superficial qualities like wealth do not determine your worth"; //44
+"42Dont_judge" = "Dont judge others harshly or pompously"; //45
+"43Don't_talk" = "Don't talk the talk, walk the walk"; // 46
+"44Do_not" = "Do not practice frugality for show"; // 47
+"45You_should" = "You should look to yourself and not externals for help or causes of harm"; // 48
+"46Action_matters" = "Action matters, not your ability to understand complicated Stoic doctrines."; // 49
+"47Put_your" = "Put your philosophy into action"; // 51
+"48Action_over" = "Action over lofty argument"; // 52
 
 
 

@@ -78,10 +78,31 @@
 "10The_price_action" = "Consider the torment you've put yourself through due to excessive worry. To stop worrying, accept that the bad thing could happen, but it is better that it does than for you to suffer worrying."
 
 "11Be_indifferent" = "Be indifferent to others judging you"; // 13
+"11Be_indifferent_title" = "Enchiridion Chapter 13";
+"11Be_indifferent_quotation" = "If you would improve, be content to be thought foolish and dull with regard to externals. Do not desire to be thought to know anything; and though you should appear to others to be somebody, distrust yourself. ";
+"11Be_indifferent_commentary" = "Don't let judgements from others bother you over things you cannot control (externals.) Wealth, status, intelligence, and any other external should not concern you because you live in accordance with nature. By living in accordance with nature, you accept things as they are that you cannot control and focus on those things that you can.";
+"11Be_indifferent_action" = "Think about some of the things people judge you over of which you have no control. Ignore them and think of ways you can improve things you do control.";
+
 "12Do_not" = "Do not let other people control your happiness"; // 14
+"12Do_not_title" = "Enchiridion Chapter 14";
+"12Do_not_quotation" = "If you wish your children and your wife and your friends to live forever, you are foolish, for you wish things to be in your power which are not so, and what belongs to others to be your own...Exercise, therefore, what is in your power. A man’s master is he who is able to confer or remove whatever that man seeks or shuns. Whoever then would be free, let him wish nothing, let him decline nothing, which depends on others; else he must necessarily be a slave.";
+"12Do_not_commentary" = "Do not allow yourself to have a master. Be indifferent to your former master's rewards and punishments.";
+"12Do_not_action" = "Think about someone in your life who you've given the authority to make you happy or unhappy. Now, take that authority away by becoming indifferent to that person's actions.";
+
 
 "13Be_indifferent" = "Be indifferent to circumstance and accept good things as they come"; // 15
+"13Be_indifferent_title" = "Enchiridion Chapter 15";
+"13Be_indifferent_quotation" = "Remember that you must behave as at a banquet. Is anything brought round to you? Put out your hand and take a moderate share. Does it pass by you? Do not stop it. Is it not yet come? Do not yearn in desire toward it, but wait till it reaches you. So with regard to children, wife, office, riches; and you will some time or other be worthy to feast with the gods.";
+"13Be_indifferent_commentary" = "Don't be overly aggressive in trying to get things that lie outside your control. Accept the preferred indifferents as they come, in moderation. Or, if you really want to challenge yourself, do not take any food even though it is \"brought round to you\"";
+"13Be_indifferent_action" = "Are you pursuing anything outside your control aggressively? Refocus on aspects that you do control and accept the good things of life in moderation.";
+
 "14Be_kind" = "Be kind to those who are suffering but don't let it spread to you"; // chap 16
+"14Be_kind_title" = "Enchiridion Chapter 16";
+"14Be_kind_quotation" = "When you see anyone weeping for grief, either that his son has gone abroad or that he has suffered in his affairs, take care not to be overcome by the apparent evil, but discriminate and be ready to say, “What hurts this man is not this occurrence itself—for another man might not be hurt by it—but the view he chooses to take of it.” As far as conversation goes, however, do not disdain to accommodate yourself to him and, if need be, to groan with him.";
+"14Be_kind_commentary" = "Remind yourself that people ultimately suffer from the way they view things than by the things that actually happen to them. Still be good to people who are suffering though.";
+"14Be_kind_action" = "Think about something painful in your life. Could you imagine a way of looking at that thing that makes it less painful or not painful at all?";
+
+
 "15Act_the" = "Act the best you can given your position in life"; // 17
 "16Every_circumstance" = "Every circumstance brings advantages"; // 18
 "17Seek_freedom" = "Seek freedom, not status"; // 19

@@ -104,18 +104,67 @@
 
 
 "15Act_the" = "Act the best you can given your position in life"; // 17
+"15Act_the_title" = "Enchiridion Chapter 17";
+"15Act_the_quotation" = "If it be his pleasure that you should enact a poor man, or a cripple, or a ruler, or a private citizen, see that you act it well. For this is your business—to act well the given part, but to choose it belongs to another.";
+"15Act_the_action" = "For what you were given in life, decide if you're living it in the best possible way.";
+
 "16Every_circumstance" = "Every circumstance brings advantages"; // 18
+"16Every_circumstance_title" = "Enchiridion Chapter 18";
+"16Every_circumstance_quotation" = "...but discriminate and say, “Nothing is portended to me, either to my paltry body, or property, or reputation, or children, or wife. But to me all portents are lucky if I will. For whatsoever happens, it belongs to me to derive advantage therefrom.”";
+"16Every_circumstance_commentary" = "If you choose to react to a negative event in some positive way, then the negative event doesn't have to be negative at all. The way you view things determines what is good and bad, not the things themselves.";
+"16Every_circumstance_action" = "Think of some negative events that have happened recently. Can you find any positive in them?"
+
 "17Seek_freedom" = "Seek freedom, not status"; // 19
+"17Seek_freedom_title" = "Enchiridion Chapter 19";
+"17Seek_freedom_quotation" = "You can be unconquerable if you enter into no combat in which it is not in your own power to conquer...But, for your part, do not desire to be a general, or a senator, or a consul, but to be free; and the only way to this is a disregard of things which lie not within our own power.";
+"17Seek_freedom_commentary" = "Don't worry about getting something that is outside your control. Focus on what is under your control and you will be free and undefeatable."
+"17Seek_freedom_action" = "Think about some things that you want that are outside your control. Now imagine how free you'd be if you gave that up and only pursued things under your control.";
+
 "18You_decide" = "You decide when you are provoked"; // 20
+"18You_decide_title" = "Enchiridion Chapter 20";
+"18You_decide_quotation" = "Remember that it is not he who gives abuse or blows, who affronts, but the view we take of these things as insulting. When, therefore, anyone provokes you, be assured that it is your own opinion which provokes you.";
+"18You_decide_action" = "Think of times you've gotten angry, and then imagine how you could change your opinion about the situation so that you're not angry.";
 
 "19Death_makes" = "Death makes life impermanent";
+"19Death_makes_title" = "Enchiridion Chapter 21";
+"19Death_makes_quotation" = "Let death and exile, and all other things which appear terrible, be daily before your eyes, but death chiefly; and you will never entertain an abject thought, nor too eagerly covet anything."
+"19Death_makes_action" = "Remind yourself about your own mortality when you find yourself upset or not getting what you want.";
+
 "20Be_prepared" = "Be prepared to be riduculed for your principles";
+"20Be_prepared_title" = "Enchiridion Chapter 22";
+"20Be_prepared_quotation" = "If you have an earnest desire toward philosophy, prepare yourself from the very first to have the multitude laugh and sneer, and say...For remember that, if you are persistent, those very persons who at first ridiculed will afterwards admire you. But if you are conquered by them, you will incur a double ridicule.";
+"20Be_prepared_action" = "If anyone laughs at you for living the Stoical philosophic life, ignore them and stand your ground.";
+
 "21Externals_should" = "Externals should not be your chief aim";
+"21Externals_should_title" = "Enchiridion Chapter 23";
+"21Externals_should_quotation" = "If you ever happen to turn your attention to externals, for the pleasure of anyone, be assured that you have ruined your scheme of life. Be content, then, in everything, with being a philosopher...";
+"21Externals_should_commentary" = "Don't fixate on externals, or things outside your control, or else you will suffer.";
+"21Externals_should_action" = "Think of any externals you're fixating on. Focus instead on the philosophic life."
+
 "22Do_not" = "Do not sacrifice integrity for status";
+"22Do_not_title" = "Enchiridion Chapter 24";
+"22Do_not_quotation" = "";
+
+
 "23The_price" = "The price of some externals may not be worth it";
+"23The_price_title" = "Enchiridion Chapter 25";
+"23The_price_quotation" = "Is anyone preferred before you at an entertainment, or in courtesies, or in confidential intercourse? If these things are good, you ought to rejoice that he has them; and if they are evil, do not be grieved that you have them not. And remember that you cannot be permitted to rival others in externals without using the same means to obtain them.";
+"23The_price_commentary" = "Don't be upset if others have things you want. Remember that they often sacrificed their integrity to get these things. For you, a person of wisdom, the price is not worth it.";
+
 "24React_the" = "React the same way we would tell others to under trying circumstances";
+"24React_the_title" = "Enchiridion Chapter 26";
+"24React_the_quotation" = "Is the child or wife of another dead? There is no one who would not say, “This is an accident of mortality.” But if anyone’s own child happens to die, it is immediately, “Alas! how wretched am I!” It should be always remembered how we are affected on hearing the same thing concerning others.";
+"24React_the_action" = "Think of tough things you are going through or have gone through. Do what you would tell another to do in the same situation";
+
 "25The_evil" = "The evil we endure is our own doing";
+"25The_evil_title" = "Enchiridion Chapter 27";
+"25The_evil_quotation" = "As a mark is not set up for the sake of missing the aim, so neither does the nature of evil exist in the world.";
+"25The_evil_commentary" = "From footnotes: \"Happiness, the effect of virtue, is the mark which God has set up for us to aim at. Our missing it is no work of His; nor so properly anything real, as a mere negative and failure of our own.\" In other words, the suffering we endure is from our failure to be virtuous.";
+"25The_evil_action" = "Can you think of any time where you acted unwisely, excessively, unjustly, or cowardly? How much better would the incident have been if you acted virtuously?"
+
 "26Don't_let" = "Don't let others negatively influence your mind";
+"26Don't_let_title" = "Enchiridion Chapter 28";
+
 
 "27Understand_the" = "Understand the price of reason and pay it";
 "28Be_good" = "Be good to others even if they treat you poorly";

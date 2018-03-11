@@ -11,11 +11,11 @@ import UserNotifications
 
 class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource, UIPickerViewDelegate, NotificationsVC {
 
-    @IBOutlet weak var numberOfDaysPicker: UIPickerView!
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var selectTimeCell: UITableViewCell!
     @IBOutlet weak var selectedTimesCell: UITableViewCell!
     @IBOutlet weak var selectTimeButton: UIButton!
+    @IBOutlet weak var selectNumTimesButton: UIButton!
     
     @IBOutlet weak var firstTime: UILabel!
     @IBOutlet weak var secondTime: UILabel!
@@ -23,10 +23,10 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     @IBOutlet weak var fourthTime: UILabel!
     @IBOutlet weak var fifthTime: UILabel!
     
-    @IBOutlet weak var titleLabel: UILabel!
     @IBOutlet weak var exerciseTextView: UITextView!
     
     let center = UNUserNotificationCenter.current()
+    var labelMapping: [Int: UILabel] = [:]
     
     // reduce number of times logic in didSets called
     private var pickerChosenDays: Int = 1 { // what the picker says, when this happens should also delete dates if excessive labels showing
@@ -64,6 +64,8 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        selectNumTimesButton.layer.cornerRadius = 30
+        labelMapping = [1: firstTime, 2: secondTime, 3: thirdTime, 4: fourthTime, 5: fifthTime]
 
         tableView.rowHeight =  UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
@@ -74,9 +76,6 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
             
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         _ = removeExcessiveLabels() // start all hidden
-        
-        numberOfDaysPicker.dataSource = self
-        numberOfDaysPicker.delegate = self
         
         // _title, _quotation, _commentary, _action
         if let exerciseKey = SelectedExercise.key {
@@ -123,7 +122,26 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
                 showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
             }
             
-            numberOfDaysPicker.selectRow(pickerChosenDays - 1, inComponent: 0, animated: true)
+            //numberOfDaysPicker.selectRow(pickerChosenDays - 1, inComponent: 0, animated: true)
+        }
+    }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if segue.identifier == "toPickerVC" {
+            let pickerVC = segue.destination
+            if let pickerVC = pickerVC as? PickerViewController {
+                
+                pickerVC.pickerView.dataSource = self
+                pickerVC.pickerView.delegate = self
+                pickerVC.pickerChosenDays = pickerChosenDays
+                
+                if let originalColor = navigationController?.navigationBar.tintColor {
+                    pickerVC.originalButtonColor = originalColor
+                }
+                
+                navigationController?.navigationBar.isUserInteractionEnabled = false
+                navigationController?.navigationBar.tintColor = UIColor.lightGray
+            }
         }
     }
     
@@ -206,7 +224,7 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     private func reorderTimesSelected() {
         timesSelected.sort()
         for (i, time) in timesSelected.enumerated() {
-            if let label = view.viewWithTag(i + 1) as? UILabel {
+            if let label = labelMapping[i + 1] {
                 label.text = time.description(with: Locale.current)
             }
         }
@@ -319,6 +337,7 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
         for i in 0..<timesSelected.count {
             timeLabels[i].superview?.isHidden = false
         }
+
         reorderTimesSelected()
     }
     

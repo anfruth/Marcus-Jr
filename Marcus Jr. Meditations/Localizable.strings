@@ -13,8 +13,8 @@
 "00What_is" = "What is under your control and what is not";
 "00What_is_title" = "Enchiridion Chapter 1";
 "00What_is_quotation" = "Seek at once, therefore, to be able to say to every unpleasing semblance, “You are but a semblance and by no means the real thing.” And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you.";
-"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.;
-"00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?;
+"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.";
+"00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?";
 
 "01Be_unattached" = "Be unattached to things you do not control";
 "01Be_unattached_title" = "Enchiridion Chapter 2";
@@ -26,7 +26,7 @@
 "02Desire_things_title" = "Enchiridion Chapter 8";
 "02Desire_things_quotation" = "Demand not that events should happen as you wish; but wish them to happen as they do happen, and you will go on well.";
 "02Desire_things_commentary" = "In other words, change the way you react to the event. If you are successful in desiring things as they are, you won't only be indifferent to the outcome, but also pleased by it.";
-"02Desire_things_action" = "Practice full acceptance of reality."
+"02Desire_things_action" = "Practice full acceptance of reality.";
 
 "03Nothing_is" = "Nothing is an impediment to you"; // chapter 9
 "03Nothing_is_title" = "Enchiridion Chapter 9";
@@ -75,7 +75,7 @@
 "10The_price_title" = "Enchiridion Chapter 12";
 "10The_price_quotation" = "If you would improve, lay aside such reasonings as these: “If I neglect my affairs, I shall not have a maintenance; if I do not punish my servant, he will be good for nothing.” For it were better to die of hunger, exempt from grief and fear, than to live in affluence with perturbation; and it is better that your servant should be bad than you unhappy.";
 "10The_price_commentary" = "Fear and worrying is worse than the negative imagined outcome happening. It is better to let that thing happen than to give up your tranquility.";
-"10The_price_action" = "Consider the torment you've put yourself through due to excessive worry. To stop worrying, accept that the bad thing could happen, but it is better that it does than for you to suffer worrying."
+"10The_price_action" = "Consider the torment you've put yourself through due to excessive worry. To stop worrying, accept that the bad thing could happen, but it is better that it does than for you to suffer worrying.";
 
 "11Be_indifferent" = "Be indifferent to others judging you"; // 13
 "11Be_indifferent_title" = "Enchiridion Chapter 13";
@@ -112,12 +112,12 @@
 "16Every_circumstance_title" = "Enchiridion Chapter 18";
 "16Every_circumstance_quotation" = "...but discriminate and say, “Nothing is portended to me, either to my paltry body, or property, or reputation, or children, or wife. But to me all portents are lucky if I will. For whatsoever happens, it belongs to me to derive advantage therefrom.”";
 "16Every_circumstance_commentary" = "If you choose to react to a negative event in some positive way, then the negative event doesn't have to be negative at all. The way you view things determines what is good and bad, not the things themselves.";
-"16Every_circumstance_action" = "Think of some negative events that have happened recently. Can you find any positive in them?"
+"16Every_circumstance_action" = "Think of some negative events that have happened recently. Can you find any positive in them?";
 
 "17Seek_freedom" = "Seek freedom, not status"; // 19
 "17Seek_freedom_title" = "Enchiridion Chapter 19";
 "17Seek_freedom_quotation" = "You can be unconquerable if you enter into no combat in which it is not in your own power to conquer...But, for your part, do not desire to be a general, or a senator, or a consul, but to be free; and the only way to this is a disregard of things which lie not within our own power.";
-"17Seek_freedom_commentary" = "Don't worry about getting something that is outside your control. Focus on what is under your control and you will be free and undefeatable."
+"17Seek_freedom_commentary" = "Don't worry about getting something that is outside your control. Focus on what is under your control and you will be free and undefeatable.";
 "17Seek_freedom_action" = "Think about some things that you want that are outside your control. Now imagine how free you'd be if you gave that up and only pursued things under your control.";
 
 "18You_decide" = "You decide when you are provoked"; // 20
@@ -127,7 +127,7 @@
 
 "19Death_makes" = "Death makes life impermanent";
 "19Death_makes_title" = "Enchiridion Chapter 21";
-"19Death_makes_quotation" = "Let death and exile, and all other things which appear terrible, be daily before your eyes, but death chiefly; and you will never entertain an abject thought, nor too eagerly covet anything."
+"19Death_makes_quotation" = "Let death and exile, and all other things which appear terrible, be daily before your eyes, but death chiefly; and you will never entertain an abject thought, nor too eagerly covet anything.";
 "19Death_makes_action" = "Remind yourself about your own mortality when you find yourself upset or not getting what you want.";
 
 "20Be_prepared" = "Be prepared to be riduculed for your principles";
@@ -139,7 +139,7 @@
 "21Externals_should_title" = "Enchiridion Chapter 23";
 "21Externals_should_quotation" = "If you ever happen to turn your attention to externals, for the pleasure of anyone, be assured that you have ruined your scheme of life. Be content, then, in everything, with being a philosopher...";
 "21Externals_should_commentary" = "Don't fixate on externals, or things outside your control, or else you will suffer.";
-"21Externals_should_action" = "Think of any externals you're fixating on. Focus instead on the philosophic life."
+"21Externals_should_action" = "Think of any externals you're fixating on. Focus instead on the philosophic life.";
 
 "22Do_not" = "Do not sacrifice integrity for status";
 "22Do_not_title" = "Enchiridion Chapter 24";
@@ -160,7 +160,7 @@
 "25The_evil_title" = "Enchiridion Chapter 27";
 "25The_evil_quotation" = "As a mark is not set up for the sake of missing the aim, so neither does the nature of evil exist in the world.";
 "25The_evil_commentary" = "From footnotes: \"Happiness, the effect of virtue, is the mark which God has set up for us to aim at. Our missing it is no work of His; nor so properly anything real, as a mere negative and failure of our own.\" In other words, the suffering we endure is from our failure to be virtuous.";
-"25The_evil_action" = "Can you think of any time where you acted unwisely, excessively, unjustly, or cowardly? How much better would the incident have been if you acted virtuously?"
+"25The_evil_action" = "Can you think of any time where you acted unwisely, excessively, unjustly, or cowardly? How much better would the incident have been if you acted virtuously?";
 
 "26Don't_let" = "Don't let others negatively influence your mind";
 "26Don't_let_title" = "Enchiridion Chapter 28";

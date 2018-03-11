@@ -23,6 +23,9 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     @IBOutlet weak var fourthTime: UILabel!
     @IBOutlet weak var fifthTime: UILabel!
     
+    @IBOutlet weak var titleLabel: UILabel!
+    @IBOutlet weak var exerciseTextView: UITextView!
+    
     let center = UNUserNotificationCenter.current()
     
     // reduce number of times logic in didSets called
@@ -61,12 +64,50 @@ class DailyExerciseViewController: UITableViewController, UIPickerViewDataSource
     
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        tableView.rowHeight =  UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        if let exerciseKey = SelectedExercise.key {
+            title = NSLocalizedString(exerciseKey + "_title", comment: "title of exercise")
+        }
             
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         _ = removeExcessiveLabels() // start all hidden
         
         numberOfDaysPicker.dataSource = self
         numberOfDaysPicker.delegate = self
+        
+        // _title, _quotation, _commentary, _action
+        if let exerciseKey = SelectedExercise.key {
+            
+            if let standardExerciseFont =  UIFont(name: "SanFranciscoDisplay-Regular", size: 16) {
+                let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: "quotation of exercise") + "\"", attributes: [.font: standardExerciseFont])
+                var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_commentary", comment: "commentary on exercise"), attributes: [.font: standardExerciseFont])
+                if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + "_commentary" {
+                    commentary = NSMutableAttributedString(string: "")
+                }
+                let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: "action on exercise") + "\n", attributes: [.font: standardExerciseFont])
+
+                if let boldExerciseFont = UIFont(name: "SanFranciscoDisplay-Semibold", size: 16) {
+                    var attributedCommentary: NSMutableAttributedString
+                    if commentary.string != "" {
+                        attributedCommentary = NSMutableAttributedString(string: "\n\nCommentary:", attributes: [.font: boldExerciseFont])
+                    } else {
+                        attributedCommentary = NSMutableAttributedString(string: "")
+                    }
+                    
+                    let attributedAction = NSMutableAttributedString(string: "\n\nAction:", attributes: [.font: boldExerciseFont])
+                    
+                    quotation.append(attributedCommentary)
+                    quotation.append(commentary)
+                    quotation.append(attributedAction)
+                    quotation.append(action)
+                    
+                    exerciseTextView.attributedText = quotation
+                }
+            }
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {

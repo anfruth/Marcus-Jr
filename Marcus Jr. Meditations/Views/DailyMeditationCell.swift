@@ -15,9 +15,18 @@ class DailyMeditationCell: UITableViewCell {
     override func prepareForReuse() {
         super.prepareForReuse()
         
-        labelForDescription?.text = nil
+        labelForDescription?.attributedText = nil
+        
+        let paragraphStyle = NSMutableParagraphStyle()
+        paragraphStyle.lineSpacing = 50
+        
+        if let attributedText: NSMutableAttributedString = labelForDescription.attributedText as? NSMutableAttributedString {
+            attributedText.addAttribute(NSAttributedStringKey.paragraphStyle, value: paragraphStyle, range: NSMakeRange(0, attributedText.length - 1))
+            
+            labelForDescription.attributedText = attributedText
+        }
+        
     }
-    
-    
 
 }
+

@@ -26,7 +26,16 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
 
     private var keysForSelectedEmotion: [String]?
     
-    // MARK: - Table view data source
+    override func viewDidLoad() {
+        super.viewDidLoad()
+        
+        tableView.rowHeight =  UITableViewAutomaticDimension
+        tableView.estimatedRowHeight = 50
+        
+        if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
+            title = "Daily Meditations - \(rawValue)"
+        }
+    }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
@@ -94,8 +103,9 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
     
     override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         
-        if let keysForSelectedEmotion = keysForSelectedEmotion, indexPath.row < keysForSelectedEmotion.count {
-            let meditationKey = keysForSelectedEmotion[indexPath.row]
+        if let keysForSelectedEmotion = keysForSelectedEmotion, indexPath.row < keysForSelectedEmotion.count + MeditationListConfiguration.universalEmotionKeys.count {
+            let possibleKeys = MeditationListConfiguration.universalEmotionKeys + keysForSelectedEmotion
+            let meditationKey = possibleKeys[indexPath.row]
             SelectedExercise.key = meditationKey
         }
         

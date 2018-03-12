@@ -11,27 +11,29 @@ import UIKit
 class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, NotificationsVC {
 
     @IBOutlet weak var selectButton: UIButton!
-    let pickerView = UIPickerView()
+    @IBOutlet weak var pickerView: UIPickerView!
+    
     var originalButtonColor = UIColor.blue
+    
+    override var prefersStatusBarHidden: Bool {
+        return true
+    }
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        presentingViewController?.navigationController?.isNavigationBarHidden = true
+        
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
-        pickerView.backgroundColor = UIColor.white
-        view.addSubview(pickerView)
-    
-        pickerView.translatesAutoresizingMaskIntoConstraints = false
+        //view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
         
-        let viewMargins = view.safeAreaLayoutGuide
-        pickerView.widthAnchor.constraint(equalTo: viewMargins.widthAnchor).isActive = true
-        pickerView.centerXAnchor.constraint(equalTo: viewMargins.centerXAnchor).isActive = true
+        let blurEffect = UIBlurEffect(style: .regular)
+        let blurEffectView = UIVisualEffectView(effect: blurEffect)
+        blurEffectView.frame = view.frame
         
-        let selectButtonMargins = selectButton.safeAreaLayoutGuide
-        pickerView.bottomAnchor.constraint(equalTo: selectButtonMargins.topAnchor).isActive = true
+        view.insertSubview(blurEffectView, at: 0)
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -43,8 +45,8 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     @IBAction func didSelectPickerOption(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
-        presentingViewController?.navigationController?.navigationBar.isUserInteractionEnabled = true
-        presentingViewController?.navigationController?.navigationBar.tintColor = originalButtonColor
+        
+        presentingViewController?.navigationController?.isNavigationBarHidden = false
     }
     
     // MARK: - UIPickerView Data Source

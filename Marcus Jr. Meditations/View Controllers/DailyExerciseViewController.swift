@@ -67,6 +67,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         if segue.identifier == "toPickerVC" {
+            setNeedsStatusBarAppearanceUpdate()
             let pickerVC = segue.destination
             if let pickerVC = pickerVC as? PickerViewController {
                 
@@ -74,8 +75,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                     pickerVC.originalButtonColor = originalColor
                 }
                 
-                navigationController?.navigationBar.isUserInteractionEnabled = false
-                navigationController?.navigationBar.tintColor = UIColor.lightGray
+                navigationController?.isNavigationBarHidden = true
             }
         }
     }

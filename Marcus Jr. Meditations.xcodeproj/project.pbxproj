@@ -20,6 +20,8 @@
 		EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */; };
 		EA0FF098202C181A00688BC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF097202C181A00688BC6 /* Localizable.strings */; };
 		EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */; };
+		EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */; };
+		EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */; };
 		EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E5C082041467700CC7BCE /* OpeningViewController.swift */; };
 		EA5106AF2037ED21003135BA /* SanFranciscoText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */; };
 		EA5106B02037ED21003135BA /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */; };
@@ -76,6 +78,8 @@
 		EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMeditationCell.swift; sourceTree = "<group>"; };
 		EA0FF097202C181A00688BC6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
+		EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesTableViewController.swift; sourceTree = "<group>"; };
+		EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesModel.swift; sourceTree = "<group>"; };
 		EA3E5C082041467700CC7BCE /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-MediumItalic.otf"; sourceTree = "<group>"; };
 		EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
@@ -203,6 +207,7 @@
 				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
 				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
 				EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */,
+				EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */,
 			);
 			path = "View Controllers";
 			sourceTree = "<group>";
@@ -223,6 +228,7 @@
 			children = (
 				EA0FF08F20241D3300688BC6 /* EmotionModel.swift */,
 				EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */,
+				EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -364,11 +370,13 @@
 				EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */,
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */,
+				EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */,
 				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
 				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
 				EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */,
 				EA0FF0922024312F00688BC6 /* SectionHeader.swift in Sources */,
 				EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */,
+				EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */,
 				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
 				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
 				EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */,

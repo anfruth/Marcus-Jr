@@ -8,15 +8,18 @@
 
 import UIKit
 
-class PickerViewController: UIViewController {
+class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerViewDelegate, NotificationsVC {
 
     @IBOutlet weak var selectButton: UIButton!
     let pickerView = UIPickerView()
-    var pickerChosenDays: Int = 1 // consider making a model so as to rely on copy data in segues
     var originalButtonColor = UIColor.blue
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        pickerView.dataSource = self
+        pickerView.delegate = self
+        
         view.backgroundColor = UIColor.black.withAlphaComponent(0.5)
         pickerView.backgroundColor = UIColor.white
         view.addSubview(pickerView)
@@ -34,13 +37,34 @@ class PickerViewController: UIViewController {
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        pickerView.selectRow(pickerChosenDays - 1, inComponent: 0, animated: true)
+        setAsTopViewController()
+        pickerView.selectRow(MeditationTimes.pickerChosenDays - 1, inComponent: 0, animated: true)
     }
     
     @IBAction func didSelectPickerOption(_ sender: UIButton) {
         dismiss(animated: true, completion: nil)
         presentingViewController?.navigationController?.navigationBar.isUserInteractionEnabled = true
         presentingViewController?.navigationController?.navigationBar.tintColor = originalButtonColor
+    }
+    
+    // MARK: - UIPickerView Data Source
+    
+    func numberOfComponents(in pickerView: UIPickerView) -> Int {
+        return 1
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, numberOfRowsInComponent component: Int) -> Int {
+        return 5
+    }
+    
+    // MARK: - UIPickerView Delegate
+    
+    func pickerView(_ pickerView: UIPickerView, titleForRow row: Int, forComponent component: Int) -> String? {
+        return String(row + 1)
+    }
+    
+    func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
+        MeditationTimes.pickerChosenDays = row + 1
     }
     
 }

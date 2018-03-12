@@ -30,16 +30,12 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        // Uncomment the following line to preserve selection between presentations
-        // self.clearsSelectionOnViewWillAppear = false
-
+        
         if let collectionView = collectionView {
             
             let layout = UICollectionViewFlowLayout()
+            layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0)
             collectionView.collectionViewLayout = layout
-            
-            layout.headerReferenceSize = CGSize(width: collectionView.bounds.width, height: CGFloat(100))
         }
         
         
@@ -49,10 +45,6 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         super.viewDidAppear(animated)
         
         setAsTopViewController()
-    }
-    
-    override var preferredStatusBarStyle: UIStatusBarStyle {
-        return UIStatusBarStyle.lightContent
     }
     
     // MARK: UIContent Container Protocol
@@ -128,23 +120,6 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
                 performSegue(withIdentifier: "toMeditations", sender: self)
             }
         }
-        
-    }
-    
-    override func collectionView(_ collectionView: UICollectionView, viewForSupplementaryElementOfKind kind: String, at indexPath: IndexPath) -> UICollectionReusableView {
-        
-        if let sectionHeader = collectionView.dequeueReusableSupplementaryView(ofKind: kind, withReuseIdentifier: "SectionHeader", for: indexPath) as? SectionHeader {
-            
-            if indexPath.section == 0 {
-                sectionHeader.sectionTitle?.text = "Tackle Your Negative Emotions"
-            } else {
-                sectionHeader.sectionTitle?.text = "Improve Your Character"
-            }
-            
-            return sectionHeader
-        }
-        
-        return UICollectionReusableView()
         
     }
 

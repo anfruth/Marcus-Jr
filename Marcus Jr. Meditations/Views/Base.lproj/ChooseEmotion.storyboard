@@ -108,15 +108,15 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="10" minimumInteritemSpacing="10" id="Wek-Xq-816">
+                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="10" id="Wek-Xq-816">
                             <size key="itemSize" width="318" height="351"/>
-                            <size key="headerReferenceSize" width="50" height="50"/>
+                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
                             <size key="footerReferenceSize" width="0.0" height="0.0"/>
                             <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
                         </collectionViewFlowLayout>
                         <cells>
                             <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="emotionCell" id="8fe-N7-yiD" customClass="EmotionCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
-                                <rect key="frame" x="1" y="50" width="318" height="351"/>
+                                <rect key="frame" x="1" y="0.0" width="318" height="351"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO">
                                     <rect key="frame" x="0.0" y="0.0" width="318" height="351"/>
@@ -149,26 +149,6 @@
                                 </connections>
                             </collectionViewCell>
                         </cells>
-                        <collectionReusableView key="sectionHeaderView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" insetsLayoutMarginsFromSafeArea="NO" reuseIdentifier="SectionHeader" id="dmf-Af-0gL" customClass="SectionHeader" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
-                            <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
-                            <autoresizingMask key="autoresizingMask"/>
-                            <subviews>
-                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Tackle Your Negative Emotions" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumFontSize="16" translatesAutoresizingMaskIntoConstraints="NO" id="RPu-wv-C2H">
-                                    <rect key="frame" x="20" y="-5" width="280" height="60"/>
-                                    <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="50"/>
-                                    <nil key="highlightedColor"/>
-                                </label>
-                            </subviews>
-                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                            <constraints>
-                                <constraint firstAttribute="trailing" secondItem="RPu-wv-C2H" secondAttribute="trailing" constant="20" id="db6-Pe-fda"/>
-                                <constraint firstItem="RPu-wv-C2H" firstAttribute="centerY" secondItem="dmf-Af-0gL" secondAttribute="centerY" id="lUP-aQ-v6x"/>
-                                <constraint firstItem="RPu-wv-C2H" firstAttribute="leading" secondItem="dmf-Af-0gL" secondAttribute="leading" constant="20" id="xUK-k8-3Jp"/>
-                            </constraints>
-                            <connections>
-                                <outlet property="sectionTitle" destination="RPu-wv-C2H" id="lB8-fj-dvF"/>
-                            </connections>
-                        </collectionReusableView>
                         <connections>
                             <outlet property="dataSource" destination="irr-GB-CcX" id="fVo-Ng-xM3"/>
                             <outlet property="delegate" destination="irr-GB-CcX" id="oqo-cV-aan"/>

@@ -32,6 +32,10 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         
         MeditationTimes.delegate = self
         
+        let currentDate = Date()
+        datePicker.minimumDate = currentDate
+        
+        
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         labelMapping = [1: firstTime, 2: secondTime, 3: thirdTime, 4: fourthTime, 5: fifthTime]
         _ = removeExcessiveLabels() // start all hidden
@@ -105,7 +109,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     
     func enableSelectTimeButton() {
         selectTimeButton.isUserInteractionEnabled = true
-        selectTimeButton.backgroundColor = UIColor.blue // get correct blue
+        selectTimeButton.backgroundColor = UIColor(red:0.27, green:0.51, blue:0.93, alpha:1.0) // get correct blue
     }
     
     func removeExcessiveTimes() {
@@ -145,7 +149,9 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         MeditationTimes.timesSelected.sort()
         for (i, time) in MeditationTimes.timesSelected.enumerated() {
             if let label = labelMapping[i + 1] {
-                label.text = time.description(with: Locale.current)
+                let dateString = DateFormatter.localizedString(from: time, dateStyle: .medium, timeStyle: .short)
+                
+                label.text = dateString
             }
         }
     }

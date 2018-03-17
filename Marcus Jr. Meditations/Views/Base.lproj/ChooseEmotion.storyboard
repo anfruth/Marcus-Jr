@@ -12,9 +12,6 @@
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
     <customFonts key="customFonts">
-        <array key="SanFranciscoDisplay-Light.otf">
-            <string>SanFranciscoDisplay-Light</string>
-        </array>
         <array key="SanFranciscoDisplay-Regular.otf">
             <string>SanFranciscoDisplay-Regular</string>
         </array>
@@ -50,48 +47,37 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="w6g-GL-j7y">
                                 <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                             </imageView>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="A9r-fA-644">
-                                <rect key="frame" x="0.0" y="498" width="320" height="70"/>
-                                <subviews>
-                                    <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ZsI-LP-4QL">
-                                        <rect key="frame" x="20" y="18" width="280" height="33"/>
-                                        <fontDescription key="fontDescription" name="SanFranciscoDisplay-Light" family="San Francisco Display" pointSize="17"/>
-                                        <state key="normal" title="Begin Journey to Freedom"/>
-                                        <connections>
-                                            <segue destination="bfO-Hr-4kK" kind="show" identifier="toChooseEmotion" id="yNe-Y9-TVA"/>
-                                        </connections>
-                                    </button>
-                                </subviews>
-                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-pc-jUx">
+                                <rect key="frame" x="0.0" y="503" width="320" height="65"/>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
-                                    <constraint firstItem="ZsI-LP-4QL" firstAttribute="leading" secondItem="A9r-fA-644" secondAttribute="leading" constant="20" id="FAA-4P-HyX"/>
-                                    <constraint firstItem="ZsI-LP-4QL" firstAttribute="centerY" secondItem="A9r-fA-644" secondAttribute="centerY" id="Jch-8w-20X"/>
-                                    <constraint firstAttribute="trailing" secondItem="ZsI-LP-4QL" secondAttribute="trailing" constant="20" id="aLJ-zn-ySG"/>
-                                    <constraint firstAttribute="height" constant="70" id="k92-GL-MaT"/>
+                                    <constraint firstAttribute="height" constant="65" id="NrS-nm-rrP"/>
                                 </constraints>
-                            </view>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Marcus Jr. Meditations" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" minimumScaleFactor="0.34999999999999998" translatesAutoresizingMaskIntoConstraints="NO" id="G4U-ES-zdH">
-                                <rect key="frame" x="32" y="20" width="256" height="60"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="60" id="jhB-kq-7wg"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="72"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Begin Marcus Jr. Meditations">
+                                            <attributes>
+                                                <color key="NSColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
+                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <segue destination="bfO-Hr-4kK" kind="show" identifier="toChooseEmotion" id="z1p-9q-tfL"/>
+                                </connections>
+                            </button>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
-                            <constraint firstItem="A9r-fA-644" firstAttribute="leading" secondItem="R6w-55-W9b" secondAttribute="leading" id="Ait-Sq-XTM"/>
+                            <constraint firstItem="b5J-pc-jUx" firstAttribute="trailing" secondItem="R6w-55-W9b" secondAttribute="trailing" id="9Zx-1c-IsY"/>
                             <constraint firstItem="w6g-GL-j7y" firstAttribute="leading" secondItem="R6w-55-W9b" secondAttribute="leading" id="BRU-ID-vuF"/>
-                            <constraint firstItem="A9r-fA-644" firstAttribute="bottom" secondItem="R6w-55-W9b" secondAttribute="bottom" id="GtF-4T-n5L"/>
                             <constraint firstAttribute="bottom" secondItem="w6g-GL-j7y" secondAttribute="bottom" id="HlA-Uc-kCO"/>
                             <constraint firstItem="w6g-GL-j7y" firstAttribute="top" secondItem="P1F-y1-qBg" secondAttribute="top" id="JXX-Cw-n85"/>
                             <constraint firstItem="w6g-GL-j7y" firstAttribute="trailing" secondItem="R6w-55-W9b" secondAttribute="trailing" id="NQQ-He-yrl"/>
-                            <constraint firstItem="G4U-ES-zdH" firstAttribute="width" secondItem="w6g-GL-j7y" secondAttribute="width" multiplier="4/5" id="TeM-0E-nuo"/>
-                            <constraint firstItem="G4U-ES-zdH" firstAttribute="centerX" secondItem="P1F-y1-qBg" secondAttribute="centerX" id="cab-tN-pmQ"/>
-                            <constraint firstItem="G4U-ES-zdH" firstAttribute="top" secondItem="R6w-55-W9b" secondAttribute="top" id="juT-78-JcP"/>
-                            <constraint firstItem="A9r-fA-644" firstAttribute="trailing" secondItem="R6w-55-W9b" secondAttribute="trailing" id="oGT-CC-Fl6"/>
+                            <constraint firstItem="b5J-pc-jUx" firstAttribute="leading" secondItem="R6w-55-W9b" secondAttribute="leading" id="mGM-Bx-80N"/>
+                            <constraint firstItem="b5J-pc-jUx" firstAttribute="bottom" secondItem="R6w-55-W9b" secondAttribute="bottom" id="ymp-GK-6lo"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R6w-55-W9b"/>
                     </view>
@@ -133,7 +119,7 @@
                                         </imageView>
                                     </subviews>
                                 </view>
-                                <color key="backgroundColor" red="0.30980392156862746" green="0.4823529411764706" blue="0.89411764705882346" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <color key="backgroundColor" red="0.27450980392156865" green="0.51372549019607838" blue="0.92549019607843142" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="bottomMargin" secondItem="6Yi-MP-76S" secondAttribute="bottom" constant="45" id="G4a-mE-AS7"/>
                                     <constraint firstItem="6Yi-MP-76S" firstAttribute="centerX" secondItem="8fe-N7-yiD" secondAttribute="centerX" id="M0j-g8-x4G"/>
@@ -181,23 +167,24 @@
                                     <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
-                                            <rect key="frame" x="16" y="16" width="284.5" height="92"/>
+                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
+                                            <rect key="frame" x="20" y="16" width="280" height="92"/>
                                             <attributedString key="attributedText">
                                                 <fragment content="First Meditation This will be two lines so I can test it.">
                                                     <attributes>
-                                                        <font key="NSFont" metaFont="system" size="17"/>
+                                                        <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
                                                         <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
                                                     </attributes>
                                                 </fragment>
                                             </attributedString>
                                             <nil key="highlightedColor"/>
+                                            <size key="shadowOffset" width="0.0" height="0.0"/>
                                         </label>
                                     </subviews>
                                     <constraints>
-                                        <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leadingMargin" id="1s9-td-ghO"/>
+                                        <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leading" constant="20" id="Inx-1c-Yld"/>
+                                        <constraint firstAttribute="trailing" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="Iuo-j1-lCC"/>
                                         <constraint firstItem="K3i-pd-lht" firstAttribute="top" secondItem="jBz-5W-GqF" secondAttribute="topMargin" constant="5" id="W0n-8g-fzu"/>
-                                        <constraint firstAttribute="trailing" relation="greaterThanOrEqual" secondItem="K3i-pd-lht" secondAttribute="trailingMargin" constant="20" id="ed8-Ji-1fY"/>
                                         <constraint firstAttribute="bottomMargin" secondItem="K3i-pd-lht" secondAttribute="bottom" constant="5" id="oUM-8t-3Nl"/>
                                     </constraints>
                                 </tableViewCellContentView>
@@ -220,7 +207,7 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMZ-eJ-hEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-909.375" y="8.4507042253521121"/>
+            <point key="canvasLocation" x="-910" y="8"/>
         </scene>
         <!--Daily Exercise View Controller-->
         <scene sceneID="gQU-Dz-6Iz">
@@ -245,9 +232,9 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                             <attributes>
-                                                                <font key="NSFont" metaFont="system" size="17"/>
+                                                                <font key="NSFont" size="18" name="SFProDisplay-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
                                                             </attributes>
                                                         </fragment>

@@ -62,17 +62,13 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
     // MARK: UICollectionViewDataSource
 
     override func numberOfSections(in collectionView: UICollectionView) -> Int {
-        return 2
+        return 1
     }
 
 
     override func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        if section == 0 {
-            return 5 // negative emotions
-        }
-        
-        return 4 // positive emotions
+        return Emotion.getAllEmotionTypes().count
     }
 
     override func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {

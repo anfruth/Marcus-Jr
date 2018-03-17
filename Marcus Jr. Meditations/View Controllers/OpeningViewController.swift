@@ -12,7 +12,6 @@ class OpeningViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
         NotificationsReceiver.sharedInstance.delegate = self
     }
 
@@ -22,18 +21,13 @@ class OpeningViewController: UIViewController {
         handleReceivingLocalNotification()
     }
     
-    func viewAppearedBeforeNotification() {
-        if view != nil {
-            handleReceivingLocalNotification()
-        }
-    }
-    
     func handleReceivingLocalNotification () {
-        let notificationsReciver = NotificationsReceiver.sharedInstance
-        if let didReceiveLocalNotification = notificationsReciver.didReceiveLocalNotification {
+        let notificationsReceiver = NotificationsReceiver.sharedInstance
+        
+        if let didReceiveLocalNotification = notificationsReceiver.didReceiveLocalNotification {
             if didReceiveLocalNotification {
                 performSegue(withIdentifier: "toChooseEmotion", sender: self)
-                notificationsReciver.didReceiveLocalNotification = nil
+                notificationsReceiver.didReceiveLocalNotification = nil
             }
             
         }

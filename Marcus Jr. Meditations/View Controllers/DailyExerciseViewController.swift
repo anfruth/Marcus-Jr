@@ -31,7 +31,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         // _title, _quotation, _commentary, _action
         if let exerciseKey = SelectedExercise.key {
             
-            if let standardExerciseFont =  UIFont(name: "SanFranciscoDisplay-Regular", size: 16) {
+            if let standardExerciseFont =  UIFont(name: "SanFranciscoDisplay-Regular", size: 18) {
                 let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: "quotation of exercise") + "\"", attributes: [.font: standardExerciseFont])
                 var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_commentary", comment: "commentary on exercise"), attributes: [.font: standardExerciseFont])
                 if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + "_commentary" {
@@ -39,7 +39,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                 }
                 let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: "action on exercise") + "\n", attributes: [.font: standardExerciseFont])
 
-                if let boldExerciseFont = UIFont(name: "SanFranciscoDisplay-Semibold", size: 16) {
+                if let boldExerciseFont = UIFont(name: "SanFranciscoDisplay-Semibold", size: 18) {
                     var attributedCommentary: NSMutableAttributedString
                     if commentary.string != "" {
                         attributedCommentary = NSMutableAttributedString(string: "\n\nCommentary:", attributes: [.font: boldExerciseFont])

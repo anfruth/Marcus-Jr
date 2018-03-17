@@ -14,6 +14,7 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     @IBOutlet weak var pickerView: UIPickerView!
     
     var originalButtonColor = UIColor.blue
+    var meditationTimes: MeditationTimes?
     
     override var prefersStatusBarHidden: Bool {
         return true
@@ -27,8 +28,6 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        //view.backgroundColor = UIColor.black.withAlphaComponent(0.75)
-        
         let blurEffect = UIBlurEffect(style: .regular)
         let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.frame
@@ -40,7 +39,10 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         super.viewWillAppear(animated)
         
         setAsTopViewController()
-        pickerView.selectRow(MeditationTimes.pickerChosenDays - 1, inComponent: 0, animated: true)
+        
+        if let meditationTimes = meditationTimes {
+            pickerView.selectRow(meditationTimes.pickerChosenDays - 1, inComponent: 0, animated: true)
+        }
     }
     
     @IBAction func didSelectPickerOption(_ sender: UIButton) {
@@ -66,7 +68,9 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     func pickerView(_ pickerView: UIPickerView, didSelectRow row: Int, inComponent component: Int) {
-        MeditationTimes.pickerChosenDays = row + 1
+        if let meditationTimes = meditationTimes {
+            meditationTimes.pickerChosenDays = row + 1
+        }
     }
     
 }

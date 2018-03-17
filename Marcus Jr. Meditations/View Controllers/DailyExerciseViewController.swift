@@ -15,8 +15,16 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     
     @IBOutlet weak var exerciseTextView: UITextView!
     
+    var meditationTimes: MeditationTimes?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        guard let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key else {
+            return
+        }
+        
+        meditationTimes = MeditationTimes(emotion: emotion, exercise: exercise)
         
         if let exerciseKey = SelectedExercise.key {
             title = NSLocalizedString(exerciseKey + "_title", comment: "title of exercise")
@@ -66,16 +74,26 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
         if segue.identifier == "toPickerVC" {
             setNeedsStatusBarAppearanceUpdate()
             let pickerVC = segue.destination
             if let pickerVC = pickerVC as? PickerViewController {
+                pickerVC.meditationTimes = meditationTimes
                 
                 if let originalColor = navigationController?.navigationBar.tintColor {
                     pickerVC.originalButtonColor = originalColor
                 }
                 
                 navigationController?.isNavigationBarHidden = true
+            }
+        } else if segue.identifier == "toMeditationTimes" {
+            let meditationTimesController = segue.destination
+            if let meditationTimesController = meditationTimesController as? MeditationTimesTableViewController {
+                meditationTimesController.meditationTimes = meditationTimes
+                if let meditationTimes = meditationTimes {
+                    meditationTimes.delegate = meditationTimesController
+                }
             }
         }
     }

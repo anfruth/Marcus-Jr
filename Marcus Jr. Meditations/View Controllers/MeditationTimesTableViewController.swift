@@ -9,7 +9,12 @@
 import UIKit
 import UserNotifications
 
-class MeditationTimesTableViewController: UITableViewController, NotificationsVC {
+protocol MeditationTimesModelDelegate {
+    func handleAddedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String)
+    func handleRemovedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String)
+}
+
+class MeditationTimesTableViewController: UITableViewController, NotificationsVC, MeditationTimesModelDelegate {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var selectTimeButton: UIButton!
@@ -22,6 +27,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     
     weak var delegate: DailyExerciseViewController?
     
+    var meditationTimes: MeditationTimes?
     private var timeLabels: [UILabel] = [] // collection of time labels
     
     let center = UNUserNotificationCenter.current()
@@ -30,22 +36,25 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        MeditationTimes.delegate = self
-        
         let currentDate = Date()
         datePicker.minimumDate = currentDate
-        
         
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         labelMapping = [1: firstTime, 2: secondTime, 3: thirdTime, 4: fourthTime, 5: fifthTime]
         _ = removeExcessiveLabels() // start all hidden
-
+        
+        if let meditationTimes = meditationTimes {
+            if meditationTimes.pickerDaysEqualMeditationTimes {
+                removeExcessiveTimes()
+                disableSelectTimeButton()
+            } else {
+                enableSelectTimeButton()
+            }
+        }
+        
         if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
             
             if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                // order of timesSelected before pickerChosenDays matters, if picker first, goes off incorrect value of timesSeleted, timesSelected doesnt touch pickerChosen
-                MeditationTimes.timesSelected = retrieveTimesSelectedFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
-                MeditationTimes.pickerChosenDays = MeditationTimes.retrievePickerChosenDaysFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
                 showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
             }
         }
@@ -57,25 +66,38 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     }
     
     @IBAction func selectTime(_ sender: UIButton) {
-        assert(MeditationTimes.pickerChosenDays > MeditationTimes.timesSelected.count) // picker days more than times picked
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
+        assert(meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count) // picker days more than times picked
         
         let date = datePicker.date
-        MeditationTimes.timesSelected.append(date)
+        meditationTimes.timesSelected.append(date)
     }
 
     @IBAction func eraseTime(_ sender: UIButton) {
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
         if let superview = sender.superview {
-            
             for view in superview.subviews {
                 if let view = view as? UILabel {
-                    MeditationTimes.timesSelected.remove(at: view.tag - 1)
+                    meditationTimes.timesSelected.remove(at: view.tag - 1)
                 }
             }
         }
     }
     
+    // MARK: Meditation Times Model Delegate
+
     func handleAddedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
-        let addedTimes = MeditationTimes.timesSelected.filter { oldTimes.index(of: $0) == nil }
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
+        let addedTimes = meditationTimes.timesSelected.filter { oldTimes.index(of: $0) == nil }
         
         for date in addedTimes {
             addAdditionalLocalNotification(date: date, emotion: emotion, exercise: exercise)
@@ -85,69 +107,81 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
         }
         
-        if MeditationTimes.pickerChosenDays <= MeditationTimes.timesSelected.count {
+        if meditationTimes.pickerChosenDays <= meditationTimes.timesSelected.count {
             disableSelectTimeButton()
         }
         
     }
     
     func handleRemovedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
         removeExcessiveTimes()
-        let removedTimes = oldTimes.filter { MeditationTimes.timesSelected.index(of: $0) == nil }
+        let removedTimes = oldTimes.filter { meditationTimes.timesSelected.index(of: $0) == nil }
         let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedTimes: removedTimes)
         center.removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
 
-        if MeditationTimes.pickerChosenDays > MeditationTimes.timesSelected.count {
+        if meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count {
             enableSelectTimeButton()
         }
     }
     
-    func disableSelectTimeButton() {
-        selectTimeButton.isUserInteractionEnabled = false
-        selectTimeButton.backgroundColor = UIColor.lightGray
-    }
+    // MARK: - Private methods
     
-    func enableSelectTimeButton() {
-        selectTimeButton.isUserInteractionEnabled = true
-        selectTimeButton.backgroundColor = UIColor(red:0.27, green:0.51, blue:0.93, alpha:1.0) // get correct blue
-    }
-    
-    func removeExcessiveTimes() {
-        // this deletes times and hides the labels
-        let indicesToRemove = removeExcessiveLabels()
-        
-        if let lastIndex = indicesToRemove.last, indicesToRemove.count > 0 {
-            MeditationTimes.timesSelected.removeSubrange(ClosedRange(uncheckedBounds: (lower: indicesToRemove[0], upper: lastIndex)))
+    private func removeExcessiveLabels() -> [Int] {
+        guard let meditationTimes = meditationTimes else {
+            return []
         }
-    }
-    
-    func removeExcessiveLabels() -> [Int] {
+        
         var indicesToRemove: [Int] = []
         for (i, label) in timeLabels.enumerated() {
             
-            if i + 1 > MeditationTimes.timesSelected.count || i + 1 > MeditationTimes.pickerChosenDays { // if number of times labels exceed number of times picked, number of times reduced.
+            if i + 1 > meditationTimes.timesSelected.count || i + 1 > meditationTimes.pickerChosenDays { // if number of times labels exceed number of times picked, number of times reduced.
                 label.superview?.isHidden = true
-                if MeditationTimes.timesSelected.indices.contains(i) {
+                if meditationTimes.timesSelected.indices.contains(i) {
                     indicesToRemove.append(i)
                     timeLabels[i].superview?.isHidden = true // hides labels that no longer have a time
                 }
             }
         }
-
+        
         reorderTimesSelected()
-
+        
         return indicesToRemove
     }
     
-    func saveTimesSelected(emotion: EmotionTypeEncompassing, exercise: String) {
-        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-            UserDefaults.standard.set(MeditationTimes.timesSelected, forKey: "\(emotionRawValue)$\(exercise)")
+    private func disableSelectTimeButton() {
+        selectTimeButton.isUserInteractionEnabled = false
+        selectTimeButton.backgroundColor = UIColor.lightGray
+    }
+    
+    private func enableSelectTimeButton() {
+        selectTimeButton.isUserInteractionEnabled = true
+        selectTimeButton.backgroundColor = UIColor(red:0.27, green:0.51, blue:0.93, alpha:1.0) // get correct blue
+    }
+    
+    private func removeExcessiveTimes() {
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        // this deletes times and hides the labels
+        let indicesToRemove = removeExcessiveLabels()
+        
+        if let lastIndex = indicesToRemove.last, indicesToRemove.count > 0 {
+            meditationTimes.timesSelected.removeSubrange(ClosedRange(uncheckedBounds: (lower: indicesToRemove[0], upper: lastIndex)))
         }
     }
+    
 
     private func reorderTimesSelected() {
-        MeditationTimes.timesSelected.sort()
-        for (i, time) in MeditationTimes.timesSelected.enumerated() {
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+
+        meditationTimes.timesSelected.sort()
+        for (i, time) in meditationTimes.timesSelected.enumerated() {
             if let label = labelMapping[i + 1] {
                 let dateString = DateFormatter.localizedString(from: time, dateStyle: .medium, timeStyle: .short)
                 
@@ -192,14 +226,6 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         let dateComponents = calendar.dateComponents(components, from: date)
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
-    
-    private func retrieveTimesSelectedFromDisk(emotionRawValue: String, exercise: String) -> [Date] {
-        if let dates = UserDefaults.standard.array(forKey: "\(emotionRawValue)$\(exercise)") as? [Date] {
-            return dates
-        }
-        
-        return []
-    }
 
     private func getNotificationsToDelete(emotion: EmotionTypeEncompassing, exercise: String, removedTimes: [Date]) -> [String] {
         var notificationIdentifiers: [String] = []
@@ -213,7 +239,11 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     }
     
     private func showLabels(emotionRawValue: String, exercise: String) {
-        for i in 0..<MeditationTimes.timesSelected.count {
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
+        for i in 0..<meditationTimes.timesSelected.count {
             timeLabels[i].superview?.isHidden = false
         }
 

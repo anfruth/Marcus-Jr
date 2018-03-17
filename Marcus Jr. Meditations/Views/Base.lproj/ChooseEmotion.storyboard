@@ -304,7 +304,7 @@
                                                     <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                                     <state key="normal" title="Select times to meditate"/>
                                                     <connections>
-                                                        <segue destination="iYN-jV-OH3" kind="show" id="Bcm-os-Eaw"/>
+                                                        <segue destination="iYN-jV-OH3" kind="show" identifier="toMeditationTimes" id="Bcm-os-Eaw"/>
                                                     </connections>
                                                 </button>
                                             </subviews>

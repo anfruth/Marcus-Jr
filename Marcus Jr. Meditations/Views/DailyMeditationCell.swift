@@ -16,6 +16,7 @@ class DailyMeditationCell: UITableViewCell {
         super.prepareForReuse()
         
         labelForDescription?.attributedText = nil
+        labelForDescription?.textColor = .black
         
         let paragraphStyle = NSMutableParagraphStyle()
         paragraphStyle.lineSpacing = 50

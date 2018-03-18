@@ -25,6 +25,7 @@ struct SelectedExercise {
 class MeditationListTableController: UITableViewController, NotificationsVC {
 
     private var keysForSelectedEmotion: [String]?
+    private var tableAlreadyLoaded = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -35,12 +36,25 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
         if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
             title = "Daily Meditations - \(rawValue)"
         }
+        
+        if MeditationList.completedExercises.keys.count == 0 {
+            MeditationList.retrieveMeditationListFromDisk()
+        }
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if tableAlreadyLoaded {
+            tableView.reloadData() // if coming back in nav, check to see if any exercise completed.
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setAsTopViewController()
+        tableAlreadyLoaded = true
     }
 
     override func numberOfSections(in tableView: UITableView) -> Int {
@@ -78,6 +92,10 @@ class MeditationListTableController: UITableViewController, NotificationsVC {
                 meditationKey = keysForSelectedEmotion[indexPath.row - MeditationListConfiguration.universalEmotionKeys.count] // + 4 or whatever number of universals
             } else if indexPath.row < MeditationListConfiguration.universalEmotionKeys.count {
                 meditationKey = MeditationListConfiguration.universalEmotionKeys[indexPath.row]
+            }
+            
+            if MeditationList.completedExercises[meditationKey] == true { // need true explicitly because dict returns an optional
+                cell.labelForDescription.textColor = UIColor.lightGray
             }
             
             cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")

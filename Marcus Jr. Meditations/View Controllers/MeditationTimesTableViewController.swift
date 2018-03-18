@@ -10,11 +10,11 @@ import UIKit
 import UserNotifications
 
 protocol MeditationTimesModelDelegate {
-    func handleAddedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String)
-    func handleRemovedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String)
+    func handleAddedTimes(oldMeditationTimes: [Meditation], emotion: EmotionTypeEncompassing, exercise: String)
+    func handleRemovedTimes(oldMeditationTimes: [Meditation], emotion: EmotionTypeEncompassing, exercise: String)
 }
 
-class MeditationTimesTableViewController: UITableViewController, NotificationsVC, MeditationTimesModelDelegate {
+class MeditationTimesTableViewController: UITableViewController, NotificationsVC, MeditationTimesModelDelegate, CompleteExerciseSettable {
     
     @IBOutlet weak var datePicker: UIDatePicker!
     @IBOutlet weak var selectTimeButton: UIButton!
@@ -37,10 +37,11 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         super.viewDidLoad()
         
         let currentDate = Date()
-        datePicker.minimumDate = currentDate
+        datePicker.minimumDate = currentDate + 60 // next minute
         
         timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
         labelMapping = [1: firstTime, 2: secondTime, 3: thirdTime, 4: fourthTime, 5: fifthTime]
+        
         _ = removeExcessiveLabels() // start all hidden
         
         if let meditationTimes = meditationTimes {
@@ -58,11 +59,19 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
                 showLabels(emotionRawValue: emotionRawValue, exercise: exercise)
             }
         }
+        
+        greyCompleteLabelsAndCheckForExerciseComplete()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setAsTopViewController()
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        greyCompleteLabelsAndCheckForExerciseComplete()
     }
     
     @IBAction func selectTime(_ sender: UIButton) {
@@ -73,7 +82,13 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         assert(meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count) // picker days more than times picked
         
         let date = datePicker.date
-        meditationTimes.timesSelected.append(date)
+        let roundedToLowestMinute: TimeInterval = floor(date.timeIntervalSinceReferenceDate / 60) * 60
+        let roundedDate = Date(timeIntervalSinceReferenceDate: roundedToLowestMinute)
+        
+        if let exercise = SelectedExercise.key {
+            let meditation = Meditation(date: roundedDate, exercise: exercise)
+            meditationTimes.timesSelected.append(meditation)
+        }
     }
 
     @IBAction func eraseTime(_ sender: UIButton) {
@@ -92,15 +107,15 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     
     // MARK: Meditation Times Model Delegate
 
-    func handleAddedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
+    func handleAddedTimes(oldMeditationTimes: [Meditation], emotion: EmotionTypeEncompassing, exercise: String) {
         guard let meditationTimes = meditationTimes else {
             return
         }
         
-        let addedTimes = meditationTimes.timesSelected.filter { oldTimes.index(of: $0) == nil }
+        let addedMeditationTimes = meditationTimes.timesSelected.filter { oldMeditationTimes.index(of: $0) == nil }
         
-        for date in addedTimes {
-            addAdditionalLocalNotification(date: date, emotion: emotion, exercise: exercise)
+        for meditation in addedMeditationTimes {
+            addAdditionalLocalNotification(date: meditation.date, emotion: emotion, exercise: exercise)
         }
         
         if let emotionRawValue = Emotion.getRawValue(from: emotion) {
@@ -113,14 +128,14 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         
     }
     
-    func handleRemovedTimes(oldTimes: [Date], emotion: EmotionTypeEncompassing, exercise: String) {
+    func handleRemovedTimes(oldMeditationTimes: [Meditation], emotion: EmotionTypeEncompassing, exercise: String) {
         guard let meditationTimes = meditationTimes else {
             return
         }
         
         removeExcessiveTimes()
-        let removedTimes = oldTimes.filter { meditationTimes.timesSelected.index(of: $0) == nil }
-        let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedTimes: removedTimes)
+        let removedMeditations = oldMeditationTimes.filter { meditationTimes.timesSelected.index(of: $0) == nil }
+        let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedMeditations: removedMeditations)
         center.removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
 
         if meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count {
@@ -129,6 +144,16 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     }
     
     // MARK: - Private methods
+    
+    private func greyCompleteLabelsAndCheckForExerciseComplete() {
+        let allTimesCompleted = completeExpiredMeditations()
+        
+        if allTimesCompleted {
+            meditationTimes?.exerciseComplete = true
+        } else {
+            meditationTimes?.exerciseComplete = false
+        }
+    }
     
     private func removeExcessiveLabels() -> [Int] {
         guard let meditationTimes = meditationTimes else {
@@ -180,10 +205,10 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             return
         }
 
-        meditationTimes.timesSelected.sort()
-        for (i, time) in meditationTimes.timesSelected.enumerated() {
+        meditationTimes.timesSelected = meditationTimes.timesSelected.sorted(by: {$0.date < $1.date})
+        for (i, meditation) in meditationTimes.timesSelected.enumerated() {
             if let label = labelMapping[i + 1] {
-                let dateString = DateFormatter.localizedString(from: time, dateStyle: .medium, timeStyle: .short)
+                let dateString = DateFormatter.localizedString(from: meditation.date, dateStyle: .medium, timeStyle: .short)
                 
                 label.text = dateString
             }
@@ -227,11 +252,11 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         return UNCalendarNotificationTrigger(dateMatching: dateComponents, repeats: false)
     }
 
-    private func getNotificationsToDelete(emotion: EmotionTypeEncompassing, exercise: String, removedTimes: [Date]) -> [String] {
+    private func getNotificationsToDelete(emotion: EmotionTypeEncompassing, exercise: String, removedMeditations: [Meditation]) -> [String] {
         var notificationIdentifiers: [String] = []
-        for date in removedTimes {
+        for meditation in removedMeditations {
             if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-                notificationIdentifiers.append("\(emotionRawValue)$\(exercise)$\(date.description)")
+                notificationIdentifiers.append("\(emotionRawValue)$\(exercise)$\(meditation.date.description)")
             }
         }
         
@@ -249,4 +274,31 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
 
         reorderTimesSelected()
     }
+    
+    private func completeExpiredMeditations() -> Bool { // returns true if all exercises complete
+        guard let meditationTimes = meditationTimes else {
+            return false
+        }
+        
+        if meditationTimes.timesSelected.count == 0 {
+            return false
+        }
+        
+        var allCompleted = true
+        for time in meditationTimes.timesSelected {
+            
+            if time.completed {
+                if let indexToDelete = meditationTimes.timesSelected.index(of: time) {
+                    if let label = labelMapping[indexToDelete + 1] {
+                        label.textColor = UIColor.lightGray
+                    }
+                }
+            } else {
+                allCompleted = false
+            }
+        }
+
+        return allCompleted
+    }
+    
 }

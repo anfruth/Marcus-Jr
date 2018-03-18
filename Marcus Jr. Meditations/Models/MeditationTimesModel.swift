@@ -8,13 +8,25 @@
 
 import Foundation
 
-class MeditationTimes {
+class MeditationTimes: CompleteExerciseSettable {
     
     private let emotion: EmotionTypeEncompassing
     private let exercise: String
     private(set) var pickerDaysEqualMeditationTimes: Bool = false
 
     weak var delegate: MeditationTimesTableViewController?
+    
+    var exerciseComplete = false { // complete when all meditation times have passed
+        didSet {
+            if exerciseComplete {
+                MeditationTimes.completeExercise(exercise: exercise)
+            } else {
+                MeditationTimes.resetExercise(exercise: exercise)
+            }
+            
+            MeditationTimes.saveMeditationListToDisk()
+        }
+    }
     
     var pickerChosenDays: Int = 1 { // what the picker says, when this happens should also delete dates if excessive labels showing
         didSet {
@@ -23,7 +35,7 @@ class MeditationTimes {
         }
     }
     
-    var timesSelected: [Date] = [] { // collection of dates chosen
+    var timesSelected: [Meditation] = [] { // collection of dates chosen per exercise
         
         didSet(oldTimes) {
             
@@ -32,9 +44,9 @@ class MeditationTimes {
                 saveTimesSelected(emotion: emotion, exercise: exercise)
                 
                 if oldTimes.count > timesSelected.count { // handling labels, notifications, time selected button
-                    delegate?.handleRemovedTimes(oldTimes: oldTimes, emotion: emotion, exercise: exercise)
+                    delegate?.handleRemovedTimes(oldMeditationTimes: oldTimes, emotion: emotion, exercise: exercise)
                 } else if timesSelected.count > oldTimes.count {
-                    delegate?.handleAddedTimes(oldTimes: oldTimes, emotion: emotion, exercise: exercise)
+                    delegate?.handleAddedTimes(oldMeditationTimes: oldTimes, emotion: emotion, exercise: exercise)
                 }
             }
         }
@@ -65,7 +77,10 @@ class MeditationTimes {
     
     func saveTimesSelected(emotion: EmotionTypeEncompassing, exercise: String) {
         if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-            UserDefaults.standard.set(timesSelected, forKey: "\(emotionRawValue)$\(exercise)")
+            let data = try? JSONEncoder().encode(timesSelected)
+            if let data = data {
+                UserDefaults.standard.set(data, forKey: "\(emotionRawValue)$\(exercise)")
+            }
         }
     }
     
@@ -75,9 +90,12 @@ class MeditationTimes {
     }
     
 
-    private func retrieveTimesSelectedFromDisk(emotionRawValue: String, exercise: String) -> [Date] {
-        if let dates = UserDefaults.standard.array(forKey: "\(emotionRawValue)$\(exercise)") as? [Date] {
-            return dates
+    private func retrieveTimesSelectedFromDisk(emotionRawValue: String, exercise: String) -> [Meditation] {
+        if let meditationData = UserDefaults.standard.data(forKey: "\(emotionRawValue)$\(exercise)") {
+            let meditations = try? JSONDecoder().decode([Meditation].self, from: meditationData)
+            if let meditations = meditations {
+                return meditations
+            }
         }
         
         return []

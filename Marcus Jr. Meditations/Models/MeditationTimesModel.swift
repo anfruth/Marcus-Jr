@@ -11,12 +11,12 @@ import Foundation
 class MeditationTimes: CompleteExerciseSettable {
     
     private let emotion: EmotionTypeEncompassing
-    private let exercise: String
+    let exercise: String
     private(set) var pickerDaysEqualMeditationTimes: Bool = false
 
     weak var delegate: MeditationTimesTableViewController?
     
-    var exerciseComplete = false { // complete when all meditation times have passed
+    var exerciseComplete: Bool { // complete when all meditation times have passed
         didSet {
             if exerciseComplete {
                 MeditationTimes.completeExercise(exercise: exercise)
@@ -56,7 +56,8 @@ class MeditationTimes: CompleteExerciseSettable {
     init(emotion: EmotionTypeEncompassing, exercise: String) {
         self.emotion = emotion
         self.exercise = exercise
-        
+        self.exerciseComplete = false
+
         if let emotionRawValue = Emotion.getRawValue(from: emotion) {
             // order of timesSelected before pickerChosenDays matters, if picker first, goes off incorrect value of timesSeleted, timesSelected doesnt touch pickerChosen
             timesSelected = retrieveTimesSelectedFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
@@ -83,6 +84,15 @@ class MeditationTimes: CompleteExerciseSettable {
             }
         }
     }
+//
+//    private func saveExerciseCompletedStatus() {
+//        UserDefaults.standard.set(exerciseComplete, forKey: <#T##String#>)
+//        // exercise string _isCompleted
+//    }
+//
+//    private func retrieveExerciseCompletedStatus() {
+//
+//    }
     
     private func retrievePickerChosenDaysFromDisk(emotionRawValue: String, exercise: String) -> Int {
         let storedNumberOfDays: Int = UserDefaults.standard.integer(forKey: "\(emotionRawValue)$\(exercise)_times")

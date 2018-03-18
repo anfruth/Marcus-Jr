@@ -502,7 +502,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="30"/>
                                                     <state key="normal" title="X">
-                                                        <color key="titleColor" red="0.89651055629999998" green="0.1147044528" blue="0.2118030142" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="eraseTime:" destination="iYN-jV-OH3" eventType="touchUpInside" id="EhO-a7-NYl"/>
@@ -531,8 +531,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8za-b7-Jlx">
-                                                    <rect key="frame" x="0.0" y="1" width="50" height="48"/>
+                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8za-b7-Jlx">
+                                                    <rect key="frame" x="0.0" y="-1" width="50" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Gn0-0x-twu"/>
                                                     </constraints>
@@ -679,11 +679,16 @@
                     <connections>
                         <outlet property="datePicker" destination="2OP-Wp-SCU" id="Dwj-L8-nlr"/>
                         <outlet property="fifthTime" destination="h3u-VI-bco" id="XK2-lz-4fn"/>
+                        <outlet property="fifthX" destination="Cwe-TO-iMb" id="gYP-dI-fme"/>
                         <outlet property="firstTime" destination="QI0-Py-ljB" id="Jhr-3i-7nP"/>
+                        <outlet property="firstX" destination="1kU-Au-kZy" id="dFt-NO-zw4"/>
                         <outlet property="fourthTime" destination="2cw-kU-VW3" id="3HT-gm-LV0"/>
+                        <outlet property="fourthX" destination="uIa-hz-y3Y" id="f4V-pk-yno"/>
                         <outlet property="secondTime" destination="RlC-QE-L2a" id="Tul-HO-OO2"/>
+                        <outlet property="secondX" destination="8za-b7-Jlx" id="18R-vS-Ff6"/>
                         <outlet property="selectTimeButton" destination="aHV-Zg-lwa" id="xIu-fS-rsf"/>
                         <outlet property="thirdTime" destination="tyX-st-FXK" id="94k-gG-fUe"/>
+                        <outlet property="thirdX" destination="MvF-R1-T66" id="kV7-8L-w7I"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="jnW-Gf-MKo" userLabel="First Responder" sceneMemberID="firstResponder"/>

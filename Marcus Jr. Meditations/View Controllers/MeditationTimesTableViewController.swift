@@ -25,13 +25,21 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     @IBOutlet weak var fourthTime: UILabel!
     @IBOutlet weak var fifthTime: UILabel!
     
+    @IBOutlet weak var firstX: UIButton!
+    @IBOutlet weak var secondX: UIButton!
+    @IBOutlet weak var thirdX: UIButton!
+    @IBOutlet weak var fourthX: UIButton!
+    @IBOutlet weak var fifthX: UIButton!
+    
+    
     weak var delegate: DailyExerciseViewController?
     
     var meditationTimes: MeditationTimes?
-    private var timeLabels: [UILabel] = [] // collection of time labels
+    private var xButtons: [UIButton] = [] // collection of time labels
     
-    let center = UNUserNotificationCenter.current()
-    var labelMapping: [Int: UILabel] = [:]
+    private let center = UNUserNotificationCenter.current()
+    private var buttonMapping: [Int: UIButton] = [:]
+    private var buttonToLabelMapping: [UIButton: UILabel] = [:]
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -39,8 +47,9 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         let currentDate = Date()
         datePicker.minimumDate = currentDate + 60 // next minute
         
-        timeLabels = [firstTime, secondTime, thirdTime, fourthTime, fifthTime]
-        labelMapping = [1: firstTime, 2: secondTime, 3: thirdTime, 4: fourthTime, 5: fifthTime]
+        xButtons = [firstX, secondX, thirdX, fourthX, fifthX]
+        buttonMapping = [1: firstX, 2: secondX, 3: thirdX, 4: fourthX, 5: fifthX]
+        buttonToLabelMapping = [firstX: firstTime, secondX: secondTime, thirdX: thirdTime, fourthX: fourthTime, fifthX: fifthTime]
         
         _ = removeExcessiveLabels() // start all hidden
         
@@ -96,13 +105,10 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             return
         }
         
-        if let superview = sender.superview {
-            for view in superview.subviews {
-                if let view = view as? UILabel {
-                    meditationTimes.timesSelected.remove(at: view.tag - 1)
-                }
-            }
+        if let label = buttonToLabelMapping[sender] {
+            meditationTimes.timesSelected.remove(at: label.tag - 1)
         }
+      
     }
     
     // MARK: Meditation Times Model Delegate
@@ -161,13 +167,17 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         }
         
         var indicesToRemove: [Int] = []
-        for (i, label) in timeLabels.enumerated() {
+        for (i, button) in xButtons.enumerated() {
             
             if i + 1 > meditationTimes.timesSelected.count || i + 1 > meditationTimes.pickerChosenDays { // if number of times labels exceed number of times picked, number of times reduced.
-                label.superview?.isHidden = true
+                
+                buttonToLabelMapping[button]?.isHidden = true
+                button.isHidden = true
+                button.setTitleColor(UIColor(red: 0.90, green: 0.11, blue: 0.21, alpha: 1.0), for: .normal)
+                button.isUserInteractionEnabled = true
+                
                 if meditationTimes.timesSelected.indices.contains(i) {
                     indicesToRemove.append(i)
-                    timeLabels[i].superview?.isHidden = true // hides labels that no longer have a time
                 }
             }
         }
@@ -207,7 +217,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
 
         meditationTimes.timesSelected = meditationTimes.timesSelected.sorted(by: {$0.date < $1.date})
         for (i, meditation) in meditationTimes.timesSelected.enumerated() {
-            if let label = labelMapping[i + 1] {
+            if let button = buttonMapping[i + 1], let label = buttonToLabelMapping[button] {
                 let dateString = DateFormatter.localizedString(from: meditation.date, dateStyle: .medium, timeStyle: .short)
                 
                 label.text = dateString
@@ -269,7 +279,8 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         }
         
         for i in 0..<meditationTimes.timesSelected.count {
-            timeLabels[i].superview?.isHidden = false
+            xButtons[i].isHidden = false
+            buttonToLabelMapping[xButtons[i]]?.isHidden = false
         }
 
         reorderTimesSelected()
@@ -280,7 +291,9 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             return false
         }
         
-        if meditationTimes.timesSelected.count == 0 {
+        if meditationTimes.timesSelected.count == 0 && MeditationList.completedExercises[meditationTimes.exercise] == true {
+            return true
+        } else if meditationTimes.timesSelected.count == 0 {
             return false
         }
         
@@ -289,8 +302,10 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             
             if time.completed {
                 if let indexToDelete = meditationTimes.timesSelected.index(of: time) {
-                    if let label = labelMapping[indexToDelete + 1] {
+                    if let button = buttonMapping[indexToDelete + 1], let label = buttonToLabelMapping[button] {
                         label.textColor = UIColor.lightGray
+                        button.setTitleColor(UIColor.lightGray, for: .normal)
+                        button.isUserInteractionEnabled = false
                     }
                 }
             } else {

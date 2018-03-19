@@ -12,10 +12,11 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
 
     @IBOutlet weak var selectNumTimesButton: UIButton!
     @IBOutlet weak var selectTimeButton: UIButton!
-    
     @IBOutlet weak var exerciseTextView: UITextView!
+    @IBOutlet weak var completedExerciseToolbar: UIToolbar!
     
     var meditationTimes: MeditationTimes?
+    var alreadyShownVC: Bool = false
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -23,6 +24,10 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         guard let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key else {
             return
         }
+        
+        setExerciseAsCompleteIfNeeded()
+        showOrHideCompletedExerciseButton()
+        // important before MeditationTimes init, meditationTimes will reset the value in completedExercises, and wont be set back until MeditationTimesTableVC is loaded.
         
         meditationTimes = MeditationTimes(emotion: emotion, exercise: exercise)
         
@@ -66,10 +71,21 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                 }
             }
         }
+        
+        setExerciseAsCompleteIfNeeded()
+    }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        
+        if alreadyShownVC {
+            showOrHideCompletedExerciseButton()
+        }
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
+        alreadyShownVC = true
         setAsTopViewController()
     }
     
@@ -95,6 +111,38 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                     meditationTimes.delegate = meditationTimesController
                 }
             }
+        }
+    }
+    
+    @IBAction func resetCompletedExercise(_ sender: UIBarButtonItem) {
+        meditationTimes?.resetCompletedExercise()
+        completedExerciseToolbar.isHidden = true
+    }
+    
+    private func setExerciseAsCompleteIfNeeded() { // should be part of MeditationTimesModel
+        guard let meditationTimes = meditationTimes else {
+            return
+        }
+        
+        for meditation in meditationTimes.timesSelected {
+            if !meditation.completed {
+                meditationTimes.exerciseComplete = false
+                return
+            }
+        }
+        
+        meditationTimes.exerciseComplete = true
+    }
+    
+    private func showOrHideCompletedExerciseButton() {
+        guard let exercise = SelectedExercise.key else {
+            return
+        }
+        
+        if MeditationList.completedExercises[exercise] == true {
+            completedExerciseToolbar.isHidden = false
+        } else {
+            completedExerciseToolbar.isHidden = true
         }
     }
     

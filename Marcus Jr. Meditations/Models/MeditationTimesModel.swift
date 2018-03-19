@@ -16,7 +16,7 @@ class MeditationTimes: CompleteExerciseSettable {
 
     weak var delegate: MeditationTimesTableViewController?
     
-    var exerciseComplete: Bool { // complete when all meditation times have passed
+    var exerciseComplete: Bool { // complete when all meditation times have passed, can't possibly be true until its set in MeditationTimesTableVC
         didSet {
             if exerciseComplete {
                 MeditationTimes.completeExercise(exercise: exercise)
@@ -68,6 +68,12 @@ class MeditationTimes: CompleteExerciseSettable {
         
     }
     
+    func resetCompletedExercise() {
+        exerciseComplete = false
+        timesSelected = []
+        pickerChosenDays = 1
+    }
+    
     func savePickerChosenDaysToDisk() {
         if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key {
             if let emotionRawValue = Emotion.getRawValue(from: emotion) {
@@ -84,15 +90,6 @@ class MeditationTimes: CompleteExerciseSettable {
             }
         }
     }
-//
-//    private func saveExerciseCompletedStatus() {
-//        UserDefaults.standard.set(exerciseComplete, forKey: <#T##String#>)
-//        // exercise string _isCompleted
-//    }
-//
-//    private func retrieveExerciseCompletedStatus() {
-//
-//    }
     
     private func retrievePickerChosenDaysFromDisk(emotionRawValue: String, exercise: String) -> Int {
         let storedNumberOfDays: Int = UserDefaults.standard.integer(forKey: "\(emotionRawValue)$\(exercise)_times")

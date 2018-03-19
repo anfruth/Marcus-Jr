@@ -217,6 +217,20 @@
                         <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="tintColor" red="0.8980392157" green="0.1137254902" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
+                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="D8q-3S-0zq">
+                            <rect key="frame" x="0.0" y="284" width="320" height="44"/>
+                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
+                            <items>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="FeJ-IT-I2u"/>
+                                <barButtonItem title="Reset Completed Exercise" id="FgM-Sz-iAm">
+                                    <connections>
+                                        <action selector="resetCompletedExercise:" destination="qsg-a4-f4e" id="3I7-l6-2SF"/>
+                                    </connections>
+                                </barButtonItem>
+                                <barButtonItem style="plain" systemItem="flexibleSpace" id="EL9-dd-a6k"/>
+                            </items>
+                        </toolbar>
                         <sections>
                             <tableViewSection id="NX0-ht-Gpu">
                                 <cells>
@@ -326,6 +340,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fk7-3h-y31"/>
                     </navigationItem>
                     <connections>
+                        <outlet property="completedExerciseToolbar" destination="D8q-3S-0zq" id="4YQ-pH-BqW"/>
                         <outlet property="exerciseTextView" destination="2LH-Ps-cvz" id="HN7-11-p1p"/>
                         <outlet property="selectNumTimesButton" destination="s01-wQ-Mlt" id="PdF-1C-DaK"/>
                         <outlet property="selectTimeButton" destination="Jua-t7-qX3" id="tKW-uD-0GI"/>

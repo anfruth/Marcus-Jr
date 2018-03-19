@@ -69,18 +69,12 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             }
         }
         
-        greyCompleteLabelsAndCheckForExerciseComplete()
+        greyCompletedLabels()
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         setAsTopViewController()
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        super.viewWillDisappear(animated)
-        
-        greyCompleteLabelsAndCheckForExerciseComplete()
     }
     
     @IBAction func selectTime(_ sender: UIButton) {
@@ -150,16 +144,6 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     }
     
     // MARK: - Private methods
-    
-    private func greyCompleteLabelsAndCheckForExerciseComplete() {
-        let allTimesCompleted = completeExpiredMeditations()
-        
-        if allTimesCompleted {
-            meditationTimes?.exerciseComplete = true
-        } else {
-            meditationTimes?.exerciseComplete = false
-        }
-    }
     
     private func removeExcessiveLabels() -> [Int] {
         guard let meditationTimes = meditationTimes else {
@@ -286,18 +270,11 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         reorderTimesSelected()
     }
     
-    private func completeExpiredMeditations() -> Bool { // returns true if all exercises complete
+    private func greyCompletedLabels() { // returns true if all exercises complete
         guard let meditationTimes = meditationTimes else {
-            return false
+            return
         }
         
-        if meditationTimes.timesSelected.count == 0 && MeditationList.completedExercises[meditationTimes.exercise] == true {
-            return true
-        } else if meditationTimes.timesSelected.count == 0 {
-            return false
-        }
-        
-        var allCompleted = true
         for time in meditationTimes.timesSelected {
             
             if time.completed {
@@ -308,12 +285,9 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
                         button.isUserInteractionEnabled = false
                     }
                 }
-            } else {
-                allCompleted = false
             }
         }
-
-        return allCompleted
+        
     }
     
 }

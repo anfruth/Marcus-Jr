@@ -25,7 +25,6 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
             return
         }
         
-        setExerciseAsCompleteIfNeeded()
         showOrHideCompletedExerciseButton()
         // important before MeditationTimes init, meditationTimes will reset the value in completedExercises, and wont be set back until MeditationTimesTableVC is loaded.
         
@@ -71,8 +70,6 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                 }
             }
         }
-        
-        setExerciseAsCompleteIfNeeded()
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -118,22 +115,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         meditationTimes?.resetCompletedExercise()
         completedExerciseToolbar.isHidden = true
     }
-    
-    private func setExerciseAsCompleteIfNeeded() { // should be part of MeditationTimesModel
-        guard let meditationTimes = meditationTimes else {
-            return
-        }
-        
-        for meditation in meditationTimes.timesSelected {
-            if !meditation.completed {
-                meditationTimes.exerciseComplete = false
-                return
-            }
-        }
-        
-        meditationTimes.exerciseComplete = true
-    }
-    
+
     private func showOrHideCompletedExerciseButton() {
         guard let exercise = SelectedExercise.key else {
             return

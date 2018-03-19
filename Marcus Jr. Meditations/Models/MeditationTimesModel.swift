@@ -49,6 +49,8 @@ class MeditationTimes: CompleteExerciseSettable {
                     delegate?.handleAddedTimes(oldMeditationTimes: oldTimes, emotion: emotion, exercise: exercise)
                 }
             }
+            
+            setExerciseAsCompletedIfNeeded()
         }
         
     }
@@ -69,9 +71,24 @@ class MeditationTimes: CompleteExerciseSettable {
     }
     
     func resetCompletedExercise() {
-        exerciseComplete = false
         timesSelected = []
         pickerChosenDays = 1
+    }
+    
+    func setExerciseAsCompletedIfNeeded() {
+
+        for meditation in timesSelected {
+            if !meditation.completed {
+                exerciseComplete = false
+                return
+            }
+        }
+        
+        if timesSelected.count == 0 {
+            exerciseComplete = false
+        } else {
+            exerciseComplete = true
+        }
     }
     
     func savePickerChosenDaysToDisk() {

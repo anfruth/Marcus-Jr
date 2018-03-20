@@ -144,70 +144,12 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Pvx-Xq-ls9"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="qXC-vA-YsL" kind="show" identifier="toMeditations" id="50I-Gx-FvV"/>
+                        <segue destination="Oxb-9h-PII" kind="show" identifier="toMeditations" id="LUw-ze-BSY"/>
                     </connections>
                 </collectionViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="2dw-FY-9zu" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
             <point key="canvasLocation" x="-1603.125" y="7.394366197183099"/>
-        </scene>
-        <!--Meditation List Table Controller-->
-        <scene sceneID="rO5-cd-Ppg">
-            <objects>
-                <tableViewController storyboardIdentifier="meditationList" id="qXC-vA-YsL" customClass="MeditationListTableController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
-                    <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="fnB-YO-I7c">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
-                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
-                        <prototypes>
-                            <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dailyMeditation" rowHeight="124" id="vh9-ln-4Gm" customClass="DailyMeditationCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
-                                <rect key="frame" x="0.0" y="28" width="320" height="124"/>
-                                <autoresizingMask key="autoresizingMask"/>
-                                <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vh9-ln-4Gm" id="jBz-5W-GqF">
-                                    <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
-                                    <autoresizingMask key="autoresizingMask"/>
-                                    <subviews>
-                                        <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
-                                            <rect key="frame" x="20" y="16" width="280" height="92"/>
-                                            <attributedString key="attributedText">
-                                                <fragment content="First Meditation This will be two lines so I can test it.">
-                                                    <attributes>
-                                                        <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
-                                                        <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
-                                                    </attributes>
-                                                </fragment>
-                                            </attributedString>
-                                            <nil key="highlightedColor"/>
-                                            <size key="shadowOffset" width="0.0" height="0.0"/>
-                                        </label>
-                                    </subviews>
-                                    <constraints>
-                                        <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leading" constant="20" id="Inx-1c-Yld"/>
-                                        <constraint firstAttribute="trailing" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="Iuo-j1-lCC"/>
-                                        <constraint firstItem="K3i-pd-lht" firstAttribute="top" secondItem="jBz-5W-GqF" secondAttribute="topMargin" constant="5" id="W0n-8g-fzu"/>
-                                        <constraint firstAttribute="bottomMargin" secondItem="K3i-pd-lht" secondAttribute="bottom" constant="5" id="oUM-8t-3Nl"/>
-                                    </constraints>
-                                </tableViewCellContentView>
-                                <connections>
-                                    <outlet property="labelForDescription" destination="K3i-pd-lht" id="uco-le-SvX"/>
-                                </connections>
-                            </tableViewCell>
-                        </prototypes>
-                        <connections>
-                            <outlet property="dataSource" destination="qXC-vA-YsL" id="6qe-0H-ipN"/>
-                            <outlet property="delegate" destination="qXC-vA-YsL" id="RN9-Lc-ZKS"/>
-                        </connections>
-                    </tableView>
-                    <navigationItem key="navigationItem" id="Bfa-rD-WiX">
-                        <barButtonItem key="backBarButtonItem" title="Back" id="wzP-xE-8ct"/>
-                    </navigationItem>
-                    <connections>
-                        <segue destination="fKZ-oK-AeX" kind="show" identifier="toExercise" id="Y3z-2x-OYm"/>
-                    </connections>
-                </tableViewController>
-                <placeholder placeholderIdentifier="IBFirstResponder" id="BMZ-eJ-hEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
-            </objects>
-            <point key="canvasLocation" x="-910" y="8"/>
         </scene>
         <!--Daily Exercise View Controller-->
         <scene sceneID="gQU-Dz-6Iz">
@@ -334,7 +276,100 @@
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXv-rr-YJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-181.875" y="8.4507042253521121"/>
+            <point key="canvasLocation" x="-188" y="102"/>
+        </scene>
+        <!--Meditation List Table Controller-->
+        <scene sceneID="1i2-Qa-3gd">
+            <objects>
+                <viewController storyboardIdentifier="meditationList" id="Oxb-9h-PII" customClass="MeditationListTableController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="w6K-FW-iew">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-YO-I7c">
+                                <rect key="frame" x="0.0" y="64" width="320" height="454"/>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <prototypes>
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dailyMeditation" rowHeight="124" id="vh9-ln-4Gm" customClass="DailyMeditationCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
+                                        <rect key="frame" x="0.0" y="28" width="320" height="124"/>
+                                        <autoresizingMask key="autoresizingMask"/>
+                                        <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vh9-ln-4Gm" id="jBz-5W-GqF">
+                                            <rect key="frame" x="0.0" y="0.0" width="320" height="123.5"/>
+                                            <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
+                                                    <rect key="frame" x="20" y="16" width="280" height="92"/>
+                                                    <attributedString key="attributedText">
+                                                        <fragment content="First Meditation This will be two lines so I can test it.">
+                                                            <attributes>
+                                                                <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
+                                                                <paragraphStyle key="NSParagraphStyle" alignment="natural" lineBreakMode="wordWrapping" baseWritingDirection="natural" lineHeightMultiple="1" tighteningFactorForTruncation="0.0"/>
+                                                            </attributes>
+                                                        </fragment>
+                                                    </attributedString>
+                                                    <nil key="highlightedColor"/>
+                                                    <size key="shadowOffset" width="0.0" height="0.0"/>
+                                                </label>
+                                            </subviews>
+                                            <constraints>
+                                                <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leading" constant="20" id="Inx-1c-Yld"/>
+                                                <constraint firstAttribute="trailing" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="Iuo-j1-lCC"/>
+                                                <constraint firstItem="K3i-pd-lht" firstAttribute="top" secondItem="jBz-5W-GqF" secondAttribute="topMargin" constant="5" id="W0n-8g-fzu"/>
+                                                <constraint firstAttribute="bottomMargin" secondItem="K3i-pd-lht" secondAttribute="bottom" constant="5" id="oUM-8t-3Nl"/>
+                                            </constraints>
+                                        </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="labelForDescription" destination="K3i-pd-lht" id="uco-le-SvX"/>
+                                        </connections>
+                                    </tableViewCell>
+                                </prototypes>
+                            </tableView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-RO-mYz">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="au4-iq-HJH"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Reset All Exercises Above">
+                                            <attributes>
+                                                <color key="NSColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="resetAllExercisesAbove:" destination="Oxb-9h-PII" eventType="touchUpInside" id="AQf-zU-9RL"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="Yrs-RO-mYz" firstAttribute="trailing" secondItem="Hxn-hJ-5XZ" secondAttribute="trailing" id="RbU-3o-0eB"/>
+                            <constraint firstItem="Yrs-RO-mYz" firstAttribute="leading" secondItem="Hxn-hJ-5XZ" secondAttribute="leading" id="WG7-FA-5Aj"/>
+                            <constraint firstItem="Yrs-RO-mYz" firstAttribute="bottom" secondItem="Hxn-hJ-5XZ" secondAttribute="bottom" id="dhi-kt-Qcc"/>
+                            <constraint firstItem="fnB-YO-I7c" firstAttribute="leading" secondItem="Hxn-hJ-5XZ" secondAttribute="leading" id="eEC-0g-N83"/>
+                            <constraint firstItem="fnB-YO-I7c" firstAttribute="top" secondItem="Hxn-hJ-5XZ" secondAttribute="top" id="ota-Xc-g5n"/>
+                            <constraint firstItem="Yrs-RO-mYz" firstAttribute="top" secondItem="fnB-YO-I7c" secondAttribute="bottom" id="pYh-v5-XFx"/>
+                            <constraint firstItem="fnB-YO-I7c" firstAttribute="trailing" secondItem="Hxn-hJ-5XZ" secondAttribute="trailing" id="q0E-HC-peM"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="Hxn-hJ-5XZ"/>
+                    </view>
+                    <navigationItem key="navigationItem" id="Bfa-rD-WiX">
+                        <barButtonItem key="backBarButtonItem" title="Back" id="wzP-xE-8ct"/>
+                    </navigationItem>
+                    <connections>
+                        <outlet property="resetAllButton" destination="Yrs-RO-mYz" id="VUg-YK-zgU"/>
+                        <outlet property="resetAllButtonHeight" destination="au4-iq-HJH" id="TDX-Kt-DHZ"/>
+                        <outlet property="tableView" destination="fnB-YO-I7c" id="Htg-OF-UZd"/>
+                        <segue destination="fKZ-oK-AeX" kind="show" identifier="toExercise" id="phc-NS-NYS"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="kuB-3t-GV1" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-911.25" y="9.5070422535211261"/>
         </scene>
         <!--Daily Exercise Container View Controller-->
         <scene sceneID="WHO-pl-oQ6">
@@ -393,7 +428,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuR-Js-s42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-183.75" y="-840.84507042253517"/>
+            <point key="canvasLocation" x="-186" y="-664"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="Fql-GI-VrM">

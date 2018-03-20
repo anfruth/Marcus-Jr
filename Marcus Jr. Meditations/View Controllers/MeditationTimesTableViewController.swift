@@ -51,6 +51,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         buttonMapping = [1: firstX, 2: secondX, 3: thirdX, 4: fourthX, 5: fifthX]
         buttonToLabelMapping = [firstX: firstTime, secondX: secondTime, thirdX: thirdTime, fourthX: fourthTime, fifthX: fifthTime]
         
+        reorderTimesSelected()
         _ = removeExcessiveLabels() // start all hidden
         
         if let meditationTimes = meditationTimes {

@@ -40,7 +40,7 @@ class MeditationTimes: CompleteExerciseSettable {
         didSet(oldTimes) {
             
             setPickerDaysEqualFlag()
-            if let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key, timesSelected != oldTimes {
+            if timesSelected != oldTimes {
                 saveTimesSelected(emotion: emotion, exercise: exercise)
                 
                 if oldTimes.count > timesSelected.count { // handling labels, notifications, time selected button
@@ -60,14 +60,7 @@ class MeditationTimes: CompleteExerciseSettable {
         self.exercise = exercise
         self.exerciseComplete = false
 
-        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
-            // order of timesSelected before pickerChosenDays matters, if picker first, goes off incorrect value of timesSeleted, timesSelected doesnt touch pickerChosen
-            timesSelected = retrieveTimesSelectedFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
-            pickerChosenDays = retrievePickerChosenDaysFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
-            
-            setPickerDaysEqualFlag()
-        }
-        
+        setTimesSelectedAndPickerDays()
     }
     
     func resetCompletedExercise() {
@@ -105,6 +98,16 @@ class MeditationTimes: CompleteExerciseSettable {
             if let data = data {
                 UserDefaults.standard.set(data, forKey: "\(emotionRawValue)$\(exercise)")
             }
+        }
+    }
+
+    private func setTimesSelectedAndPickerDays() {
+        if let emotionRawValue = Emotion.getRawValue(from: emotion) {
+            // order of timesSelected before pickerChosenDays matters, if picker first, goes off incorrect value of timesSeleted, timesSelected doesnt touch pickerChosen
+            timesSelected = retrieveTimesSelectedFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
+            pickerChosenDays = retrievePickerChosenDaysFromDisk(emotionRawValue: emotionRawValue, exercise: exercise)
+            
+            setPickerDaysEqualFlag()
         }
     }
     

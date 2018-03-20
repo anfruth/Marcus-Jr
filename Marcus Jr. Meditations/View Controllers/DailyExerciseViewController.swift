@@ -13,7 +13,6 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     @IBOutlet weak var selectNumTimesButton: UIButton!
     @IBOutlet weak var selectTimeButton: UIButton!
     @IBOutlet weak var exerciseTextView: UITextView!
-    @IBOutlet weak var completedExerciseToolbar: UIToolbar!
     
     var meditationTimes: MeditationTimes?
     var alreadyShownVC: Bool = false

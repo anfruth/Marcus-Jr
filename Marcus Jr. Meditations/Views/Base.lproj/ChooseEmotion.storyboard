@@ -202,7 +202,7 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="wzP-xE-8ct"/>
                     </navigationItem>
                     <connections>
-                        <segue destination="qsg-a4-f4e" kind="show" identifier="toExercise" id="CwG-76-IpO"/>
+                        <segue destination="fKZ-oK-AeX" kind="show" identifier="toExercise" id="Y3z-2x-OYm"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="BMZ-eJ-hEq" userLabel="First Responder" sceneMemberID="firstResponder"/>
@@ -214,23 +214,10 @@
             <objects>
                 <tableViewController storyboardIdentifier="dailyExerciseVC" definesPresentationContext="YES" providesPresentationContextTransitionStyle="YES" modalPresentationStyle="overCurrentContext" id="qsg-a4-f4e" customClass="DailyExerciseViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="TEg-ON-tLH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" red="0.8980392157" green="0.1137254902" blue="0.21176470589999999" alpha="1" colorSpace="calibratedRGB"/>
-                        <toolbar key="tableFooterView" opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" id="D8q-3S-0zq">
-                            <rect key="frame" x="0.0" y="284" width="320" height="44"/>
-                            <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMinY="YES"/>
-                            <items>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="FeJ-IT-I2u"/>
-                                <barButtonItem title="Reset Completed Exercise" id="FgM-Sz-iAm">
-                                    <connections>
-                                        <action selector="resetCompletedExercise:" destination="qsg-a4-f4e" id="3I7-l6-2SF"/>
-                                    </connections>
-                                </barButtonItem>
-                                <barButtonItem style="plain" systemItem="flexibleSpace" id="EL9-dd-a6k"/>
-                            </items>
-                        </toolbar>
                         <sections>
                             <tableViewSection id="NX0-ht-Gpu">
                                 <cells>
@@ -242,11 +229,11 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" bounces="NO" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" editable="NO" usesAttributedText="YES" selectable="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2LH-Ps-cvz">
-                                                    <rect key="frame" x="20" y="0.0" width="280" height="44"/>
+                                                    <rect key="frame" x="20" y="0.0" width="335" height="44"/>
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <attributes>
                                                                 <font key="NSFont" size="18" name="SFProDisplay-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -340,7 +327,6 @@
                         <barButtonItem key="backBarButtonItem" title="Back" id="Fk7-3h-y31"/>
                     </navigationItem>
                     <connections>
-                        <outlet property="completedExerciseToolbar" destination="D8q-3S-0zq" id="4YQ-pH-BqW"/>
                         <outlet property="exerciseTextView" destination="2LH-Ps-cvz" id="HN7-11-p1p"/>
                         <outlet property="selectNumTimesButton" destination="s01-wQ-Mlt" id="PdF-1C-DaK"/>
                         <outlet property="selectTimeButton" destination="Jua-t7-qX3" id="tKW-uD-0GI"/>
@@ -350,16 +336,72 @@
             </objects>
             <point key="canvasLocation" x="-181.875" y="8.4507042253521121"/>
         </scene>
+        <!--Daily Exercise Container View Controller-->
+        <scene sceneID="WHO-pl-oQ6">
+            <objects>
+                <viewController storyboardIdentifier="dailyContainerVC" id="fKZ-oK-AeX" customClass="DailyExerciseContainerViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="OQL-Gy-Epp">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHW-vo-pXe">
+                                <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
+                                <connections>
+                                    <segue destination="qsg-a4-f4e" kind="embed" identifier="embedDaily" id="MWT-Vk-d0d"/>
+                                </connections>
+                            </containerView>
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-XS-gjF">
+                                <rect key="frame" x="0.0" y="518" width="320" height="50"/>
+                                <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="50" id="0OA-cA-HUD"/>
+                                </constraints>
+                                <state key="normal">
+                                    <attributedString key="attributedTitle">
+                                        <fragment content="Reset Completed Exercise">
+                                            <attributes>
+                                                <color key="NSColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                                <font key="NSFont" size="16" name="SFProDisplay-Regular"/>
+                                            </attributes>
+                                        </fragment>
+                                    </attributedString>
+                                </state>
+                                <connections>
+                                    <action selector="resetCompletedExercise:" destination="fKZ-oK-AeX" eventType="touchUpInside" id="nBM-J5-Jsx"/>
+                                </connections>
+                            </button>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="dqd-XS-gjF" firstAttribute="trailing" secondItem="K9L-AT-sgj" secondAttribute="trailing" id="92P-DG-W6W"/>
+                            <constraint firstItem="vHW-vo-pXe" firstAttribute="leading" secondItem="K9L-AT-sgj" secondAttribute="leading" id="BMb-ll-Ead"/>
+                            <constraint firstItem="dqd-XS-gjF" firstAttribute="bottom" secondItem="K9L-AT-sgj" secondAttribute="bottom" id="KXU-TH-1P3"/>
+                            <constraint firstItem="dqd-XS-gjF" firstAttribute="top" secondItem="vHW-vo-pXe" secondAttribute="bottom" id="OjK-qf-ut1"/>
+                            <constraint firstItem="dqd-XS-gjF" firstAttribute="leading" secondItem="K9L-AT-sgj" secondAttribute="leading" id="U9S-uz-2kC"/>
+                            <constraint firstItem="vHW-vo-pXe" firstAttribute="trailing" secondItem="K9L-AT-sgj" secondAttribute="trailing" id="nE8-ZT-6QU"/>
+                            <constraint firstItem="vHW-vo-pXe" firstAttribute="top" secondItem="OQL-Gy-Epp" secondAttribute="top" id="vp2-J4-ESt"/>
+                        </constraints>
+                        <viewLayoutGuide key="safeArea" id="K9L-AT-sgj"/>
+                    </view>
+                    <connections>
+                        <outlet property="heightOfExerciseButton" destination="0OA-cA-HUD" id="CXl-0e-pcq"/>
+                        <outlet property="resetCompletedExerciseButton" destination="dqd-XS-gjF" id="fw3-gq-IQQ"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="yuR-Js-s42" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-183.75" y="-840.84507042253517"/>
+        </scene>
         <!--Picker View Controller-->
         <scene sceneID="Fql-GI-VrM">
             <objects>
                 <viewController id="ESR-fN-WAw" customClass="PickerViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" opaque="NO" contentMode="scaleToFill" id="SMG-3D-VzH">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AWK-of-wv6">
-                                <rect key="frame" x="0.0" y="158" width="320" height="272"/>
+                                <rect key="frame" x="0.0" y="133" width="320" height="272"/>
                                 <subviews>
                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" usesAttributedText="YES" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mdr-Gx-Q7j">
                                         <rect key="frame" x="0.0" y="0.0" width="320" height="60"/>
@@ -444,7 +486,7 @@
             <objects>
                 <tableViewController id="iYN-jV-OH3" customClass="MeditationTimesTableViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <tableView key="view" clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="static" style="plain" separatorStyle="none" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" id="46F-8K-bDP">
-                        <rect key="frame" x="0.0" y="0.0" width="320" height="568"/>
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="518"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <sections>
@@ -458,7 +500,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <datePicker contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="2OP-Wp-SCU">
-                                                    <rect key="frame" x="0.0" y="-32" width="320" height="216"/>
+                                                    <rect key="frame" x="27.5" y="-32" width="320" height="216"/>
                                                     <date key="date" timeIntervalSinceReferenceDate="542498368.986287">
                                                         <!--2018-03-11 21:59:28 +0000-->
                                                     </date>
@@ -478,7 +520,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-Zg-lwa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="320" height="49.5"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.5"/>
                                                     <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <state key="normal">
@@ -524,7 +566,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="1" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="3" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="QI0-Py-ljB">
-                                                    <rect key="frame" x="50" y="25" width="270" height="0.0"/>
+                                                    <rect key="frame" x="50" y="25" width="325" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -546,8 +588,8 @@
                                             <rect key="frame" x="0.0" y="0.0" width="320" height="50"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
-                                                <button opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8za-b7-Jlx">
-                                                    <rect key="frame" x="0.0" y="-1" width="50" height="48"/>
+                                                <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="8za-b7-Jlx">
+                                                    <rect key="frame" x="0.0" y="1" width="50" height="48"/>
                                                     <constraints>
                                                         <constraint firstAttribute="width" constant="50" id="Gn0-0x-twu"/>
                                                     </constraints>
@@ -589,7 +631,7 @@
                                                     </constraints>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="30"/>
                                                     <state key="normal" title="X">
-                                                        <color key="titleColor" red="0.89651055629999998" green="0.1147044528" blue="0.2118030142" alpha="1" colorSpace="calibratedRGB"/>
+                                                        <color key="titleColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="calibratedRGB"/>
                                                     </state>
                                                     <connections>
                                                         <action selector="eraseTime:" destination="iYN-jV-OH3" eventType="touchUpInside" id="44X-0q-DY3"/>
@@ -632,7 +674,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="4" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="2cw-kU-VW3">
-                                                    <rect key="frame" x="50" y="25" width="270" height="0.0"/>
+                                                    <rect key="frame" x="50" y="25" width="325" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -668,7 +710,7 @@
                                                     </connections>
                                                 </button>
                                                 <label opaque="NO" userInteractionEnabled="NO" tag="5" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="" textAlignment="natural" lineBreakMode="tailTruncation" numberOfLines="2" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="h3u-VI-bco">
-                                                    <rect key="frame" x="50" y="25" width="270" height="0.0"/>
+                                                    <rect key="frame" x="50" y="25" width="325" height="0.0"/>
                                                     <fontDescription key="fontDescription" type="system" pointSize="17"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>

@@ -20,20 +20,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        
-        guard let emotion = SelectedEmotion.choice, let exercise = SelectedExercise.key else {
-            return
-        }
-        
-        showOrHideCompletedExerciseButton()
-        // important before MeditationTimes init, meditationTimes will reset the value in completedExercises, and wont be set back until MeditationTimesTableVC is loaded.
-        
-        meditationTimes = MeditationTimes(emotion: emotion, exercise: exercise)
-        
-        if let exerciseKey = SelectedExercise.key {
-            title = NSLocalizedString(exerciseKey + "_title", comment: "title of exercise")
-        }
-        
+
         selectNumTimesButton.layer.cornerRadius = 30
         selectTimeButton.layer.cornerRadius = 30
 
@@ -72,14 +59,6 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         }
     }
     
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        
-        if alreadyShownVC {
-            showOrHideCompletedExerciseButton()
-        }
-    }
-    
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         alreadyShownVC = true
@@ -110,22 +89,5 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
             }
         }
     }
-    
-    @IBAction func resetCompletedExercise(_ sender: UIBarButtonItem) {
-        meditationTimes?.resetCompletedExercise()
-        completedExerciseToolbar.isHidden = true
-    }
 
-    private func showOrHideCompletedExerciseButton() {
-        guard let exercise = SelectedExercise.key else {
-            return
-        }
-        
-        if MeditationList.completedExercises[exercise] == true {
-            completedExerciseToolbar.isHidden = false
-        } else {
-            completedExerciseToolbar.isHidden = true
-        }
-    }
-    
 }

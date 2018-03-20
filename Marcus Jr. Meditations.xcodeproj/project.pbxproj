@@ -20,6 +20,7 @@
 		EA0FF098202C181A00688BC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF097202C181A00688BC6 /* Localizable.strings */; };
 		EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D3205DD19E007D973A /* MeditationModel.swift */; };
 		EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D5205EED7C007D973A /* MeditationListModel.swift */; };
+		EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */; };
 		EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */; };
 		EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */; };
 		EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */; };
@@ -79,6 +80,7 @@
 		EA0FF097202C181A00688BC6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		EA1D07D3205DD19E007D973A /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		EA1D07D5205EED7C007D973A /* MeditationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListModel.swift; sourceTree = "<group>"; };
+		EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseContainerViewController.swift; sourceTree = "<group>"; };
 		EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesTableViewController.swift; sourceTree = "<group>"; };
 		EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesModel.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				EA3E5C082041467700CC7BCE /* OpeningViewController.swift */,
 				EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */,
 				EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */,
+				EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */,
 				EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */,
 				EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */,
 				EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */,
@@ -370,6 +373,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */,
+				EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */,
 				EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */,
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */,

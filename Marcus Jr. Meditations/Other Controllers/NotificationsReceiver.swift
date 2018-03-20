@@ -73,8 +73,14 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
         if let meditationVC = storyboard.instantiateViewController(withIdentifier: "meditationList") as? MeditationListTableController {
             nav.pushViewController(meditationVC, animated: true)
             
-            if let dailyExerciseController = storyboard.instantiateViewController(withIdentifier: "dailyExerciseVC") as? DailyExerciseViewController {
-                nav.pushViewController(dailyExerciseController, animated: true)
+            if let dailyExerciseContainerVC = storyboard.instantiateViewController(withIdentifier: "dailyContainerVC") as? DailyExerciseContainerViewController {
+                
+                if let dailyExerciseController = storyboard.instantiateViewController(withIdentifier: "dailyExerciseVC") as? DailyExerciseViewController {
+                    
+                    dailyExerciseContainerVC.addChildViewController(dailyExerciseController)
+                    nav.pushViewController(dailyExerciseContainerVC, animated: true)
+                }
+                
             }
         }
         

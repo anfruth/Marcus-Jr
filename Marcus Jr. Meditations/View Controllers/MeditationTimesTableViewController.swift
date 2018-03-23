@@ -79,29 +79,53 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     }
     
     @IBAction func selectTime(_ sender: UIButton) {
-        guard let meditationTimes = meditationTimes else {
-            return
-        }
-        
-        assert(meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count) // picker days more than times picked
-        
-        let date = datePicker.date
-        let roundedToLowestMinute: TimeInterval = floor(date.timeIntervalSinceReferenceDate / 60) * 60
-        let roundedDate = Date(timeIntervalSinceReferenceDate: roundedToLowestMinute)
-        
-        if let exercise = SelectedExercise.key {
-            let meditation = Meditation(date: roundedDate, exercise: exercise)
-            meditationTimes.timesSelected.append(meditation)
+        center.getNotificationSettings { notificationSettings in
+            
+            DispatchQueue.main.async {
+                if notificationSettings.authorizationStatus != .authorized {
+                    self.navigationController?.popViewController(animated: true)
+                    // add alert explaining.
+                } else {
+                    
+                    guard let meditationTimes = self.meditationTimes else {
+                        return
+                    }
+                    
+                    assert(meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count) // picker days more than times picked
+                    
+                    let date = self.datePicker.date
+                    let roundedToLowestMinute: TimeInterval = floor(date.timeIntervalSinceReferenceDate / 60) * 60
+                    let roundedDate = Date(timeIntervalSinceReferenceDate: roundedToLowestMinute)
+                    
+                    if let exercise = SelectedExercise.key {
+                        let meditation = Meditation(date: roundedDate, exercise: exercise)
+                        meditationTimes.timesSelected.append(meditation)
+                    }
+                }
+            }
         }
     }
 
     @IBAction func eraseTime(_ sender: UIButton) {
-        guard let meditationTimes = meditationTimes else {
-            return
-        }
         
-        if let label = buttonToLabelMapping[sender] {
-            meditationTimes.timesSelected.remove(at: label.tag - 1)
+        center.getNotificationSettings { notificationSettings in
+            
+            DispatchQueue.main.async {
+                if notificationSettings.authorizationStatus != .authorized {
+                    self.navigationController?.popViewController(animated: true)
+                } else {
+                    
+                    guard let meditationTimes = self.meditationTimes else {
+                        return
+                    }
+                    
+                    if let label = self.buttonToLabelMapping[sender] {
+                        meditationTimes.timesSelected.remove(at: label.tag - 1)
+                    }
+                    
+                    
+                }
+            }
         }
       
     }

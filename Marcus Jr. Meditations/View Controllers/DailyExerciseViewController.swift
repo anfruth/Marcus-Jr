@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import UserNotifications
 
 class DailyExerciseViewController: UITableViewController, NotificationsVC {
 
@@ -89,4 +90,41 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         }
     }
 
+    @IBAction func selectTimesToMeditate(_ sender: UIButton) {
+        
+        UNUserNotificationCenter.current().getNotificationSettings { (userNotificationSettings) in
+            DispatchQueue.main.async {
+                if userNotificationSettings.authorizationStatus == .notDetermined {
+                    self.presentCorrectAlert(authorizationStatus: .notDetermined)
+                    
+                } else if userNotificationSettings.authorizationStatus == .denied {
+                    self.presentCorrectAlert(authorizationStatus: .denied)
+                    
+                } else {
+                    self.performSegue(withIdentifier: "toMeditationTimes", sender: self)
+                }
+            }
+        }
+    }
+    
+    private func presentCorrectAlert(authorizationStatus: UNAuthorizationStatus) {
+        let alert = NotificationsSetup.sharedInstance.giveAppPromptForNotifications(authorizationStatus: authorizationStatus) { (userEnabledNotifications) in
+            
+            DispatchQueue.main.async {
+                let permAlert = NotificationsSetup.sharedInstance.suggestPermanentNotifications() {
+                    if userEnabledNotifications {
+                        self.performSegue(withIdentifier: "toMeditationTimes", sender: self)
+                    }
+
+                }
+                
+                NotificationsReceiver.sharedInstance.topViewController?.present(permAlert, animated: true, completion: nil)
+                
+            }
+        }
+        
+        if let alert = alert {
+            self.present(alert, animated: true, completion: nil)
+        }
+    }
 }

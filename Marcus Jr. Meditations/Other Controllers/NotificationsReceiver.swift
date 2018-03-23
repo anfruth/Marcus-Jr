@@ -14,7 +14,7 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
     
     weak var delegate: OpeningViewController?
     
-    static var sharedInstance: NotificationsReceiver = NotificationsReceiver()
+    static let sharedInstance: NotificationsReceiver = NotificationsReceiver()
     
     weak var topViewController: UIViewController? {
         didSet(oldVC) {

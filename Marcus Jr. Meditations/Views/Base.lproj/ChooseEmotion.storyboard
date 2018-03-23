@@ -247,7 +247,7 @@
                                                     <inset key="contentEdgeInsets" minX="20" minY="0.0" maxX="20" maxY="0.0"/>
                                                     <state key="normal" title="Select times to meditate"/>
                                                     <connections>
-                                                        <segue destination="iYN-jV-OH3" kind="show" identifier="toMeditationTimes" id="Bcm-os-Eaw"/>
+                                                        <action selector="selectTimesToMeditate:" destination="qsg-a4-f4e" eventType="touchUpInside" id="LMY-2c-qpo"/>
                                                     </connections>
                                                 </button>
                                             </subviews>
@@ -272,6 +272,7 @@
                         <outlet property="exerciseTextView" destination="2LH-Ps-cvz" id="HN7-11-p1p"/>
                         <outlet property="selectNumTimesButton" destination="s01-wQ-Mlt" id="PdF-1C-DaK"/>
                         <outlet property="selectTimeButton" destination="Jua-t7-qX3" id="tKW-uD-0GI"/>
+                        <segue destination="iYN-jV-OH3" kind="show" identifier="toMeditationTimes" id="g60-NC-tK4"/>
                     </connections>
                 </tableViewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="SXv-rr-YJ3" userLabel="First Responder" sceneMemberID="firstResponder"/>

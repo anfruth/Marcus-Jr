@@ -21,6 +21,7 @@
 		EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D3205DD19E007D973A /* MeditationModel.swift */; };
 		EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D5205EED7C007D973A /* MeditationListModel.swift */; };
 		EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */; };
+		EA1D07DA2064BEC9007D973A /* NotificationsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */; };
 		EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */; };
 		EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */; };
 		EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */; };
@@ -81,6 +82,7 @@
 		EA1D07D3205DD19E007D973A /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		EA1D07D5205EED7C007D973A /* MeditationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListModel.swift; sourceTree = "<group>"; };
 		EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseContainerViewController.swift; sourceTree = "<group>"; };
+		EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsSetup.swift; sourceTree = "<group>"; };
 		EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PickerViewController.swift; sourceTree = "<group>"; };
 		EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesTableViewController.swift; sourceTree = "<group>"; };
 		EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesModel.swift; sourceTree = "<group>"; };
@@ -243,6 +245,7 @@
 			isa = PBXGroup;
 			children = (
 				EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */,
+				EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */,
 			);
 			path = "Other Controllers";
 			sourceTree = "<group>";
@@ -386,6 +389,7 @@
 				EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */,
 				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
 				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
+				EA1D07DA2064BEC9007D973A /* NotificationsSetup.swift in Sources */,
 				EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */,
 				EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */,
 				EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */,

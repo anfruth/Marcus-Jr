@@ -22,7 +22,7 @@ class NotificationsSetup {
             makeNotDeterminedAlert(alert: &alert, completionHandler: completionHandler)
             
         } else if authorizationStatus == .denied {
-            makeDeniedAlert(alert: &alert)
+            makeDeniedAlert(alert: &alert, completionHandler: nil)
             
         } else {
             return nil
@@ -42,13 +42,14 @@ class NotificationsSetup {
         }))
     }
     
-    private func makeDeniedAlert(alert: inout UIAlertController) {
+    func makeDeniedAlert(alert: inout UIAlertController, completionHandler: (() -> ())?) {
         
         alert = UIAlertController(title: "Enable Notifications in Settings", message: "Enable permanent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended. Marcus Jr. Meditations -> Notifications -> Show as Banners -> Persistent.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Turn On Notifications", style: .default, handler: { _ in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
+                completionHandler?()
             }
         }))
     }

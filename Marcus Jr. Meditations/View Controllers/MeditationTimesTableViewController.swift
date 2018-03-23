@@ -83,8 +83,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             
             DispatchQueue.main.async {
                 if notificationSettings.authorizationStatus != .authorized {
-                    self.navigationController?.popViewController(animated: true)
-                    // add alert explaining.
+                    self.kickUserOutOfController()
                 } else {
                     
                     guard let meditationTimes = self.meditationTimes else {
@@ -112,7 +111,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             
             DispatchQueue.main.async {
                 if notificationSettings.authorizationStatus != .authorized {
-                    self.navigationController?.popViewController(animated: true)
+                    self.kickUserOutOfController()
                 } else {
                     
                     guard let meditationTimes = self.meditationTimes else {
@@ -194,6 +193,21 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         reorderTimesSelected()
         
         return indicesToRemove
+    }
+
+    private func kickUserOutOfController() {
+        var alert = UIAlertController()
+        
+        NotificationsSetup.sharedInstance.makeDeniedAlert(alert: &alert, completionHandler: {
+            self.navigationController?.popViewController(animated: true)
+        })
+        
+        alert.addAction(UIAlertAction(title: "Skip", style: .default, handler: { _ in
+            self.navigationController?.popViewController(animated: true)
+        }))
+        
+        self.present(alert, animated: true, completion: nil)
+
     }
     
     private func disableSelectTimeButton() {

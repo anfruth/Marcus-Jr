@@ -58,7 +58,7 @@ class DailyExerciseContainerViewController: UIViewController {
     
     @IBAction func resetCompletedExercise(_ sender: UIButton) {
         meditationTimes?.resetCompletedExercise()
-        resetCompletedExerciseButton.isHidden = true
+        showOrHideCompletedExerciseButton()
     }
     
     private func showOrHideCompletedExerciseButton() {

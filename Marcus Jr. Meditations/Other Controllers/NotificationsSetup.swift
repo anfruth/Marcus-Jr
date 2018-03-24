@@ -44,7 +44,7 @@ class NotificationsSetup {
     
     func makeDeniedAlert(alert: inout UIAlertController, completionHandler: (() -> ())?) {
         
-        alert = UIAlertController(title: "Enable Notifications in Settings", message: "Enable permanent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended. Marcus Jr. Meditations -> Notifications -> Show as Banners -> Persistent.", preferredStyle: .alert)
+        alert = UIAlertController(title: "Enable Notifications", message: "Enable permanent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Turn On Notifications", style: .default, handler: { _ in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
@@ -75,7 +75,7 @@ class NotificationsSetup {
     
     func suggestPermanentNotifications(completionHandler: @escaping () -> ()) -> UIAlertController {
         
-        let alert = UIAlertController(title: "Turn on Permanent Notifications", message: " Go to Settings to turn on permanent notifications so your meditation time reminder doesn't disappear. Marcus Jr. Meditations -> Notifications -> Show as Banners -> Persistent.", preferredStyle: .alert)
+        let alert = UIAlertController(title: "Permanent Notifications", message: "Go to Settings to turn on permanent notifications so your meditation time reminder doesn't disappear.", preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {

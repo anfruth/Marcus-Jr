@@ -53,7 +53,7 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
     
     private func proceedToExerciseFromNav(topViewController: UIViewController, nav: UINavigationController, notification: UNNotification) {
         
-        nav.popToRootViewController(animated: true)
+        nav.popToRootViewController(animated: false)
             // now go to correct emotion, then correct exercise
             // "\(emotion.rawValue)$\(exercise)$\(date.description)"
             
@@ -71,14 +71,14 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
         
         let storyboard = UIStoryboard(name: "ChooseEmotion", bundle: nil)
         if let meditationVC = storyboard.instantiateViewController(withIdentifier: "meditationList") as? MeditationListTableController {
-            nav.pushViewController(meditationVC, animated: true)
+            nav.pushViewController(meditationVC, animated: false)
             
             if let dailyExerciseContainerVC = storyboard.instantiateViewController(withIdentifier: "dailyContainerVC") as? DailyExerciseContainerViewController {
                 
                 if let dailyExerciseController = storyboard.instantiateViewController(withIdentifier: "dailyExerciseVC") as? DailyExerciseViewController {
                     
                     dailyExerciseContainerVC.addChildViewController(dailyExerciseController)
-                    nav.pushViewController(dailyExerciseContainerVC, animated: true)
+                    nav.pushViewController(dailyExerciseContainerVC, animated: false)
                 }
                 
             }

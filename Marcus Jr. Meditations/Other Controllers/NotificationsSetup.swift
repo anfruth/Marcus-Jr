@@ -14,6 +14,25 @@ class NotificationsSetup {
     
     static let sharedInstance = NotificationsSetup()
     
+    private let notDeterminedTitle = "Not_determined_title"
+    private let notDeterminedTitleComment = "not determined alert title"
+    private let notDeterminedMessage = "Not_determined_message"
+    private let notDeterminedMessageComment = "not determined alert message"
+    private let notDeterminedOptionTitle = "Not_determined_option_title"
+    private let notDeterminedOptionTitleComment = "title of option for not determined alert"
+    private let deniedTitleComment = "denied alert title"
+    private let deniedMessage = "Denied_message"
+    private let deniedMessageComment = "Denied alert messsage"
+    private let deniedOptionTitleComment = "title of option for denied alert"
+    private let systemPlaceholder = "System_placeholder"
+    private let systemPlaceholderComment = "system placeholder for hidden previews"
+    private let permanentTitle = "Permanent_title"
+    private let permanentTitleComment = "permanent alert title"
+    private let permanentMessage = "Permanent_message"
+    private let permanentMessageComment = "permanent alert message"
+    private let skipTitle = "Skip"
+    private let settingsTitle = "Settings"
+
     func giveAppPromptForNotifications(authorizationStatus: UNAuthorizationStatus, completionHandler: @escaping (Bool) -> ()) -> UIAlertController? {
         
         var alert = UIAlertController()
@@ -28,25 +47,25 @@ class NotificationsSetup {
             return nil
         }
         
-        alert.addAction(UIAlertAction(title: "Skip", style: .default, handler: nil))
+        alert.addAction(UIAlertAction(title: skipTitle, style: .default, handler: nil))
         
         return alert
     }
     
     private func makeNotDeterminedAlert(alert: inout UIAlertController, completionHandler:  @escaping (Bool) -> ()) {
         
-        alert = UIAlertController(title: "Enable Notifications", message: "Allow the app to send you reminders to meditate based on the times you choose. Without enabling, no reminders will be sent and you will be unable to set meditation times.", preferredStyle: .alert)
+        alert = UIAlertController(title: NSLocalizedString(notDeterminedTitle, comment: notDeterminedTitleComment), message: NSLocalizedString(notDeterminedMessage, comment: notDeterminedMessageComment), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Enable Notifications", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString(notDeterminedOptionTitle, comment: notDeterminedOptionTitleComment), style: .default, handler: { _ in
             NotificationsSetup.sharedInstance.giveSystemPromptForNotifications(completionHandler: completionHandler)
         }))
     }
     
     func makeDeniedAlert(alert: inout UIAlertController, completionHandler: (() -> ())?) {
         
-        alert = UIAlertController(title: "Enable Notifications", message: "Enable permanent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended.", preferredStyle: .alert)
+        alert = UIAlertController(title: NSLocalizedString(notDeterminedTitle, comment: deniedTitleComment), message: NSLocalizedString(deniedMessage, comment: deniedMessageComment), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Turn On Notifications", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: NSLocalizedString(notDeterminedOptionTitle, comment: deniedOptionTitleComment), style: .default, handler: { _ in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 completionHandler?()
@@ -62,7 +81,7 @@ class NotificationsSetup {
                 let goToMeditationAction = UNNotificationAction(identifier: "goToMeditation", title: "Go to Meditation", options: .foreground)
                 
                 // localize.
-                let meditationCategory = UNNotificationCategory(identifier: "meditationCategory", actions: [goToMeditationAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: "Time to Meditate. Head on over to your daily meditation.", options: UNNotificationCategoryOptions(rawValue: 0))
+                let meditationCategory = UNNotificationCategory(identifier: "meditationCategory", actions: [goToMeditationAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: NSLocalizedString(self.systemPlaceholder, comment: self.systemPlaceholderComment), options: UNNotificationCategoryOptions(rawValue: 0))
                 
                 center.setNotificationCategories([meditationCategory])
                 center.delegate = NotificationsReceiver.sharedInstance
@@ -75,16 +94,16 @@ class NotificationsSetup {
     
     func suggestPermanentNotifications(completionHandler: @escaping () -> ()) -> UIAlertController {
         
-        let alert = UIAlertController(title: "Permanent Notifications", message: "Go to Settings to turn on permanent notifications so your meditation time reminder doesn't disappear.", preferredStyle: .alert)
+        let alert = UIAlertController(title: NSLocalizedString(permanentTitle, comment: permanentTitleComment), message: NSLocalizedString(permanentMessage, comment: permanentMessageComment), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Settings", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: settingsTitle, style: .default, handler: { _ in
             if let url = URL(string: UIApplicationOpenSettingsURLString) {
                 UIApplication.shared.open(url, options: [:], completionHandler: nil)
                 completionHandler()
             }
         }))
         
-        alert.addAction(UIAlertAction(title: "Skip", style: .default, handler: { _ in
+        alert.addAction(UIAlertAction(title: skipTitle, style: .default, handler: { _ in
             completionHandler()
         }))
         

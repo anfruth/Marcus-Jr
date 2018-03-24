@@ -31,7 +31,6 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     @IBOutlet weak var fourthX: UIButton!
     @IBOutlet weak var fifthX: UIButton!
     
-    
     weak var delegate: DailyExerciseViewController?
     
     var meditationTimes: MeditationTimes?

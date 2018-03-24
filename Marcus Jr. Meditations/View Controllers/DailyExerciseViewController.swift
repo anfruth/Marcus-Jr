@@ -18,6 +18,13 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     var meditationTimes: MeditationTimes?
     var alreadyShownVC: Bool = false
     
+    private let standardFont = "SanFranciscoDisplay"
+    private let meditationTimesSegueID = "toMeditationTimes"
+    private let commentaryKey = "_commentary"
+    private let quotationComment = "quotation of exercise"
+    private let commentaryComment = "commentary on exercise"
+    private let actionComment = "action on exercise"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
 
@@ -30,15 +37,15 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         // _title, _quotation, _commentary, _action
         if let exerciseKey = SelectedExercise.key {
             
-            if let standardExerciseFont =  UIFont(name: "SanFranciscoDisplay-Regular", size: 18) {
-                let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: "quotation of exercise") + "\"", attributes: [.font: standardExerciseFont])
-                var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_commentary", comment: "commentary on exercise"), attributes: [.font: standardExerciseFont])
-                if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + "_commentary" {
+            if let standardExerciseFont =  UIFont(name: "\(standardFont)-Regular", size: 18) {
+                let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: quotationComment) + "\"", attributes: [.font: standardExerciseFont])
+                var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + commentaryKey, comment: commentaryComment), attributes: [.font: standardExerciseFont])
+                if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + commentaryKey {
                     commentary = NSMutableAttributedString(string: "")
                 }
-                let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: "action on exercise") + "\n", attributes: [.font: standardExerciseFont])
+                let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: actionComment) + "\n", attributes: [.font: standardExerciseFont])
 
-                if let boldExerciseFont = UIFont(name: "SanFranciscoDisplay-Semibold", size: 18) {
+                if let boldExerciseFont = UIFont(name: "\(standardFont)-Semibold", size: 18) {
                     var attributedCommentary: NSMutableAttributedString
                     if commentary.string != "" {
                         attributedCommentary = NSMutableAttributedString(string: "\n\nCommentary:", attributes: [.font: boldExerciseFont])
@@ -79,7 +86,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                 
                 navigationController?.isNavigationBarHidden = true
             }
-        } else if segue.identifier == "toMeditationTimes" {
+        } else if segue.identifier == meditationTimesSegueID {
             let meditationTimesController = segue.destination
             if let meditationTimesController = meditationTimesController as? MeditationTimesTableViewController {
                 meditationTimesController.meditationTimes = meditationTimes
@@ -101,7 +108,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                     self.presentCorrectAlert(authorizationStatus: .denied)
                     
                 } else {
-                    self.performSegue(withIdentifier: "toMeditationTimes", sender: self)
+                    self.performSegue(withIdentifier: self.meditationTimesSegueID, sender: self)
                 }
             }
         }
@@ -113,7 +120,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
             DispatchQueue.main.async {
                 let permAlert = NotificationsSetup.sharedInstance.suggestPermanentNotifications() {
                     if userEnabledNotifications {
-                        self.performSegue(withIdentifier: "toMeditationTimes", sender: self)
+                        self.performSegue(withIdentifier: self.meditationTimesSegueID, sender: self)
                     }
 
                 }

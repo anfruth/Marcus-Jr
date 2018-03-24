@@ -16,11 +16,13 @@ class DailyExerciseContainerViewController: UIViewController {
     var meditationTimes: MeditationTimes?
     var alreadyShownVC: Bool = false
     
+    private let exerciseTitleComment = "title of exercise"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
         if let exerciseKey = SelectedExercise.key {
-            title = NSLocalizedString(exerciseKey + "_title", comment: "title of exercise")
+            title = NSLocalizedString(exerciseKey + "_title", comment: exerciseTitleComment)
         }
         
         resetCompletedExerciseButton.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)

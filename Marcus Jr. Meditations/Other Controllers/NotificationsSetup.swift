@@ -14,6 +14,7 @@ class NotificationsSetup {
     
     static let sharedInstance = NotificationsSetup()
     
+    // alert strings
     private let notDeterminedTitle = "Not_determined_title"
     private let notDeterminedTitleComment = "not determined alert title"
     private let notDeterminedMessage = "Not_determined_message"

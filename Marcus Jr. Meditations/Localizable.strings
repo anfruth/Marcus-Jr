@@ -12,7 +12,7 @@
 
 "00What_is" = "What is under your control and what is not";
 "00What_is_title" = "Enchiridion Chapter 1";
-"00What_is_quotation" = "Seek at once, therefore, to be able to say to every unpleasing semblance, “You are but a semblance and by no means the real thing.” And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you.";
+"00What_is_quotation" = "Seek at once, therefore, to be able to say to every unpleasing semblance, 'You are but a semblance and by no means the real thing.' And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you.";
 "00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.";
 "00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?";
 
@@ -67,13 +67,13 @@
 
 "09You_cannot" = "You cannot lose what you do not own"; // chapter 11
 "09You_cannot_title" = "Enchiridion Chapter 11";
-"09You_cannot_quotation" = "Never say of anything, “I have lost it,” but, “I have restored it.” Has your child died? It is restored. Has your wife died? She is restored. Has your estate been taken away? That likewise is restored.";
+"09You_cannot_quotation" = "Never say of anything, 'I have lost it,' but, 'I have restored it.' Has your child died? It is restored. Has your wife died? She is restored. Has your estate been taken away? That likewise is restored.";
 "09You_cannot_commentary" = "Do not see the people or things in your life as belonging to you. Everything exists only temporarily. Going back to non-existence is the natural state of all things. Understanding this truth will help soften the blow when the loss happens.";
 "09You_cannot_action" = "Consider the people and things you are attached to. Reflect on their impermanence.";
 
 "10The_price" = "The price of anxiety is too high to pay"; //chapter 12
 "10The_price_title" = "Enchiridion Chapter 12";
-"10The_price_quotation" = "If you would improve, lay aside such reasonings as these: “If I neglect my affairs, I shall not have a maintenance; if I do not punish my servant, he will be good for nothing.” For it were better to die of hunger, exempt from grief and fear, than to live in affluence with perturbation; and it is better that your servant should be bad than you unhappy.";
+"10The_price_quotation" = "If you would improve, lay aside such reasonings as these: 'If I neglect my affairs, I shall not have a maintenance; if I do not punish my servant, he will be good for nothing.' For it were better to die of hunger, exempt from grief and fear, than to live in affluence with perturbation; and it is better that your servant should be bad than you unhappy.";
 "10The_price_commentary" = "Fear and worrying is worse than the negative imagined outcome happening. It is better to let that thing happen than to give up your tranquility.";
 "10The_price_action" = "Consider the torment you've put yourself through due to excessive worry. To stop worrying, accept that the bad thing could happen, but it is better that it does than for you to suffer worrying.";
 
@@ -98,7 +98,7 @@
 
 "14Be_kind" = "Be kind to those who are suffering but don't let it spread to you"; // chap 16
 "14Be_kind_title" = "Enchiridion Chapter 16";
-"14Be_kind_quotation" = "When you see anyone weeping for grief, either that his son has gone abroad or that he has suffered in his affairs, take care not to be overcome by the apparent evil, but discriminate and be ready to say, “What hurts this man is not this occurrence itself—for another man might not be hurt by it—but the view he chooses to take of it.” As far as conversation goes, however, do not disdain to accommodate yourself to him and, if need be, to groan with him.";
+"14Be_kind_quotation" = "When you see anyone weeping for grief, either that his son has gone abroad or that he has suffered in his affairs, take care not to be overcome by the apparent evil, but discriminate and be ready to say, 'What hurts this man is not this occurrence itself—for another man might not be hurt by it—but the view he chooses to take of it.' As far as conversation goes, however, do not disdain to accommodate yourself to him and, if need be, to groan with him.";
 "14Be_kind_commentary" = "Remind yourself that people ultimately suffer from the way they view things than by the things that actually happen to them. Still be good to people who are suffering though.";
 "14Be_kind_action" = "Think about something painful in your life. Could you imagine a way of looking at that thing that makes it less painful or not painful at all?";
 
@@ -110,7 +110,7 @@
 
 "16Every_circumstance" = "Every circumstance brings advantages"; // 18
 "16Every_circumstance_title" = "Enchiridion Chapter 18";
-"16Every_circumstance_quotation" = "...but discriminate and say, “Nothing is portended to me, either to my paltry body, or property, or reputation, or children, or wife. But to me all portents are lucky if I will. For whatsoever happens, it belongs to me to derive advantage therefrom.”";
+"16Every_circumstance_quotation" = "...but discriminate and say, 'Nothing is portended to me, either to my paltry body, or property, or reputation, or children, or wife. But to me all portents are lucky if I will. For whatsoever happens, it belongs to me to derive advantage therefrom.'";
 "16Every_circumstance_commentary" = "If you choose to react to a negative event in some positive way, then the negative event doesn't have to be negative at all. The way you view things determines what is good and bad, not the things themselves.";
 "16Every_circumstance_action" = "Think of some negative events that have happened recently. Can you find any positive in them?";
 
@@ -143,18 +143,18 @@
 
 "22Do_not" = "Do not sacrifice integrity for status";
 "22Do_not_title" = "Enchiridion Chapter 24";
-"22Do_not_quotation" = "Let not such considerations as these distress you: “I shall live in discredit and be nobody anywhere.” For if discredit be an evil, you can no more be involved in evil through another than in baseness. Is it any business of yours, then, to get power or to be admitted to an entertainment? By no means. How then, after all, is this discredit? And how it is true that you will be nobody anywhere when you ought to be somebody in those things only which are within your own power, in which you may be of the greatest consequence?";
+"22Do_not_quotation" = "Let not such considerations as these distress you: 'I shall live in discredit and be nobody anywhere.' For if discredit be an evil, you can no more be involved in evil through another than in baseness. Is it any business of yours, then, to get power or to be admitted to an entertainment? By no means. How then, after all, is this discredit? And how it is true that you will be nobody anywhere when you ought to be somebody in those things only which are within your own power, in which you may be of the greatest consequence?";
 "22Do_not_commentary" = "Do not worry about status or power. These are things outside your control. The things that matter (virtue) are within your control and have the greatest consequence on your life.";
 "22Do_not_action" = "If you find yourself worrying about your status in life, remember that the only thing you need is virtue. It makes no sense to worry about things like status because you cannot control them.";
 
 "23The_price" = "The price of some externals may not be worth it";
 "23The_price_title" = "Enchiridion Chapter 25";
 "23The_price_quotation" = "Is anyone preferred before you at an entertainment, or in courtesies, or in confidential intercourse? If these things are good, you ought to rejoice that he has them; and if they are evil, do not be grieved that you have them not. And remember that you cannot be permitted to rival others in externals without using the same means to obtain them.";
-"23The_price_commentary" = "Don't be upset if others have things you want. Remember that they often sacrificed their integrity to get these things. For you, a person of wisdom, the price is not worth it.";
+"23The_price_action" = "Don't be upset if others have things you want. Remember that they often sacrificed their integrity to get these things. For you, a person of wisdom, the price is not worth it.";
 
 "24React_the" = "React the same way we would tell others to under trying circumstances";
 "24React_the_title" = "Enchiridion Chapter 26";
-"24React_the_quotation" = "Is the child or wife of another dead? There is no one who would not say, “This is an accident of mortality.” But if anyone’s own child happens to die, it is immediately, “Alas! how wretched am I!” It should be always remembered how we are affected on hearing the same thing concerning others.";
+"24React_the_quotation" = "Is the child or wife of another dead? There is no one who would not say, 'This is an accident of mortality.' But if anyone’s own child happens to die, it is immediately, 'Alas! how wretched am I!' It should be always remembered how we are affected on hearing the same thing concerning others.";
 "24React_the_action" = "Think of tough things you are going through or have gone through. Do what you would tell another to do in the same situation";
 
 "25The_evil" = "The evil we endure is our own doing";
@@ -171,7 +171,7 @@
 
 "27Understand_the" = "Understand the price of reason and pay it";
 "27Understand_the_title" = "Enchiridion Chapter 29";
-"27Understand_the_quotation" = "In every affair consider what precedes and what follows, and then undertake it. Otherwise you will begin with spirit, indeed, careless of the consequences, and when these are developed, you will shamefully desist. “I would conquer at the Olympic Games.” But consider what precedes and what follows, and then, if it be for your advantage, engage in the affair. You must conform to rules, submit to a diet, refrain from dainties; exercise your body, whether you choose it or not, at a stated hour, in heat and cold; you must drink no cold water, and sometimes no wine—in a word, you must give yourself up to your trainer as to a physician. Then, in the combat, you may be thrown into a ditch, dislocate your arm, turn your ankle, swallow an abundance of dust, receive stripes [for negligence], and, after all, lose the victory. When you have reckoned up all this, if your inclination still holds, set about the combat...You must be one man, either good or bad. You must cultivate either your own reason or else externals; apply yourself either to things within or without you—that is, be either a philosopher or one of the mob.";
+"27Understand_the_quotation" = "In every affair consider what precedes and what follows, and then undertake it. Otherwise you will begin with spirit, indeed, careless of the consequences, and when these are developed, you will shamefully desist. 'I would conquer at the Olympic Games.' But consider what precedes and what follows, and then, if it be for your advantage, engage in the affair. You must conform to rules, submit to a diet, refrain from dainties; exercise your body, whether you choose it or not, at a stated hour, in heat and cold; you must drink no cold water, and sometimes no wine—in a word, you must give yourself up to your trainer as to a physician. Then, in the combat, you may be thrown into a ditch, dislocate your arm, turn your ankle, swallow an abundance of dust, receive stripes [for negligence], and, after all, lose the victory. When you have reckoned up all this, if your inclination still holds, set about the combat...You must be one man, either good or bad. You must cultivate either your own reason or else externals; apply yourself either to things within or without you—that is, be either a philosopher or one of the mob.";
 "27Understand_the_commentary" = "Do not take half measures. If you want to succeed at any activity, including improving your character or pursuing wisdom, you must throw yourself into the committment whole heartedly.";
 "27Understand_the_action" = "What committment have you made towards pursuing wisdom and virtue? If you are dabbling in these concepts, consider becoming serious and exercise the appropriate amount of discipline to achieve your goal.";
 
@@ -192,7 +192,7 @@
 "30Be_indifferent_title" = "Enchiridion Chapter 32";
 "30Be_indifferent_quotation" = "When you have recourse to divination, remember that you know not what the event will be, and you come to learn it of the diviner; but of what nature it is you knew before coming; at least, if you are of philosophic mind. For if it is among the things not within our own power, it can by no means be either good or evil. Do not, therefore, bring with you to the diviner either desire or aversion—else you will approach him trembling—but first clearly understand that every event is indifferent and nothing to you, of whatever sort it may be; for it will be in your power to make a right use of it, and this no one can hinder.";
 "30Be_indifferent_commentary" = "The future should not matter to you because external events do not matter to you. Only what you control is of importance.";
-"30Be_indifferent_action" = "Consider a future event you're worried about. Remind yourself that you've chosen to be indifferent to it and practice that."
+"30Be_indifferent_action" = "Consider a future event you're worried about. Remind yourself that you've chosen to be indifferent to it and practice that.";
 
 "31Think_clearly" = "Think clearly of the consequences before giving in to a guilty pleasure"; // 34
 "31Think_clearly_title" = "Enchiridion Chapter 34";
@@ -208,7 +208,7 @@
 
 "33Appreciate_others" = "Appreciate others who do good things for you"; // 36
 "33Appreciate_others_title" = "Enchiridion Chapter 36";
-"33Appreciate_others_quotation" = "As the proposition, “either it is day or it is night,” has much force in a disjunctive argument, but none at all in a conjunctive one, so, at a feast, to choose the largest share is very suitable to the bodily appetite, but utterly inconsistent with the social spirit of the entertainment. Remember, then, when you eat with another, not only the value to the body of those things which are set before you, but also the value of proper courtesy toward your host.";
+"33Appreciate_others_quotation" = "As the proposition, 'either it is day or it is night,' has much force in a disjunctive argument, but none at all in a conjunctive one, so, at a feast, to choose the largest share is very suitable to the bodily appetite, but utterly inconsistent with the social spirit of the entertainment. Remember, then, when you eat with another, not only the value to the body of those things which are set before you, but also the value of proper courtesy toward your host.";
 "33Appreciate_others_action" = "Do you have those in your life that are providing good things for you? If so, make sure you take care to appreciate them instead of merely the benefit for yourself.";
 
 
@@ -241,7 +241,7 @@
 "38Your_main" = "Your main focus should be perfecting your reason"; // 41
 "38Your_main_title" = "Enchiridion Chapter 41";
 "38Your_main_quotation" = "It is a mark of want of intellect to spend much time in things relating to the body, as to be immoderate in exercises, in eating and drinking, and in the discharge of other animal functions. These things should be done incidentally and our main strength be applied to our reason.";
-"38Your_main_commentary" = "While physical exercise is important, the cultivation of a sound mind is even more important."
+"38Your_main_commentary" = "While physical exercise is important, the cultivation of a sound mind is even more important.";
 "38Your_main_action" = "What are you doing to cultivate a sound mind? If you set aside some time in the day for exercise, do you also set aside some time for mental improvement?";
 
 
@@ -258,13 +258,13 @@
 
 "41Superficial_qualities" = "Superficial qualities like wealth do not determine your worth"; //44
 "41Superficial_qualities_title" = "Enchiridion Chapter 44";
-"41Superficial_qualities_quotation" = "These reasonings have no logical connection: “I am richer than you, therefore I am your superior.” “I am more eloquent than you, therefore I am your superior.” The true logical connection is rather this: “I am richer than you, therefore my possessions must exceed yours.” “I am more eloquent than you, therefore my style must surpass yours.” But you, after all, consist neither in property nor in style.";
+"41Superficial_qualities_quotation" = "These reasonings have no logical connection: 'I am richer than you, therefore I am your superior.' 'I am more eloquent than you, therefore I am your superior.' The true logical connection is rather this: 'I am richer than you, therefore my possessions must exceed yours.' 'I am more eloquent than you, therefore my style must surpass yours.' But you, after all, consist neither in property nor in style.";
 "41Superficial_qualities_action" = "Do you ever base your value on what you have or some other superficial quality? If so, stop.";
 
 "42Dont_judge" = "Dont judge others harshly or pompously"; //45
 "42Dont_judge_title" = "Enchiridion Chapter 45";
 "42Dont_judge_quotation" = "Does anyone bathe hastily? Do not say that he does it ill, but hastily. Does anyone drink much wine? Do not say that he does ill, but that he drinks a great deal. For unless you perfectly understand his motives, how should you know if he acts ill? Thus you will not risk yielding to any appearances but such as you fully comprehend.";
-"42Dont_judge_action" = "If you find yourself judging others, remember that you do not know everything about their situation and motives. Give them the benefit of the doubt until you have all the facts."
+"42Dont_judge_action" = "If you find yourself judging others, remember that you do not know everything about their situation and motives. Give them the benefit of the doubt until you have all the facts.";
 
 "43Don't_talk" = "Don't talk the talk, walk the walk"; // 46
 "43Don't_talk_title" = "Enchiridion Chapter 46";
@@ -274,7 +274,7 @@
 
 "44Do_not" = "Do not practice frugality for show"; // 47
 "44Do_not_title" = "Enchiridion Chapter 47";
-"44Do_not_quotation" = "When you have learned to nourish your body frugally, do not pique yourself upon it; nor, if you drink water, be saying upon every occasion, “I drink water.” But first consider how much more frugal are the poor than we, and how much more patient of hardship. If at any time you would inure yourself by exercise to labor and privation, for your own sake and not for the public, do not attempt great feats; but when you are violently thirsty, just rinse your mouth with water, and tell nobody.";
+"44Do_not_quotation" = "When you have learned to nourish your body frugally, do not pique yourself upon it; nor, if you drink water, be saying upon every occasion, 'I drink water.' But first consider how much more frugal are the poor than we, and how much more patient of hardship. If at any time you would inure yourself by exercise to labor and privation, for your own sake and not for the public, do not attempt great feats; but when you are violently thirsty, just rinse your mouth with water, and tell nobody.";
 "44Do_not_action" = "If you brag or feel some self-righteousness from being frugal, stop expressing that. Just be frugal for its own sake.";
 
 
@@ -285,10 +285,10 @@
 
 
 "46Action_matters" = "Action matters, not your ability to understand complicated Stoic doctrines."; // 49
-"45You_should_title" = "Enchiridion Chapter 49";
-"45You_should_quotation" = "When anyone shows himself vain on being able to understand and interpret the works of Chrysippus, say to yourself: “Unless Chrysippus had written obscurely, this person would have had nothing to be vain of. But what do I desire? To understand nature, and follow her. I ask, then, who interprets her; and hearing that Chrysippus does, I have recourse to him. I do not understand his writings. I seek, therefore, one to interpret them.” So far there is nothing to value myself upon. And when I find an interpreter, what remains is to make use of his instructions. This alone is the valuable thing.";
-"45You_should_commentary" = "Don't be proud of yourself for understanding Stoic doctrines and theory. (Chrysippus was a well-known ancient Stoic whose complete works have all been lost.) You should pursue Stoic principles for their own sake."
-"45You_should_action" = "Make sure not to lose sight of why you're studying Stoic principles in the first place. It is not to impress others."
+"46Action_matters_title" = "Enchiridion Chapter 49";
+"46Action_matters_quotation" = "When anyone shows himself vain on being able to understand and interpret the works of Chrysippus, say to yourself: 'Unless Chrysippus had written obscurely, this person would have had nothing to be vain of. But what do I desire? To understand nature, and follow her. I ask, then, who interprets her; and hearing that Chrysippus does, I have recourse to him. I do not understand his writings. I seek, therefore, one to interpret them.' So far there is nothing to value myself upon. And when I find an interpreter, what remains is to make use of his instructions. This alone is the valuable thing.";
+"46Action_matters_commentary" = "Don't be proud of yourself for understanding Stoic doctrines and theory. (Chrysippus was a well-known ancient Stoic whose complete works have all been lost.) You should pursue Stoic principles for their own sake.";
+"46Action_matters_action" = "Make sure not to lose sight of why you're studying Stoic principles in the first place. It is not to impress others.";
 
 
 "47Put_your" = "Put your philosophy into action"; // 51

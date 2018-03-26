@@ -127,15 +127,16 @@ extension EmotionsViewController: UICollectionViewDelegateFlowLayout {
         
         let widthOfCollectionView = collectionView.bounds.width
         
+        guard let collectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
+            return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
+        }
+        
         if UIScreen.main.traitCollection.horizontalSizeClass == .compact {
             return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
             
-        } else if UIScreen.main.traitCollection.horizontalSizeClass == .regular {
-            let lessThanHalfCollectionView = 0.495 * widthOfCollectionView
-            return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView)
-            
         } else {
-            return CGSize()
+            let lessThanHalfCollectionView = 0.50 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing / 2
+            return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView)
         }
     }
     

@@ -36,33 +36,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         
         // _title, _quotation, _commentary, _action
         if let exerciseKey = SelectedExercise.key {
-            
-            if let standardExerciseFont =  UIFont(name: "\(standardFont)-Regular", size: 18) {
-                let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: quotationComment) + "\"", attributes: [.font: standardExerciseFont])
-                var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + commentaryKey, comment: commentaryComment), attributes: [.font: standardExerciseFont])
-                if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + commentaryKey {
-                    commentary = NSMutableAttributedString(string: "")
-                }
-                let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: actionComment) + "\n", attributes: [.font: standardExerciseFont])
-
-                if let boldExerciseFont = UIFont(name: "\(standardFont)-Semibold", size: 18) {
-                    var attributedCommentary: NSMutableAttributedString
-                    if commentary.string != "" {
-                        attributedCommentary = NSMutableAttributedString(string: "\n\nCommentary:", attributes: [.font: boldExerciseFont])
-                    } else {
-                        attributedCommentary = NSMutableAttributedString(string: "")
-                    }
-                    
-                    let attributedAction = NSMutableAttributedString(string: "\n\nAction:", attributes: [.font: boldExerciseFont])
-                    
-                    quotation.append(attributedCommentary)
-                    quotation.append(commentary)
-                    quotation.append(attributedAction)
-                    quotation.append(action)
-                    
-                    exerciseTextView.attributedText = quotation
-                }
-            }
+            setupExerciseText(exerciseKey: exerciseKey)
         }
     }
     
@@ -114,6 +88,45 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         }
     }
     
+    private func setupExerciseText(exerciseKey: String) {
+        
+        if let standardExerciseFont =  UIFont(name: "\(standardFont)-Regular", size: 18) {
+            let quotation = NSMutableAttributedString(string: "\n\"" + NSLocalizedString(exerciseKey + "_quotation", comment: quotationComment) + "\"", attributes: [.font: standardExerciseFont])
+            var commentary =  NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + commentaryKey, comment: commentaryComment), attributes: [.font: standardExerciseFont])
+            if commentary.string.trimmingCharacters(in: .whitespacesAndNewlines) == exerciseKey + commentaryKey {
+                commentary = NSMutableAttributedString(string: "")
+            }
+            let action = NSMutableAttributedString(string: "\n\n" + NSLocalizedString(exerciseKey + "_action", comment: actionComment) + "\n", attributes: [.font: standardExerciseFont])
+            
+            if let boldExerciseFont = UIFont(name: "\(standardFont)-Semibold", size: 18) {
+                let attributedElements = createAttributedCommentaryAndAction(commentary: commentary, boldExerciseFont: boldExerciseFont)
+                createFullExerciseText(quotation: quotation, attributedElements: attributedElements, commentary: commentary, action: action)
+            }
+        }
+    }
+    
+    private func createAttributedCommentaryAndAction(commentary: NSAttributedString, boldExerciseFont: UIFont) -> (NSMutableAttributedString, NSMutableAttributedString) {
+        var attributedCommentary: NSMutableAttributedString
+        if commentary.string != "" {
+            attributedCommentary = NSMutableAttributedString(string: "\n\nCommentary:", attributes: [.font: boldExerciseFont])
+        } else {
+            attributedCommentary = NSMutableAttributedString(string: "")
+        }
+        
+        let attributedAction = NSMutableAttributedString(string: "\n\nAction:", attributes: [.font: boldExerciseFont])
+        
+        return (attributedCommentary, attributedAction)
+    }
+    
+    private func createFullExerciseText(quotation: NSMutableAttributedString, attributedElements: (NSMutableAttributedString, NSMutableAttributedString), commentary: NSMutableAttributedString, action: NSMutableAttributedString) {
+        quotation.append(attributedElements.0)
+        quotation.append(commentary)
+        quotation.append(attributedElements.1)
+        quotation.append(action)
+        
+        exerciseTextView.attributedText = quotation
+    }
+    
     private func presentCorrectAlert(authorizationStatus: UNAuthorizationStatus) {
         let alert = NotificationsSetup.sharedInstance.giveAppPromptForNotifications(authorizationStatus: authorizationStatus) { (userEnabledNotifications) in
             
@@ -124,9 +137,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                     }
 
                 }
-                
                 NotificationsReceiver.sharedInstance.topViewController?.present(permAlert, animated: true, completion: nil)
-                
             }
         }
         

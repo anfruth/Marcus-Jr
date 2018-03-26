@@ -245,12 +245,12 @@
 "38Your_main_action" = "What are you doing to cultivate a sound mind? If you set aside some time in the day for exercise, do you also set aside some time for mental improvement?";
 
 
-"39Do_not" = "Do not take others' judgments personally"; // 42
+"39Do_not" = "Do not take others' judgments about you personally"; // 42
 "39Do_not_title" = "Enchiridion Chapter 42";
 "39Do_not_quotation" = "When any person does ill by you, or speaks ill of you, remember that he acts or speaks from an impression that it is right for him to do so. Now it is not possible that he should follow what appears right to you, but only what appears so to himself. Therefore, if he judges from false appearances, he is the person hurt, since he, too, is the person deceived.";
 "39Do_not_action" = "Think of times where others have unfairly criticized you. Think about how they are the ones who are hurt and deceived by their bad judgements. You are not hurt by it because you live according to reason and do not let externals bother you.";
 
-"40Use_wisdom" = "Use wisdom to avoid unnecessary conflict"; // 43
+"40Use_wisdom" = "Use wisdom to avoid conflict"; // 43
 "40Use_wisdom_title" = "Enchiridion Chapter 43";
 "40Use_wisdom_quotation" = "Everything has two handles: one by which it may be borne, another by which it cannot. If your brother acts unjustly, do not lay hold on the affair by the handle of his injustice, for by that it cannot be borne, but rather by the opposite—that he is your brother, that he was brought up with you; and thus you will lay hold on it as it is to be borne.";
 "40Use_wisdom_commentary" = "It is wiser to treat others well even if they treat you with injustice.";
@@ -261,7 +261,7 @@
 "41Superficial_qualities_quotation" = "These reasonings have no logical connection: 'I am richer than you, therefore I am your superior.' 'I am more eloquent than you, therefore I am your superior.' The true logical connection is rather this: 'I am richer than you, therefore my possessions must exceed yours.' 'I am more eloquent than you, therefore my style must surpass yours.' But you, after all, consist neither in property nor in style.";
 "41Superficial_qualities_action" = "Do you ever base your value on what you have or some other superficial quality? If so, stop.";
 
-"42Dont_judge" = "Dont judge others harshly or pompously"; //45
+"42Dont_judge" = "Don't judge others harshly"; //45
 "42Dont_judge_title" = "Enchiridion Chapter 45";
 "42Dont_judge_quotation" = "Does anyone bathe hastily? Do not say that he does it ill, but hastily. Does anyone drink much wine? Do not say that he does ill, but that he drinks a great deal. For unless you perfectly understand his motives, how should you know if he acts ill? Thus you will not risk yielding to any appearances but such as you fully comprehend.";
 "42Dont_judge_action" = "If you find yourself judging others, remember that you do not know everything about their situation and motives. Give them the benefit of the doubt until you have all the facts.";

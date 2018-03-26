@@ -81,8 +81,6 @@ struct MeditationListConfiguration {
        "45You_should":              [NegativeEmotionType.envy],
        "46Action_matters":          [PositiveEmotionType.perseverance, PositiveEmotionType.discipline],
        "47Put_your":                [PositiveEmotionType.perseverance, PositiveEmotionType.discipline],
-       "48Action_over":             [PositiveEmotionType.perseverance, PositiveEmotionType.discipline]
-    
     ]
     
 }

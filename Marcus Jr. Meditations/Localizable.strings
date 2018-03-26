@@ -143,8 +143,9 @@
 
 "22Do_not" = "Do not sacrifice integrity for status";
 "22Do_not_title" = "Enchiridion Chapter 24";
-"22Do_not_quotation" = "";
-
+"22Do_not_quotation" = "Let not such considerations as these distress you: “I shall live in discredit and be nobody anywhere.” For if discredit be an evil, you can no more be involved in evil through another than in baseness. Is it any business of yours, then, to get power or to be admitted to an entertainment? By no means. How then, after all, is this discredit? And how it is true that you will be nobody anywhere when you ought to be somebody in those things only which are within your own power, in which you may be of the greatest consequence?";
+"22Do_not_commentary" = "Do not worry about status or power. These are things outside your control. The things that matter (virtue) are within your control and have the greatest consequence on your life.";
+"22Do_not_action" = "If you find yourself worrying about your status in life, remember that the only thing you need is virtue. It makes no sense to worry about things like status because you cannot control them.";
 
 "23The_price" = "The price of some externals may not be worth it";
 "23The_price_title" = "Enchiridion Chapter 25";
@@ -164,34 +165,136 @@
 
 "26Don't_let" = "Don't let others negatively influence your mind";
 "26Don't_let_title" = "Enchiridion Chapter 28";
-
+"26Don't_let_quotation" = "If a person had delivered up your body to some passer-by, you would certainly be angry. And do you feel no shame in delivering up your own mind to any reviler, to be disconcerted and confounded?";
+"26Don't_let_commentary" = "Just as you would be angry if you gave someone else control over your body, you should be just as angry if someone else controlled your thoughts in a negative way. You control your own mind. Don't let others negatively influence you.";
+"26Don't_let_action" = "Do you have anyone in your life that negatively influences your thoughts? If so, be aware of their influence and protect yourself against it.";
 
 "27Understand_the" = "Understand the price of reason and pay it";
+"27Understand_the_title" = "Enchiridion Chapter 29";
+"27Understand_the_quotation" = "In every affair consider what precedes and what follows, and then undertake it. Otherwise you will begin with spirit, indeed, careless of the consequences, and when these are developed, you will shamefully desist. “I would conquer at the Olympic Games.” But consider what precedes and what follows, and then, if it be for your advantage, engage in the affair. You must conform to rules, submit to a diet, refrain from dainties; exercise your body, whether you choose it or not, at a stated hour, in heat and cold; you must drink no cold water, and sometimes no wine—in a word, you must give yourself up to your trainer as to a physician. Then, in the combat, you may be thrown into a ditch, dislocate your arm, turn your ankle, swallow an abundance of dust, receive stripes [for negligence], and, after all, lose the victory. When you have reckoned up all this, if your inclination still holds, set about the combat...You must be one man, either good or bad. You must cultivate either your own reason or else externals; apply yourself either to things within or without you—that is, be either a philosopher or one of the mob.";
+"27Understand_the_commentary" = "Do not take half measures. If you want to succeed at any activity, including improving your character or pursuing wisdom, you must throw yourself into the committment whole heartedly.";
+"27Understand_the_action" = "What committment have you made towards pursuing wisdom and virtue? If you are dabbling in these concepts, consider becoming serious and exercise the appropriate amount of discipline to achieve your goal.";
+
 "28Be_good" = "Be good to others even if they treat you poorly";
+"28Be_good_title" = "Enchiridion Chapter 30";
+"28Be_good_quotation" = "Duties are universally measured by relations. Is a certain man your father? In this are implied taking care of him, submitting to him in all things, patiently receiving his reproaches, his correction. But he is a bad father. Is your natural tie, then, to a good father? No, but to a father. Is a brother unjust? Well, preserve your own just relation toward him. Consider not what he does, but what you are to do to keep your own will in a state conformable to nature, for another cannot hurt you unless you please.";
+"28Be_good_commentary" = "Do your duty in your relationships. Even if you are treated poorly, living according to nature, or according to reason, requires that you be good.";
+"28Be_good_action" = "Have you had a relationship or currently have a relationship where the other person treats you poorly. Try being good to them despite your negative feelings towards them.";
+
+
 "29Good_and" = "Good and evil only exist in things we control"; // 31
+"29Good_and_title" = "Enchiridion Chapter 31";
+"29Good_and_quotation" = "And it is not possible for this to be affected in any other way than by withdrawing yourself from things which are not within our own power, and by making good or evil to consist only in those which are. For if you suppose any other things to be either good or evil, it is inevitable that, when you are disappointed of what you wish or incur what you would avoid, you should reproach and blame their authors. For every creature is naturally formed to flee and abhor things that appear hurtful and that which causes them; and to pursue and admire those which appear beneficial and that which causes them. It is impracticable, then, that one who supposes himself to be hurt should rejoice in the person who, as he thinks, hurts him, just as it is impossible to rejoice in the hurt itself.";
+"29Good_and_commentary" = "The ancient Stoics believed that the world was laid out according to a divine order. In order for the gods to be perfact and good, Epictetus is saying good and evil only exist in what we control. The gods, then, could not be blamed for negative external events because those events are outside our control so they are indifferent to us. Good and evil, then, consists only in how we control ourselves. Evil is our own doing. Whether you believe in a divine order or not, the important message is that the positive and negative in our lives can be mitigated by how we react to externals.";
+"29Good_and_action" = "Have you become discouraged by the negative in this world? Consider the actions you could take within your control that could mitigate those negative forces. The rest is indifferent to you.";
 
 "30Be_indifferent" = "Be indifferent to future events that we have no control over"; // 32 // good to here
+"30Be_indifferent_title" = "Enchiridion Chapter 32";
+"30Be_indifferent_quotation" = "When you have recourse to divination, remember that you know not what the event will be, and you come to learn it of the diviner; but of what nature it is you knew before coming; at least, if you are of philosophic mind. For if it is among the things not within our own power, it can by no means be either good or evil. Do not, therefore, bring with you to the diviner either desire or aversion—else you will approach him trembling—but first clearly understand that every event is indifferent and nothing to you, of whatever sort it may be; for it will be in your power to make a right use of it, and this no one can hinder.";
+"30Be_indifferent_commentary" = "The future should not matter to you because external events do not matter to you. Only what you control is of importance.";
+"30Be_indifferent_action" = "Consider a future event you're worried about. Remind yourself that you've chosen to be indifferent to it and practice that."
+
 "31Think_clearly" = "Think clearly of the consequences before giving in to a guilty pleasure"; // 34
+"31Think_clearly_title" = "Enchiridion Chapter 34";
+"31Think_clearly_quotation" = "If you are dazzled by the semblance of any promised pleasure, guard yourself against being bewildered by it; but let the affair wait your leisure, and procure yourself some delay. Then bring to your mind both points of time—that in which you shall enjoy the pleasure, and that in which you will repent and reproach yourself, after you have enjoyed it—and set before you, in opposition to these, how you will rejoice and applaud yourself if you abstain.";
+"31Think_clearly_action" = "If you are tempted to do something you know you shouldn't, delay doing so for a little while. During that delay, remind yourself of the disappointment you will have in yourself after you've given in.";
+
+
 "32Do_good" = "Do good without fear of others stopping you"; // 35
+"32Do_good_title" = "Enchiridion Chapter 35";
+"32Do_good_quotation" = "When you do anything from a clear judgment that it ought to be done, never shrink from being seen to do it, even though the world should misunderstand it; for if you are not acting rightly, shun the action itself; if you are, why fear those who wrongly censure you?";
+"32Do_good_action" = "Think about something you might do that is good but unpopular. Remind yourself the people's opinions are externals and you aren't affected by them unless you allow yourself to be.";
+
+
 "33Appreciate_others" = "Appreciate others who do good things for you"; // 36
+"33Appreciate_others_title" = "Enchiridion Chapter 36";
+"33Appreciate_others_quotation" = "As the proposition, “either it is day or it is night,” has much force in a disjunctive argument, but none at all in a conjunctive one, so, at a feast, to choose the largest share is very suitable to the bodily appetite, but utterly inconsistent with the social spirit of the entertainment. Remember, then, when you eat with another, not only the value to the body of those things which are set before you, but also the value of proper courtesy toward your host.";
+"33Appreciate_others_action" = "Do you have those in your life that are providing good things for you? If so, make sure you take care to appreciate them instead of merely the benefit for yourself.";
+
+
 "34Know_your" = "Know your limits"; // 37
+"34Know_your_title" = "Enchiridion Chapter 37";
+"34Know_your_quotation" = "If you have assumed any character beyond your strength, you have both demeaned yourself ill in that and quitted one which you might have supported.";
+"34Know_your_commentary" = "Don't do things beyond your limits. If you do you wont succeed at thing past your limits and you miss the opportunity to succeed at something within your limits.";
+"34Know_your_action" = "Are you trying to do too much? If so, figure out a reasonable plan so you can give the proper attenion to what you can do instead of doing everything in a mediocre way.";
+
+
 "35Guard_against" = "Guard against influences that would compromise your integrity"; // 38
+"35Guard_against_title" = "Enchiridion Chapter 38";
+"35Guard_against_quotation" = "As in walking you take care not to tread upon a nail, or turn your foot, so likewise take care not to hurt the ruling faculty of your mind. And if we were to guard against this in every action, we should enter upon action more safely.";
+"35Guard_against_commentary" = "Make sure to protect your mind as you do your body. A sound mind has integrity, treats others well, and lives rationally.";
+"35Guard_against_action" = "Think of any negative influences on your mind. Think about how you can avoid or counteract them.";
+
 "36Moderation_is" = "Moderation is key to avoiding pain"; // 39
+"36Moderation_is_title" = "Enchiridion Chapter 39";
+"36Moderation_is_quotation" = "The body is to everyone the proper measure of its possessions, as the foot is of the shoe. If, therefore, you stop at this, you will keep the measure; but if you move beyond it, you must necessarily be carried forward, as down a precipice; as in the case of a shoe, if you go beyond its fitness to the foot, it comes first to be gilded, then purple, and then studded with jewels. For to that which once exceeds the fit measure there is no bound.";
+"36Moderation_is_commentary" = "Doing a good thing in excess can become a bad thing.";
+"36Moderation_is_action" = "Can you think of a good thing in your life that you're doing in excess. If so, consider a more moderate approach.";
 
 "37Perceive_your" = "Perceive your value from how virtuous you are"; // 40
+"37Perceive_your_title" = "Enchiridion Chapter 40";
+"37Perceive_your_quotation" = "Women from fourteen years old are flattered by men with the title of mistresses. Therefore, perceiving that they are regarded only as qualified to give men pleasure, they begin to adorn themselves, and in that to place all their hopes. It is worth while, therefore, to try that they may perceive themselves honored only so far as they appear beautiful in their demeanor and modestly virtuous.";
+"37Perceive_your_commentary" = "Remember to perceive your value not from something you have that could be taken away. Rather choose to value yourself based on your virtue, which is something completely under your control.";
+"37Perceive_your_action" = "Are you valuing something about yourself that could be taken away from you? Instead, find something to value about yourself that will always be in your control.";
+
+
 "38Your_main" = "Your main focus should be perfecting your reason"; // 41
+"38Your_main_title" = "Enchiridion Chapter 41";
+"38Your_main_quotation" = "It is a mark of want of intellect to spend much time in things relating to the body, as to be immoderate in exercises, in eating and drinking, and in the discharge of other animal functions. These things should be done incidentally and our main strength be applied to our reason.";
+"38Your_main_commentary" = "While physical exercise is important, the cultivation of a sound mind is even more important."
+"38Your_main_action" = "What are you doing to cultivate a sound mind? If you set aside some time in the day for exercise, do you also set aside some time for mental improvement?";
+
+
 "39Do_not" = "Do not take others' judgments personally"; // 42
+"39Do_not_title" = "Enchiridion Chapter 42";
+"39Do_not_quotation" = "When any person does ill by you, or speaks ill of you, remember that he acts or speaks from an impression that it is right for him to do so. Now it is not possible that he should follow what appears right to you, but only what appears so to himself. Therefore, if he judges from false appearances, he is the person hurt, since he, too, is the person deceived.";
+"39Do_not_action" = "Think of times where others have unfairly criticized you. Think about how they are the ones who are hurt and deceived by their bad judgements. You are not hurt by it because you live according to reason and do not let externals bother you.";
+
 "40Use_wisdom" = "Use wisdom to avoid unnecessary conflict"; // 43
+"40Use_wisdom_title" = "Enchiridion Chapter 43";
+"40Use_wisdom_quotation" = "Everything has two handles: one by which it may be borne, another by which it cannot. If your brother acts unjustly, do not lay hold on the affair by the handle of his injustice, for by that it cannot be borne, but rather by the opposite—that he is your brother, that he was brought up with you; and thus you will lay hold on it as it is to be borne.";
+"40Use_wisdom_commentary" = "It is wiser to treat others well even if they treat you with injustice.";
+"40Use_wisdom_action" = "Think of people in your life that have treated you poorly. Challenge yourself to find a way to treat them well despite their poor judgement.";
+
 "41Superficial_qualities" = "Superficial qualities like wealth do not determine your worth"; //44
+"41Superficial_qualities_title" = "Enchiridion Chapter 44";
+"41Superficial_qualities_quotation" = "These reasonings have no logical connection: “I am richer than you, therefore I am your superior.” “I am more eloquent than you, therefore I am your superior.” The true logical connection is rather this: “I am richer than you, therefore my possessions must exceed yours.” “I am more eloquent than you, therefore my style must surpass yours.” But you, after all, consist neither in property nor in style.";
+"41Superficial_qualities_action" = "Do you ever base your value on what you have or some other superficial quality? If so, stop.";
+
 "42Dont_judge" = "Dont judge others harshly or pompously"; //45
+"42Dont_judge_title" = "Enchiridion Chapter 45";
+"42Dont_judge_quotation" = "Does anyone bathe hastily? Do not say that he does it ill, but hastily. Does anyone drink much wine? Do not say that he does ill, but that he drinks a great deal. For unless you perfectly understand his motives, how should you know if he acts ill? Thus you will not risk yielding to any appearances but such as you fully comprehend.";
+"42Dont_judge_action" = "If you find yourself judging others, remember that you do not know everything about their situation and motives. Give them the benefit of the doubt until you have all the facts."
+
 "43Don't_talk" = "Don't talk the talk, walk the walk"; // 46
+"43Don't_talk_title" = "Enchiridion Chapter 46";
+"43Don't_talk_quotation" = "Never proclaim yourself a philosopher, nor make much talk among the ignorant about your principles, but show them by actions. Thus, at an entertainment, do not discourse how people ought to eat, but eat as you ought. For remember that thus Socrates also universally avoided all ostentation. And when persons came to him and desired to be introduced by him to philosophers, he took them and introduced them; so well did he bear being overlooked...Thus, therefore, do you not make an exhibition before the ignorant of your principles, but of the actions to which their digestion gives rise.";
+"43Don't_talk_action" = "Remember not to preach Stoic principles unless someone directly asks for your opinion. Just live them.";
+
+
 "44Do_not" = "Do not practice frugality for show"; // 47
+"44Do_not_title" = "Enchiridion Chapter 47";
+"44Do_not_quotation" = "When you have learned to nourish your body frugally, do not pique yourself upon it; nor, if you drink water, be saying upon every occasion, “I drink water.” But first consider how much more frugal are the poor than we, and how much more patient of hardship. If at any time you would inure yourself by exercise to labor and privation, for your own sake and not for the public, do not attempt great feats; but when you are violently thirsty, just rinse your mouth with water, and tell nobody.";
+"44Do_not_action" = "If you brag or feel some self-righteousness from being frugal, stop expressing that. Just be frugal for its own sake.";
+
+
 "45You_should" = "You should look to yourself and not externals for help or causes of harm"; // 48
+"45You_should_title" = "Enchiridion Chapter 48";
+"45You_should_quotation" = "The condition and characteristic of a vulgar person is that he never looks for either help or harm from himself, but only from externals. The condition and characteristic of a philosopher is that he looks to himself for all help or harm. The marks of a proficient are that he censures no one, praises no one, blames no one, accuses no one; says nothing concerning himself as being anybody or knowing anything. When he is in any instance hindered or restrained, he accuses himself; and if he is praised, he smiles to himself at the person who praises him; and if he is censured, he makes no defense.";
+"45You_should_action" = "When people insult you or hurt you in some way, remember to be indifferent to those hurts, because as a philosopher, their opinions are nothing to you.";
+
+
 "46Action_matters" = "Action matters, not your ability to understand complicated Stoic doctrines."; // 49
+"45You_should_title" = "Enchiridion Chapter 49";
+"45You_should_quotation" = "When anyone shows himself vain on being able to understand and interpret the works of Chrysippus, say to yourself: “Unless Chrysippus had written obscurely, this person would have had nothing to be vain of. But what do I desire? To understand nature, and follow her. I ask, then, who interprets her; and hearing that Chrysippus does, I have recourse to him. I do not understand his writings. I seek, therefore, one to interpret them.” So far there is nothing to value myself upon. And when I find an interpreter, what remains is to make use of his instructions. This alone is the valuable thing.";
+"45You_should_commentary" = "Don't be proud of yourself for understanding Stoic doctrines and theory. (Chrysippus was a well-known ancient Stoic whose complete works have all been lost.) You should pursue Stoic principles for their own sake."
+"45You_should_action" = "Make sure not to lose sight of why you're studying Stoic principles in the first place. It is not to impress others."
+
+
 "47Put_your" = "Put your philosophy into action"; // 51
-"48Action_over" = "Action over lofty argument"; // 52
-
-
+"47Put_your_title" = "Enchiridion Chapter 51";
+"47Put_your_quotation" = "The first and most necessary topic in philosophy is the practical application of principles, as, We ought not to lie; the second is that of demonstrations as, Why it is that we ought not to lie; the third, that which gives strength and logical connection to the other two, as, Why this is a demonstration. For what is demonstration? What is a consequence? What a contradiction? What truth? What falsehood? The third point is then necessary on account of the second; and the second on account of the first. But the most necessary, and that whereon we ought to rest, is the first.";
+"47Put_your_action" = "Remember not to get too caught up in theory. Practice and do good.";
 
 "Not_determined_title" = "Enable Notifications";
 "Not_determined_message" = "Allow the app to send you reminders to meditate based on the times you choose. Without enabling, no reminders will be sent and you will be unable to set meditation times.";

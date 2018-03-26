@@ -105,7 +105,7 @@
     {
       "size" : "1024x1024",
       "idiom" : "ios-marketing",
-      "filename" : "Icon-1024-min.png",
+      "filename" : "Icon-1024-min-no-alpha.png",
       "scale" : "1x"
     }
   ],

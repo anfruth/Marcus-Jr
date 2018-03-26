@@ -56,6 +56,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         if tableAlreadyLoaded {
             tableView.reloadData() // if coming back in nav, check to see if any exercise completed.
+            showOrHideCompletedExerciseButton()
         }
     }
     

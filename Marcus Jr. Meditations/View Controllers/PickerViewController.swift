@@ -46,9 +46,9 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     }
     
     @IBAction func didSelectPickerOption(_ sender: UIButton) {
-        dismiss(animated: true, completion: nil)
-        
         presentingViewController?.navigationController?.isNavigationBarHidden = false
+        NotificationsReceiver.sharedInstance.topViewController = presentingViewController
+        dismiss(animated: true, completion: nil)
     }
     
     // MARK: - UIPickerView Data Source

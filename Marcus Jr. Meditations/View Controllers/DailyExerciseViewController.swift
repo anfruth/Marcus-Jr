@@ -137,6 +137,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
                     }
 
                 }
+                
                 NotificationsReceiver.sharedInstance.topViewController?.present(permAlert, animated: true, completion: nil)
             }
         }

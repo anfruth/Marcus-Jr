@@ -57,17 +57,18 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
         if let nav = topViewController.presentingViewController?.navigationController {
             // case where top vc is being presented from controller with a navigation controller
             nav.isNavigationBarHidden = false
+            self.topViewController = topViewController.presentingViewController
             topViewController.dismiss(animated: false, completion: {
-                self.proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
+                self.proceedToExerciseFromNav(nav: nav, notification: response.notification)
             })
             
         } else if let nav = topViewController.navigationController {
-            proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
+            proceedToExerciseFromNav(nav: nav, notification: response.notification)
         }
         
     }
     
-    private func proceedToExerciseFromNav(topViewController: UIViewController, nav: UINavigationController, notification: UNNotification) {
+    private func proceedToExerciseFromNav(nav: UINavigationController, notification: UNNotification) {
 
         nav.popToRootViewController(animated: false)
             // now go to correct emotion, then correct exercise

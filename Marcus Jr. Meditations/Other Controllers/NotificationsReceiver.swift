@@ -42,8 +42,9 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
     }
     
     private func determineIfTopViewControllerFlow(response: UNNotificationResponse) {
-        if let topViewController = topViewController, let nav = topViewController.navigationController {
-            proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
+        
+        if let topViewController = topViewController {
+            handleTopControllerSetCase(topViewController: topViewController, response: response)
         } else {
             didReceiveLocalNotification = true
             notificationsResponse = response
@@ -51,8 +52,23 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
         }
     }
     
-    private func proceedToExerciseFromNav(topViewController: UIViewController, nav: UINavigationController, notification: UNNotification) {
+    private func handleTopControllerSetCase(topViewController: UIViewController, response: UNNotificationResponse) {
         
+        if let nav = topViewController.presentingViewController?.navigationController {
+            // case where top vc is being presented from controller with a navigation controller
+            nav.isNavigationBarHidden = false
+            topViewController.dismiss(animated: false, completion: {
+                self.proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
+            })
+            
+        } else if let nav = topViewController.navigationController {
+            proceedToExerciseFromNav(topViewController: topViewController, nav: nav, notification: response.notification)
+        }
+        
+    }
+    
+    private func proceedToExerciseFromNav(topViewController: UIViewController, nav: UINavigationController, notification: UNNotification) {
+
         nav.popToRootViewController(animated: false)
             // now go to correct emotion, then correct exercise
             // "\(emotion.rawValue)$\(exercise)$\(date.description)"
@@ -68,6 +84,11 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
         }
         
         setExerciseKey(exerciseKey: "\(exercise)")
+        instantiateViewControllersToArriveAtExercise(nav: nav)
+        
+    }
+    
+    private func instantiateViewControllersToArriveAtExercise(nav: UINavigationController) {
         
         let storyboard = UIStoryboard(name: "ChooseEmotion", bundle: nil)
         if let meditationVC = storyboard.instantiateViewController(withIdentifier: "meditationList") as? MeditationListTableController {
@@ -83,7 +104,6 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
                 
             }
         }
-        
         
     }
     

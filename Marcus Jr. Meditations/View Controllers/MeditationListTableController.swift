@@ -39,8 +39,6 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         tableView.rowHeight =  UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
-        
-        
         if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
             title = "Daily Meditations - \(rawValue)"
         }

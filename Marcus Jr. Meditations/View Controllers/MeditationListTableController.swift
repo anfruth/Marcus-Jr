@@ -39,6 +39,8 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         tableView.rowHeight =  UITableViewAutomaticDimension
         tableView.estimatedRowHeight = 50
         
+        
+        
         if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
             title = "Daily Meditations - \(rawValue)"
         }
@@ -49,6 +51,8 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         resetAllButton.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
         showOrHideCompletedExerciseButton()
+        tableView.layoutIfNeeded()
+        tableView.reloadData()
     }
     
     override func viewWillAppear(_ animated: Bool) {

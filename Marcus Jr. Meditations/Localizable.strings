@@ -1,10 +1,10 @@
-/* 
-  Localizable.strings
-  Marcus Jr. Meditations
-
-  Created by Andrew Fruth on 2/7/18.
-  Copyright © 2018 Andrew Fruth. All rights reserved.
-*/
+/*
+ Localizable.strings
+ Marcus Jr. Meditations
+ 
+ Created by Andrew Fruth on 2/7/18.
+ Copyright © 2018 Andrew Fruth. All rights reserved.
+ */
 
 // number in key to make sure no duplicates, not using only number in case I or someone else accidentally inserted a meditation into the middle of the list and incremented meditations after. The key for user defaults then would change and cause issues. Key for user defaults must stay the same no matter what.
 
@@ -13,13 +13,13 @@
 "00What_is" = "What is under your control and what is not";
 "00What_is_title" = "Enchiridion Chapter 1";
 "00What_is_quotation" = "Seek at once, therefore, to be able to say to every unpleasing semblance, 'You are but a semblance and by no means the real thing.' And then examine it by those rules which you have; and first and chiefly by this: whether it concerns the things which are within our own power or those which are not; and if it concerns anything beyond our power, be prepared to say that it is nothing to you.";
-"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be dissapointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.";
+"00What_is_commentary" = "Externals, as the Stoics would say, or things that lie beyond our control, should warrant indifference. If we focus on externals and we don't get what we want, we are bound to be disappointed and sad. Instead, the Stoics encourage you, as a rational being, to pursue wisdom, large parts of which are found in this app.";
 "00What_is_action" = "Consider the things that have been frustrating you. Are they within your control? If not, what aspects of the situation are in your control? Could you react to your problems in a better way?";
 
 "01Be_unattached" = "Be unattached to things you do not control";
 "01Be_unattached_title" = "Enchiridion Chapter 2";
 "01Be_unattached_quotation" = "If, then, you shun only those undesirable things which you can control, you will never incur anything which you shun; but if you shun sickness, or death, or poverty, you will run the risk of wretchedness. Remove [the habit of] aversion, then, from all things that are not within our power, and apply it to things undesirable which are within our power.";
-"01Be_unattached_commentary" = "Be indifferent to negative things happening in yor life that you do not control. By not attaching high stakes to a particular outcome, you risk the possbility of getting something you don't want. Focus instead on how you react to negative situations because that is in your control.";
+"01Be_unattached_commentary" = "Be indifferent to negative things happening in your life that you do not control. By not attaching high stakes to a particular outcome, you risk the possibility of getting something you don't want. Focus instead on how you react to negative situations because that is in your control.";
 "01Be_unattached_action" = "Can you think of anything that you're strongly attached to that is not in your control? If so, practice indifference, and focus on your reaction to the situation, not the situation itself.";
 
 "02Desire_things" = "Desire things to be as they already are";
@@ -30,11 +30,11 @@
 
 "03Nothing_is" = "Nothing is an impediment to you"; // chapter 9
 "03Nothing_is_title" = "Enchiridion Chapter 9";
-"03Nothing_is_quotation" = "Sickness is an impediment to the body, but not to the will unless itself pleases...and say this to yourself with regard to everything that happens. For you will find it to be an impediment to something else, but not truly to yourself";
+"03Nothing_is_quotation" = "Sickness is an impediment to the body, but not to the will unless itself pleases...and say this to yourself with regard to everything that happens. For you will find it to be an impediment to something else, but not truly to yourself.";
 "03Nothing_is_commentary" = "Sickness and other bad things outside your control do not have to hamper your will. You are fully in control of your will and how you choose to react to any situation.";
 "03Nothing_is_action" = "Have you felt defeated or unmotivated recently? If so, choose to keep your spirits up. You do not have to allow anything to impede your will.";
 
-"04Remind_yourself" = "Remind yourself that bad things happen."; //chapter 4
+"04Remind_yourself" = "Remind yourself that bad things happen"; //chapter 4
 "04Remind_yourself_title" = "Enchiridion Chapter 4";
 "04Remind_yourself_quotation" = "With regard to whatever objects either delight the mind or contribute to use or are tenderly beloved, remind yourself of what nature they are, beginning with the merest trifles: if you have a favorite cup, that it is but a cup of which you are fond of—for thus, if it is broken, you can bear it; if you embrace your child or your wife, that you embrace a mortal—and thus, if either of them dies, you can bear it.";
 "04Remind_yourself_commentary" = "Remember the bad things happen and that some of those bad things, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have.";
@@ -93,7 +93,7 @@
 "13Be_indifferent" = "Be indifferent to circumstance and accept good things as they come"; // 15
 "13Be_indifferent_title" = "Enchiridion Chapter 15";
 "13Be_indifferent_quotation" = "Remember that you must behave as at a banquet. Is anything brought round to you? Put out your hand and take a moderate share. Does it pass by you? Do not stop it. Is it not yet come? Do not yearn in desire toward it, but wait till it reaches you. So with regard to children, wife, office, riches; and you will some time or other be worthy to feast with the gods.";
-"13Be_indifferent_commentary" = "Don't be overly aggressive in trying to get things that lie outside your control. Accept the preferred indifferents as they come, in moderation. Or, if you really want to challenge yourself, do not take any food even though it is \"brought round to you\"";
+"13Be_indifferent_commentary" = "Don't be overly aggressive in trying to get things that lie outside your control. Accept the preferred indifferents as they come, in moderation. Or, if you really want to challenge yourself, do not take any food even though it is \"brought round to you\".";
 "13Be_indifferent_action" = "Are you pursuing anything outside your control aggressively? Refocus on aspects that you do control and accept the good things of life in moderation.";
 
 "14Be_kind" = "Be kind to those who are suffering but don't let it spread to you"; // chap 16
@@ -130,7 +130,7 @@
 "19Death_makes_quotation" = "Let death and exile, and all other things which appear terrible, be daily before your eyes, but death chiefly; and you will never entertain an abject thought, nor too eagerly covet anything.";
 "19Death_makes_action" = "Remind yourself about your own mortality when you find yourself upset or not getting what you want.";
 
-"20Be_prepared" = "Be prepared to be riduculed for your principles";
+"20Be_prepared" = "Be prepared to be ridiculed for your principles";
 "20Be_prepared_title" = "Enchiridion Chapter 22";
 "20Be_prepared_quotation" = "If you have an earnest desire toward philosophy, prepare yourself from the very first to have the multitude laugh and sneer, and say...For remember that, if you are persistent, those very persons who at first ridiculed will afterwards admire you. But if you are conquered by them, you will incur a double ridicule.";
 "20Be_prepared_action" = "If anyone laughs at you for living the Stoical philosophic life, ignore them and stand your ground.";
@@ -172,8 +172,8 @@
 "27Understand_the" = "Understand the price of reason and pay it";
 "27Understand_the_title" = "Enchiridion Chapter 29";
 "27Understand_the_quotation" = "In every affair consider what precedes and what follows, and then undertake it. Otherwise you will begin with spirit, indeed, careless of the consequences, and when these are developed, you will shamefully desist. 'I would conquer at the Olympic Games.' But consider what precedes and what follows, and then, if it be for your advantage, engage in the affair. You must conform to rules, submit to a diet, refrain from dainties; exercise your body, whether you choose it or not, at a stated hour, in heat and cold; you must drink no cold water, and sometimes no wine—in a word, you must give yourself up to your trainer as to a physician. Then, in the combat, you may be thrown into a ditch, dislocate your arm, turn your ankle, swallow an abundance of dust, receive stripes [for negligence], and, after all, lose the victory. When you have reckoned up all this, if your inclination still holds, set about the combat...You must be one man, either good or bad. You must cultivate either your own reason or else externals; apply yourself either to things within or without you—that is, be either a philosopher or one of the mob.";
-"27Understand_the_commentary" = "Do not take half measures. If you want to succeed at any activity, including improving your character or pursuing wisdom, you must throw yourself into the committment whole heartedly.";
-"27Understand_the_action" = "What committment have you made towards pursuing wisdom and virtue? If you are dabbling in these concepts, consider becoming serious and exercise the appropriate amount of discipline to achieve your goal.";
+"27Understand_the_commentary" = "Do not take half measures. If you want to succeed at any activity, including improving your character or pursuing wisdom, you must throw yourself into the commitment whole heartedly.";
+"27Understand_the_action" = "What commitment have you made towards pursuing wisdom and virtue? If you are dabbling in these concepts, consider becoming serious and exercise the appropriate amount of discipline to achieve your goal.";
 
 "28Be_good" = "Be good to others even if they treat you poorly";
 "28Be_good_title" = "Enchiridion Chapter 30";
@@ -185,7 +185,7 @@
 "29Good_and" = "Good and evil only exist in things we control"; // 31
 "29Good_and_title" = "Enchiridion Chapter 31";
 "29Good_and_quotation" = "And it is not possible for this to be affected in any other way than by withdrawing yourself from things which are not within our own power, and by making good or evil to consist only in those which are. For if you suppose any other things to be either good or evil, it is inevitable that, when you are disappointed of what you wish or incur what you would avoid, you should reproach and blame their authors. For every creature is naturally formed to flee and abhor things that appear hurtful and that which causes them; and to pursue and admire those which appear beneficial and that which causes them. It is impracticable, then, that one who supposes himself to be hurt should rejoice in the person who, as he thinks, hurts him, just as it is impossible to rejoice in the hurt itself.";
-"29Good_and_commentary" = "The ancient Stoics believed that the world was laid out according to a divine order. In order for the gods to be perfact and good, Epictetus is saying good and evil only exist in what we control. The gods, then, could not be blamed for negative external events because those events are outside our control so they are indifferent to us. Good and evil, then, consists only in how we control ourselves. Evil is our own doing. Whether you believe in a divine order or not, the important message is that the positive and negative in our lives can be mitigated by how we react to externals.";
+"29Good_and_commentary" = "The ancient Stoics believed that the world was laid out according to a divine order. In order for the gods to be perfect and good, Epictetus is saying good and evil only exist in what we control. The gods, then, could not be blamed for negative external events because those events are outside our control so they are indifferent to us. Good and evil, then, consists only in how we control ourselves. Evil is our own doing. Whether you believe in a divine order or not, the important message is that the positive and negative in our lives can be mitigated by how we react to externals.";
 "29Good_and_action" = "Have you become discouraged by the negative in this world? Consider the actions you could take within your control that could mitigate those negative forces. The rest is indifferent to you.";
 
 "30Be_indifferent" = "Be indifferent to future events that we have no control over"; // 32 // good to here
@@ -216,7 +216,7 @@
 "34Know_your_title" = "Enchiridion Chapter 37";
 "34Know_your_quotation" = "If you have assumed any character beyond your strength, you have both demeaned yourself ill in that and quitted one which you might have supported.";
 "34Know_your_commentary" = "Don't do things beyond your limits. If you do you wont succeed at thing past your limits and you miss the opportunity to succeed at something within your limits.";
-"34Know_your_action" = "Are you trying to do too much? If so, figure out a reasonable plan so you can give the proper attenion to what you can do instead of doing everything in a mediocre way.";
+"34Know_your_action" = "Are you trying to do too much? If so, figure out a reasonable plan so you can give the proper attention to what you can do instead of doing everything in a mediocre way.";
 
 
 "35Guard_against" = "Guard against influences that would compromise your integrity"; // 38

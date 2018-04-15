@@ -154,6 +154,13 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         performSegue(withIdentifier: "toExercise", sender: self)
     }
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+
+        tableView.layoutIfNeeded()
+        tableView.reloadData()
+    }
     
     private func getAllKeysOfEmotionIfNeeded(emotion: EmotionTypeEncompassing) {
         

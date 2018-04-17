@@ -57,9 +57,12 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         super.viewWillAppear(animated)
         
         if tableAlreadyLoaded {
+            tableView.layoutIfNeeded()
             tableView.reloadData() // if coming back in nav, check to see if any exercise completed.
             showOrHideCompletedExerciseButton()
         }
+        
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableCellSpacing), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -67,6 +70,12 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         setAsTopViewController()
         tableAlreadyLoaded = true
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        super.viewWillDisappear(animated)
+        
+        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
     }
 
     @IBAction func resetAllExercisesAbove(_ sender: UIButton) {
@@ -154,14 +163,12 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         performSegue(withIdentifier: "toExercise", sender: self)
     }
-
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-
+    
+    @objc func updateTableCellSpacing() {
         tableView.layoutIfNeeded()
         tableView.reloadData()
     }
-    
+
     private func getAllKeysOfEmotionIfNeeded(emotion: EmotionTypeEncompassing) {
         
         if let emotion = emotion as? NegativeEmotionType {

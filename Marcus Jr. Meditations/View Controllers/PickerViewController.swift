@@ -15,11 +15,8 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
     
     var originalButtonColor = UIColor.blue
     var meditationTimes: MeditationTimes?
-    
-    override var prefersStatusBarHidden: Bool {
-        return true
-    }
-    
+    let blurEffectView: UIVisualEffectView = UIVisualEffectView(effect: UIBlurEffect(style: .regular))
+
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -28,21 +25,29 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
         pickerView.dataSource = self
         pickerView.delegate = self
         
-        let blurEffect = UIBlurEffect(style: .regular)
-        let blurEffectView = UIVisualEffectView(effect: blurEffect)
         blurEffectView.frame = view.frame
         
         view.insertSubview(blurEffectView, at: 0)
+        
+        blurEffectView.translatesAutoresizingMaskIntoConstraints = false
+        
+        blurEffectView.leadingAnchor.constraint(equalTo: view.leadingAnchor).isActive = true
+        blurEffectView.trailingAnchor.constraint(equalTo: view.trailingAnchor).isActive = true
+        blurEffectView.topAnchor.constraint(equalTo: view.topAnchor).isActive = true
+        blurEffectView.bottomAnchor.constraint(equalTo: view.bottomAnchor).isActive = true
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         
-        setAsTopViewController()
-        
         if let meditationTimes = meditationTimes {
             pickerView.selectRow(meditationTimes.pickerChosenDays - 1, inComponent: 0, animated: true)
         }
+    }
+    
+    override func viewDidAppear(_ animated: Bool) {
+        super.viewDidAppear(animated)
+        setAsTopViewController()
     }
     
     @IBAction func didSelectPickerOption(_ sender: UIButton) {
@@ -72,5 +77,4 @@ class PickerViewController: UIViewController, UIPickerViewDataSource, UIPickerVi
             meditationTimes.pickerChosenDays = row + 1
         }
     }
-    
 }

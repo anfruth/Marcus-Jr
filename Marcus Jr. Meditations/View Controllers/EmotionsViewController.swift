@@ -32,31 +32,17 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         super.viewDidLoad()
         
         if let collectionView = collectionView {
-            
             let layout = UICollectionViewFlowLayout()
             layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0)
             collectionView.collectionViewLayout = layout
         }
-        
-        
     }
-    
+
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         
         setAsTopViewController()
-    }
-    
-    // MARK: UIContent Container Protocol
-    
-    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
-        super.viewWillTransition(to: size, with: coordinator)
-        
-        guard let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-            return
-        }
-        
-        layout.invalidateLayout()
+
     }
 
     // MARK: UICollectionViewDataSource

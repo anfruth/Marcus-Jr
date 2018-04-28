@@ -44,6 +44,18 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         setAsTopViewController()
 
     }
+    
+    // MARK: UIContent Container Protocol
+
+    override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
+        super.viewWillTransition(to: size, with: coordinator)
+    
+        guard let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
+                return
+            }
+    
+        layout.invalidateLayout()
+    }
 
     // MARK: UICollectionViewDataSource
 

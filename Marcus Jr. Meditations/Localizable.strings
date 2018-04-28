@@ -300,12 +300,12 @@
 "Not_determined_message" = "Allow the app to send you reminders to meditate based on the times you choose. Without enabling, no reminders will be sent and you will be unable to set meditation times.";
 "Not_determined_option_title" = "Turn On Notifications";
 
-"Denied_message" = "Enable permanent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended.";
+"Denied_message" = "Enable persistent banner notifications in settings in order to set meditation times. You may choose temporary banners, but they are not recommended.";
 
-"System_placeholder" = "Time to Meditate. Head on over to your daily meditation.";
+"System_placeholder" = "Time to meditate. Head on over to your daily meditation.";
 
-"Permanent_title" = "Permanent Notifications";
-"Permanent_message" = "Go to Settings to turn on permanent notifications so your meditation time reminder doesn't disappear.";
+"Permanent_title" = "Persistent Notifications";
+"Permanent_message" = "Go to Settings to turn on persistent notifications so your meditation time reminder doesn't disappear.";
 
 
 

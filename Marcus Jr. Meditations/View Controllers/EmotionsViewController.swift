@@ -33,7 +33,8 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         
         if let collectionView = collectionView {
             let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0)
+            layout.minimumLineSpacing = 0
+            layout.minimumInteritemSpacing = 0
             collectionView.collectionViewLayout = layout
         }
     }
@@ -79,6 +80,15 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
             }
             
             addAttributesOnTypeOfEmotion(indexOfAllEmotionTypeArray: indexOfAllEmotionTypeArray, cell: cell, indexPath: indexPath)
+        
+            if (indexPath.item + 1) % 3 == 2 {
+                cell.backgroundColor = UIColor(red:0.30, green:0.39, blue:0.55, alpha:1.0)
+            } else if (indexPath.item + 1) % 3 == 1 {
+                cell.backgroundColor = UIColor(red:0.16, green:0.21, blue:0.33, alpha:1.0)
+            } else {
+                cell.backgroundColor = UIColor(red:0.12, green:0.12, blue:0.15, alpha:1.0)
+            }
+            
             return cell
         }
         
@@ -120,21 +130,23 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
 }
 
 extension EmotionsViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let widthOfCollectionView = collectionView.bounds.width
         
         guard let collectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
         }
         
+        
         if UIScreen.main.traitCollection.horizontalSizeClass == .compact {
-            return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
-            
-        } else {
-            let lessThanHalfCollectionView = 0.50 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing / 2
+            let lessThanHalfCollectionView = 1/2 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing / 2
             return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView)
+
+        } else {
+            let lessThanQuarterCollectionView = 1/4 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing * 3 / 4
+            return CGSize(width: lessThanQuarterCollectionView, height: lessThanQuarterCollectionView)
         }
     }
     

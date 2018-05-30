@@ -51,8 +51,8 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         super.viewWillTransition(to: size, with: coordinator)
     
         guard let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-                return
-            }
+            return
+        }
     
         layout.invalidateLayout()
     }

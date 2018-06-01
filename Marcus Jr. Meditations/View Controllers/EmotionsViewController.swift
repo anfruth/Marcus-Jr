@@ -41,7 +41,7 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        setAsTopViewController()x   
+        setAsTopViewController()
     }
 
     // MARK: UIContent Container Protocol

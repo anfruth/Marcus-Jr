@@ -49,7 +49,7 @@ class Emotion {
             emotion = NegativeEmotionType.anxiety
         case "Envy":
             emotion = NegativeEmotionType.envy
-        case "Perseverance":
+        case "Persevere":
             emotion = PositiveEmotionType.perseverance
         case "Discipline":
             emotion = PositiveEmotionType.discipline
@@ -109,7 +109,7 @@ enum NegativeEmotionType: String, EmotionType, EmotionTypeEncompassing {
 enum PositiveEmotionType: String, EmotionType, EmotionTypeEncompassing {
     typealias EmotionCategory = PositiveEmotionType
     
-    case perseverance = "Perseverance"
+    case perseverance = "Persevere"
     case discipline = "Discipline"
     case empathy = "Empathy"
     case courage = "Courage"

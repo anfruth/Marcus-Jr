@@ -33,26 +33,25 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
         
         if let collectionView = collectionView {
             let layout = UICollectionViewFlowLayout()
-            layout.sectionInset = UIEdgeInsetsMake(0, 0, 10, 0)
+            layout.minimumLineSpacing = 1
+            layout.minimumInteritemSpacing = 1
             collectionView.collectionViewLayout = layout
         }
     }
 
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
-        
         setAsTopViewController()
-
     }
-    
+
     // MARK: UIContent Container Protocol
 
     override func viewWillTransition(to size: CGSize, with coordinator: UIViewControllerTransitionCoordinator) {
         super.viewWillTransition(to: size, with: coordinator)
     
         guard let layout = collectionView?.collectionViewLayout as? UICollectionViewFlowLayout else {
-                return
-            }
+            return
+        }
     
         layout.invalidateLayout()
     }
@@ -79,6 +78,15 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
             }
             
             addAttributesOnTypeOfEmotion(indexOfAllEmotionTypeArray: indexOfAllEmotionTypeArray, cell: cell, indexPath: indexPath)
+        
+            if (indexPath.item + 1) % 3 == 2 {
+                cell.backgroundColor = UIColor(red:0.30, green:0.39, blue:0.55, alpha:1.0)
+            } else if (indexPath.item + 1) % 3 == 1 {
+                cell.backgroundColor = UIColor(red:0.16, green:0.21, blue:0.33, alpha:1.0)
+            } else {
+                cell.backgroundColor = UIColor(red:0.12, green:0.12, blue:0.15, alpha:1.0)
+            }
+            
             return cell
         }
         
@@ -120,21 +128,26 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
 }
 
 extension EmotionsViewController: UICollectionViewDelegateFlowLayout {
-    
+
     func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
+
         let widthOfCollectionView = collectionView.bounds.width
         
         guard let collectionViewFlowLayout = collectionViewLayout as? UICollectionViewFlowLayout else {
             return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
         }
         
-        if UIScreen.main.traitCollection.horizontalSizeClass == .compact {
-            return CGSize(width: widthOfCollectionView, height: widthOfCollectionView)
+        let lessThanHalfCollectionView = 1/2 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing / 2
+        
+        if UIScreen.main.traitCollection.horizontalSizeClass == .compact && UIScreen.main.traitCollection.verticalSizeClass == .compact {
+            return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView / 2)
             
-        } else {
-            let lessThanHalfCollectionView = 0.50 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing / 2
+        } else if UIScreen.main.traitCollection.horizontalSizeClass == .compact {
             return CGSize(width: lessThanHalfCollectionView, height: lessThanHalfCollectionView)
+
+        } else {
+            let lessThanQuarterCollectionView = 1/4 * widthOfCollectionView - collectionViewFlowLayout.minimumInteritemSpacing * 3 / 4
+            return CGSize(width: lessThanQuarterCollectionView, height: lessThanQuarterCollectionView)
         }
     }
     

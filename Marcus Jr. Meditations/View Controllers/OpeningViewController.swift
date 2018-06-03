@@ -10,6 +10,8 @@ import UIKit
 
 class OpeningViewController: UIViewController {
     
+    @IBOutlet weak var marcusQuotationView: UIView!
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationsReceiver.sharedInstance.delegate = self
@@ -20,6 +22,19 @@ class OpeningViewController: UIViewController {
         super.viewDidAppear(animated)
         handleReceivingLocalNotification()
     }
+    
+    @IBAction func beginButtonClicked(_ sender: UIButton) {
+        
+        UIView.animate(withDuration: 1.0, animations: {
+            self.marcusQuotationView.alpha = 1
+        }, completion: { (completed) in
+            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0, execute: {
+                self.performSegue(withIdentifier: "toChooseEmotion", sender: self)
+            })
+        })
+        
+    }
+    
     
     func handleReceivingLocalNotification () {
         let notificationsReceiver = NotificationsReceiver.sharedInstance

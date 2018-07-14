@@ -296,6 +296,9 @@
 "47Put_your_quotation" = "The first and most necessary topic in philosophy is the practical application of principles, as, We ought not to lie; the second is that of demonstrations as, Why it is that we ought not to lie; the third, that which gives strength and logical connection to the other two, as, Why this is a demonstration. For what is demonstration? What is a consequence? What a contradiction? What truth? What falsehood? The third point is then necessary on account of the second; and the second on account of the first. But the most necessary, and that whereon we ought to rest, is the first.";
 "47Put_your_action" = "Remember not to get too caught up in theory. Practice and do good.";
 
+
+// End core quotations
+
 "Not_determined_title" = "Enable Notifications";
 "Not_determined_message" = "Allow the app to send you reminders to meditate based on the times you choose. Without enabling, no reminders will be sent and you will be unable to set meditation times.";
 "Not_determined_option_title" = "Turn On Notifications";
@@ -307,7 +310,18 @@
 "Permanent_title" = "Persistent Notifications";
 "Permanent_message" = "Go to Settings to turn on persistent notifications so your meditation time reminder doesn't disappear.";
 
+// Begin Opening Marcus Quotations
 
-
-
+"01Marcus" = "A man's life is what his thoughts make of it.";
+"02Marcus" = "When force of circumstance upsets your equanimity, lose no time in recovering your self-control, and do not remain out of tune longer than you can help. Habitual recurrence to the harmony will increase your mastery of it.";
+"03Marcus" = "If you are distressed by anything external, the pain is not due to the thing itself but to your own estimate of it; and this you have the power to revoke at any moment.";
+"04Marcus" = "Death and life, success and failure, pain and pleasure, wealth and poverty, all these happen to good and bad alike, and they are neither noble nor shameful - and hence neither good nor bad.";
+"05Marcus" = "Nothing that goes on in anyone else's mind can harm you.";
+"06Marcus" = "The things you think about determine the quality of your mind. Your soul takes on the color of your thoughts.";
+"07Marcus" = "The only thing that isn't worthless: to live this life out truthfully and rightly. And be patient with those who don't.";
+"08Marcus" = "Don't be ashamed to need help. Like a soldier storming a wall, you have a mission to accomplish. And if you've been wounded and you need a comrade to pull you up? So what?";
+"09Marcus" = "Let the body avoid discomfort (if it can), and if it feels it, say so. But the soul is what feels fear and pain, and what conceives of them in the first place, and it suffers nothing.";
+"10Marcus" = "Unendurable pain brings its own end with it. Chronic pain is always endurable: the intelligence maintains serenity by cutting itself off from the body, the mind remains undiminished. And the parts that pain affects - let them speak for themselves, if they can.";
+"11Marcus" = "Stop whatever you're doing for a moment and ask yourself: Am I afraid of death because I won't be able to do this anymore?";
+"12Marcus" = "It's time you realized that you have something in you more powerful and miraculous than the things that affect you and make you dance like a puppet.";
 

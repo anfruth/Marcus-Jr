@@ -11,6 +11,7 @@ import UIKit
 class OpeningViewController: UIViewController {
     
     @IBOutlet weak var marcusQuotationView: UIView!
+    @IBOutlet weak var marcusQuotationLabel: UILabel!
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -26,6 +27,8 @@ class OpeningViewController: UIViewController {
     @IBAction func beginButtonClicked(_ sender: UIButton) {
         
         UIView.animate(withDuration: 1.0, animations: {
+            let marcusManager = MarcusManager()
+            self.marcusQuotationLabel.text = marcusManager.quotation
             self.marcusQuotationView.alpha = 1
         }, completion: { (completed) in
             DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0, execute: {

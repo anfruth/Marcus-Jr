@@ -68,23 +68,33 @@
                             <view alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEw-ie-6bI" userLabel="Marcus Quotation View">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                                 <subviews>
-                                    <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L72-fH-JXZ">
-                                        <rect key="frame" x="37.666666666666657" y="363.66666666666669" width="300.33333333333337" height="86"/>
+                                    <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-Kj-0ch">
+                                        <rect key="frame" x="38" y="352.33333333333331" width="300" height="107.66666666666669"/>
+                                        <subviews>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L72-fH-JXZ" userLabel="Be content with what you are, and wish not change; nor dread your last day, nor long for it.">
+                                                <rect key="frame" x="0.0" y="0.0" width="300" height="86"/>
+                                                <string key="text">Be content with what you are, and wish not change; nor dread your last day, nor long for it. 
+</string>
+                                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Marcus Aurelius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mc0-Sb-YE5">
+                                                <rect key="frame" x="0.0" y="86" width="300" height="21.666666666666671"/>
+                                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="18"/>
+                                                <nil key="textColor"/>
+                                                <nil key="highlightedColor"/>
+                                            </label>
+                                        </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="500" id="x9c-GE-m5j"/>
+                                            <constraint firstAttribute="width" constant="300" id="8RS-2Z-zNM"/>
                                         </constraints>
-                                        <string key="text">Be content with what you are, and wish not change; nor dread your last day, nor long for it. 
-- Marcus Aurelius</string>
-                                        <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="18"/>
-                                        <nil key="textColor"/>
-                                        <nil key="highlightedColor"/>
-                                    </label>
+                                    </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
-                                    <constraint firstItem="L72-fH-JXZ" firstAttribute="centerY" secondItem="dEw-ie-6bI" secondAttribute="centerY" id="3WN-66-g2O"/>
-                                    <constraint firstItem="L72-fH-JXZ" firstAttribute="width" secondItem="dEw-ie-6bI" secondAttribute="width" multiplier="4/5" priority="900" id="fla-OK-G6N"/>
-                                    <constraint firstItem="L72-fH-JXZ" firstAttribute="centerX" secondItem="dEw-ie-6bI" secondAttribute="centerX" id="tqi-DY-ZWM"/>
+                                    <constraint firstItem="m8B-Kj-0ch" firstAttribute="centerX" secondItem="dEw-ie-6bI" secondAttribute="centerX" id="CvN-CC-oMn"/>
+                                    <constraint firstItem="m8B-Kj-0ch" firstAttribute="centerY" secondItem="dEw-ie-6bI" secondAttribute="centerY" id="ZF9-4Y-Z7M"/>
                                 </constraints>
                             </view>
                         </subviews>
@@ -109,6 +119,7 @@
                         <viewLayoutGuide key="safeArea" id="R6w-55-W9b"/>
                     </view>
                     <connections>
+                        <outlet property="marcusQuotationLabel" destination="L72-fH-JXZ" id="2zW-CT-8xD"/>
                         <outlet property="marcusQuotationView" destination="dEw-ie-6bI" id="a4Y-g1-WnQ"/>
                         <segue destination="bfO-Hr-4kK" kind="show" identifier="toChooseEmotion" id="jS5-Zd-hxf"/>
                     </connections>

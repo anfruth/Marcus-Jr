@@ -13,6 +13,9 @@ class OpeningViewController: UIViewController {
     @IBOutlet weak var marcusQuotationView: UIView!
     @IBOutlet weak var marcusQuotationLabel: UILabel!
     
+    let toChooseEmotionSegueID = "toChooseEmotion"
+    var toChooseSeguePerformed: Bool = false
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         NotificationsReceiver.sharedInstance.delegate = self
@@ -22,32 +25,30 @@ class OpeningViewController: UIViewController {
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         handleReceivingLocalNotification()
+        
+        if !toChooseSeguePerformed {
+            let marcusManager = MarcusManager()
+            self.marcusQuotationLabel.text = marcusManager.quotation
+            
+            UIView.animate(withDuration: 3.0, animations: {
+                self.marcusQuotationView.alpha = 1
+            })
+        }
     }
     
     @IBAction func beginButtonClicked(_ sender: UIButton) {
-        
-        UIView.animate(withDuration: 1.0, animations: {
-            let marcusManager = MarcusManager()
-            self.marcusQuotationLabel.text = marcusManager.quotation
-            self.marcusQuotationView.alpha = 1
-        }, completion: { (completed) in
-            DispatchQueue.main.asyncAfter(deadline: DispatchTime.now() + 3.0, execute: {
-                self.performSegue(withIdentifier: "toChooseEmotion", sender: self)
-            })
-        })
-        
+        self.performSegue(withIdentifier: toChooseEmotionSegueID, sender: self)
+        toChooseSeguePerformed = true
     }
     
     
-    func handleReceivingLocalNotification () {
+    func handleReceivingLocalNotification() {
         let notificationsReceiver = NotificationsReceiver.sharedInstance
         
-        if let didReceiveLocalNotification = notificationsReceiver.didReceiveLocalNotification {
-            if didReceiveLocalNotification {
-                performSegue(withIdentifier: "toChooseEmotion", sender: self)
-                notificationsReceiver.didReceiveLocalNotification = nil
-            }
-            
+        if let didReceiveLocalNotification = notificationsReceiver.didReceiveLocalNotification, didReceiveLocalNotification {
+            performSegue(withIdentifier: toChooseEmotionSegueID, sender: self)
+            toChooseSeguePerformed = true
+            notificationsReceiver.didReceiveLocalNotification = nil
         }
     }
 

@@ -47,29 +47,11 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="lwF-yi-3wP">
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
                             </imageView>
-                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-pc-jUx">
-                                <rect key="frame" x="0.0" y="713" width="375" height="65"/>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                <constraints>
-                                    <constraint firstAttribute="height" constant="65" id="1nS-XT-UgL"/>
-                                </constraints>
-                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
-                                <state key="normal" title="Begin Marcus Jr. Meditations">
-                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                </state>
-                                <connections>
-                                    <action selector="beginButtonClicked:" destination="x9n-p6-Bpa" eventType="touchUpInside" id="ptG-f2-4jW"/>
-                                </connections>
-                            </button>
-                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXF-qZ-ZbV" userLabel="iPhoneX Filler View">
-                                <rect key="frame" x="0.0" y="778" width="375" height="34"/>
-                                <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                            </view>
                             <view alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEw-ie-6bI" userLabel="Marcus Quotation View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="375" height="713"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-Kj-0ch">
-                                        <rect key="frame" x="38" y="352.33333333333331" width="300" height="107.66666666666669"/>
+                                        <rect key="frame" x="38" y="302.66666666666669" width="300" height="107.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L72-fH-JXZ" userLabel="Be content with what you are, and wish not change; nor dread your last day, nor long for it.">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="86"/>
@@ -97,9 +79,28 @@
                                     <constraint firstItem="m8B-Kj-0ch" firstAttribute="centerY" secondItem="dEw-ie-6bI" secondAttribute="centerY" id="ZF9-4Y-Z7M"/>
                                 </constraints>
                             </view>
+                            <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-pc-jUx">
+                                <rect key="frame" x="0.0" y="713" width="375" height="65"/>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                <constraints>
+                                    <constraint firstAttribute="height" constant="65" id="1nS-XT-UgL"/>
+                                </constraints>
+                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
+                                <state key="normal" title="Begin Marcus Jr. Meditations">
+                                    <color key="titleColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                </state>
+                                <connections>
+                                    <action selector="beginButtonClicked:" destination="x9n-p6-Bpa" eventType="touchUpInside" id="ptG-f2-4jW"/>
+                                </connections>
+                            </button>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXF-qZ-ZbV" userLabel="iPhoneX Filler View">
+                                <rect key="frame" x="0.0" y="778" width="375" height="34"/>
+                                <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                            </view>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <constraints>
+                            <constraint firstItem="b5J-pc-jUx" firstAttribute="top" secondItem="dEw-ie-6bI" secondAttribute="bottom" id="4rE-U1-OCB"/>
                             <constraint firstItem="UXF-qZ-ZbV" firstAttribute="top" secondItem="b5J-pc-jUx" secondAttribute="bottom" id="7v2-HT-UrB"/>
                             <constraint firstItem="dEw-ie-6bI" firstAttribute="leading" secondItem="P1F-y1-qBg" secondAttribute="leading" id="B0d-Fr-cIq"/>
                             <constraint firstAttribute="trailing" secondItem="UXF-qZ-ZbV" secondAttribute="trailing" id="MgO-8t-kPA"/>
@@ -114,7 +115,6 @@
                             <constraint firstAttribute="trailing" secondItem="dEw-ie-6bI" secondAttribute="trailing" id="t9M-EO-Orc"/>
                             <constraint firstAttribute="bottom" secondItem="UXF-qZ-ZbV" secondAttribute="bottom" id="vNz-RM-cNK"/>
                             <constraint firstItem="b5J-pc-jUx" firstAttribute="bottom" secondItem="R6w-55-W9b" secondAttribute="bottom" id="ydF-se-u6V"/>
-                            <constraint firstAttribute="bottom" secondItem="dEw-ie-6bI" secondAttribute="bottom" id="z3e-iD-eyT"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="R6w-55-W9b"/>
                     </view>
@@ -209,7 +209,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
+                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
                                                             <attributes>
                                                                 <font key="NSFont" size="18" name="SanFranciscoDisplay-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -350,21 +350,15 @@
                                     </tableViewCell>
                                 </prototypes>
                             </tableView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-RO-mYz">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-RO-mYz">
                                 <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="au4-iq-HJH"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Reset All Exercises Above">
-                                            <attributes>
-                                                <color key="NSColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="16" name="SanFranciscoDisplay-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
+                                <state key="normal" title="Reset All Exercises Above">
+                                    <color key="titleColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetAllExercisesAbove:" destination="Oxb-9h-PII" eventType="touchUpInside" id="AQf-zU-9RL"/>
@@ -411,21 +405,15 @@
                                     <segue destination="qsg-a4-f4e" kind="embed" identifier="embedDaily" id="MWT-Vk-d0d"/>
                                 </connections>
                             </containerView>
-                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" hasAttributedTitle="YES" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-XS-gjF">
+                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-XS-gjF">
                                 <rect key="frame" x="0.0" y="728" width="375" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0OA-cA-HUD"/>
                                 </constraints>
-                                <state key="normal">
-                                    <attributedString key="attributedTitle">
-                                        <fragment content="Reset Completed Exercise">
-                                            <attributes>
-                                                <color key="NSColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
-                                                <font key="NSFont" size="16" name="SanFranciscoDisplay-Regular"/>
-                                            </attributes>
-                                        </fragment>
-                                    </attributedString>
+                                <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
+                                <state key="normal" title="Reset Completed Exercise">
+                                    <color key="titleColor" red="0.89803921568627454" green="0.11372549019607843" blue="0.21176470588235294" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 </state>
                                 <connections>
                                     <action selector="resetCompletedExercise:" destination="fKZ-oK-AeX" eventType="touchUpInside" id="nBM-J5-Jsx"/>
@@ -454,7 +442,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="yuR-Js-s42" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="-186" y="-664"/>
+            <point key="canvasLocation" x="-190" y="-884"/>
         </scene>
         <!--Picker View Controller-->
         <scene sceneID="Fql-GI-VrM">

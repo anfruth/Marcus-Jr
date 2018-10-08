@@ -209,7 +209,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <attributes>
                                                                 <font key="NSFont" size="18" name="SanFranciscoDisplay-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -330,17 +330,28 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Meditation This will be two lines so I can test it." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
-                                                    <rect key="frame" x="20" y="16" width="335" height="92"/>
+                                                    <rect key="frame" x="20" y="16" width="304" height="92"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4a-sD-2Xg">
+                                                    <rect key="frame" x="344" y="51.666666666666664" width="11" height="19.999999999999993"/>
+                                                    <constraints>
+                                                        <constraint firstAttribute="width" constant="11" id="OV3-7J-NEW"/>
+                                                    </constraints>
+                                                    <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="16"/>
+                                                    <nil key="textColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
                                             </subviews>
                                             <constraints>
+                                                <constraint firstItem="T4a-sD-2Xg" firstAttribute="leading" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="B4p-aR-0sf"/>
                                                 <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leading" constant="20" id="Inx-1c-Yld"/>
-                                                <constraint firstAttribute="trailing" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="Iuo-j1-lCC"/>
+                                                <constraint firstAttribute="trailing" secondItem="T4a-sD-2Xg" secondAttribute="trailing" constant="20" id="RIp-Ya-2r7"/>
                                                 <constraint firstItem="K3i-pd-lht" firstAttribute="top" secondItem="jBz-5W-GqF" secondAttribute="topMargin" constant="5" id="W0n-8g-fzu"/>
+                                                <constraint firstItem="T4a-sD-2Xg" firstAttribute="centerY" secondItem="jBz-5W-GqF" secondAttribute="centerY" id="ha3-eB-jg1"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="K3i-pd-lht" secondAttribute="bottom" constant="5" id="oUM-8t-3Nl"/>
                                             </constraints>
                                         </tableViewCellContentView>

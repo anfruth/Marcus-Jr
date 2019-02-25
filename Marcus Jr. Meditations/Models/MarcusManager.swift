@@ -52,7 +52,7 @@ struct MarcusManager {
     private static func generateOriginalQuotationsRemaining() {
         var quotationsRemainingTemp: [String] = [] // copy made so setter is not called on every iteration
         
-        for index in 1...numMarcusQuotations { // keep searching until no more marcus quotations. See break below
+        for index in 1...numMarcusQuotations {
             let marcusQuotationKey = "\(index)Marcus"
             quotationsRemainingTemp.append(marcusQuotationKey)
         }

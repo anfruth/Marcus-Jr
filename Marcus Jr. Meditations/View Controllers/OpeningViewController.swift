@@ -30,8 +30,8 @@ class OpeningViewController: UIViewController {
             let marcusManager = MarcusManager()
             self.marcusQuotationLabel.text = marcusManager.quotation
             
-            UIView.animate(withDuration: 3.0, animations: {
-                self.marcusQuotationView.alpha = 1
+            UIView.animate(withDuration: 3.0, animations: { [weak self] in
+                self?.marcusQuotationView.alpha = 1
             })
         }
     }

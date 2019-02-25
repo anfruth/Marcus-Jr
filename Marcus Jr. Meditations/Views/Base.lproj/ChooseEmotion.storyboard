@@ -1,13 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14113" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x9n-p6-Bpa">
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="14460.31" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x9n-p6-Bpa">
     <device id="retina5_9" orientation="portrait">
         <adaptation id="fullscreen"/>
     </device>
     <dependencies>
         <deployment identifier="iOS"/>
-        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14088"/>
-        <capability name="Constraints to layout margins" minToolsVersion="6.0"/>
-        <capability name="Constraints with non-1.0 multipliers" minToolsVersion="5.1"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="14460.20"/>
         <capability name="Safe area layout guides" minToolsVersion="9.0"/>
         <capability name="documents saved in the Xcode 8 format" minToolsVersion="8.0"/>
     </dependencies>
@@ -51,7 +49,7 @@
                                 <rect key="frame" x="0.0" y="0.0" width="375" height="713"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-Kj-0ch">
-                                        <rect key="frame" x="38" y="302.66666666666669" width="300" height="107.66666666666669"/>
+                                        <rect key="frame" x="37.666666666666657" y="302.66666666666669" width="300" height="107.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L72-fH-JXZ" userLabel="Be content with what you are, and wish not change; nor dread your last day, nor long for it.">
                                                 <rect key="frame" x="0.0" y="0.0" width="300" height="86"/>
@@ -151,7 +149,7 @@
                                     <autoresizingMask key="autoresizingMask"/>
                                     <subviews>
                                         <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Sadness" textAlignment="center" lineBreakMode="tailTruncation" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="czW-mM-LBN">
-                                            <rect key="frame" x="14.666666666666671" y="56" width="115.00000000000001" height="36"/>
+                                            <rect key="frame" x="14.333333333333336" y="56" width="115.33333333333331" height="36"/>
                                             <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="30"/>
                                             <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                             <nil key="highlightedColor"/>
@@ -322,36 +320,25 @@
                                 <rect key="frame" x="0.0" y="88" width="375" height="640"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
-                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dailyMeditation" rowHeight="124" id="vh9-ln-4Gm" customClass="DailyMeditationCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
+                                    <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="dailyMeditation" rowHeight="124" id="vh9-ln-4Gm" customClass="DailyMeditationCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
                                         <rect key="frame" x="0.0" y="28" width="375" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vh9-ln-4Gm" id="jBz-5W-GqF">
-                                            <rect key="frame" x="0.0" y="0.0" width="375" height="123.66666666666667"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="342" height="123.66666666666667"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Meditation This will be two lines so I can test it." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
-                                                    <rect key="frame" x="20" y="16" width="304" height="92"/>
+                                                    <rect key="frame" x="20" y="16" width="302" height="92"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
                                                     <size key="shadowOffset" width="0.0" height="0.0"/>
                                                 </label>
-                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="&gt;" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="T4a-sD-2Xg">
-                                                    <rect key="frame" x="344" y="51.666666666666664" width="11" height="19.999999999999993"/>
-                                                    <constraints>
-                                                        <constraint firstAttribute="width" constant="11" id="OV3-7J-NEW"/>
-                                                    </constraints>
-                                                    <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="16"/>
-                                                    <nil key="textColor"/>
-                                                    <nil key="highlightedColor"/>
-                                                </label>
                                             </subviews>
                                             <constraints>
-                                                <constraint firstItem="T4a-sD-2Xg" firstAttribute="leading" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="B4p-aR-0sf"/>
                                                 <constraint firstItem="K3i-pd-lht" firstAttribute="leading" secondItem="jBz-5W-GqF" secondAttribute="leading" constant="20" id="Inx-1c-Yld"/>
-                                                <constraint firstAttribute="trailing" secondItem="T4a-sD-2Xg" secondAttribute="trailing" constant="20" id="RIp-Ya-2r7"/>
                                                 <constraint firstItem="K3i-pd-lht" firstAttribute="top" secondItem="jBz-5W-GqF" secondAttribute="topMargin" constant="5" id="W0n-8g-fzu"/>
-                                                <constraint firstItem="T4a-sD-2Xg" firstAttribute="centerY" secondItem="jBz-5W-GqF" secondAttribute="centerY" id="ha3-eB-jg1"/>
+                                                <constraint firstAttribute="trailing" secondItem="K3i-pd-lht" secondAttribute="trailing" constant="20" id="gu6-6p-Q92"/>
                                                 <constraint firstAttribute="bottomMargin" secondItem="K3i-pd-lht" secondAttribute="bottom" constant="5" id="oUM-8t-3Nl"/>
                                             </constraints>
                                         </tableViewCellContentView>
@@ -571,7 +558,7 @@
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="aHV-Zg-lwa">
-                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="49.666666666666664"/>
+                                                    <rect key="frame" x="0.0" y="0.0" width="375" height="50"/>
                                                     <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
                                                     <color key="tintColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>

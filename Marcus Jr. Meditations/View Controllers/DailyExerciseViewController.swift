@@ -74,15 +74,16 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     @IBAction func selectTimesToMeditate(_ sender: UIButton) {
         
         UNUserNotificationCenter.current().getNotificationSettings { (userNotificationSettings) in
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let vc = self else { return }
                 if userNotificationSettings.authorizationStatus == .notDetermined {
-                    self.presentCorrectAlert(authorizationStatus: .notDetermined)
+                    vc.presentCorrectAlert(authorizationStatus: .notDetermined)
                     
                 } else if userNotificationSettings.authorizationStatus == .denied {
-                    self.presentCorrectAlert(authorizationStatus: .denied)
+                    vc.presentCorrectAlert(authorizationStatus: .denied)
                     
                 } else {
-                    self.performSegue(withIdentifier: self.meditationTimesSegueID, sender: self)
+                    vc.performSegue(withIdentifier: vc.meditationTimesSegueID, sender: vc)
                 }
             }
         }
@@ -130,10 +131,11 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
     private func presentCorrectAlert(authorizationStatus: UNAuthorizationStatus) {
         let alert = NotificationsSetup.sharedInstance.giveAppPromptForNotifications(authorizationStatus: authorizationStatus) { (userEnabledNotifications) in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
+                guard let vc = self else { return }
                 let permAlert = NotificationsSetup.sharedInstance.suggestPermanentNotifications() {
                     if userEnabledNotifications {
-                        self.performSegue(withIdentifier: self.meditationTimesSegueID, sender: self)
+                        vc.performSegue(withIdentifier: vc.meditationTimesSegueID, sender: vc)
                     }
 
                 }

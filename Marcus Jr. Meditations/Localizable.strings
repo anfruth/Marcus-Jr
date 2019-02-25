@@ -310,6 +310,10 @@
 "Permanent_title" = "Persistent Notifications";
 "Permanent_message" = "Go to Settings to turn on persistent notifications so your meditation time reminder doesn't disappear.";
 
+"Duplicate_time_title" = "Selected Duplicate Time for the Same Meditation.";
+"Duplicate_time_message" = "You already selected this time to meditate.";
+
+"Ok_action" = "OK";
 // Begin Opening Marcus Quotations, no order needed, so not worrying about 00, 01 like above to sort strings.
 
 "1Marcus" = "\"Men seek retirement in the country, on the sea-coast, in the mountains; and you too have frequent longings for such distractions. Yet surely this is great folly, since you may retire into yourself at any hour you please. Nowhere can a man find any retreat more quiet and more full of leisure than in his own soul; especially when there is that within it on which, if he but look, he is straightway quite at rest.\"";

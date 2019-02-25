@@ -145,7 +145,6 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             }
             
             cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")
-            cell.labelForDescription.preferredMaxLayoutWidth = cell.bounds.width - 40
             
             return cell
         }

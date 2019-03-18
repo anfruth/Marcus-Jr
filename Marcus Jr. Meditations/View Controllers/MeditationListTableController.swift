@@ -124,7 +124,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "dailyMeditation", for: indexPath) as? DailyMeditationCell {
             
-            if indexPath.row >= 4 && keysForSelectedEmotion == nil { // only get all indices if do not have, should be nil only once
+            if indexPath.row >= MeditationListConfiguration.universalEmotionKeys.count && keysForSelectedEmotion == nil { // only get all indices if do not have, should be nil only once
                 if let emotion = SelectedEmotion.choice {
                     getAllKeysOfEmotionIfNeeded(emotion: emotion)
                 } else {

@@ -27,7 +27,8 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resetAllButton: UIButton!
     @IBOutlet weak var resetAllButtonHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var resetAllFillerView: UIView!
+
     private var keysForSelectedEmotion: [String]?
     private var tableAlreadyLoaded = false
     
@@ -46,8 +47,10 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         if MeditationList.completedExercises.keys.count == 0 {
             MeditationList.retrieveMeditationListFromDisk()
         }
-        
-        resetAllButton.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+
+        let greyishColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+        resetAllButton.backgroundColor = greyishColor
+        resetAllFillerView.backgroundColor = greyishColor
         showOrHideCompletedExerciseButton()
         tableView.layoutIfNeeded()
         tableView.reloadData()
@@ -192,6 +195,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             for exerciseKey in MeditationListConfiguration.universalEmotionKeys + keysForSelectedEmotion {
                 if MeditationList.completedExercises[exerciseKey] == true {
                     resetAllButton.isHidden = false
+                    resetAllFillerView.isHidden = false
                     resetAllButtonHeight.constant = 50
                     return
                 }
@@ -199,6 +203,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         }
         
         resetAllButton.isHidden = true
+        resetAllFillerView.isHidden = true
         resetAllButtonHeight.constant = 0
     }
 

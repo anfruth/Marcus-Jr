@@ -52,7 +52,6 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         resetAllButton.backgroundColor = greyishColor
         resetAllFillerView.backgroundColor = greyishColor
         showOrHideCompletedExerciseButton()
-        tableView.layoutIfNeeded()
         tableView.reloadData()
     }
     

@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="15505" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" useSafeAreas="YES" colorMatched="YES" initialViewController="x9n-p6-Bpa">
-    <device id="retina5_9" orientation="portrait" appearance="light"/>
+    <device id="retina6_5" orientation="portrait" appearance="light"/>
     <dependencies>
         <deployment identifier="iOS"/>
         <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="15510"/>
@@ -21,7 +21,7 @@
             <objects>
                 <navigationController storyboardIdentifier="meditationsNav" modalPresentationStyle="fullScreen" id="bfO-Hr-4kK" sceneMemberID="viewController">
                     <navigationBar key="navigationBar" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" id="y5b-1C-P4Q">
-                        <rect key="frame" x="0.0" y="44" width="375" height="44"/>
+                        <rect key="frame" x="0.0" y="44" width="414" height="44"/>
                         <autoresizingMask key="autoresizingMask"/>
                     </navigationBar>
                     <connections>
@@ -37,20 +37,20 @@
             <objects>
                 <viewController storyboardIdentifier="openingVC" id="x9n-p6-Bpa" customClass="OpeningViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="P1F-y1-qBg">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" insetsLayoutMarginsFromSafeArea="NO" image="Marcus-Aurelius" translatesAutoresizingMaskIntoConstraints="NO" id="lwF-yi-3wP">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="812"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
                             </imageView>
                             <view alpha="0.0" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" translatesAutoresizingMaskIntoConstraints="NO" id="dEw-ie-6bI" userLabel="Marcus Quotation View">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="713"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="797"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" translatesAutoresizingMaskIntoConstraints="NO" id="m8B-Kj-0ch">
-                                        <rect key="frame" x="37.666666666666657" y="302.66666666666669" width="300" height="107.66666666666669"/>
+                                        <rect key="frame" x="40" y="344.66666666666669" width="334" height="107.66666666666669"/>
                                         <subviews>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="L72-fH-JXZ" userLabel="Be content with what you are, and wish not change; nor dread your last day, nor long for it.">
-                                                <rect key="frame" x="0.0" y="0.0" width="300" height="86"/>
+                                                <rect key="frame" x="0.0" y="0.0" width="334" height="86"/>
                                                 <string key="text">Be content with what you are, and wish not change; nor dread your last day, nor long for it. 
 </string>
                                                 <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="18"/>
@@ -58,25 +58,27 @@
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="- Marcus Aurelius" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Mc0-Sb-YE5">
-                                                <rect key="frame" x="0.0" y="86" width="300" height="21.666666666666671"/>
+                                                <rect key="frame" x="0.0" y="86" width="334" height="21.666666666666671"/>
                                                 <fontDescription key="fontDescription" name="SanFranciscoDisplay-Thin" family="San Francisco Display" pointSize="18"/>
                                                 <nil key="textColor"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                         </subviews>
                                         <constraints>
-                                            <constraint firstAttribute="width" constant="300" id="8RS-2Z-zNM"/>
+                                            <constraint firstAttribute="width" relation="lessThanOrEqual" constant="1000" id="2dj-uw-ih5"/>
                                         </constraints>
                                     </stackView>
                                 </subviews>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstItem="m8B-Kj-0ch" firstAttribute="centerX" secondItem="dEw-ie-6bI" secondAttribute="centerX" id="CvN-CC-oMn"/>
+                                    <constraint firstItem="m8B-Kj-0ch" firstAttribute="leading" secondItem="dEw-ie-6bI" secondAttribute="leading" priority="999" constant="40" id="SWr-HL-YLv"/>
                                     <constraint firstItem="m8B-Kj-0ch" firstAttribute="centerY" secondItem="dEw-ie-6bI" secondAttribute="centerY" id="ZF9-4Y-Z7M"/>
+                                    <constraint firstAttribute="trailing" secondItem="m8B-Kj-0ch" secondAttribute="trailing" priority="999" constant="40" id="aNo-3j-4xo"/>
                                 </constraints>
                             </view>
                             <button opaque="NO" contentMode="scaleToFill" insetsLayoutMarginsFromSafeArea="NO" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="b5J-pc-jUx">
-                                <rect key="frame" x="0.0" y="713" width="375" height="65"/>
+                                <rect key="frame" x="0.0" y="797" width="414" height="65"/>
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="65" id="1nS-XT-UgL"/>
@@ -90,7 +92,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="UXF-qZ-ZbV" userLabel="iPhoneX Filler View">
-                                <rect key="frame" x="0.0" y="778" width="375" height="34"/>
+                                <rect key="frame" x="0.0" y="862" width="414" height="34"/>
                                 <color key="backgroundColor" red="0.27450980390000002" green="0.51372549020000002" blue="0.92549019610000005" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                             </view>
                         </subviews>
@@ -129,7 +131,7 @@
             <objects>
                 <collectionViewController modalPresentationStyle="fullScreen" id="irr-GB-CcX" customClass="EmotionsViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <collectionView key="view" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" dataMode="prototypes" id="cnc-o9-fog">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="0.0" minimumInteritemSpacing="0.0" id="Wek-Xq-816">
@@ -205,7 +207,7 @@
                                                     <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                     <attributedString key="attributedText">
                                                         <fragment>
-                                                            <mutableString key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</mutableString>
+                                                            <string key="content">Lorem ipsum dolor sit er elit lamet, consectetaur cillium adipisicing pecu, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. Nam liber te conscient to factor tum poen legum odioque civiuda.</string>
                                                             <attributes>
                                                                 <font key="NSFont" size="18" name="SanFranciscoDisplay-Regular"/>
                                                                 <paragraphStyle key="NSParagraphStyle" alignment="left" lineBreakMode="wordWrapping" baseWritingDirection="natural" tighteningFactorForTruncation="0.0"/>
@@ -311,22 +313,22 @@
             <objects>
                 <viewController storyboardIdentifier="meditationList" modalPresentationStyle="fullScreen" id="Oxb-9h-PII" customClass="MeditationListTableController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="w6K-FW-iew">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <tableView clipsSubviews="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" dataMode="prototypes" style="plain" separatorStyle="default" rowHeight="-1" estimatedRowHeight="-1" sectionHeaderHeight="28" sectionFooterHeight="28" translatesAutoresizingMaskIntoConstraints="NO" id="fnB-YO-I7c">
-                                <rect key="frame" x="0.0" y="56" width="375" height="618"/>
+                                <rect key="frame" x="0.0" y="56" width="414" height="702"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" accessoryType="disclosureIndicator" indentationWidth="10" reuseIdentifier="dailyMeditation" rowHeight="124" id="vh9-ln-4Gm" customClass="DailyMeditationCell" customModule="Marcus_Jr__Meditations" customModuleProvider="target">
-                                        <rect key="frame" x="0.0" y="28" width="375" height="124"/>
+                                        <rect key="frame" x="0.0" y="28" width="414" height="124"/>
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" preservesSuperviewLayoutMargins="YES" insetsLayoutMarginsFromSafeArea="NO" tableViewCell="vh9-ln-4Gm" id="jBz-5W-GqF">
-                                            <rect key="frame" x="0.0" y="0.0" width="349" height="124"/>
+                                            <rect key="frame" x="0.0" y="0.0" width="383" height="124"/>
                                             <autoresizingMask key="autoresizingMask"/>
                                             <subviews>
                                                 <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="First Meditation This will be two lines so I can test it." lineBreakMode="wordWrap" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="K3i-pd-lht">
-                                                    <rect key="frame" x="20" y="16" width="309" height="92"/>
+                                                    <rect key="frame" x="20" y="16" width="343" height="92"/>
                                                     <fontDescription key="fontDescription" name="SanFranciscoDisplay-Regular" family="San Francisco Display" pointSize="16"/>
                                                     <nil key="textColor"/>
                                                     <nil key="highlightedColor"/>
@@ -347,7 +349,7 @@
                                 </prototypes>
                             </tableView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Yrs-RO-mYz">
-                                <rect key="frame" x="0.0" y="674" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="758" width="414" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="au4-iq-HJH"/>
@@ -361,7 +363,7 @@
                                 </connections>
                             </button>
                             <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PXg-SX-GI9" userLabel="Reset Filler View">
-                                <rect key="frame" x="0.0" y="724" width="375" height="34"/>
+                                <rect key="frame" x="0.0" y="808" width="414" height="34"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </view>
                         </subviews>
@@ -401,17 +403,17 @@
             <objects>
                 <viewController storyboardIdentifier="dailyContainerVC" id="fKZ-oK-AeX" customClass="DailyExerciseContainerViewController" customModule="Marcus_Jr__Meditations" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="OQL-Gy-Epp">
-                        <rect key="frame" x="0.0" y="0.0" width="375" height="758"/>
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="842"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
                             <containerView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="vHW-vo-pXe">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="674"/>
+                                <rect key="frame" x="0.0" y="0.0" width="414" height="758"/>
                                 <connections>
                                     <segue destination="qsg-a4-f4e" kind="embed" identifier="embedDaily" id="MWT-Vk-d0d"/>
                                 </connections>
                             </containerView>
                             <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" buttonType="roundedRect" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="dqd-XS-gjF">
-                                <rect key="frame" x="0.0" y="674" width="375" height="50"/>
+                                <rect key="frame" x="0.0" y="758" width="414" height="50"/>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <constraints>
                                     <constraint firstAttribute="height" constant="50" id="0OA-cA-HUD"/>

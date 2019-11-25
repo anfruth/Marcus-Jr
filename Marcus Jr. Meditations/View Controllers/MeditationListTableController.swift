@@ -27,7 +27,8 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var resetAllButton: UIButton!
     @IBOutlet weak var resetAllButtonHeight: NSLayoutConstraint!
-    
+    @IBOutlet weak var resetAllFillerView: UIView!
+
     private var keysForSelectedEmotion: [String]?
     private var tableAlreadyLoaded = false
     
@@ -36,7 +37,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight =  UITableViewAutomaticDimension
+        tableView.rowHeight =  UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
         if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
@@ -46,10 +47,11 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         if MeditationList.completedExercises.keys.count == 0 {
             MeditationList.retrieveMeditationListFromDisk()
         }
-        
-        resetAllButton.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+
+        let greyishColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+        resetAllButton.backgroundColor = greyishColor
+        resetAllFillerView.backgroundColor = greyishColor
         showOrHideCompletedExerciseButton()
-        tableView.layoutIfNeeded()
         tableView.reloadData()
     }
     
@@ -62,7 +64,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             showOrHideCompletedExerciseButton()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTableCellSpacing), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableCellSpacing), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +77,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     @IBAction func resetAllExercisesAbove(_ sender: UIButton) {
@@ -124,7 +126,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         if let cell = tableView.dequeueReusableCell(withIdentifier: "dailyMeditation", for: indexPath) as? DailyMeditationCell {
             
-            if indexPath.row >= 4 && keysForSelectedEmotion == nil { // only get all indices if do not have, should be nil only once
+            if indexPath.row >= MeditationListConfiguration.universalEmotionKeys.count && keysForSelectedEmotion == nil { // only get all indices if do not have, should be nil only once
                 if let emotion = SelectedEmotion.choice {
                     getAllKeysOfEmotionIfNeeded(emotion: emotion)
                 } else {
@@ -145,7 +147,6 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             }
             
             cell.labelForDescription.text = NSLocalizedString(meditationKey, comment: "")
-            cell.labelForDescription.preferredMaxLayoutWidth = cell.bounds.width - 40
             
             return cell
         }
@@ -193,6 +194,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             for exerciseKey in MeditationListConfiguration.universalEmotionKeys + keysForSelectedEmotion {
                 if MeditationList.completedExercises[exerciseKey] == true {
                     resetAllButton.isHidden = false
+                    resetAllFillerView.isHidden = false
                     resetAllButtonHeight.constant = 50
                     return
                 }
@@ -200,6 +202,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         }
         
         resetAllButton.isHidden = true
+        resetAllFillerView.isHidden = true
         resetAllButtonHeight.constant = 0
     }
 

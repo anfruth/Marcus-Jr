@@ -67,8 +67,8 @@ class NotificationsSetup {
         alert = UIAlertController(title: NSLocalizedString(notDeterminedTitle, comment: deniedTitleComment), message: NSLocalizedString(deniedMessage, comment: deniedMessageComment), preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: NSLocalizedString(notDeterminedOptionTitle, comment: deniedOptionTitleComment), style: .default, handler: { _ in
-            if let url = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                 completionHandler?()
             }
         }))
@@ -98,8 +98,8 @@ class NotificationsSetup {
         let alert = UIAlertController(title: NSLocalizedString(permanentTitle, comment: permanentTitleComment), message: NSLocalizedString(permanentMessage, comment: permanentMessageComment), preferredStyle: .alert)
         
         alert.addAction(UIAlertAction(title: settingsTitle, style: .default, handler: { _ in
-            if let url = URL(string: UIApplicationOpenSettingsURLString) {
-                UIApplication.shared.open(url, options: [:], completionHandler: nil)
+            if let url = URL(string: UIApplication.openSettingsURLString) {
+                UIApplication.shared.open(url, options: convertToUIApplicationOpenExternalURLOptionsKeyDictionary([:]), completionHandler: nil)
                 completionHandler()
             }
         }))
@@ -111,4 +111,9 @@ class NotificationsSetup {
         return alert
     }
     
+}
+
+// Helper function inserted by Swift 4.2 migrator.
+fileprivate func convertToUIApplicationOpenExternalURLOptionsKeyDictionary(_ input: [String: Any]) -> [UIApplication.OpenExternalURLOptionsKey: Any] {
+	return Dictionary(uniqueKeysWithValues: input.map { key, value in (UIApplication.OpenExternalURLOptionsKey(rawValue: key), value)})
 }

@@ -40,6 +40,13 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     private var buttonMapping: [Int: UIButton] = [:]
     private var buttonToLabelMapping: [UIButton: UILabel] = [:]
     
+    private let duplicateTimeTitleKey = "Duplicate_time_title"
+    private let duplicateTimeTitleComment = "Dupliicate time title"
+    private let duplicateTimeMessageKey = "Duplicate_time_message"
+    private let duplicateTimeMessageComment = "Duplicate time message"
+    private let okActionKey = "Ok_action"
+    private let okActionKeyComment = "Ok message"
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
@@ -80,24 +87,28 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
     @IBAction func selectTime(_ sender: UIButton) {
         center.getNotificationSettings { notificationSettings in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 if notificationSettings.authorizationStatus != .authorized {
-                    self.kickUserOutOfController()
+                    self?.kickUserOutOfController()
                 } else {
                     
-                    guard let meditationTimes = self.meditationTimes else {
+                    guard let vc = self, let meditationTimes = vc.meditationTimes else {
                         return
                     }
                     
                     assert(meditationTimes.pickerChosenDays > meditationTimes.timesSelected.count) // picker days more than times picked
                     
-                    let date = self.datePicker.date
+                    let date = vc.datePicker.date
                     let roundedToLowestMinute: TimeInterval = floor(date.timeIntervalSinceReferenceDate / 60) * 60
                     let roundedDate = Date(timeIntervalSinceReferenceDate: roundedToLowestMinute)
                     
                     if let exercise = SelectedExercise.key {
                         let meditation = Meditation(date: roundedDate, exercise: exercise)
-                        meditationTimes.timesSelected.append(meditation)
+                        if !meditationTimes.timesSelected.contains(meditation) {
+                            meditationTimes.timesSelected.append(meditation)
+                        } else {
+                            vc.showAlertDuplicateTime()
+                        }
                     }
                 }
             }
@@ -108,16 +119,16 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         
         center.getNotificationSettings { notificationSettings in
             
-            DispatchQueue.main.async {
+            DispatchQueue.main.async { [weak self] in
                 if notificationSettings.authorizationStatus != .authorized {
-                    self.kickUserOutOfController()
+                    self?.kickUserOutOfController()
                 } else {
                     
-                    guard let meditationTimes = self.meditationTimes else {
+                    guard let vc = self, let meditationTimes = vc.meditationTimes else {
                         return
                     }
                     
-                    if let label = self.buttonToLabelMapping[sender] {
+                    if let label = vc.buttonToLabelMapping[sender] {
                         meditationTimes.timesSelected.remove(at: label.tag - 1)
                     }
                     
@@ -135,7 +146,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             return
         }
         
-        let addedMeditationTimes = meditationTimes.timesSelected.filter { oldMeditationTimes.index(of: $0) == nil }
+        let addedMeditationTimes = meditationTimes.timesSelected.filter { oldMeditationTimes.firstIndex(of: $0) == nil }
         
         for meditation in addedMeditationTimes {
             addAdditionalLocalNotification(date: meditation.date, emotion: emotion, exercise: exercise)
@@ -157,7 +168,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         }
         
         removeExcessiveTimes()
-        let removedMeditations = oldMeditationTimes.filter { meditationTimes.timesSelected.index(of: $0) == nil }
+        let removedMeditations = oldMeditationTimes.filter { meditationTimes.timesSelected.firstIndex(of: $0) == nil }
         let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedMeditations: removedMeditations)
         center.removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
 
@@ -193,6 +204,16 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         
         return indicesToRemove
     }
+    
+    private func showAlertDuplicateTime() {
+        var alert = UIAlertController()
+        
+        alert = UIAlertController(title: NSLocalizedString(duplicateTimeTitleKey, comment: duplicateTimeTitleComment), message: NSLocalizedString(duplicateTimeMessageKey, comment: duplicateTimeMessageComment), preferredStyle: .alert)
+        
+        alert.addAction(UIAlertAction(title: NSLocalizedString(okActionKey, comment: okActionKeyComment), style: .default))
+        
+        present(alert, animated: true, completion: nil)
+    }
 
     private func kickUserOutOfController() {
         var alert = UIAlertController()
@@ -205,7 +226,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             self.navigationController?.popViewController(animated: true)
         }))
         
-        self.present(alert, animated: true, completion: nil)
+        present(alert, animated: true, completion: nil)
 
     }
     
@@ -272,7 +293,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             content.body = NSString.localizedUserNotificationString(forKey: NSLocalizedString(key, comment: "The meditation title"), arguments: nil)
         }
         content.categoryIdentifier = "meditationCategory"
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         return content
     }
@@ -316,7 +337,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         for time in meditationTimes.timesSelected {
             
             if time.completed {
-                if let indexToDelete = meditationTimes.timesSelected.index(of: time) {
+                if let indexToDelete = meditationTimes.timesSelected.firstIndex(of: time) {
                     if let button = buttonMapping[indexToDelete + 1], let label = buttonToLabelMapping[button] {
                         label.textColor = UIColor.lightGray
                         button.setTitleColor(UIColor.lightGray, for: .normal)

@@ -34,10 +34,10 @@
 "03Nothing_is_commentary" = "Sickness and other bad things outside your control do not have to hamper your will. You are fully in control of your will and how you choose to react to any situation.";
 "03Nothing_is_action" = "Have you felt defeated or unmotivated recently? If so, choose to keep your spirits up. You do not have to allow anything to impede your will.";
 
-"04Remind_yourself" = "Remind yourself that bad things happen"; //chapter 4
+"04Remind_yourself" = "Remind yourself that things, which one normally perceives as bad, will happen"; //chapter 4
 "04Remind_yourself_title" = "Enchiridion Chapter 4";
 "04Remind_yourself_quotation" = "With regard to whatever objects either delight the mind or contribute to use or are tenderly beloved, remind yourself of what nature they are, beginning with the merest trifles: if you have a favorite cup, that it is but a cup of which you are fond of—for thus, if it is broken, you can bear it; if you embrace your child or your wife, that you embrace a mortal—and thus, if either of them dies, you can bear it.";
-"04Remind_yourself_commentary" = "Remember the bad things happen and that some of those bad things, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have.";
+"04Remind_yourself_commentary" = "Remember that things, which one normally perceives as bad, like death, are inevitable. By facing this reality, you'll learn to appreciate the things you have.";
 "04Remind_yourself_action" = "Gently, not in an anxious manner, remind yourself of the negative realities of life. Know that things will go wrong, and you won't be so distraught when they do. You can handle them because you have chosen not to be affected by things you cannot control.";
 
 
@@ -296,6 +296,9 @@
 "47Put_your_quotation" = "The first and most necessary topic in philosophy is the practical application of principles, as, We ought not to lie; the second is that of demonstrations as, Why it is that we ought not to lie; the third, that which gives strength and logical connection to the other two, as, Why this is a demonstration. For what is demonstration? What is a consequence? What a contradiction? What truth? What falsehood? The third point is then necessary on account of the second; and the second on account of the first. But the most necessary, and that whereon we ought to rest, is the first.";
 "47Put_your_action" = "Remember not to get too caught up in theory. Practice and do good.";
 
+
+// End core quotations
+
 "Not_determined_title" = "Enable Notifications";
 "Not_determined_message" = "Allow the app to send you reminders to meditate based on the times you choose. Without enabling, no reminders will be sent and you will be unable to set meditation times.";
 "Not_determined_option_title" = "Turn On Notifications";
@@ -307,7 +310,22 @@
 "Permanent_title" = "Persistent Notifications";
 "Permanent_message" = "Go to Settings to turn on persistent notifications so your meditation time reminder doesn't disappear.";
 
+"Duplicate_time_title" = "Selected Duplicate Time for the Same Meditation.";
+"Duplicate_time_message" = "You already selected this time to meditate.";
 
+"Ok_action" = "OK";
+// Begin Opening Marcus Quotations, no order needed, so not worrying about 00, 01 like above to sort strings.
 
-
+"1Marcus" = "\"Men seek retirement in the country, on the sea-coast, in the mountains; and you too have frequent longings for such distractions. Yet surely this is great folly, since you may retire into yourself at any hour you please. Nowhere can a man find any retreat more quiet and more full of leisure than in his own soul; especially when there is that within it on which, if he but look, he is straightway quite at rest.\"";
+"2Marcus" = "\"Whenever your situation forces trouble upon you, return quickly to yourself, and interrupt the rhythm of life no longer than you are compelled. Your grasp of the harmony will grow surer by continual recurrence to it.\"";
+"3Marcus" = "\"When you are grieved about anything external it is not the thing itself which afflicts you, but your judgment about it. This judgment it is in your power to efface.\"";
+"4Marcus" = "\"Now death and life, glory and reproach, pain and pleasure, riches and poverty—all these happen equally to the good and to the bad. But, as they are neither honourable nor shameful, they are therefore neither good nor evil.\"";
+"5Marcus" = "\"Time is a river, a violent torrent of things coming into being. Each one, as soon as it has appeared, is swept away: it is succeeded by another which is swept away in its turn.\"";
+"6Marcus" = "\"The character of your most frequent impressions will be the character of your mind.\"";
+"7Marcus" = "\"The one precious thing in life is to spend it in a steady course of truth and justice, with kindliness even for the false and the unjust.\"";
+"8Marcus" = "\"Be not ashamed of taking assistance. It is laid upon you to do your part, as on a soldier when the wall is stormed. What, then, if you are lame, and cannot scale the battlements alone, but can with another's help?\"";
+"9Marcus" = "\"If you discharge your present duty with firm and zealous, yet kindly, observance of the laws of reason; if you regard no by-gains, but keep pure within you your immortal part, as if obliged to restore it at once to him who gave it; if you hold to this with no further desires or aversions, and be content with the natural discharge of your present task, and with the heroic sincerity of all you say or utter, you will live well. And herein no man can hinder you.\"";
+"10Marcus" = "\"Concerning pain: Pain which cannot be borne brings us deliverance. Pain that lasts musts needs be bearable. The mind can abstract itself from the body, and the soul takes no hurt. As to the parts which suffer by pain, let them, if they can, make their own protest.\"";
+"11Marcus" = "\"Look attentively on each particular thing you do, and ask yourself if death be a terror because it deprives you of this.\"";
+"12Marcus" = "\"Perceive at last that there is within you something better and more divine than the immediate cause of your sensations of pleasure and pain; something, in short, beyond the strings which move the puppet.\"";
 

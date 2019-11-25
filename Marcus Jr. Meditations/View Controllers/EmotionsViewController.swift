@@ -107,7 +107,6 @@ class EmotionsViewController: UICollectionViewController, NotificationsVC {
                 }
                 
                 cell.emotionLabel?.text = rawValue
-                cell.imageView?.image = UIImage(named: rawValue)
             }
         }
     }

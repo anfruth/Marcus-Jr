@@ -6,10 +6,12 @@
 //  Copyright © 2018 Andrew Fruth. All rights reserved.
 //
 
+
 import Foundation
 
 protocol CompleteExerciseSettable {} // only classes or structs that conform to this protocol can change the completedExercises dict.
 
+// stores all the meditation exercises independent of an emotion or trait. Shows if the exercises are complete.
 class MeditationList {
     
     fileprivate(set) static var completedExercises: [String: Bool] = [:] // faster lookup time with dictionary than with array, even though all values will be true

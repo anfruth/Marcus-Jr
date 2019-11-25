@@ -8,6 +8,7 @@
 
 import Foundation
 
+// the meditation in totality, main model. "MeditationModel" is an individual meditation time. MeditationList keeps a list of all meditations saved to disk completed.
 class MeditationTimes: CompleteExerciseSettable {
     
     private let emotion: EmotionTypeEncompassing

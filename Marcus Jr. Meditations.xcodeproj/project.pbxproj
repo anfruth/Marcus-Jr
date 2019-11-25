@@ -47,6 +47,7 @@
 		EA5106C12037ED21003135BA /* SanFranciscoText-Bold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AC2037ED21003135BA /* SanFranciscoText-Bold.otf */; };
 		EA5106C22037ED21003135BA /* SanFranciscoDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AD2037ED21003135BA /* SanFranciscoDisplay-Semibold.otf */; };
 		EA5106C32037ED21003135BA /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */; };
+		EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6492C720FAAF280089D28C /* MarcusManager.swift */; };
 		EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */; };
 		EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */; };
 		EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */; };
@@ -108,6 +109,7 @@
 		EA5106AC2037ED21003135BA /* SanFranciscoText-Bold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Bold.otf"; sourceTree = "<group>"; };
 		EA5106AD2037ED21003135BA /* SanFranciscoDisplay-Semibold.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Semibold.otf"; sourceTree = "<group>"; };
 		EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-Heavy.otf"; sourceTree = "<group>"; };
+		EA6492C720FAAF280089D28C /* MarcusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusManager.swift; sourceTree = "<group>"; };
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
@@ -237,6 +239,7 @@
 				EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */,
 				EA1D07D3205DD19E007D973A /* MeditationModel.swift */,
 				EA1D07D5205EED7C007D973A /* MeditationListModel.swift */,
+				EA6492C720FAAF280089D28C /* MarcusManager.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -300,10 +303,12 @@
 				TargetAttributes = {
 					EA0FF05F2023FAE100688BC6 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 					};
 					EA0FF0732023FAE200688BC6 = {
 						CreatedOnToolsVersion = 9.2;
+						LastSwiftMigration = 1020;
 						ProvisioningStyle = Automatic;
 						TestTargetID = EA0FF05F2023FAE100688BC6;
 					};
@@ -383,6 +388,7 @@
 				EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */,
 				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
 				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
+				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
 				EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */,
 				EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */,
 				EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */,
@@ -555,7 +561,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Debug;
@@ -570,7 +576,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
 			name = Release;
@@ -586,7 +592,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--MeditationsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marcus Jr. Meditations.app/Marcus Jr. Meditations";
 			};
@@ -603,7 +609,7 @@
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks @loader_path/Frameworks";
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--MeditationsTests";
 				PRODUCT_NAME = "$(TARGET_NAME)";
-				SWIFT_VERSION = 4.0;
+				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 				TEST_HOST = "$(BUILT_PRODUCTS_DIR)/Marcus Jr. Meditations.app/Marcus Jr. Meditations";
 			};

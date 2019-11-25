@@ -36,7 +36,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
         
         tableView.dataSource = self
         tableView.delegate = self
-        tableView.rowHeight =  UITableViewAutomaticDimension
+        tableView.rowHeight =  UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
         if let emotion = SelectedEmotion.choice, let rawValue = Emotion.getRawValue(from: emotion) {
@@ -62,7 +62,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
             showOrHideCompletedExerciseButton()
         }
         
-        NotificationCenter.default.addObserver(self, selector: #selector(updateTableCellSpacing), name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.addObserver(self, selector: #selector(updateTableCellSpacing), name: UIDevice.orientationDidChangeNotification, object: nil)
     }
     
     override func viewDidAppear(_ animated: Bool) {
@@ -75,7 +75,7 @@ class MeditationListTableController: UIViewController, UITableViewDataSource, UI
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         
-        NotificationCenter.default.removeObserver(self, name: NSNotification.Name.UIDeviceOrientationDidChange, object: nil)
+        NotificationCenter.default.removeObserver(self, name: UIDevice.orientationDidChangeNotification, object: nil)
     }
 
     @IBAction func resetAllExercisesAbove(_ sender: UIButton) {

@@ -99,7 +99,7 @@ class NotificationsReceiver: NSObject, UNUserNotificationCenterDelegate, Emotion
                 
                 if let dailyExerciseController = storyboard.instantiateViewController(withIdentifier: "dailyExerciseVC") as? DailyExerciseViewController {
                     
-                    dailyExerciseContainerVC.addChildViewController(dailyExerciseController)
+                    dailyExerciseContainerVC.addChild(dailyExerciseController)
                     nav.pushViewController(dailyExerciseContainerVC, animated: false)
                 }
                 

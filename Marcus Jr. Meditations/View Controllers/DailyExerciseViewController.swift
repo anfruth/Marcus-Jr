@@ -31,7 +31,7 @@ class DailyExerciseViewController: UITableViewController, NotificationsVC {
         selectNumTimesButton.layer.cornerRadius = 30
         selectTimeButton.layer.cornerRadius = 30
 
-        tableView.rowHeight =  UITableViewAutomaticDimension
+        tableView.rowHeight =  UITableView.automaticDimension
         tableView.estimatedRowHeight = 50
         
         // _title, _quotation, _commentary, _action

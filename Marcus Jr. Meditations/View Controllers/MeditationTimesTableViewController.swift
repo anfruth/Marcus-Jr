@@ -146,7 +146,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             return
         }
         
-        let addedMeditationTimes = meditationTimes.timesSelected.filter { oldMeditationTimes.index(of: $0) == nil }
+        let addedMeditationTimes = meditationTimes.timesSelected.filter { oldMeditationTimes.firstIndex(of: $0) == nil }
         
         for meditation in addedMeditationTimes {
             addAdditionalLocalNotification(date: meditation.date, emotion: emotion, exercise: exercise)
@@ -168,7 +168,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         }
         
         removeExcessiveTimes()
-        let removedMeditations = oldMeditationTimes.filter { meditationTimes.timesSelected.index(of: $0) == nil }
+        let removedMeditations = oldMeditationTimes.filter { meditationTimes.timesSelected.firstIndex(of: $0) == nil }
         let notificationIDsToDelete = getNotificationsToDelete(emotion: emotion, exercise: exercise, removedMeditations: removedMeditations)
         center.removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
 
@@ -293,7 +293,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
             content.body = NSString.localizedUserNotificationString(forKey: NSLocalizedString(key, comment: "The meditation title"), arguments: nil)
         }
         content.categoryIdentifier = "meditationCategory"
-        content.sound = UNNotificationSound.default()
+        content.sound = UNNotificationSound.default
         
         return content
     }
@@ -337,7 +337,7 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         for time in meditationTimes.timesSelected {
             
             if time.completed {
-                if let indexToDelete = meditationTimes.timesSelected.index(of: time) {
+                if let indexToDelete = meditationTimes.timesSelected.firstIndex(of: time) {
                     if let button = buttonMapping[indexToDelete + 1], let label = buttonToLabelMapping[button] {
                         label.textColor = UIColor.lightGray
                         button.setTitleColor(UIColor.lightGray, for: .normal)

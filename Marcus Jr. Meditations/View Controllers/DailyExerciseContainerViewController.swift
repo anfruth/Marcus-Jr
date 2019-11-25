@@ -12,7 +12,9 @@ class DailyExerciseContainerViewController: UIViewController {
 
     @IBOutlet weak var heightOfExerciseButton: NSLayoutConstraint!
     @IBOutlet weak var resetCompletedExerciseButton: UIButton!
-    
+    @IBOutlet weak var resetExerciseFillerView: UIView!
+
+
     var meditationTimes: MeditationTimes?
     var alreadyShownVC: Bool = false
     
@@ -24,8 +26,10 @@ class DailyExerciseContainerViewController: UIViewController {
         if let exerciseKey = SelectedExercise.key {
             title = NSLocalizedString(exerciseKey + "_title", comment: exerciseTitleComment)
         }
-        
-        resetCompletedExerciseButton.backgroundColor = UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+
+        let greyishColor =  UIColor(red: (247/255), green: (247/255), blue: (247/255), alpha: 1)
+        resetCompletedExerciseButton.backgroundColor = greyishColor
+        resetExerciseFillerView.backgroundColor = greyishColor
     }
 
     override func viewWillAppear(_ animated: Bool) {
@@ -70,9 +74,11 @@ class DailyExerciseContainerViewController: UIViewController {
         
         if MeditationList.completedExercises[exercise] == true {
             resetCompletedExerciseButton.isHidden = false
+            resetExerciseFillerView.isHidden = false
             heightOfExerciseButton.constant = 50
         } else {
             resetCompletedExerciseButton.isHidden = true
+            resetExerciseFillerView.isHidden = true
             heightOfExerciseButton.constant = 0
         }
     }

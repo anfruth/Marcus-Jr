@@ -7,7 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
+		EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */; };
+		EA0F3C7527AF8DBB00D4EE43 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0F3C7427AF8DBB00D4EE43 /* ContentView.swift */; };
 		EA0FF0692023FAE100688BC6 /* ChooseEmotion.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF0672023FAE100688BC6 /* ChooseEmotion.storyboard */; };
 		EA0FF06B2023FAE100688BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF06A2023FAE100688BC6 /* Assets.xcassets */; };
 		EA0FF06E2023FAE100688BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */; };
@@ -65,12 +66,15 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		EA0F3C6F27AF742700D4EE43 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusJrApp.swift; sourceTree = "<group>"; };
+		EA0F3C7427AF8DBB00D4EE43 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		EA0FF0602023FAE100688BC6 /* Marcus Jr. Meditations.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "Marcus Jr. Meditations.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0FF0632023FAE100688BC6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		EA0FF0682023FAE100688BC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/ChooseEmotion.storyboard; sourceTree = "<group>"; };
 		EA0FF06A2023FAE100688BC6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		EA0FF06D2023FAE100688BC6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
-		EA0FF06F2023FAE100688BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		EA0FF06F2023FAE100688BC6 /* Info-v1.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "Info-v1.plist"; sourceTree = "<group>"; };
 		EA0FF0742023FAE200688BC6 /* Marcus Jr. MeditationsTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = "Marcus Jr. MeditationsTests.xctest"; sourceTree = BUILT_PRODUCTS_DIR; };
 		EA0FF0782023FAE200688BC6 /* Marcus_Jr__MeditationsTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Marcus_Jr__MeditationsTests.swift; sourceTree = "<group>"; };
 		EA0FF07A2023FAE200688BC6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -134,9 +138,41 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		EA0F3C6E27AF72B400D4EE43 /* UIKitv1 */ = {
+			isa = PBXGroup;
+			children = (
+				EA0FF0632023FAE100688BC6 /* AppDelegate.swift */,
+				EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */,
+				EAC2F200203BA1FF007D97FC /* Models */,
+				EAC2F1FF203BA1DD007D97FC /* Views */,
+				EAC2F1FE203BA194007D97FC /* View Controllers */,
+				EAC2F201203BA22B007D97FC /* Other Controllers */,
+			);
+			path = UIKitv1;
+			sourceTree = "<group>";
+		};
+		EA0F3C7027AF74E600D4EE43 /* SwiftUIv2 */ = {
+			isa = PBXGroup;
+			children = (
+				EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */,
+				EA0F3C7327AF8DA700D4EE43 /* Views */,
+			);
+			path = SwiftUIv2;
+			sourceTree = "<group>";
+		};
+		EA0F3C7327AF8DA700D4EE43 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				EA0F3C7427AF8DBB00D4EE43 /* ContentView.swift */,
+			);
+			path = Views;
+			sourceTree = "<group>";
+		};
 		EA0FF0572023FAE100688BC6 = {
 			isa = PBXGroup;
 			children = (
+				EA0F3C6F27AF742700D4EE43 /* Info.plist */,
+				EA0FF06F2023FAE100688BC6 /* Info-v1.plist */,
 				EA0FF0622023FAE100688BC6 /* Marcus Jr. Meditations */,
 				EA0FF0772023FAE200688BC6 /* Marcus Jr. MeditationsTests */,
 				EA0FF0612023FAE100688BC6 /* Products */,
@@ -155,15 +191,10 @@
 		EA0FF0622023FAE100688BC6 /* Marcus Jr. Meditations */ = {
 			isa = PBXGroup;
 			children = (
-				EA0FF0632023FAE100688BC6 /* AppDelegate.swift */,
-				EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */,
-				EAC2F200203BA1FF007D97FC /* Models */,
-				EAC2F1FF203BA1DD007D97FC /* Views */,
-				EAC2F1FE203BA194007D97FC /* View Controllers */,
-				EAC2F201203BA22B007D97FC /* Other Controllers */,
+				EA0F3C7027AF74E600D4EE43 /* SwiftUIv2 */,
+				EA0F3C6E27AF72B400D4EE43 /* UIKitv1 */,
 				EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */,
 				EA0FF06A2023FAE100688BC6 /* Assets.xcassets */,
-				EA0FF06F2023FAE100688BC6 /* Info.plist */,
 				EA0FF097202C181A00688BC6 /* Localizable.strings */,
 				EA5106992037ECF5003135BA /* fonts */,
 			);
@@ -382,11 +413,12 @@
 			files = (
 				EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */,
 				EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */,
+				EA0F3C7527AF8DBB00D4EE43 /* ContentView.swift in Sources */,
 				EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */,
 				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
+				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
 				EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */,
 				EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */,
-				EA0FF0642023FAE100688BC6 /* AppDelegate.swift in Sources */,
 				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
 				EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */,
@@ -490,7 +522,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = YES;
 				ONLY_ACTIVE_ARCH = YES;
 				SDKROOT = iphoneos;
@@ -543,7 +575,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 11.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				SDKROOT = iphoneos;
 				SWIFT_OPTIMIZATION_LEVEL = "-Owholemodule";
@@ -557,7 +589,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FW82Y9WEC;
-				INFOPLIST_FILE = "Marcus Jr. Meditations/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";
@@ -573,7 +605,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FW82Y9WEC;
-				INFOPLIST_FILE = "Marcus Jr. Meditations/Info.plist";
+				INFOPLIST_FILE = Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";

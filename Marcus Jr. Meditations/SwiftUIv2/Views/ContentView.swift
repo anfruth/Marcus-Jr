@@ -11,62 +11,71 @@ import SwiftUI
 struct ContentView: View {
     
     @State private var showMarcus = true
-    var marcusQuotation = MarcusManager().quotation
+    
+    private var marcusQuotation = MarcusManager().quotation
+    private let backgroundImageName = "Marcus-Aurelius"
     
     var body: some View {
-        
-        GeometryReader { geometry in
-            
-            let fullWidthWithSafeArea = geometry.size.width + geometry.safeAreaInsets.leading + geometry.safeAreaInsets.trailing
-            let fullHeightWithSafeArea = geometry.size.height + geometry.safeAreaInsets.top + geometry.safeAreaInsets.bottom
-            
-            ZStack() {
-                
-                let heightOfBeginButton: CGFloat = 100
-                let quoteAreaHeight = geometry.size.height + geometry.safeAreaInsets.top - heightOfBeginButton
-                
-                Image("Marcus-Aurelius")
+
+        ZStack {
+            GeometryReader { proxy in
+                Image(backgroundImageName)
                     .resizable()
-                    .scaledToFill()
-                    .opacity(showMarcus ? 1 : 0)
-                    .animation(.linear(duration: 3), value: showMarcus ? 1 : 0)
-                    .onAppear {
-                        showMarcus = false
-                    }
-                    .frame(width: fullWidthWithSafeArea, height: fullHeightWithSafeArea)
-
-                VStack(spacing: 0) {
-                    
-                    VStack {
-                        Spacer()
-                        Text(marcusQuotation).padding(50)
-                        Spacer()
-                    }
-                    .opacity(showMarcus ? 0 : 1)
-                    .animation(.linear(duration: 3), value: showMarcus ? 0 : 1)
-                    .frame(width: geometry.size.width, height: quoteAreaHeight)
-                    
-                    
-                    Button {
-                        showMarcus.toggle()
-                    } label: {
-                        Text("Begin Marcus Jr. Meditations")
-                            .foregroundColor(Color.white)
-                            .font(.title2)
-
-                    }
-                    .frame(width: fullWidthWithSafeArea, height: heightOfBeginButton)
-                    .background(Color.blue)
-
-                    Rectangle()
-                        .fill(Color.blue)
-                        .frame(width: fullWidthWithSafeArea, height: geometry.safeAreaInsets.bottom)
-                }
-                .frame(width: geometry.size.width, height: geometry.size.height)
-
+                    .aspectRatio(contentMode: .fill)
+                    .frame(width: proxy.size.width, height: proxy.size.height)
             }
-            .frame(width: fullWidthWithSafeArea, height: fullHeightWithSafeArea)
             .ignoresSafeArea()
+            .opacity(showMarcus ? 1 : 0)
+            .animation(.linear(duration: 3), value: showMarcus ? 1 : 0)
+            .onAppear {
+                showMarcus = false
+            }
+            
+            VStack {
+                GeometryReader { proxy in
+                    ScrollView {
+                        
+                        VStack() {
+                            Spacer()
+                            Text(marcusQuotation)
+                                .font(.title)
+                                .padding([.leading, .trailing], 30)
+                                .padding([.bottom], 20)
+                            Text("- Marcus Aurelius")
+                                .font(.headline)
+                            Spacer()
+                        }
+                        .frame(minHeight: proxy.size.height)
+                        .opacity(showMarcus ? 0 : 1)
+                        .animation(.linear(duration: 3), value: showMarcus ? 0 : 1)
+                        
+                    }
+                }
+                
+                GeometryReader { proxy in
+                    HStack {
+                        Spacer()
+                        
+                        Button {
+                            showMarcus.toggle()
+                        } label: {
+                            Text("Begin Meditations")
+                                .foregroundColor(.white)
+                                .font(.headline)
+                                .fontWeight(.semibold)
+                            
+                        }
+                        .frame(width: proxy.size.width - 60, height: 45)
+                        .background(.selection)
+                        .cornerRadius(8)
+                        
+                        Spacer()
+                    }
+                }
+                .frame(height: 45)
+                
+                Spacer()
+            }
         }
     }
     

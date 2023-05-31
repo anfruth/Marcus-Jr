@@ -51,6 +51,7 @@
 		EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6492C720FAAF280089D28C /* MarcusManager.swift */; };
 		EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */; };
 		EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */; };
+		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */; };
 		EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */; };
 /* End PBXBuildFile section */
@@ -116,6 +117,7 @@
 		EA6492C720FAAF280089D28C /* MarcusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusManager.swift; sourceTree = "<group>"; };
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
+		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
 		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -164,6 +166,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0F3C7427AF8DBB00D4EE43 /* ContentView.swift */,
+				EAB257AF27C448260023D78A /* MarcusAurelius.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -428,6 +431,7 @@
 				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
 				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
 				EA1D07DA2064BEC9007D973A /* NotificationsSetup.swift in Sources */,
+				EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */,
 				EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */,
 				EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */,
 				EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */,
@@ -590,6 +594,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FW82Y9WEC;
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";
@@ -606,6 +612,8 @@
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_TEAM = 9FW82Y9WEC;
 				INFOPLIST_FILE = Info.plist;
+				INFOPLIST_KEY_NSHumanReadableCopyright = "";
+				IPHONEOS_DEPLOYMENT_TARGET = 15.0;
 				LD_RUNPATH_SEARCH_PATHS = "$(inherited) @executable_path/Frameworks";
 				MARKETING_VERSION = 1.2;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.andrew.fruth.Marcus-Jr--Meditations-App";

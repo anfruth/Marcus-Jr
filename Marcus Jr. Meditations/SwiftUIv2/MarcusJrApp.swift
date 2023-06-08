@@ -12,7 +12,7 @@ struct LandmarksApp: App {
 
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            OpeningMarcusView(marcusQuotation: MarcusManager().quotation)
         }
     }
 }

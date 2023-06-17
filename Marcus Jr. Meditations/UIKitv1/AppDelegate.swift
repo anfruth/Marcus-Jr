@@ -20,11 +20,17 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         navAppearance.configureWithOpaqueBackground()
         //navAppearance.backgroundColor = .systemCyan
         
-        let attributes: [NSAttributedString.Key: Any] = [
+        let largeTitleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "SanFranciscoDisplay-Regular", size: 36) as Any
         ]
         
-        navAppearance.largeTitleTextAttributes = attributes
+        let standardTitleAttributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "SanFranciscoDisplay-Regular", size: 22) as Any
+        ]
+        
+        navAppearance.largeTitleTextAttributes = largeTitleAttributes
+        navAppearance.titleTextAttributes = standardTitleAttributes
+        
         UINavigationBar.appearance().standardAppearance = navAppearance
         
         return true

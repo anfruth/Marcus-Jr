@@ -32,7 +32,6 @@ struct EmotionsView: View {
                         }
                     }
                 }
-
             }
             .navigationTitle(navTitle)
             .ignoresSafeArea(edges: [.leading, .trailing, .bottom])

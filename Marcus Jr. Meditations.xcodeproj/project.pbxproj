@@ -13,21 +13,9 @@
 		EA0FF06B2023FAE100688BC6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF06A2023FAE100688BC6 /* Assets.xcassets */; };
 		EA0FF06E2023FAE100688BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */; };
 		EA0FF0792023FAE200688BC6 /* Marcus_Jr__MeditationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0782023FAE200688BC6 /* Marcus_Jr__MeditationsTests.swift */; };
-		EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF08520240CCF00688BC6 /* EmotionsViewController.swift */; };
-		EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0892024141900688BC6 /* EmotionCell.swift */; };
-		EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF08F20241D3300688BC6 /* EmotionModel.swift */; };
-		EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */; };
-		EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */; };
 		EA0FF098202C181A00688BC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF097202C181A00688BC6 /* Localizable.strings */; };
-		EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D3205DD19E007D973A /* MeditationModel.swift */; };
-		EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D5205EED7C007D973A /* MeditationListModel.swift */; };
-		EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */; };
-		EA1D07DA2064BEC9007D973A /* NotificationsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */; };
-		EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19BE2055B4380088AAC5 /* PickerViewController.swift */; };
-		EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */; };
-		EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */; };
 		EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA318F1E2A31778800DB8678 /* BeginMeditationButtonView.swift */; };
-		EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA3E5C082041467700CC7BCE /* OpeningViewController.swift */; };
+		EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA318F202A31859400DB8678 /* EmotionsView.swift */; };
 		EA5106AF2037ED21003135BA /* SanFranciscoText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */; };
 		EA5106B02037ED21003135BA /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */; };
 		EA5106B12037ED21003135BA /* SanFranciscoText-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069C2037ED1E003135BA /* SanFranciscoText-RegularItalic.otf */; };
@@ -50,12 +38,10 @@
 		EA5106C22037ED21003135BA /* SanFranciscoDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AD2037ED21003135BA /* SanFranciscoDisplay-Semibold.otf */; };
 		EA5106C32037ED21003135BA /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */; };
 		EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6492C720FAAF280089D28C /* MarcusManager.swift */; };
-		EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */; };
-		EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */; };
 		EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9615932A2837A400049827 /* MarcusQuotationView.swift */; };
+		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
-		EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */; };
-		EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */; };
+		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -95,6 +81,7 @@
 		EA2B19C02055E2FC0088AAC5 /* MeditationTimesTableViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesTableViewController.swift; sourceTree = "<group>"; };
 		EA2B19C22055E7E70088AAC5 /* MeditationTimesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationTimesModel.swift; sourceTree = "<group>"; };
 		EA318F1E2A31778800DB8678 /* BeginMeditationButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BeginMeditationButtonView.swift; sourceTree = "<group>"; };
+		EA318F202A31859400DB8678 /* EmotionsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionsView.swift; sourceTree = "<group>"; };
 		EA3E5C082041467700CC7BCE /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-MediumItalic.otf"; sourceTree = "<group>"; };
 		EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
@@ -121,6 +108,7 @@
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
 		EA9615932A2837A400049827 /* MarcusQuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusQuotationView.swift; sourceTree = "<group>"; };
+		EAAB8FC82A35821700B453BB /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
 		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
@@ -161,6 +149,7 @@
 			isa = PBXGroup;
 			children = (
 				EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */,
+				EAAB8FC72A3581E300B453BB /* Model */,
 				EA0F3C7327AF8DA700D4EE43 /* Views */,
 			);
 			path = SwiftUIv2;
@@ -170,7 +159,8 @@
 			isa = PBXGroup;
 			children = (
 				EA0F3C7427AF8DBB00D4EE43 /* OpeningMarcusView.swift */,
-				EA318F1D2A31773300DB8678 /* Subviews */,
+				EA318F202A31859400DB8678 /* EmotionsView.swift */,
+				EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -217,14 +207,14 @@
 			path = "Marcus Jr. MeditationsTests";
 			sourceTree = "<group>";
 		};
-		EA318F1D2A31773300DB8678 /* Subviews */ = {
+		EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */ = {
 			isa = PBXGroup;
 			children = (
 				EAB257AF27C448260023D78A /* MarcusAurelius.swift */,
 				EA9615932A2837A400049827 /* MarcusQuotationView.swift */,
 				EA318F1E2A31778800DB8678 /* BeginMeditationButtonView.swift */,
 			);
-			path = Subviews;
+			path = OpeningMarcusSubviews;
 			sourceTree = "<group>";
 		};
 		EA5106992037ECF5003135BA /* fonts */ = {
@@ -253,6 +243,14 @@
 				EA5106AB2037ED21003135BA /* SanFranciscoText-SemiboldItalic.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		EAAB8FC72A3581E300B453BB /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				EAAB8FC82A35821700B453BB /* Emotion.swift */,
+			);
+			path = Model;
 			sourceTree = "<group>";
 		};
 		EAC2F1FE203BA194007D97FC /* View Controllers */ = {
@@ -428,29 +426,15 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				EAC2F205203BAB5D007D97FC /* NotificationsVCProtocol.swift in Sources */,
-				EA1D07D8205F4A84007D973A /* DailyExerciseContainerViewController.swift in Sources */,
+				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA0F3C7527AF8DBB00D4EE43 /* OpeningMarcusView.swift in Sources */,
-				EA3E5C092041467700CC7BCE /* OpeningViewController.swift in Sources */,
-				EA0FF08620240CCF00688BC6 /* EmotionsViewController.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
-				EA2B19BF2055B4380088AAC5 /* PickerViewController.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
-				EA2B19C12055E2FC0088AAC5 /* MeditationTimesTableViewController.swift in Sources */,
-				EA0FF094202AC6B200688BC6 /* MeditationListTableController.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
-				EA1D07D6205EED7C007D973A /* MeditationListModel.swift in Sources */,
-				EA723E70203005A600E09C48 /* MeditationListConfiguration.swift in Sources */,
-				EAC2F203203BA2A9007D97FC /* NotificationsReceiver.swift in Sources */,
-				EA2B19C32055E7E70088AAC5 /* MeditationTimesModel.swift in Sources */,
-				EA0FF096202AE26400688BC6 /* DailyMeditationCell.swift in Sources */,
-				EA0FF08B2024141900688BC6 /* EmotionCell.swift in Sources */,
-				EA1D07DA2064BEC9007D973A /* NotificationsSetup.swift in Sources */,
+				EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */,
+				EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */,
 				EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */,
-				EA7BE0012038119700072AFE /* DailyExerciseViewController.swift in Sources */,
-				EA0FF09020241D3300688BC6 /* EmotionModel.swift in Sources */,
 				EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */,
-				EA1D07D4205DD19E007D973A /* MeditationModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

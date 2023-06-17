@@ -21,15 +21,18 @@ struct OpeningMarcusView: View {
     private let buttonText = "Begin Meditations"
     
     var body: some View {
-
-        ZStack {
-            MarcusAurelius(showMarcus: $showMarcus,
-                           showBeginButton: $showBeginButton,
-                           backgroundImageName: backgroundImageName)
-            
-            VStack {
-                MarcusQuotationView(showMarcus: $showMarcus, marcusQuotation: marcusQuotation, authorNotationText: authorNotationText)
-                BeginMeditationButtonView(showBeginButton: $showBeginButton, buttonText: buttonText)
+        NavigationView {
+            ZStack {
+                MarcusAurelius(showMarcus: $showMarcus,
+                               showBeginButton: $showBeginButton,
+                               backgroundImageName: backgroundImageName)
+                
+                VStack {
+                    MarcusQuotationView(showMarcus: $showMarcus, marcusQuotation: marcusQuotation, authorNotationText: authorNotationText)
+                        .padding([.top, .bottom])
+                    
+                    BeginMeditationButtonView(showBeginButton: $showBeginButton, buttonText: buttonText)
+                }
             }
         }
     }

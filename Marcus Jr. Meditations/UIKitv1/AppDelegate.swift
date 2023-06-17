@@ -9,13 +9,23 @@
 import UIKit
 import UserNotifications
 
-@UIApplicationMain
 class AppDelegate: UIResponder, UIApplicationDelegate {
 
     var window: UIWindow?
     
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey : Any]? = nil) -> Bool {
-        UNUserNotificationCenter.current().delegate = NotificationsReceiver.sharedInstance
+        //UNUserNotificationCenter.current().delegate = NotificationsReceiver.sharedInstance
+        
+        let navAppearance = UINavigationBarAppearance()
+        navAppearance.configureWithOpaqueBackground()
+        //navAppearance.backgroundColor = .systemCyan
+        
+        let attributes: [NSAttributedString.Key: Any] = [
+            .font: UIFont(name: "SanFranciscoDisplay-Regular", size: 36) as Any
+        ]
+        
+        navAppearance.largeTitleTextAttributes = attributes
+        UINavigationBar.appearance().standardAppearance = navAppearance
         
         return true
     }

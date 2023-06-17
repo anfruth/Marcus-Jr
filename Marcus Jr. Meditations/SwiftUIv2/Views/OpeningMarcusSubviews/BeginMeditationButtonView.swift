@@ -20,16 +20,15 @@ struct BeginMeditationButtonView: View {
             HStack {
                 Spacer()
                 
-                Button {
-                    
+                NavigationLink {
+                    EmotionsView()
                 } label: {
                     Text(buttonText)
                         .foregroundColor(.white)
                         .font(.headline)
                         .fontWeight(.semibold)
-                    
+                        .frame(width: proxy.size.width - 60, height: 45)
                 }
-                .frame(width: proxy.size.width - 60, height: 45)
                 .background(.selection)
                 .cornerRadius(8)
                 
@@ -46,6 +45,6 @@ struct BeginMeditationButtonView: View {
 
 struct BeginMeditationButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BeginMeditationButtonView(showBeginButton: .constant(false), buttonText: "Begin Meditations")
+        BeginMeditationButtonView(showBeginButton: .constant(true), buttonText: "Begin Meditations")
     }
 }

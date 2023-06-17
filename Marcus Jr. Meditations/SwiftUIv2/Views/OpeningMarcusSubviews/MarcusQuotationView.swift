@@ -18,21 +18,25 @@ struct MarcusQuotationView: View {
     var body: some View {
         GeometryReader { proxy in
             ScrollView {
-                
-                VStack() {
+                HStack {
                     Spacer()
-                    Text(marcusQuotation)
-                        .font(.title)
-                        .padding([.leading, .trailing], 30)
-                        .padding([.bottom], 20)
-                    Text(authorNotationText)
-                        .font(.headline)
+                    
+                    VStack() {
+                        Spacer()
+                        Text(marcusQuotation)
+                            .font(.title)
+                            .padding([.leading, .trailing], 30)
+                            .padding([.bottom], 20)
+                        Text(authorNotationText)
+                            .font(.headline)
+                        Spacer()
+                    }
+                    
                     Spacer()
                 }
                 .frame(minHeight: proxy.size.height)
                 .opacity(showMarcus ? 0 : 1)
                 .animation(.linear(duration: 3), value: showMarcus ? 0 : 1)
-                
             }
         }
     }

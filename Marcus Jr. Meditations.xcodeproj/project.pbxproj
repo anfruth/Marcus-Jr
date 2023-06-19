@@ -42,6 +42,9 @@
 		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
+		EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */; };
+		EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */; };
+		EAFBB36A2A41050500F3E2AB /* EmotionConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -112,6 +115,9 @@
 		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
 		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
+		EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListView.swift; sourceTree = "<group>"; };
+		EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListViewModel.swift; sourceTree = "<group>"; };
+		EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EmotionConfig.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -151,6 +157,8 @@
 				EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */,
 				EAAB8FC72A3581E300B453BB /* Model */,
 				EA0F3C7327AF8DA700D4EE43 /* Views */,
+				EAFBB3662A3E5A4200F3E2AB /* ViewModel */,
+				EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */,
 			);
 			path = SwiftUIv2;
 			sourceTree = "<group>";
@@ -160,6 +168,7 @@
 			children = (
 				EA0F3C7427AF8DBB00D4EE43 /* OpeningMarcusView.swift */,
 				EA318F202A31859400DB8678 /* EmotionsView.swift */,
+				EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */,
 				EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */,
 			);
 			path = Views;
@@ -299,6 +308,14 @@
 			path = "Other Controllers";
 			sourceTree = "<group>";
 		};
+		EAFBB3662A3E5A4200F3E2AB /* ViewModel */ = {
+			isa = PBXGroup;
+			children = (
+				EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */,
+			);
+			path = ViewModel;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -392,6 +409,7 @@
 				EA5106B32037ED21003135BA /* SanFranciscoDisplay-Black.otf in Resources */,
 				EA5106C22037ED21003135BA /* SanFranciscoDisplay-Semibold.otf in Resources */,
 				EA5106B72037ED21003135BA /* SanFranciscoDisplay-Heavy.otf in Resources */,
+				EAFBB36A2A41050500F3E2AB /* EmotionConfig.plist in Resources */,
 				EA5106B42037ED21003135BA /* SanFranciscoDisplay-Regular.otf in Resources */,
 				EA0FF06E2023FAE100688BC6 /* LaunchScreen.storyboard in Resources */,
 				EA5106BE2037ED21003135BA /* SanFranciscoText-HeavyItalic.otf in Resources */,
@@ -428,6 +446,8 @@
 			files = (
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA0F3C7527AF8DBB00D4EE43 /* OpeningMarcusView.swift in Sources */,
+				EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */,
+				EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,

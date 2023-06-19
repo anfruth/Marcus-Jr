@@ -19,7 +19,7 @@ struct EmotionsView: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2), spacing: 0) {
                     ForEach(Emotion.allCases.indices, id: \.self) { index in
                         NavigationLink {
-                            
+                            MeditationListView(viewModel: MeditationListViewModel(emotion: Emotion.allCases[index]))
                         } label: {
                             ZStack {
                                 Rectangle()

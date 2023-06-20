@@ -13,8 +13,8 @@ struct MeditationListView: View {
     let viewModel: MeditationListViewModel
     
     var body: some View {
-        List() {
-            
+        List(viewModel.meditations) { meditation in
+            Text(meditation.summary)
         }
         .navigationTitle(viewModel.emotionText)
     }
@@ -22,6 +22,6 @@ struct MeditationListView: View {
 
 struct MeditationListView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationListView(viewModel: MeditationListViewModel(emotion: .courage))
+        MeditationListView(viewModel: MeditationListViewModel(emotion: .courage, meditations: [Meditation(id: "00What_is")]))
     }
 }

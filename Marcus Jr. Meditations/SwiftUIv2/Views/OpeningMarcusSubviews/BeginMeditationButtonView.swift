@@ -21,7 +21,7 @@ struct BeginMeditationButtonView: View {
                 Spacer()
                 
                 NavigationLink {
-                    EmotionsView()
+                    EmotionsView(viewModel: EmotionsViewModel())
                 } label: {
                     Text(buttonText)
                         .foregroundColor(.white)

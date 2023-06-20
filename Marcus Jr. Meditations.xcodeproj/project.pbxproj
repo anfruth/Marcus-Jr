@@ -45,6 +45,8 @@
 		EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */; };
 		EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */; };
 		EAFBB36A2A41050500F3E2AB /* EmotionConfig.plist in Resources */ = {isa = PBXBuildFile; fileRef = EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */; };
+		EAFBB36C2A41208D00F3E2AB /* EmotionsViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB36B2A41208C00F3E2AB /* EmotionsViewModel.swift */; };
+		EAFBB36E2A41222700F3E2AB /* Meditation.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB36D2A41222700F3E2AB /* Meditation.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -118,6 +120,8 @@
 		EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListView.swift; sourceTree = "<group>"; };
 		EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListViewModel.swift; sourceTree = "<group>"; };
 		EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EmotionConfig.plist; sourceTree = "<group>"; };
+		EAFBB36B2A41208C00F3E2AB /* EmotionsViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionsViewModel.swift; sourceTree = "<group>"; };
+		EAFBB36D2A41222700F3E2AB /* Meditation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Meditation.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -258,6 +262,7 @@
 			isa = PBXGroup;
 			children = (
 				EAAB8FC82A35821700B453BB /* Emotion.swift */,
+				EAFBB36D2A41222700F3E2AB /* Meditation.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -312,6 +317,7 @@
 			isa = PBXGroup;
 			children = (
 				EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */,
+				EAFBB36B2A41208C00F3E2AB /* EmotionsViewModel.swift */,
 			);
 			path = ViewModel;
 			sourceTree = "<group>";
@@ -447,7 +453,9 @@
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA0F3C7527AF8DBB00D4EE43 /* OpeningMarcusView.swift in Sources */,
 				EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */,
+				EAFBB36E2A41222700F3E2AB /* Meditation.swift in Sources */,
 				EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */,
+				EAFBB36C2A41208D00F3E2AB /* EmotionsViewModel.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,

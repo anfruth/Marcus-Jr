@@ -11,9 +11,11 @@ import Foundation
 final class MeditationListViewModel {
     
     let emotion: Emotion
+    let meditations: [Meditation]
     
-    init(emotion: Emotion) {
+    init(emotion: Emotion, meditations: [Meditation]) {
         self.emotion = emotion
+        self.meditations = meditations
     }
     
     var emotionText: String {

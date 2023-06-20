@@ -12,6 +12,8 @@ struct EmotionsView: View {
     
     private let navTitle = "Choose Emotion"
     
+    let viewModel: EmotionsViewModel
+    
     var body: some View {
 
         NavigationView {
@@ -19,7 +21,9 @@ struct EmotionsView: View {
                 LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2), spacing: 0) {
                     ForEach(Emotion.allCases.indices, id: \.self) { index in
                         NavigationLink {
-                            MeditationListView(viewModel: MeditationListViewModel(emotion: Emotion.allCases[index]))
+                            let emotion = Emotion.allCases[index]
+                            MeditationListView(viewModel: MeditationListViewModel(emotion: emotion,
+                                                                                  meditations: viewModel.meditations(from: emotion)))
                         } label: {
                             ZStack {
                                 Rectangle()
@@ -54,8 +58,8 @@ struct EmotionsView: View {
 struct EmotionsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EmotionsView()
-            EmotionsView()
+            EmotionsView(viewModel: EmotionsViewModel())
+            EmotionsView(viewModel: EmotionsViewModel())
                 .previewInterfaceOrientation(.landscapeLeft)
         }
     }

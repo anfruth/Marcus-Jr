@@ -14,14 +14,32 @@ struct MeditationListView: View {
     
     var body: some View {
         List(viewModel.meditations) { meditation in
-            Text(meditation.summary)
+            VStack {
+                Spacer()
+                ZStack {
+                    Rectangle()
+                        .cornerRadius(8)
+                        .foregroundColor(Color(.secondarySystemBackground))
+                        .shadow(radius: 5, x: 2, y: 3)
+                    Text(meditation.summary)
+                        .frame(maxWidth: .infinity, alignment: .leading)
+                        .padding([.top, .bottom], 10)
+                        .padding([.leading, .trailing], 20)
+                }
+                Spacer(minLength: 5)
+            }
+            .listRowSeparator(.hidden)
         }
         .navigationTitle(viewModel.emotionText)
+        .listStyle(.plain)
     }
 }
 
 struct MeditationListView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationListView(viewModel: MeditationListViewModel(emotion: .courage, meditations: [Meditation(id: "00What_is")]))
+        MeditationListView(viewModel: MeditationListViewModel(emotion: .courage, meditations:
+                                                                [Meditation(id: "00What_is"),
+                                                                 Meditation(id: "01Be_unattached"),
+                                                                 Meditation(id: "08Seek the")]))
     }
 }

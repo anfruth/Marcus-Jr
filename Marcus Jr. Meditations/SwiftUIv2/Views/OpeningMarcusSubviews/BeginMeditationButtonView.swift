@@ -34,6 +34,7 @@ struct BeginMeditationButtonView: View {
                 
                 Spacer()
             }
+            .shadow(radius: 5, x: 2, y: 3)
         }
         .frame(height: 45)
         .opacity(showBeginButton ? 1 : 0)

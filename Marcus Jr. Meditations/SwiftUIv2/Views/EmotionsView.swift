@@ -10,46 +10,77 @@ import SwiftUI
 
 struct EmotionsView: View {
     
-    private let navTitle = "Choose Emotion"
+    @State private var emotionsInGrid = Emotion.allCases
+    @State private var selectedEmotion: Emotion?
+    @State private var isShowingMeditationList = false
     
+    private let navTitle = "Choose Emotion"
     let viewModel: EmotionsViewModel
     
+    let animation = Animation.easeOut(duration: 0.5)
+    
     var body: some View {
-
-        NavigationView {
-            ScrollView {
-                LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: 2), spacing: 0) {
-                    ForEach(Emotion.allCases.indices, id: \.self) { index in
-                        NavigationLink {
-                            let emotion = Emotion.allCases[index]
-                            MeditationListView(viewModel: MeditationListViewModel(emotion: emotion,
-                                                                                  meditations: viewModel.meditations(from: emotion)))
-                        } label: {
-                            ZStack {
-                                Rectangle()
-                                    .fill(getFillColor(from: index))
-                                    .frame(maxWidth: .infinity, minHeight: 175)
-                                Text(Emotion.allCases[index].rawValue)
-                                    .font(.title2)
-                                    .foregroundColor(.white)
+        
+        GeometryReader { proxy in
+            NavigationView {
+                ScrollView(emotionsInGrid.count != 1 ? [.vertical] : []) {
+                    
+                    if let selectedEmotion {
+                        let viewModel = MeditationListViewModel(emotion: selectedEmotion,
+                                                                meditations: viewModel.meditations(from: selectedEmotion))
+                        let destination = MeditationListView(selectedEmotion: $selectedEmotion, isShowingMeditationList: $isShowingMeditationList, viewModel: viewModel)
+                        
+                        NavigationLink(destination: destination, isActive: $isShowingMeditationList) { EmptyView() }
+                    }
+                    
+                    LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: emotionsInGrid.count != 1 ? 2 : 1), spacing: 0) {
+                        ForEach(emotionsInGrid.indices, id: \.self) { index in
+                            
+                            Button {
+                                if emotionsInGrid.count != 1 {
+                                    withAnimation(animation) {
+                                        selectedEmotion = Emotion.allCases[index]
+                                        emotionsInGrid = [selectedEmotion ?? .anger]
+                                    }
+                                    
+                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                        isShowingMeditationList = true
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                            emotionsInGrid = Emotion.allCases
+                                        }
+                                    }
+                                }
+                                
+                            } label: {
+                                ZStack {
+                                    Rectangle()
+                                        .fill(getFillColor(from: emotionsInGrid[index]))
+                                        .frame(minHeight: emotionsInGrid.count != 1 ? 175 : proxy.size.height)
+                                    Text(emotionsInGrid[index].rawValue)
+                                        .font(emotionsInGrid.count != 1 ? .title2 : .largeTitle)
+                                        .foregroundColor(.white)
+                                }
                             }
+                            .disabled(emotionsInGrid.count == 1)
+                            
                         }
                     }
                 }
+                .navigationTitle(emotionsInGrid.count != 1 ? "Choose Emotion" : "")
+                .ignoresSafeArea(edges: emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
             }
-            .navigationTitle(navTitle)
-            .ignoresSafeArea(edges: [.leading, .trailing, .bottom])
+            .navigationBarBackButtonHidden(true)
         }
-        .navigationBarBackButtonHidden(true)
-    
+        .ignoresSafeArea()
     }
     
-    private func getFillColor(from index: Int) -> Color {
-        if (index + 1) % 3 == 2 {
+    private func getFillColor(from emotion: Emotion) -> Color {
+        switch emotion {
+        case .loss, .anxiety, .discipline:
             return Color(red:0.30, green:0.39, blue:0.55)
-        } else if (index + 1) % 3 == 1 {
+        case .anger, .envy, .empathy:
             return Color(red:0.16, green:0.21, blue:0.33)
-        } else {
+        case .sadness, .persevere, .courage:
             return Color(red:0.12, green:0.12, blue:0.15)
         }
     }

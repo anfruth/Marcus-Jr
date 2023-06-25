@@ -10,6 +10,9 @@ import SwiftUI
 
 struct MeditationListView: View {
     
+    @Binding var selectedEmotion: Emotion?
+    @Binding var isShowingMeditationList: Bool
+    
     let viewModel: MeditationListViewModel
     
     var body: some View {
@@ -32,12 +35,16 @@ struct MeditationListView: View {
         }
         .navigationTitle(viewModel.emotionText)
         .listStyle(.plain)
+        .onDisappear {
+            selectedEmotion = nil
+            isShowingMeditationList = false
+        }
     }
 }
 
 struct MeditationListView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationListView(viewModel: MeditationListViewModel(emotion: .courage, meditations:
+        MeditationListView(selectedEmotion: .constant(.courage), isShowingMeditationList: .constant(true), viewModel: MeditationListViewModel(emotion: .loss, meditations:
                                                                 [Meditation(id: "00What_is"),
                                                                  Meditation(id: "01Be_unattached"),
                                                                  Meditation(id: "08Seek the")]))

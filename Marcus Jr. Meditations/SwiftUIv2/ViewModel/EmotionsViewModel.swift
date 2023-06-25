@@ -10,6 +10,8 @@ import Foundation
 
 final class EmotionsViewModel {
     
+    
+    
     func meditations(from emotion: Emotion) -> [Meditation] {
         guard let meditationsIds = emotionMeditationIdMap[emotion] else { return [] }
         return meditationsIds.compactMap { Meditation(id: $0) }
@@ -24,7 +26,7 @@ final class EmotionsViewModel {
         let decoder = PropertyListDecoder()
         guard let decodedPlist = try? decoder.decode([String: [String]].self, from: configData) else { return [:] }
         
-        let map: [Emotion: [String]] = Dictionary(uniqueKeysWithValues: decodedPlist.compactMap { (Emotion(rawValue: $0) ?? .anger, $1) })
+        let map: [Emotion: [String]] = Dictionary(uniqueKeysWithValues: decodedPlist.compactMap { (Emotion(rawValue: $0) ?? .loss, $1) })
         
         return map
     }

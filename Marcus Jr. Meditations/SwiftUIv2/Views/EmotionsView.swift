@@ -17,7 +17,7 @@ struct EmotionsView: View {
     private let navTitle = "Choose Emotion"
     let viewModel: EmotionsViewModel
     
-    let animation = Animation.easeOut(duration: 0.5)
+    let animation = Animation.easeOut(duration: 0.8)
     
     var body: some View {
         
@@ -34,35 +34,45 @@ struct EmotionsView: View {
                     }
                     
                     LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: emotionsInGrid.count != 1 ? 2 : 1), spacing: 0) {
-                        ForEach(emotionsInGrid.indices, id: \.self) { index in
-                            
-                            Button {
-                                if emotionsInGrid.count != 1 {
-                                    withAnimation(animation) {
-                                        selectedEmotion = Emotion.allCases[index]
-                                        emotionsInGrid = [selectedEmotion ?? .anger]
-                                    }
-                                    
-                                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                        isShowingMeditationList = true
-                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                                            emotionsInGrid = Emotion.allCases
+                        if emotionsInGrid.count != 1 {
+                            ForEach(emotionsInGrid.indices, id: \.self) { index in
+                                
+                                Button {
+                                    if emotionsInGrid.count != 1 {
+                                        withAnimation(animation) {
+                                            selectedEmotion = Emotion.allCases[index]
+                                            emotionsInGrid = [selectedEmotion ?? .anger]
+                                        }
+                                        
+                                        DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
+                                            isShowingMeditationList = true
+                                            DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
+                                                emotionsInGrid = Emotion.allCases
+                                            }
                                         }
                                     }
+                                    
+                                } label: {
+                                    ZStack {
+                                        Rectangle()
+                                            .fill(getFillColor(from: emotionsInGrid[index]))
+                                            .frame(minHeight: emotionsInGrid.count != 1 ? 175 : proxy.size.height)
+                                        Text(emotionsInGrid[index].rawValue)
+                                            .font(emotionsInGrid.count != 1 ? .title2 : .largeTitle)
+                                            .foregroundColor(.white)
+                                    }
                                 }
-                                
-                            } label: {
-                                ZStack {
-                                    Rectangle()
-                                        .fill(getFillColor(from: emotionsInGrid[index]))
-                                        .frame(minHeight: emotionsInGrid.count != 1 ? 175 : proxy.size.height)
-                                    Text(emotionsInGrid[index].rawValue)
-                                        .font(emotionsInGrid.count != 1 ? .title2 : .largeTitle)
-                                        .foregroundColor(.white)
-                                }
+                                .disabled(emotionsInGrid.count == 1)
                             }
-                            .disabled(emotionsInGrid.count == 1)
-                            
+                        } else {
+                            ZStack {
+                                Rectangle()
+                                    .fill(getFillColor(from: selectedEmotion ?? .anger))
+                                    .frame(minHeight: emotionsInGrid.count != 1 ? 175 : proxy.size.height)
+                                Text(selectedEmotion?.rawValue ?? Emotion.anger.rawValue)
+                                    .font(emotionsInGrid.count != 1 ? .title2 : .largeTitle)
+                                    .foregroundColor(.white)
+                            }
                         }
                     }
                 }

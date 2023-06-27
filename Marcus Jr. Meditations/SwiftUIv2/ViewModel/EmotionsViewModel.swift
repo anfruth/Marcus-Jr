@@ -8,9 +8,11 @@
 
 import Foundation
 
-final class EmotionsViewModel {
+final class EmotionsViewModel: ObservableObject {
     
-    
+    @Published var emotionsInGrid = Emotion.allCases
+    @Published var selectedEmotion: Emotion?
+    @Published var isShowingMeditationList = false
     
     func meditations(from emotion: Emotion) -> [Meditation] {
         guard let meditationsIds = emotionMeditationIdMap[emotion] else { return [] }

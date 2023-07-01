@@ -10,6 +10,8 @@ import SwiftUI
 
 struct EmotionsView: View {
     
+    // TODO: Refactor out knowledge of emotion model from View -> VM
+    
     @StateObject var viewModel: EmotionsViewModel
     
     let animation = Animation.easeOut(duration: 0.8)

@@ -18,6 +18,7 @@
 		EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA318F202A31859400DB8678 /* EmotionsView.swift */; };
 		EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49699C2A47C6B70021E5D5 /* EmotionGridCellView.swift */; };
 		EA49699F2A47D0050021E5D5 /* EmotionsLazyGrid.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49699E2A47D0050021E5D5 /* EmotionsLazyGrid.swift */; };
+		EA4969A12A4AB04A0021E5D5 /* MeditationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA4969A02A4AB04A0021E5D5 /* MeditationView.swift */; };
 		EA5106AF2037ED21003135BA /* SanFranciscoText-MediumItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */; };
 		EA5106B02037ED21003135BA /* SanFranciscoDisplay-Medium.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */; };
 		EA5106B12037ED21003135BA /* SanFranciscoText-RegularItalic.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA51069C2037ED1E003135BA /* SanFranciscoText-RegularItalic.otf */; };
@@ -92,6 +93,7 @@
 		EA3E5C082041467700CC7BCE /* OpeningViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OpeningViewController.swift; sourceTree = "<group>"; };
 		EA49699C2A47C6B70021E5D5 /* EmotionGridCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionGridCellView.swift; sourceTree = "<group>"; };
 		EA49699E2A47D0050021E5D5 /* EmotionsLazyGrid.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionsLazyGrid.swift; sourceTree = "<group>"; };
+		EA4969A02A4AB04A0021E5D5 /* MeditationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationView.swift; sourceTree = "<group>"; };
 		EA51069A2037ED1E003135BA /* SanFranciscoText-MediumItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-MediumItalic.otf"; sourceTree = "<group>"; };
 		EA51069B2037ED1E003135BA /* SanFranciscoDisplay-Medium.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoDisplay-Medium.otf"; sourceTree = "<group>"; };
 		EA51069C2037ED1E003135BA /* SanFranciscoText-RegularItalic.otf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SanFranciscoText-RegularItalic.otf"; sourceTree = "<group>"; };
@@ -177,6 +179,7 @@
 				EA0F3C7427AF8DBB00D4EE43 /* OpeningMarcusView.swift */,
 				EA318F202A31859400DB8678 /* EmotionsView.swift */,
 				EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */,
+				EA4969A02A4AB04A0021E5D5 /* MeditationView.swift */,
 				EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */,
 				EA49699B2A47C5310021E5D5 /* EmotionsSubviews */,
 			);
@@ -472,6 +475,7 @@
 				EAFBB36E2A41222700F3E2AB /* Meditation.swift in Sources */,
 				EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */,
 				EAFBB36C2A41208D00F3E2AB /* EmotionsViewModel.swift in Sources */,
+				EA4969A12A4AB04A0021E5D5 /* MeditationView.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,

@@ -18,7 +18,6 @@ class AppDelegate: UIResponder, UIApplicationDelegate {
         
         let navAppearance = UINavigationBarAppearance()
         navAppearance.configureWithOpaqueBackground()
-        //navAppearance.backgroundColor = .systemCyan
         
         let largeTitleAttributes: [NSAttributedString.Key: Any] = [
             .font: UIFont(name: "SanFranciscoDisplay-Regular", size: 36) as Any

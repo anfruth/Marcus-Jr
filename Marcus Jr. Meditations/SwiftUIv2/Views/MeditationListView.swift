@@ -10,6 +10,10 @@ import SwiftUI
 
 struct MeditationListView: View {
     
+    // TODO: Refactor out knowledge of emotion model from View -> VM
+    
+    @Environment(\.dismiss) private var dismiss
+    
     @Binding var selectedEmotion: Emotion?
     @Binding var isShowingMeditationList: Bool
     
@@ -34,6 +38,11 @@ struct MeditationListView: View {
             .listRowSeparator(.hidden)
         }
         .navigationTitle(viewModel.emotionText)
+        .navigationBarBackButtonHidden(true)
+        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(Color(uiColor: .label))
+        }))
         .listStyle(.plain)
         .onDisappear {
             selectedEmotion = nil
@@ -44,9 +53,11 @@ struct MeditationListView: View {
 
 struct MeditationListView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationListView(selectedEmotion: .constant(.courage), isShowingMeditationList: .constant(true), viewModel: MeditationListViewModel(emotion: .loss, meditations:
-                                                                [Meditation(id: "00What_is"),
-                                                                 Meditation(id: "01Be_unattached"),
-                                                                 Meditation(id: "08Seek the")]))
+        NavigationView {
+            MeditationListView(selectedEmotion: .constant(.courage), isShowingMeditationList: .constant(true), viewModel: MeditationListViewModel(emotion: .loss, meditations:
+                                                                                                                                                    [Meditation(id: "00What_is"),
+                                                                                                                                                     Meditation(id: "01Be_unattached"),
+                                                                                                                                                     Meditation(id: "08Seek the")]))
+        }
     }
 }

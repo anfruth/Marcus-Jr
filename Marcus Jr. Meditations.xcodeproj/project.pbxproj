@@ -43,6 +43,8 @@
 		EA5106C32037ED21003135BA /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */; };
 		EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6492C720FAAF280089D28C /* MarcusManager.swift */; };
 		EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9615932A2837A400049827 /* MarcusQuotationView.swift */; };
+		EAA8D5002A51099F00F242B7 /* MarcusCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */; };
+		EAA8D5022A510EE800F242B7 /* MeditationDatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */; };
 		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
@@ -121,6 +123,8 @@
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
 		EA9615932A2837A400049827 /* MarcusQuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusQuotationView.swift; sourceTree = "<group>"; };
+		EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusCommonButton.swift; sourceTree = "<group>"; };
+		EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDatesView.swift; sourceTree = "<group>"; };
 		EAAB8FC82A35821700B453BB /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
@@ -182,8 +186,10 @@
 				EA318F202A31859400DB8678 /* EmotionsView.swift */,
 				EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */,
 				EA4969A02A4AB04A0021E5D5 /* MeditationView.swift */,
+				EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */,
 				EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */,
 				EA49699B2A47C5310021E5D5 /* EmotionsSubviews */,
+				EAA8D4FE2A5102DD00F242B7 /* Common */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -275,6 +281,14 @@
 				EA5106AB2037ED21003135BA /* SanFranciscoText-SemiboldItalic.otf */,
 			);
 			path = fonts;
+			sourceTree = "<group>";
+		};
+		EAA8D4FE2A5102DD00F242B7 /* Common */ = {
+			isa = PBXGroup;
+			children = (
+				EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */,
+			);
+			path = Common;
 			sourceTree = "<group>";
 		};
 		EAAB8FC72A3581E300B453BB /* Model */ = {
@@ -473,6 +487,7 @@
 				EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */,
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA4969A32A509C6D0021E5D5 /* MeditationViewModel.swift in Sources */,
+				EAA8D5002A51099F00F242B7 /* MarcusCommonButton.swift in Sources */,
 				EA0F3C7527AF8DBB00D4EE43 /* OpeningMarcusView.swift in Sources */,
 				EA49699F2A47D0050021E5D5 /* EmotionsLazyGrid.swift in Sources */,
 				EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */,
@@ -485,6 +500,7 @@
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
 				EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */,
 				EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */,
+				EAA8D5022A510EE800F242B7 /* MeditationDatesView.swift in Sources */,
 				EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */,
 				EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */,
 			);

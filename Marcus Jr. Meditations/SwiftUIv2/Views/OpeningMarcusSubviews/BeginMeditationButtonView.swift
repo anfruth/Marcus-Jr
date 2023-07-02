@@ -16,31 +16,11 @@ struct BeginMeditationButtonView: View {
     
     var body: some View {
         
-        GeometryReader { proxy in
-            HStack {
-                Spacer()
-                
-                NavigationLink {
-                    EmotionsView(viewModel: EmotionsViewModel())
-                } label: {
-                    Text(buttonText)
-                        .foregroundColor(.white)
-                        .font(.headline)
-                        .fontWeight(.semibold)
-                        .frame(width: proxy.size.width - 60, height: 45)
-                }
-                .background(.selection)
-                .cornerRadius(8)
-                
-                Spacer()
-            }
-            .shadow(radius: 5, x: 2, y: 3)
-        }
-        .frame(height: 45)
-        .opacity(showBeginButton ? 1 : 0)
-        .animation(.linear(duration: 2.0), value: showBeginButton ? 1 : 0)
+        MarcusCommonButton(title: buttonText, destination: EmotionsView(viewModel: EmotionsViewModel()))
+            .opacity(showBeginButton ? 1 : 0)
+            .animation(.linear(duration: 2.0), value: showBeginButton ? 1 : 0)
         
-        Spacer()
+            Spacer()
     }
 }
 

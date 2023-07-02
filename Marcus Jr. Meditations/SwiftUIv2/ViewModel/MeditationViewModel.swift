@@ -21,7 +21,7 @@ final class MeditationViewModel {
     }
     
     var quotation: String {
-        return NSLocalizedString(meditation.id + "_quotation", comment: "Enchiridion Quotation")
+        return "\"" + NSLocalizedString(meditation.id + "_quotation", comment: "Enchiridion Quotation") + "\""
     }
     
     var commentary: String {

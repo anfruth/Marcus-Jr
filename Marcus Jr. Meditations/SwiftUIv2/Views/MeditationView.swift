@@ -16,16 +16,36 @@ struct MeditationView: View {
     @Binding var meditationSelected: Bool
     
     var body: some View {
-        ScrollView {
-            Text(viewModel.quotation)
-                .padding()
+        VStack {
+            ScrollView {
+                Text("Quotation:")
+                    .bold()
+                    .padding()
+                Text(viewModel.quotation)
+                    .padding()
+                Text("Commentary:")
+                    .bold()
+                    .padding()
+                Text(viewModel.commentary)
+                    .padding()
+                Text("Action:")
+                    .bold()
+                    .padding()
+                Text(viewModel.action)
+                    .padding()
+            }
+            .padding([.top, .bottom])
+            .navigationTitle(viewModel.enchiridionChapter)
+            .navigationBarItems(leading: Button(action: { dismiss() }, label: {
+                Image(systemName: "chevron.left")
+                    .foregroundColor(Color(uiColor: .label))
+            }))
+            .navigationBarBackButtonHidden()
+            
+            MarcusCommonButton(title: "Set Meditation Times", destination: MeditationDatesView(selectedDate: .now))
+            
+            Spacer()
         }
-        .navigationTitle(viewModel.enchiridionChapter)
-        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Color(uiColor: .label))
-        }))
-        .navigationBarBackButtonHidden()
     }
 }
 

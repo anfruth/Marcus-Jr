@@ -28,8 +28,7 @@ struct EmotionsView: View {
                 if let selectedEmotion = viewModel.selectedEmotion {
                     let meditationListViewModel = MeditationListViewModel(emotion: selectedEmotion,
                                                             meditations: viewModel.meditations(from: selectedEmotion))
-                    let destination = MeditationListView(selectedEmotion: $viewModel.selectedEmotion, isShowingMeditationList: $viewModel.isShowingMeditationList, viewModel: meditationListViewModel)
-                    
+                    let destination = MeditationListView(viewModel: meditationListViewModel)
                     NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
                 }
                 

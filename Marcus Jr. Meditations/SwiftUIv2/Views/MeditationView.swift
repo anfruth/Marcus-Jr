@@ -13,8 +13,7 @@ struct MeditationView: View {
     let viewModel: MeditationViewModel
     
     @Environment(\.dismiss) private var dismiss
-    @Binding var meditationSelected: Bool
-    
+
     var body: some View {
         VStack {
             ScrollView {
@@ -51,6 +50,6 @@ struct MeditationView: View {
 
 struct MeditationView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")), meditationSelected: .constant(true))
+        MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
     }
 }

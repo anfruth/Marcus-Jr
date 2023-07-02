@@ -22,7 +22,7 @@ struct MeditationListView: View {
     var body: some View {
         VStack {
             if let meditationVM = viewModel.meditationVM {
-                let meditationView = MeditationView(viewModel: meditationVM, meditationSelected: $viewModel.meditationSelected)
+                let meditationView = MeditationView(viewModel: meditationVM)
                 NavigationLink(destination: meditationView, isActive: $viewModel.meditationSelected) { EmptyView() }
             }
             

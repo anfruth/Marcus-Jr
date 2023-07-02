@@ -11,16 +11,42 @@ import SwiftUI
 struct MeditationDatesView: View {
     
     @State var selectedDate: Date
+    @Environment(\.dismiss) private var dismiss
     
     var body: some View {
-        DatePicker("", selection: $selectedDate)
-            .padding()
-            .datePickerStyle(.graphical)
+        VStack {
+            ScrollView {
+                DatePicker("Select Meditation Times", selection: $selectedDate)
+                    .padding()
+                    .datePickerStyle(.graphical)
+                List {
+                    
+                }
+            }
+            //MarcusCommonButton(title: <#T##String#>, destination: <#T##View#>)
+        }
+        .navigationTitle("Select Meditation Times")
+        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(Color(uiColor: .label))
+        }))
+        .navigationBarBackButtonHidden()
     }
 }
 
 struct MeditationDatesView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationDatesView(selectedDate: .now)
+        Group {
+            NavigationView {
+                MeditationDatesView(selectedDate: .now)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            
+            NavigationView {
+                MeditationDatesView(selectedDate: .now)
+                    .navigationBarTitleDisplayMode(.inline)
+            }
+            .previewInterfaceOrientation(.landscapeLeft)
+        }
     }
 }

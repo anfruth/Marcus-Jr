@@ -17,37 +17,46 @@ struct MeditationListView: View {
     @Binding var selectedEmotion: Emotion?
     @Binding var isShowingMeditationList: Bool
     
-    let viewModel: MeditationListViewModel
+    @StateObject var viewModel: MeditationListViewModel
     
     var body: some View {
-        List(viewModel.meditations) { meditation in
-            VStack {
-                Spacer()
-                ZStack {
-                    Rectangle()
-                        .cornerRadius(8)
-                        .foregroundColor(Color(.secondarySystemBackground))
-                        .shadow(radius: 5, x: 2, y: 3)
-                    Text(meditation.summary)
-                        .frame(maxWidth: .infinity, alignment: .leading)
-                        .padding([.top, .bottom], 10)
-                        .padding([.leading, .trailing], 20)
-                }
-                Spacer(minLength: 5)
+        VStack {
+            if let meditationVM = viewModel.meditationVM {
+                let meditationView = MeditationView(viewModel: meditationVM, meditationSelected: $viewModel.meditationSelected)
+                NavigationLink(destination: meditationView, isActive: $viewModel.meditationSelected) { EmptyView() }
             }
-            .listRowSeparator(.hidden)
+            
+            List(viewModel.meditationSummaries, id: \.self.0) { summary in
+                VStack {
+                    Spacer()
+                    Button {
+                        viewModel.selectMeditation(from: summary.1)
+                    } label: {
+                        ZStack {
+                            Rectangle()
+                                .cornerRadius(8)
+                                .foregroundColor(Color(.secondarySystemBackground))
+                                .shadow(radius: 5, x: 2, y: 3)
+                            Text(summary.0)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .padding([.top, .bottom], 10)
+                                .padding([.leading, .trailing], 20)
+                        }
+                        Spacer(minLength: 5)
+                    }
+                }
+                .listRowSeparator(.hidden)
+            }
+            .listStyle(.plain)
+
         }
         .navigationTitle(viewModel.emotionText)
-        .navigationBarBackButtonHidden(true)
+        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))
         }))
-        .listStyle(.plain)
-        .onDisappear {
-            selectedEmotion = nil
-            isShowingMeditationList = false
-        }
+        .navigationBarBackButtonHidden()
     }
 }
 

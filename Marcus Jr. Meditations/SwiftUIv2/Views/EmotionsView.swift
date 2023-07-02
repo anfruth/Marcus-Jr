@@ -12,6 +12,8 @@ struct EmotionsView: View {
     
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
+    @Environment(\.dismiss) private var dismiss
+    
     @StateObject var viewModel: EmotionsViewModel
     
     let animation = Animation.easeOut(duration: 0.8)
@@ -20,26 +22,29 @@ struct EmotionsView: View {
     var body: some View {
         
         GeometryReader { proxy in
-            NavigationView {
-                ScrollView(viewModel.emotionsInGrid.count != 1 ? [.vertical] : []) {
+
+            ScrollView(viewModel.emotionsInGrid.count != 1 ? [.vertical] : []) {
+                
+                if let selectedEmotion = viewModel.selectedEmotion {
+                    let meditationListViewModel = MeditationListViewModel(emotion: selectedEmotion,
+                                                            meditations: viewModel.meditations(from: selectedEmotion))
+                    let destination = MeditationListView(selectedEmotion: $viewModel.selectedEmotion, isShowingMeditationList: $viewModel.isShowingMeditationList, viewModel: meditationListViewModel)
                     
-                    if let selectedEmotion = viewModel.selectedEmotion {
-                        let meditationListViewModel = MeditationListViewModel(emotion: selectedEmotion,
-                                                                meditations: viewModel.meditations(from: selectedEmotion))
-                        let destination = MeditationListView(selectedEmotion: $viewModel.selectedEmotion, isShowingMeditationList: $viewModel.isShowingMeditationList, viewModel: meditationListViewModel)
-                        
-                        NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
-                    }
-                    
-                    EmotionsLazyGrid(emotionsInGrid: $viewModel.emotionsInGrid, selectedEmotion: $viewModel.selectedEmotion,
-                                     isShowingMeditationList: $viewModel.isShowingMeditationList, animation: animation, proxyHeight: proxy.size.height)
+                    NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
                 }
-                .navigationTitle(viewModel.emotionsInGrid.count != 1 ? "Choose Emotion" : "")
-                .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
+                
+                EmotionsLazyGrid(emotionsInGrid: $viewModel.emotionsInGrid, selectedEmotion: $viewModel.selectedEmotion,
+                                 isShowingMeditationList: $viewModel.isShowingMeditationList, animation: animation, proxyHeight: proxy.size.height)
             }
-            .navigationBarBackButtonHidden(true)
         }
-        .ignoresSafeArea()
+        .navigationTitle(viewModel.emotionsInGrid.count != 1 ? "Choose Emotion" : "")
+        .navigationBarTitleDisplayMode(.large)
+        .navigationBarBackButtonHidden()
+        .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
+        .onAppear() {
+            viewModel.selectedEmotion = nil
+            viewModel.isShowingMeditationList = false
+        }
     }
 
 }

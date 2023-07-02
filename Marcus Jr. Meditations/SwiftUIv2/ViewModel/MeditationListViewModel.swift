@@ -8,18 +8,33 @@
 
 import Foundation
 
-final class MeditationListViewModel {
+final class MeditationListViewModel: ObservableObject {
     
-    let emotion: Emotion
-    let meditations: [Meditation]
+    @Published var meditationVM: MeditationViewModel?
+    @Published var meditationSelected: Bool = false
+    
+    private let emotion: Emotion
+    private let meditations: [Meditation]
+    
+    lazy var emotionText = emotion.rawValue
+    
+    lazy var meditationSummaries: [(String, Int)] = {
+        return meditations.enumerated().map { (index, meditation) in
+            return (NSLocalizedString(meditation.id, comment: "Meditation Summary"), index)
+        }
+    }()
     
     init(emotion: Emotion, meditations: [Meditation]) {
         self.emotion = emotion
         self.meditations = meditations
     }
     
-    var emotionText: String {
-        return emotion.rawValue
+    func selectMeditation(from index: Int) {
+        if index < meditations.count {
+            meditationSelected = true
+            let meditation = meditations[index]
+            meditationVM = MeditationViewModel(meditation: meditation)
+        }
     }
     
 }

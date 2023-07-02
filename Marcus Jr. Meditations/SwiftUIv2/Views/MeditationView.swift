@@ -9,13 +9,28 @@
 import SwiftUI
 
 struct MeditationView: View {
+    
+    let viewModel: MeditationViewModel
+    
+    @Environment(\.dismiss) private var dismiss
+    @Binding var meditationSelected: Bool
+    
     var body: some View {
-        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
+        ScrollView {
+            Text(viewModel.quotation)
+                .padding()
+        }
+        .navigationTitle(viewModel.enchiridionChapter)
+        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(Color(uiColor: .label))
+        }))
+        .navigationBarBackButtonHidden()
     }
 }
 
 struct MeditationView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationView()
+        MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")), meditationSelected: .constant(true))
     }
 }

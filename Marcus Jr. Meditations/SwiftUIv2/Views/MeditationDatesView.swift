@@ -11,20 +11,25 @@ import SwiftUI
 struct MeditationDatesView: View {
     
     @State var selectedDate: Date
+    @StateObject var viewModel: MeditationDatesViewModel
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
         VStack {
-            ScrollView {
-                DatePicker("Select Meditation Times", selection: $selectedDate)
-                    .padding()
-                    .datePickerStyle(.graphical)
-                List {
-                    
+            DatePicker("Choose Time:", selection: $selectedDate)
+                .padding()
+                .datePickerStyle(.compact)
+            List {
+                ForEach(viewModel.datesToDisplay, id: \.self) { dateString in
+                    Text(dateString)
+                }
+                .onDelete { indexSet in
+                    viewModel.delete(indexSet: indexSet)
                 }
             }
+            .listStyle(.plain)
             MarcusCommonButton(title: "Add Meditation Time") {
-                
+                viewModel.insert(date: selectedDate)
             }
         }
         .navigationTitle("Select Meditation Times")
@@ -40,12 +45,12 @@ struct MeditationDatesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                MeditationDatesView(selectedDate: .now)
+                MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: []))
                     .navigationBarTitleDisplayMode(.inline)
             }
             
             NavigationView {
-                MeditationDatesView(selectedDate: .now)
+                MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: []))
                     .navigationBarTitleDisplayMode(.inline)
             }
             .previewInterfaceOrientation(.landscapeLeft)

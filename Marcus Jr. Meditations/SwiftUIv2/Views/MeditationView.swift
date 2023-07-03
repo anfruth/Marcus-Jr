@@ -45,7 +45,7 @@ struct MeditationView: View {
             }))
             .navigationBarBackButtonHidden()
             
-            NavigationLink(destination: MeditationDatesView(selectedDate: .now),
+            NavigationLink(destination: MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: [])),
                            isActive: $navigationActive) { EmptyView() }
             
             MarcusCommonButton(title: "Set Meditation Times") {

@@ -8,18 +8,18 @@
 
 import SwiftUI
 
-struct MarcusCommonButton<T: View>: View {
+struct MarcusCommonButton: View {
     
     let title: String
-    var destination: T
+    var action: () -> Void
     
     var body: some View {
         GeometryReader { proxy in
             HStack {
                 Spacer()
                 
-                NavigationLink {
-                    destination
+                Button {
+                   action()
                 } label: {
                     Text(title)
                         .foregroundColor(.white)
@@ -39,7 +39,9 @@ struct MarcusCommonButton<T: View>: View {
 }
 
 struct MarcusCommonButton_Previews: PreviewProvider {
+    
+    
     static var previews: some View {
-        MarcusCommonButton<EmotionsView>(title: "To Meditation List", destination: EmotionsView(viewModel: EmotionsViewModel()))
+        MarcusCommonButton(title: "To Meditation List", action: {})
     }
 }

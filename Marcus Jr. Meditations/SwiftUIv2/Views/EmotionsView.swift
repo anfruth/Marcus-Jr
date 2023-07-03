@@ -13,7 +13,6 @@ struct EmotionsView: View {
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
     @Environment(\.dismiss) private var dismiss
-    
     @StateObject var viewModel: EmotionsViewModel
     
     let animation = Animation.easeOut(duration: 0.8)
@@ -40,10 +39,6 @@ struct EmotionsView: View {
         .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden()
         .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
-        .onAppear() {
-            viewModel.selectedEmotion = nil
-            viewModel.isShowingMeditationList = false
-        }
     }
 
 }
@@ -51,9 +46,14 @@ struct EmotionsView: View {
 struct EmotionsView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
-            EmotionsView(viewModel: EmotionsViewModel())
-            EmotionsView(viewModel: EmotionsViewModel())
-                .previewInterfaceOrientation(.landscapeLeft)
+            NavigationView {
+                EmotionsView(viewModel: EmotionsViewModel())
+            }
+            
+            NavigationView {
+                EmotionsView(viewModel: EmotionsViewModel())
+                    .previewInterfaceOrientation(.landscapeLeft)
+            }
         }
     }
 }

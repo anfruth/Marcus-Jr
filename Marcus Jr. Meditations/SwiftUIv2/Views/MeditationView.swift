@@ -12,6 +12,7 @@ struct MeditationView: View {
     
     let viewModel: MeditationViewModel
     
+    @State private var navigationActive = false
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -41,7 +42,12 @@ struct MeditationView: View {
             }))
             .navigationBarBackButtonHidden()
             
-            MarcusCommonButton(title: "Set Meditation Times", destination: MeditationDatesView(selectedDate: .now))
+            NavigationLink(destination: MeditationDatesView(selectedDate: .now),
+                           isActive: $navigationActive) { EmptyView() }
+            
+            MarcusCommonButton(title: "Set Meditation Times") {
+                navigationActive = true
+            }
             
             Spacer()
         }
@@ -50,6 +56,8 @@ struct MeditationView: View {
 
 struct MeditationView_Previews: PreviewProvider {
     static var previews: some View {
-        MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
+        NavigationView {
+            MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
+        }
     }
 }

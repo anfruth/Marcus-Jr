@@ -11,16 +11,23 @@ import SwiftUI
 struct BeginMeditationButtonView: View {
     
     @Binding var showBeginButton: Bool
+    @State private var navigationActive = false
     
     let buttonText: String
     
     var body: some View {
         
-        MarcusCommonButton(title: buttonText, destination: EmotionsView(viewModel: EmotionsViewModel()))
+        VStack {
+            NavigationLink(destination: EmotionsView(viewModel: EmotionsViewModel()),
+                           isActive: $navigationActive) { EmptyView() }
+
+            MarcusCommonButton(title: buttonText) {
+                navigationActive = true
+            }
             .opacity(showBeginButton ? 1 : 0)
             .animation(.linear(duration: 2.0), value: showBeginButton ? 1 : 0)
-        
-            Spacer()
+        }
+        .frame(height: 45)
     }
 }
 

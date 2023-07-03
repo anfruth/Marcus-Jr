@@ -23,7 +23,9 @@ struct MeditationDatesView: View {
                     
                 }
             }
-            //MarcusCommonButton(title: <#T##String#>, destination: <#T##View#>)
+            MarcusCommonButton(title: "Add Meditation Time") {
+                
+            }
         }
         .navigationTitle("Select Meditation Times")
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {

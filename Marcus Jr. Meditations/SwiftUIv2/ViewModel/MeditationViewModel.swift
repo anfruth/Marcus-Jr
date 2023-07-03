@@ -16,6 +16,14 @@ final class MeditationViewModel {
         self.meditation = meditation
     }
     
+    var commentaryAvailable: Bool {
+        return commentary != meditation.id + "_commentary"
+    }
+    
+    var actionAvailable: Bool {
+        action != meditation.id + "_action"
+    }
+    
     var enchiridionChapter: String {
         return NSLocalizedString(meditation.id + "_title", comment: "Enchiridion Chapter")
     }

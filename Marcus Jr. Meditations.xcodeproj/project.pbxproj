@@ -45,6 +45,7 @@
 		EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9615932A2837A400049827 /* MarcusQuotationView.swift */; };
 		EAA8D5002A51099F00F242B7 /* MarcusCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */; };
 		EAA8D5022A510EE800F242B7 /* MeditationDatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */; };
+		EAA8D5042A52600E00F242B7 /* MeditationDatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */; };
 		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
@@ -125,6 +126,7 @@
 		EA9615932A2837A400049827 /* MarcusQuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusQuotationView.swift; sourceTree = "<group>"; };
 		EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusCommonButton.swift; sourceTree = "<group>"; };
 		EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDatesView.swift; sourceTree = "<group>"; };
+		EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDatesViewModel.swift; sourceTree = "<group>"; };
 		EAAB8FC82A35821700B453BB /* Emotion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Emotion.swift; sourceTree = "<group>"; };
 		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
@@ -242,6 +244,7 @@
 				EAB257AF27C448260023D78A /* MarcusAurelius.swift */,
 				EA9615932A2837A400049827 /* MarcusQuotationView.swift */,
 				EA318F1E2A31778800DB8678 /* BeginMeditationButtonView.swift */,
+				EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */,
 			);
 			path = OpeningMarcusSubviews;
 			sourceTree = "<group>";
@@ -496,6 +499,7 @@
 				EAFBB36C2A41208D00F3E2AB /* EmotionsViewModel.swift in Sources */,
 				EA4969A12A4AB04A0021E5D5 /* MeditationView.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
+				EAA8D5042A52600E00F242B7 /* MeditationDatesViewModel.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
 				EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */,

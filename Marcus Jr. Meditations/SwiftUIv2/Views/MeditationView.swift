@@ -20,19 +20,22 @@ struct MeditationView: View {
             ScrollView {
                 Text("Quotation:")
                     .bold()
-                    .padding()
                 Text(viewModel.quotation)
                     .padding()
-                Text("Commentary:")
-                    .bold()
-                    .padding()
-                Text(viewModel.commentary)
-                    .padding()
-                Text("Action:")
-                    .bold()
-                    .padding()
-                Text(viewModel.action)
-                    .padding()
+                
+                if viewModel.commentaryAvailable {
+                    Text("Commentary:")
+                        .bold()
+                    Text(viewModel.commentary)
+                        .padding()
+                }
+                
+                if viewModel.actionAvailable {
+                    Text("Action:")
+                        .bold()
+                    Text(viewModel.action)
+                        .padding()
+                }
             }
             .padding([.top, .bottom])
             .navigationTitle(viewModel.enchiridionChapter)

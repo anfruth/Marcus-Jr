@@ -11,6 +11,9 @@ import Foundation
 final class MeditationDatesViewModel: ObservableObject {
     
     @Published var datesToDisplay: [String]
+    @Published var showDuplicateMeditationError = false
+    @Published var showMaxMeditationnError = false
+    
     private var dates = [Date]()
     
     init(dates: [Date]) {
@@ -28,12 +31,18 @@ final class MeditationDatesViewModel: ObservableObject {
     }
     
     func insert(date: Date) {
-        if dates.contains(date) { return }
+        showDuplicateMeditationError = false
+        if dates.contains(date) {
+            showDuplicateMeditationError = true
+            return
+        }
+        
         dates.append(date)
         datesToDisplay = formattedDates
     }
     
     func delete(indexSet: IndexSet) {
+        showDuplicateMeditationError = false
         dates.remove(atOffsets: indexSet)
         datesToDisplay = formattedDates
     }

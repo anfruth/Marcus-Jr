@@ -19,6 +19,18 @@ struct MeditationDatesView: View {
             DatePicker("Choose Time:", selection: $selectedDate)
                 .padding()
                 .datePickerStyle(.compact)
+            if viewModel.showDuplicateMeditationError {
+                HStack {
+                    Image(systemName: "exclamationmark.circle.fill")
+                        .foregroundColor(.red)
+                        .frame(width: 28)
+                    Text("You already selected that time to meditate. Please select a different time.")
+                        .font(.callout)
+                        .foregroundColor(.red)
+                    Spacer()
+                }
+                .padding()
+            }
             List {
                 ForEach(viewModel.datesToDisplay.indices, id: \.self) { i in
                     HStack {
@@ -28,6 +40,7 @@ struct MeditationDatesView: View {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundColor(.red)
                         }
+                        .buttonStyle(.plain)
                         Text(viewModel.datesToDisplay[i])
                     }
                 }

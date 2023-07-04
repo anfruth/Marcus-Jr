@@ -20,8 +20,16 @@ struct MeditationDatesView: View {
                 .padding()
                 .datePickerStyle(.compact)
             List {
-                ForEach(viewModel.datesToDisplay, id: \.self) { dateString in
-                    Text(dateString)
+                ForEach(viewModel.datesToDisplay.indices, id: \.self) { i in
+                    HStack {
+                        Button {
+                            viewModel.delete(indexSet: IndexSet(integer: i))
+                        } label: {
+                            Image(systemName: "minus.circle.fill")
+                                .foregroundColor(.red)
+                        }
+                        Text(viewModel.datesToDisplay[i])
+                    }
                 }
                 .onDelete { indexSet in
                     viewModel.delete(indexSet: indexSet)

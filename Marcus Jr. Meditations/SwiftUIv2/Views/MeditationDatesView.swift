@@ -19,14 +19,21 @@ struct MeditationDatesView: View {
             DatePicker("Choose Time:", selection: $selectedDate)
                 .padding()
                 .datePickerStyle(.compact)
-            if viewModel.showDuplicateMeditationError {
+            if viewModel.showDuplicateMeditationError || viewModel.showMaxMeditationnError {
                 HStack {
                     Image(systemName: "exclamationmark.circle.fill")
                         .foregroundColor(.red)
                         .frame(width: 28)
-                    Text("You already selected that time to meditate. Please select a different time.")
-                        .font(.callout)
-                        .foregroundColor(.red)
+                    if viewModel.showDuplicateMeditationError {
+                        Text("You already selected that time to meditate. Please select a different time.")
+                            .font(.callout)
+                            .foregroundColor(.red)
+                    }
+                    if viewModel.showMaxMeditationnError {
+                        Text("You may only choose up to \(viewModel.maxMeditationTimes) times to medidate per meditation. Please delete a meditation time before adding a new one.")
+                            .font(.callout)
+                            .foregroundColor(.red)
+                    }
                     Spacer()
                 }
                 .padding()

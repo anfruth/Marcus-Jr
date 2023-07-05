@@ -14,6 +14,8 @@ final class MeditationDatesViewModel: ObservableObject {
     @Published var showDuplicateMeditationError = false
     @Published var showMaxMeditationnError = false
     
+    let maxMeditationTimes = 50
+    
     private var dates = [Date]()
     
     init(dates: [Date]) {
@@ -31,7 +33,14 @@ final class MeditationDatesViewModel: ObservableObject {
     }
     
     func insert(date: Date) {
+        showMaxMeditationnError = false
         showDuplicateMeditationError = false
+        
+        if dates.count >= maxMeditationTimes {
+            showMaxMeditationnError = true
+            return
+        }
+        
         if dates.contains(date) {
             showDuplicateMeditationError = true
             return

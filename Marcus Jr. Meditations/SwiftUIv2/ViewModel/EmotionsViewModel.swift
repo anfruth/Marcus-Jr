@@ -16,7 +16,11 @@ final class EmotionsViewModel: ObservableObject {
     @Published var isShowingMeditationList = false
     
     init() {
-        emotionsInGrid = emotionDescriptions.sorted(by: {
+        emotionsInGrid = sortedEmotionDescriptions
+    }
+    
+    lazy var sortedEmotionDescriptions: [EmotionDescription] = {
+        let sorted = emotionDescriptions.sorted(by: {
             let allEmotion = Emotion.allCases
             
             let firstEmotion = Emotion(rawValue: ($0.emotion ?? "")) ?? .anger
@@ -24,9 +28,11 @@ final class EmotionsViewModel: ObservableObject {
             
             return allEmotion.firstIndex(of: firstEmotion) ?? 0 < allEmotion.firstIndex(of: secondEmotion) ?? 0
         })
-    }
+        
+        return sorted
+    }()
     
-    lazy var emotionDescriptions: [EmotionDescription] = {
+    lazy private var emotionDescriptions: [EmotionDescription] = {
         EmotionFactory.sharedInstance.createEmotionsIfNeeded()
         return EmotionFactory.sharedInstance.emotionDescriptions
     }()

@@ -11,26 +11,23 @@ import SwiftUI
 struct EmotionsLazyGrid: View {
     
     @Environment(\.managedObjectContext) var moc
-    
-    @Binding var emotionsInGrid: [EmotionDescription]
-    @Binding var selectedEmotion: EmotionDescription?
-    @Binding var isShowingMeditationList: Bool
+    @ObservedObject var viewModel: EmotionsViewModel
     
     let animation: Animation
     let proxyHeight: Double
     
     var body: some View {
-        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: emotionsInGrid.count != 1 ? 2 : 1), spacing: 0) {
-            if emotionsInGrid.count != 1 {
-                ForEach(emotionsInGrid.indices, id: \.self) { index in
+        LazyVGrid(columns: Array(repeating: GridItem(.flexible(), spacing: 0), count: viewModel.emotionsInGrid.count != 1 ? 2 : 1), spacing: 0) {
+            if viewModel.emotionsInGrid.count != 1 {
+                ForEach(viewModel.emotionsInGrid.indices, id: \.self) { index in
                     Button {
                         emotionButtonAction(from: index)()
                     } label: {
-                        EmotionGridCellView(emotionDescription: emotionsInGrid[index], minHeight: 175, font: .title2)
+                        EmotionGridCellView(emotionDescription: viewModel.emotionsInGrid[index], minHeight: 175, font: .title2)
                     }
-                    .disabled(emotionsInGrid.count == 1)
+                    .disabled(viewModel.emotionsInGrid.count == 1)
                 }
-            } else if let selectedEmotion {
+            } else if let selectedEmotion = viewModel.selectedEmotion {
                 EmotionGridCellView(emotionDescription: selectedEmotion, minHeight: proxyHeight, font: .largeTitle)
             }
         }
@@ -38,18 +35,18 @@ struct EmotionsLazyGrid: View {
     
     private func emotionButtonAction(from index: Int) -> () -> Void {
         return {
-            if emotionsInGrid.count != 1 {
+            if viewModel.emotionsInGrid.count != 1 {
                 withAnimation(animation) {
-                    selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: Emotion.allCases[index]) // TODO: fix this, take out of view
-                    if let selectedEmotion {
-                        emotionsInGrid = [selectedEmotion]
+                    viewModel.selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: Emotion.allCases[index]) // TODO: fix this, take out of view
+                    if let selectedEmotion = viewModel.selectedEmotion {
+                        viewModel.emotionsInGrid = [selectedEmotion]
                     }
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
-                    isShowingMeditationList = true
+                    viewModel.isShowingMeditationList = true
                     DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        emotionsInGrid = EmotionFactory.sharedInstance.emotionDescriptions
+                        viewModel.emotionsInGrid = viewModel.sortedEmotionDescriptions
                     }
                 }
             }
@@ -57,9 +54,8 @@ struct EmotionsLazyGrid: View {
     }
 }
 
-//struct EmotionsLazyGrid_Previews: PreviewProvider {
-//    static var previews: some View {
-//        EmotionsLazyGrid(emotionsInGrid: .constant(Emotion.allCases), selectedEmotion: .constant(nil),
-//                         isShowingMeditationList: .constant(false), animation: Animation.easeOut(duration: 0.8), proxyHeight: 900)
-//    }
-//}
+struct EmotionsLazyGrid_Previews: PreviewProvider {
+    static var previews: some View {
+        EmotionsLazyGrid(viewModel: EmotionsViewModel(), animation: Animation.easeOut(duration: 0.8), proxyHeight: 900)
+    }
+}

@@ -30,8 +30,7 @@ struct EmotionsView: View {
                     NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
                 }
                 
-                EmotionsLazyGrid(emotionsInGrid: $viewModel.emotionsInGrid, selectedEmotion: $viewModel.selectedEmotion,
-                                 isShowingMeditationList: $viewModel.isShowingMeditationList, animation: animation, proxyHeight: proxy.size.height)
+                EmotionsLazyGrid(viewModel: viewModel, animation: animation, proxyHeight: proxy.size.height)
             }
         }
         .navigationTitle(viewModel.emotionsInGrid.count != 1 ? "Choose Emotion" : "")

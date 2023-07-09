@@ -20,6 +20,26 @@ final class MeditationFactory {
     
     private init(moc: NSManagedObjectContext) {
         self.moc = moc
+        loadAllMeditationsIntoMemory()
+    }
+    
+    private func loadAllMeditationsIntoMemory() {
+        let request = Meditation.fetchRequest()
+        //request.predicate = NSPredicate(format: "emotions contains[cd]")
+        
+        var meditations: [Meditation] = []
+        
+        do {
+            meditations = try moc.fetch(request)
+        } catch {
+            print(error.localizedDescription)
+        }
+        
+        meditations.forEach { meditation in
+            if let localizedId = meditation.localizedId {
+                inMemoryStore[localizedId] = meditation
+            }
+        }
     }
     
     func getSortedMeditations(by emotion: EmotionDescription) -> [Meditation] {
@@ -47,6 +67,7 @@ final class MeditationFactory {
         let remainingLocalizationIds = requiredLocalizedIds.subtracting(linkedMeditationsSet)
         
         // check if remaining localization ids are in memory. If so link.
+        // going to load all existing meditations into memory for now (small enough it doesn't matter)
         
         var idsMissingFromMemory = Set<String>()
         

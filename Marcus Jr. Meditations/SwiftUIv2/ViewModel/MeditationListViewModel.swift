@@ -7,26 +7,31 @@
 //
 
 import Foundation
+import CoreData
 
 final class MeditationListViewModel: ObservableObject {
     
     @Published var meditationVM: MeditationViewModel?
     @Published var meditationSelected: Bool = false
     
-    private let emotion: Emotion
-    private let meditations: [Meditation]
+    private let emotionDescription: EmotionDescription
+    private let moc: NSManagedObjectContext
     
-    lazy var emotionText = emotion.rawValue
+    lazy var meditations: [Meditation] = {
+        return MeditationFactory.sharedInstance.getSortedMeditations(by: emotionDescription)
+    }()
+    
+    lazy var emotionText = emotionDescription.emotion ?? ""
     
     lazy var meditationSummaries: [(String, Int)] = {
         return meditations.enumerated().map { (index, meditation) in
-            return (NSLocalizedString(meditation.id, comment: "Meditation Summary"), index)
+            return (NSLocalizedString(meditation.localizedId ?? "", comment: "Meditation Summary"), index)
         }
     }()
     
-    init(emotion: Emotion, meditations: [Meditation]) {
-        self.emotion = emotion
-        self.meditations = meditations
+    init(emotionDescription: EmotionDescription, moc: NSManagedObjectContext) {
+        self.emotionDescription = emotionDescription
+        self.moc = moc
     }
     
     func selectMeditation(from index: Int) {
@@ -35,6 +40,20 @@ final class MeditationListViewModel: ObservableObject {
             let meditation = meditations[index]
             meditationVM = MeditationViewModel(meditation: meditation)
         }
+    }
+    
+    private lazy var emotionMeditationIdMap = loadEmotionMeditationIdMap()
+    
+    private func loadEmotionMeditationIdMap() -> [Emotion: [String]]  {
+        guard let configPath = Bundle.main.path(forResource: "EmotionConfig", ofType: "plist"),
+              let configData = FileManager.default.contents(atPath: configPath) else { return [:] }
+        
+        let decoder = PropertyListDecoder()
+        guard let decodedPlist = try? decoder.decode([String: [String]].self, from: configData) else { return [:] }
+        
+        let map: [Emotion: [String]] = Dictionary(uniqueKeysWithValues: decodedPlist.compactMap { (Emotion(rawValue: $0) ?? .loss, $1) })
+        
+        return map
     }
     
 }

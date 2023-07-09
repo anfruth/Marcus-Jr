@@ -17,27 +17,27 @@ final class MeditationViewModel {
     }
     
     var commentaryAvailable: Bool {
-        return commentary != meditation.id + "_commentary"
+        return commentary != (meditation.localizedId ?? "") + "_commentary"
     }
     
     var actionAvailable: Bool {
-        action != meditation.id + "_action"
+        action != (meditation.localizedId ?? "") + "_action"
     }
     
     var enchiridionChapter: String {
-        return NSLocalizedString(meditation.id + "_title", comment: "Enchiridion Chapter")
+        return NSLocalizedString((meditation.localizedId ?? "") + "_title", comment: "Enchiridion Chapter")
     }
     
     var quotation: String {
-        return "\"" + NSLocalizedString(meditation.id + "_quotation", comment: "Enchiridion Quotation") + "\""
+        return "\"" + NSLocalizedString((meditation.localizedId ?? "") + "_quotation", comment: "Enchiridion Quotation") + "\""
     }
     
     var commentary: String {
-        return NSLocalizedString(meditation.id + "_commentary", comment: "Meditation Commentary")
+        return NSLocalizedString((meditation.localizedId ?? "") + "_commentary", comment: "Meditation Commentary")
     }
     
     var action: String {
-        return NSLocalizedString(meditation.id + "_action", comment: "Meditation Action")
+        return NSLocalizedString((meditation.localizedId ?? "") + "_action", comment: "Meditation Action")
     }
     
 }

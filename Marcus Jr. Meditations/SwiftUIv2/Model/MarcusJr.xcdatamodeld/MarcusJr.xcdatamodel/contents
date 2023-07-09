@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8" standalone="yes"?>
+<model type="com.apple.IDECoreDataModeler.DataModel" documentVersion="1.0" lastSavedToolsVersion="21754" systemVersion="22E261" minimumToolsVersion="Automatic" sourceLanguage="Swift" userDefinedModelVersionIdentifier="">
+    <entity name="EmotionDescription" representedClassName="EmotionDescription" syncable="YES" codeGenerationType="class">
+        <attribute name="emotion" attributeType="String"/>
+        <relationship name="meditations" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="Meditation" inverseName="emotions" inverseEntity="Meditation"/>
+        <fetchIndex name="byEmotion">
+            <fetchIndexElement property="emotion" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="emotion"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="Meditation" representedClassName="Meditation" syncable="YES" codeGenerationType="class">
+        <attribute name="localizedId" attributeType="String"/>
+        <attribute name="visitedAfterFinalTime" attributeType="Boolean" defaultValueString="NO" usesScalarValueType="YES"/>
+        <relationship name="emotions" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="EmotionDescription" inverseName="meditations" inverseEntity="EmotionDescription"/>
+        <relationship name="reflectionTimes" optional="YES" toMany="YES" deletionRule="Nullify" destinationEntity="ReflectionTimeDescription" inverseName="meditation" inverseEntity="ReflectionTimeDescription"/>
+        <fetchIndex name="bylocalizedId">
+            <fetchIndexElement property="localizedId" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="byVisitedAfterFinalTime">
+            <fetchIndexElement property="visitedAfterFinalTime" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <fetchIndex name="byEmotions">
+            <fetchIndexElement property="emotions" type="Binary" order="ascending"/>
+        </fetchIndex>
+        <uniquenessConstraints>
+            <uniquenessConstraint>
+                <constraint value="localizedId"/>
+            </uniquenessConstraint>
+        </uniquenessConstraints>
+    </entity>
+    <entity name="ReflectionTimeDescription" representedClassName="ReflectionTimeDescription" syncable="YES" codeGenerationType="class">
+        <attribute name="reflectionTime" attributeType="Date" usesScalarValueType="NO"/>
+        <relationship name="meditation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meditation" inverseName="reflectionTimes" inverseEntity="Meditation"/>
+        <fetchIndex name="byReflectionTime">
+            <fetchIndexElement property="reflectionTime" type="Binary" order="descending"/>
+        </fetchIndex>
+    </entity>
+</model>

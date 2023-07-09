@@ -12,8 +12,8 @@ struct EmotionsView: View {
     
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
-    @Environment(\.dismiss) private var dismiss
     @StateObject var viewModel: EmotionsViewModel
+    @Environment(\.managedObjectContext) var moc
     
     let animation = Animation.easeOut(duration: 0.8)
     private let navTitle = "Choose Emotion"
@@ -25,8 +25,7 @@ struct EmotionsView: View {
             ScrollView(viewModel.emotionsInGrid.count != 1 ? [.vertical] : []) {
                 
                 if let selectedEmotion = viewModel.selectedEmotion {
-                    let meditationListViewModel = MeditationListViewModel(emotion: selectedEmotion,
-                                                            meditations: viewModel.meditations(from: selectedEmotion))
+                    let meditationListViewModel = MeditationListViewModel(emotionDescription: selectedEmotion, moc: moc)
                     let destination = MeditationListView(viewModel: meditationListViewModel)
                     NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
                 }

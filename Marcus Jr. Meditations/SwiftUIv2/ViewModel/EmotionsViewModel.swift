@@ -7,30 +7,28 @@
 //
 
 import Foundation
+import CoreData
 
 final class EmotionsViewModel: ObservableObject {
     
-    @Published var emotionsInGrid = Emotion.allCases
-    @Published var selectedEmotion: Emotion?
+    @Published var emotionsInGrid: [EmotionDescription] = []
+    @Published var selectedEmotion: EmotionDescription?
     @Published var isShowingMeditationList = false
     
-    func meditations(from emotion: Emotion) -> [Meditation] {
-        guard let meditationsIds = emotionMeditationIdMap[emotion] else { return [] }
-        return meditationsIds.compactMap { Meditation(id: $0) }
+    init() {
+        emotionsInGrid = emotionDescriptions.sorted(by: {
+            let allEmotion = Emotion.allCases
+            
+            let firstEmotion = Emotion(rawValue: ($0.emotion ?? "")) ?? .anger
+            let secondEmotion = Emotion(rawValue: ($1.emotion ?? "")) ?? .anger
+            
+            return allEmotion.firstIndex(of: firstEmotion) ?? 0 < allEmotion.firstIndex(of: secondEmotion) ?? 0
+        })
     }
     
-    private lazy var emotionMeditationIdMap = loadEmotionMeditationIdMap()
-    
-    private func loadEmotionMeditationIdMap() -> [Emotion: [String]]  {
-        guard let configPath = Bundle.main.path(forResource: "EmotionConfig", ofType: "plist"),
-              let configData = FileManager.default.contents(atPath: configPath) else { return [:] }
-        
-        let decoder = PropertyListDecoder()
-        guard let decodedPlist = try? decoder.decode([String: [String]].self, from: configData) else { return [:] }
-        
-        let map: [Emotion: [String]] = Dictionary(uniqueKeysWithValues: decodedPlist.compactMap { (Emotion(rawValue: $0) ?? .loss, $1) })
-        
-        return map
-    }
+    lazy var emotionDescriptions: [EmotionDescription] = {
+        EmotionFactory.sharedInstance.createEmotionsIfNeeded()
+        return EmotionFactory.sharedInstance.emotionDescriptions
+    }()
     
 }

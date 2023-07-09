@@ -10,22 +10,23 @@ import SwiftUI
 
 struct EmotionGridCellView: View {
     
-    let emotion: Emotion
+    let emotionDescription: EmotionDescription
     let minHeight: Double
     let font: Font
     
     var body: some View {
         ZStack {
             Rectangle()
-                .fill(getFillColor(from: emotion))
+                .fill(getFillColor(from: emotionDescription))
                 .frame(minHeight: minHeight)
-            Text(emotion.rawValue)
+            Text(emotionDescription.emotion ?? "")
                 .font(font)
                 .foregroundColor(.white)
         }
     }
     
-    private func getFillColor(from emotion: Emotion) -> Color {
+    private func getFillColor(from emotionDescription: EmotionDescription) -> Color {
+        let emotion = Emotion(rawValue: emotionDescription.emotion ?? "") ?? .anger
         switch emotion {
         case .loss, .anxiety, .discipline:
             return Color(red:0.30, green:0.39, blue:0.55)
@@ -37,10 +38,10 @@ struct EmotionGridCellView: View {
     }
 }
 
-struct EmotionsGridView_Previews: PreviewProvider {
-    static var previews: some View {
-        Group {
-            EmotionGridCellView(emotion: .anxiety, minHeight: 175, font: .title2)
-        }
-    }
-}
+//struct EmotionsGridView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        Group {
+//            EmotionGridCellView(emotionDescription: .anxiety, minHeight: 175, font: .title2)
+//        }
+//    }
+//}

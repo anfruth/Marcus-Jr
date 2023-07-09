@@ -57,10 +57,10 @@ struct MeditationView: View {
     }
 }
 
-struct MeditationView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
-        }
-    }
-}
+//struct MeditationView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
+//        }
+//    }
+//}

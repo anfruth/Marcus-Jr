@@ -56,13 +56,13 @@ struct MeditationListView: View {
     }
 }
 
-struct MeditationListView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationView {
-            MeditationListView(viewModel: MeditationListViewModel(emotion: .loss, meditations:
-                                                                                                                                                    [Meditation(id: "00What_is"),
-                                                                                                                                                     Meditation(id: "01Be_unattached"),
-                                                                                                                                                     Meditation(id: "08Seek the")]))
-        }
-    }
-}
+//struct MeditationListView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        NavigationView {
+//            MeditationListView(viewModel: MeditationListViewModel(emotion: .loss, meditations:
+//                                                                                                                                                    [Meditation(id: "00What_is"),
+//                                                                                                                                                     Meditation(id: "01Be_unattached"),
+//                                                                                                                                                     Meditation(id: "08Seek the")]))
+//        }
+//    }
+//}

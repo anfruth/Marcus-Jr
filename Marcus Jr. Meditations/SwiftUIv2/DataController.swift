@@ -18,7 +18,7 @@ final class DataController: ObservableObject {
     private init() {
         container.loadPersistentStores() { description, error in
             if let error {
-                fatalError("Failure on loading persistent store")
+                fatalError("Failure on loading persistent store: \(error)")
             }
         }
         

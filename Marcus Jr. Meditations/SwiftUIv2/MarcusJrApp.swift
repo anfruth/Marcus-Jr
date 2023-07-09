@@ -8,7 +8,7 @@
 
 import SwiftUI
 @main
-struct LandmarksApp: App {
+struct MarcusJrApp: App {
     
     @UIApplicationDelegateAdaptor(AppDelegate.self) var appDelegate
 

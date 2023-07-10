@@ -29,9 +29,10 @@ struct OpeningMarcusView: View {
                 
                 VStack {
                     MarcusQuotationView(showMarcus: $showMarcus, marcusQuotation: marcusQuotation, authorNotationText: authorNotationText)
-                        .padding([.top, .bottom])
+                        .padding([.top])
                     
                     BeginMeditationButtonView(showBeginButton: $showBeginButton, buttonText: buttonText)
+                        .padding([.top, .bottom])
                 }
             }
         }

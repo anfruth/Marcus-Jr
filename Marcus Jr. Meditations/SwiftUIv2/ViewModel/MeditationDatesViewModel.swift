@@ -38,7 +38,7 @@ final class MeditationDatesViewModel: ObservableObject {
     }
     
     func loadInitialListOfDates() {
-        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionnTimes(from: meditation, maxReflections: maxMeditationTimes)
+        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
         dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }
     }
     

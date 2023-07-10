@@ -19,7 +19,7 @@ final class ReflectionTimeFactory {
         self.moc = moc
     }
     
-    func loadReflectionnTimes(from meditation: Meditation, maxReflections: Int) -> [ReflectionTimeDescription] {
+    func loadReflectionTimes(from meditation: Meditation, maxReflections: Int) -> [ReflectionTimeDescription] {
         let request = ReflectionTimeDescription.fetchRequest()
         request.predicate = NSPredicate(format: "meditation == %@", meditation)
         request.fetchBatchSize = maxReflections

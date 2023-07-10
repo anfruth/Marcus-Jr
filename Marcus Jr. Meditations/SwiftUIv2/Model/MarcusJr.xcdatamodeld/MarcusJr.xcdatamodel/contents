@@ -33,10 +33,13 @@
         </uniquenessConstraints>
     </entity>
     <entity name="ReflectionTimeDescription" representedClassName="ReflectionTimeDescription" syncable="YES" codeGenerationType="class">
-        <attribute name="reflectionTime" attributeType="Date" usesScalarValueType="NO"/>
+        <attribute name="meditationDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="meditation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meditation" inverseName="reflectionTimes" inverseEntity="Meditation"/>
-        <fetchIndex name="byReflectionTime">
-            <fetchIndexElement property="reflectionTime" type="Binary" order="descending"/>
+        <fetchIndex name="byMeditationDate">
+            <fetchIndexElement property="meditationDate" type="Binary" order="descending"/>
+        </fetchIndex>
+        <fetchIndex name="byMeditation">
+            <fetchIndexElement property="meditation" type="Binary" order="descending"/>
         </fetchIndex>
     </entity>
 </model>

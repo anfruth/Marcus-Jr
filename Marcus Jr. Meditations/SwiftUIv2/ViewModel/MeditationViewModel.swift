@@ -40,4 +40,9 @@ final class MeditationViewModel {
         return NSLocalizedString((meditation.localizedId ?? "") + "_action", comment: "Meditation Action")
     }
     
+    func meditationDatesView() -> MeditationDatesView {
+        let vm = MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now)
+        return MeditationDatesView(viewModel: vm)
+    }
+    
 }

@@ -45,22 +45,28 @@ struct MeditationView: View {
             }))
             .navigationBarBackButtonHidden()
             
-            NavigationLink(destination: MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: [])),
-                           isActive: $navigationActive) { EmptyView() }
+            NavigationLink(destination: viewModel.meditationDatesView(), isActive: $navigationActive) { EmptyView() }
             
             MarcusCommonButton(title: "Set Meditation Times") {
                 navigationActive = true
             }
-            
-            Spacer()
+            .padding([.bottom])
         }
     }
 }
 
-//struct MeditationView_Previews: PreviewProvider {
-//    static var previews: some View {
-//        NavigationView {
-//            MeditationView(viewModel: MeditationViewModel(meditation: Meditation(id: "01Be_unattached")))
-//        }
-//    }
-//}
+struct MeditationView_Previews: PreviewProvider {
+    
+    static var meditation: Meditation {
+        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+        meditation.localizedId = "01Be_unattached"
+        meditation.visitedAfterFinalTime = false
+        return meditation
+    }
+    
+    static var previews: some View {
+        NavigationView {
+            MeditationView(viewModel: MeditationViewModel(meditation: meditation))
+        }
+    }
+}

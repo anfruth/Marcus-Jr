@@ -10,8 +10,9 @@ import SwiftUI
 
 struct MeditationDatesView: View {
     
-    @State var selectedDate: Date
     @StateObject var viewModel: MeditationDatesViewModel
+    
+    @State var selectedDate: Date = .now
     @Environment(\.dismiss) private var dismiss
     
     var body: some View {
@@ -19,7 +20,8 @@ struct MeditationDatesView: View {
             DatePicker("Choose Time:", selection: $selectedDate)
                 .padding()
                 .datePickerStyle(.compact)
-            if viewModel.showDuplicateMeditationError || viewModel.showMaxMeditationnError {
+            
+            if viewModel.showDuplicateMeditationError || viewModel.showMaxMeditationError {
                 HStack {
                     Image(systemName: "exclamationmark.circle.fill")
                         .foregroundColor(.red)
@@ -29,7 +31,7 @@ struct MeditationDatesView: View {
                             .font(.callout)
                             .foregroundColor(.red)
                     }
-                    if viewModel.showMaxMeditationnError {
+                    if viewModel.showMaxMeditationError {
                         Text("You may only choose up to \(viewModel.maxMeditationTimes) times to medidate per meditation. Please delete a meditation time before adding a new one.")
                             .font(.callout)
                             .foregroundColor(.red)
@@ -38,11 +40,12 @@ struct MeditationDatesView: View {
                 }
                 .padding()
             }
+            
             List {
                 ForEach(viewModel.datesToDisplay.indices, id: \.self) { i in
                     HStack {
                         Button {
-                            viewModel.delete(indexSet: IndexSet(integer: i))
+                            viewModel.delete(at: i)
                         } label: {
                             Image(systemName: "minus.circle.fill")
                                 .foregroundColor(.red)
@@ -52,13 +55,16 @@ struct MeditationDatesView: View {
                     }
                 }
                 .onDelete { indexSet in
-                    viewModel.delete(indexSet: indexSet)
+                    if let index = indexSet.first {
+                        viewModel.delete(at: index)
+                    }
                 }
             }
             .listStyle(.plain)
             MarcusCommonButton(title: "Add Meditation Time") {
                 viewModel.insert(date: selectedDate)
             }
+            .padding([.bottom])
         }
         .navigationTitle("Select Meditation Times")
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
@@ -70,16 +76,23 @@ struct MeditationDatesView: View {
 }
 
 struct MeditationDatesView_Previews: PreviewProvider {
+
+    static var meditation: Meditation {
+        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+        meditation.localizedId = "01Be_unattached"
+        meditation.visitedAfterFinalTime = false
+        return meditation
+    }
+
     static var previews: some View {
         Group {
             NavigationView {
-                MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: []))
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now))
                     .navigationBarTitleDisplayMode(.inline)
             }
-            
+
             NavigationView {
-                MeditationDatesView(selectedDate: .now, viewModel: MeditationDatesViewModel(dates: []))
-                    .navigationBarTitleDisplayMode(.inline)
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now))
             }
             .previewInterfaceOrientation(.landscapeLeft)
         }

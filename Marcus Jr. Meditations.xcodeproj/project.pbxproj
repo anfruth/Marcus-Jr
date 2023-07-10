@@ -47,6 +47,7 @@
 		EAA0EF302A5A2B27007E1E96 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */; };
 		EAA0EF332A5A3EAE007E1E96 /* EmotionFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF322A5A3EAE007E1E96 /* EmotionFactory.swift */; };
 		EAA0EF352A5A464B007E1E96 /* MeditationFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF342A5A464B007E1E96 /* MeditationFactory.swift */; };
+		EAA0EF372A5B69FF007E1E96 /* ReflectionTimeFactory.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF362A5B69FF007E1E96 /* ReflectionTimeFactory.swift */; };
 		EAA8D5002A51099F00F242B7 /* MarcusCommonButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */; };
 		EAA8D5022A510EE800F242B7 /* MeditationDatesView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */; };
 		EAA8D5042A52600E00F242B7 /* MeditationDatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */; };
@@ -131,6 +132,7 @@
 		EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
 		EAA0EF322A5A3EAE007E1E96 /* EmotionFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionFactory.swift; sourceTree = "<group>"; };
 		EAA0EF342A5A464B007E1E96 /* MeditationFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationFactory.swift; sourceTree = "<group>"; };
+		EAA0EF362A5B69FF007E1E96 /* ReflectionTimeFactory.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ReflectionTimeFactory.swift; sourceTree = "<group>"; };
 		EAA8D4FF2A51099F00F242B7 /* MarcusCommonButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusCommonButton.swift; sourceTree = "<group>"; };
 		EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDatesView.swift; sourceTree = "<group>"; };
 		EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationDatesViewModel.swift; sourceTree = "<group>"; };
@@ -298,6 +300,7 @@
 			children = (
 				EAA0EF322A5A3EAE007E1E96 /* EmotionFactory.swift */,
 				EAA0EF342A5A464B007E1E96 /* MeditationFactory.swift */,
+				EAA0EF362A5B69FF007E1E96 /* ReflectionTimeFactory.swift */,
 			);
 			path = CoreDataFactory;
 			sourceTree = "<group>";
@@ -504,6 +507,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EAA0EF372A5B69FF007E1E96 /* ReflectionTimeFactory.swift in Sources */,
 				EAA0EF352A5A464B007E1E96 /* MeditationFactory.swift in Sources */,
 				EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */,
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,

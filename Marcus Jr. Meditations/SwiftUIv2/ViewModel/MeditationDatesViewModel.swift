@@ -12,16 +12,21 @@ final class MeditationDatesViewModel: ObservableObject {
     
     @Published var datesToDisplay: [String]
     @Published var showDuplicateMeditationError = false
-    @Published var showMaxMeditationnError = false
+    @Published var showMaxMeditationError = false
     
+    var selectedDate: Date
     let maxMeditationTimes = 50
     
     private var dates = [Date]()
+    private let meditation: Meditation
     
-    init(dates: [Date]) {
+    init(dates: [Date], meditation: Meditation, selectedDate: Date) {
         self.dates = dates
+        self.meditation = meditation
+        self.selectedDate = selectedDate
         datesToDisplay = []
         
+        loadInitialListOfDates()
         datesToDisplay = formattedDates
     }
     
@@ -32,12 +37,17 @@ final class MeditationDatesViewModel: ObservableObject {
         }
     }
     
+    func loadInitialListOfDates() {
+        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionnTimes(from: meditation, maxReflections: maxMeditationTimes)
+        dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }
+    }
+    
     func insert(date: Date) {
-        showMaxMeditationnError = false
+        showMaxMeditationError = false
         showDuplicateMeditationError = false
         
         if dates.count >= maxMeditationTimes {
-            showMaxMeditationnError = true
+            showMaxMeditationError = true
             return
         }
         
@@ -48,11 +58,16 @@ final class MeditationDatesViewModel: ObservableObject {
         
         dates.append(date)
         datesToDisplay = formattedDates
+        
+        ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date)
     }
     
-    func delete(indexSet: IndexSet) {
+    func delete(at index: Int) {
+        let date = dates[index]
         showDuplicateMeditationError = false
-        dates.remove(atOffsets: indexSet)
+        dates.remove(at: index)
         datesToDisplay = formattedDates
+        
+        ReflectionTimeFactory.sharedInstance.deleteRelectionTime(from: meditation, on: date)
     }
 }

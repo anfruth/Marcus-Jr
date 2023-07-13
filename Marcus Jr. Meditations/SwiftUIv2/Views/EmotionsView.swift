@@ -34,7 +34,6 @@ struct EmotionsView: View {
             }
         }
         .navigationTitle(viewModel.emotionsInGrid.count != 1 ? "Choose Emotion" : "")
-        .navigationBarTitleDisplayMode(.large)
         .navigationBarBackButtonHidden()
         .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
     }

@@ -47,7 +47,6 @@ struct MeditationListView: View {
 
         }
         .navigationTitle(viewModel.emotionText)
-        .navigationBarTitleDisplayMode(.inline)
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))

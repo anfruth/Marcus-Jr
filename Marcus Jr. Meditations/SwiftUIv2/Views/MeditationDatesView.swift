@@ -88,7 +88,6 @@ struct MeditationDatesView_Previews: PreviewProvider {
         Group {
             NavigationView {
                 MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now))
-                    .navigationBarTitleDisplayMode(.inline)
             }
 
             NavigationView {

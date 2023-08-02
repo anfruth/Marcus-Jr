@@ -74,20 +74,24 @@ class NotificationsSetup {
         }))
     }
     
-    private func giveSystemPromptForNotifications(completionHandler: @escaping (Bool) -> ()) {
+    func giveSystemPromptForNotifications(completionHandler: @escaping (Bool) -> ()) {
         
         let center = UNUserNotificationCenter.current()
         center.requestAuthorization(options: [.alert, .sound]) { (granted, error) in
-            if granted {
-                let goToMeditationAction = UNNotificationAction(identifier: "goToMeditation", title: "Go to Meditation", options: .foreground)
-                
-                // localize.
-                let meditationCategory = UNNotificationCategory(identifier: "meditationCategory", actions: [goToMeditationAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: NSLocalizedString(self.systemPlaceholder, comment: self.systemPlaceholderComment), options: UNNotificationCategoryOptions(rawValue: 0))
-                
-                center.setNotificationCategories([meditationCategory])
-                center.delegate = NotificationsReceiver.sharedInstance
-                
-                completionHandler(true)
+            Task { @MainActor in
+                if granted {
+                    let goToMeditationAction = UNNotificationAction(identifier: "goToMeditation", title: "Go to Meditation", options: .foreground)
+                    
+                    // localize.
+                    let meditationCategory = UNNotificationCategory(identifier: "meditationCategory", actions: [goToMeditationAction], intentIdentifiers: [], hiddenPreviewsBodyPlaceholder: NSLocalizedString(self.systemPlaceholder, comment: self.systemPlaceholderComment), options: UNNotificationCategoryOptions(rawValue: 0))
+                    
+                    center.setNotificationCategories([meditationCategory])
+                    //center.delegate = NotificationsReceiver.sharedInstance
+                    
+                    completionHandler(true)
+                } else {
+                    completionHandler(false)
+                }
             }
         }
 

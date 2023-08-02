@@ -7,12 +7,11 @@
 //
 
 import SwiftUI
+import UIKit
 
 struct MeditationView: View {
     
-    let viewModel: MeditationViewModel
-    
-    @State private var navigationActive = false
+    @StateObject var viewModel: MeditationViewModel
     @Environment(\.dismiss) private var dismiss
 
     var body: some View {
@@ -45,12 +44,34 @@ struct MeditationView: View {
             }))
             .navigationBarBackButtonHidden()
             
-            NavigationLink(destination: viewModel.meditationDatesView(), isActive: $navigationActive) { EmptyView() }
+            NavigationLink(destination: viewModel.meditationDatesView(), isActive: $viewModel.dateSettingAllowed) { EmptyView() }
             
             MarcusCommonButton(title: "Set Meditation Times") {
-                navigationActive = true
+                if !viewModel.dateSettingAllowed {
+                    Task { @MainActor in
+                        await viewModel.getNotificationPermissionIfNeeded()
+                    }
+                }
             }
+            .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
+                Button(viewModel.alertInfo?.acceptActionOption ?? "") {
+                    if viewModel.alertInfo?.acceptAction?() == true {
+                        openSettingsUrl()
+                    }
+                }
+                Button(viewModel.alertInfo?.declineActionOption ?? "") {
+                    viewModel.alertInfo?.declineAction?()
+                }
+            }, message: {
+                Text(viewModel.alertInfo?.message ?? "")
+            })
             .padding([.bottom])
+        }
+    }
+    
+    private func openSettingsUrl() {
+        if let url = URL(string: UIApplication.openSettingsURLString) {
+            UIApplication.shared.open(url, options: [:], completionHandler: nil)
         }
     }
 }

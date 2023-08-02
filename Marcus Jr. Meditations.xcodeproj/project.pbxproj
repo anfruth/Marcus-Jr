@@ -53,6 +53,7 @@
 		EAA8D5042A52600E00F242B7 /* MeditationDatesViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA8D5032A52600E00F242B7 /* MeditationDatesViewModel.swift */; };
 		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
+		EAC46D272A771E5C00AD45DB /* NotificationsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
 		EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */; };
 		EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */; };
@@ -512,6 +513,7 @@
 				EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */,
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA4969A32A509C6D0021E5D5 /* MeditationViewModel.swift in Sources */,
+				EAC46D272A771E5C00AD45DB /* NotificationsSetup.swift in Sources */,
 				EAA8D5002A51099F00F242B7 /* MarcusCommonButton.swift in Sources */,
 				EA0F3C7527AF8DBB00D4EE43 /* OpeningMarcusView.swift in Sources */,
 				EAA0EF332A5A3EAE007E1E96 /* EmotionFactory.swift in Sources */,

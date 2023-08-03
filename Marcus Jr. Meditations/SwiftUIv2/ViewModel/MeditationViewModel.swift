@@ -28,6 +28,7 @@ final class MeditationViewModel: ObservableObject {
     private(set) var alertInfo: AlertInfo?
     
     private let meditation: Meditation
+    private let emotionDescription: EmotionDescription
     
     private let notDeterminedTitle = "Not_determined_title"
     private let notDeterminedTitleComment = "not determined alert title"
@@ -52,8 +53,9 @@ final class MeditationViewModel: ObservableObject {
     private let skipTitle = "Skip"
     private let settingsTitle = "Settings"
     
-    init(meditation: Meditation) {
+    init(meditation: Meditation, emotion: EmotionDescription) {
         self.meditation = meditation
+        self.emotionDescription = emotion
     }
     
     var commentaryAvailable: Bool {
@@ -94,7 +96,8 @@ final class MeditationViewModel: ObservableObject {
     }
     
     func meditationDatesView() -> MeditationDatesView {
-        let vm = MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now)
+        let vm = MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now,
+                                          notificationManager: LocalNotificationManager(), emotion: emotionDescription)
         return MeditationDatesView(viewModel: vm)
     }
     

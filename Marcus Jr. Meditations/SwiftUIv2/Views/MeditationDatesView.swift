@@ -87,11 +87,11 @@ struct MeditationDatesView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             NavigationView {
-                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now))
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
             }
 
             NavigationView {
-                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now))
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
             }
             .previewInterfaceOrientation(.landscapeLeft)
         }

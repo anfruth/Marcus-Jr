@@ -38,7 +38,7 @@ final class MeditationListViewModel: ObservableObject {
         if index < meditations.count {
             meditationSelected = true
             let meditation = meditations[index]
-            meditationVM = MeditationViewModel(meditation: meditation)
+            meditationVM = MeditationViewModel(meditation: meditation, emotion: emotionDescription)
         }
     }
     

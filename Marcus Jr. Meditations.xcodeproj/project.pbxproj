@@ -54,6 +54,7 @@
 		EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAAB8FC82A35821700B453BB /* Emotion.swift */; };
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAC46D272A771E5C00AD45DB /* NotificationsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */; };
+		EAC46D292A79F02B00AD45DB /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
 		EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */; };
 		EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */; };
@@ -141,6 +142,7 @@
 		EAB257AF27C448260023D78A /* MarcusAurelius.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusAurelius.swift; sourceTree = "<group>"; };
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
 		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
+		EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
 		EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListView.swift; sourceTree = "<group>"; };
 		EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListViewModel.swift; sourceTree = "<group>"; };
 		EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EmotionConfig.plist; sourceTree = "<group>"; };
@@ -183,6 +185,7 @@
 			children = (
 				EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */,
 				EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */,
+				EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */,
 				EAA0EF312A5A3E91007E1E96 /* CoreDataFactory */,
 				EAAB8FC72A3581E300B453BB /* Model */,
 				EA0F3C7327AF8DA700D4EE43 /* Views */,
@@ -526,6 +529,7 @@
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,
 				EAA8D5042A52600E00F242B7 /* MeditationDatesViewModel.swift in Sources */,
 				EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */,
+				EAC46D292A79F02B00AD45DB /* LocalNotificationManager.swift in Sources */,
 				EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */,
 				EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */,
 				EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */,

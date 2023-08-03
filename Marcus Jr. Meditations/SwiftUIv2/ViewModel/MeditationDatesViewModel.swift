@@ -14,16 +14,22 @@ final class MeditationDatesViewModel: ObservableObject {
     @Published var showDuplicateMeditationError = false
     @Published var showMaxMeditationError = false
     
+    private let notificationManager: MeditationNotifiable
+    
     var selectedDate: Date
     let maxMeditationTimes = 50
     
     private var dates = [Date]()
     private let meditation: Meditation
+    private let emotionDescription: EmotionDescription
     
-    init(dates: [Date], meditation: Meditation, selectedDate: Date) {
+    init(dates: [Date], meditation: Meditation, selectedDate: Date,
+         notificationManager: MeditationNotifiable, emotion: EmotionDescription) {
         self.dates = dates
         self.meditation = meditation
         self.selectedDate = selectedDate
+        self.notificationManager = notificationManager
+        self.emotionDescription = emotion
         datesToDisplay = []
         
         loadInitialListOfDates()
@@ -56,9 +62,15 @@ final class MeditationDatesViewModel: ObservableObject {
             return
         }
         
+        guard let exercise = meditation.localizedId, let emotion = emotionDescription.emotion else {
+            // maybe add error showing something fatal. This should never be called.
+            return
+        }
+        
         dates.append(date)
         datesToDisplay = formattedDates
         
+        notificationManager.addNotification(using: NotificationConfig(exercise: exercise, date: date, emotion: emotion))
         ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date)
     }
     

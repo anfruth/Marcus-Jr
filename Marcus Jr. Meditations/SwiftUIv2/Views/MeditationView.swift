@@ -87,7 +87,7 @@ struct MeditationView_Previews: PreviewProvider {
     
     static var previews: some View {
         NavigationView {
-            MeditationView(viewModel: MeditationViewModel(meditation: meditation))
+            MeditationView(viewModel: MeditationViewModel(meditation: meditation, emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
         }
     }
 }

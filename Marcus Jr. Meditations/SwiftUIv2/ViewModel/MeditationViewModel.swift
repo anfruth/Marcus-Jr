@@ -89,8 +89,6 @@ final class MeditationViewModel: ObservableObject {
             dateSettingAllowed = userNotificationSettings.authorizationStatus == .authorized
             if !dateSettingAllowed {
                 presentCorrectAlert(authorizationStatus: userNotificationSettings.authorizationStatus)
-            } else {
-                showAlert = false
             }
         }
     }
@@ -107,29 +105,30 @@ final class MeditationViewModel: ObservableObject {
             alertInfo = AlertInfo(title: NSLocalizedString(notDeterminedTitle, comment: notDeterminedTitleComment),
                                   message: NSLocalizedString(notDeterminedMessage, comment: notDeterminedMessageComment),
                                   acceptActionOption: NSLocalizedString(notDeterminedOptionTitle, comment: notDeterminedOptionTitleComment),
-                                  declineActionOption: "Skip",
+                                  declineActionOption: skipTitle,
                                   acceptAction:
                                     {
                                         NotificationsSetup.sharedInstance.giveSystemPromptForNotifications { [weak self] granted in
+                                            guard let self else { return }
                                             if granted {
-                                                self?.dateSettingAllowed = true
+                                                self.alertInfo = self.permanentNotificationAlertInfo()
                                             }
-                                            self?.showAlert = false
+                                            
+                                            self.showAlert = true
                                         }
                 
                                         return false
                                     },
-                                  declineAction: { self.showAlert = false }
+                                  declineAction: nil
             )
             
         } else if authorizationStatus == .denied {
             alertInfo = AlertInfo(title: NSLocalizedString(notDeterminedTitle, comment: deniedTitleComment),
                                   message: NSLocalizedString(deniedMessage, comment: deniedMessageComment),
                                   acceptActionOption: NSLocalizedString(notDeterminedOptionTitle, comment: deniedOptionTitleComment),
-                                  declineActionOption: "Skip",
+                                  declineActionOption: skipTitle,
                                   acceptAction:
                                     {
-                                        self.showAlert = false
                                         return true
                                     },
                                   declineAction: nil
@@ -137,6 +136,20 @@ final class MeditationViewModel: ObservableObject {
         }
         
         showAlert = true
+    }
+    
+    private func permanentNotificationAlertInfo() -> AlertInfo {
+        return AlertInfo(title: NSLocalizedString(permanentTitle, comment: permanentTitleComment),
+                          message: NSLocalizedString(permanentMessage, comment: permanentMessageComment),
+                          acceptActionOption: settingsTitle,
+                          declineActionOption: skipTitle,
+                          acceptAction:
+                            {
+                                self.dateSettingAllowed = true
+                                return true
+                            },
+                          declineAction: { self.dateSettingAllowed = true }
+                    )
     }
     
     

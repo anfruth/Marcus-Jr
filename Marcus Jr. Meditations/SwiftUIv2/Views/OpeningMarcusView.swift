@@ -39,8 +39,8 @@ struct OpeningMarcusView: View, MeditationNavigating {
                     
                 }
             }
-            //Text("I will deal with your horseshit presently!")
         }
+        .navigationViewStyle(.stack)
         .onAppear {
             if routingState.isActive {
                 if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {

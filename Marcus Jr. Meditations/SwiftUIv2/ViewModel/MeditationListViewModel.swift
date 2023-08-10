@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-final class MeditationListViewModel: ObservableObject {
+final class MeditationListViewModel: EmotionRouter, ObservableObject {
     
     @Published var meditationVM: MeditationViewModel?
     @Published var meditationSelected: Bool = false
@@ -32,28 +32,23 @@ final class MeditationListViewModel: ObservableObject {
     init(emotionDescription: EmotionDescription, moc: NSManagedObjectContext) {
         self.emotionDescription = emotionDescription
         self.moc = moc
+        
+        super.init(emotion: emotionDescription.emotion ?? "")
     }
     
     func selectMeditation(from index: Int) {
         if index < meditations.count {
             meditationSelected = true
             let meditation = meditations[index]
-            meditationVM = MeditationViewModel(meditation: meditation, emotion: emotionDescription)
+            meditationVM = MeditationViewModel(meditation: meditation, emotionDescription: emotionDescription)
         }
     }
     
-    private lazy var emotionMeditationIdMap = loadEmotionMeditationIdMap()
-    
-    private func loadEmotionMeditationIdMap() -> [Emotion: [String]]  {
-        guard let configPath = Bundle.main.path(forResource: "EmotionConfig", ofType: "plist"),
-              let configData = FileManager.default.contents(atPath: configPath) else { return [:] }
-        
-        let decoder = PropertyListDecoder()
-        guard let decodedPlist = try? decoder.decode([String: [String]].self, from: configData) else { return [:] }
-        
-        let map: [Emotion: [String]] = Dictionary(uniqueKeysWithValues: decodedPlist.compactMap { (Emotion(rawValue: $0) ?? .loss, $1) })
-        
-        return map
+    func selectMeditation(from id: String) {
+        let meditation = meditations.first { $0.localizedId == id }
+        if let meditation {
+            meditationSelected = true
+            meditationVM = MeditationViewModel(meditation: meditation, emotionDescription: emotionDescription)
+        }
     }
-    
 }

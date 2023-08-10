@@ -55,6 +55,11 @@
 		EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAB257AF27C448260023D78A /* MarcusAurelius.swift */; };
 		EAC46D272A771E5C00AD45DB /* NotificationsSetup.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA1D07D92064BEC9007D973A /* NotificationsSetup.swift */; };
 		EAC46D292A79F02B00AD45DB /* LocalNotificationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */; };
+		EAC46D2F2A7CD39D00AD45DB /* MeditationNavigating.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D2E2A7CD39D00AD45DB /* MeditationNavigating.swift */; };
+		EAC46D312A7E0B9B00AD45DB /* EmotionRouting.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D302A7E0B9B00AD45DB /* EmotionRouting.swift */; };
+		EAC46D332A7E0EC200AD45DB /* EmotionRouter.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D322A7E0EC200AD45DB /* EmotionRouter.swift */; };
+		EAC46D362A7E1CA200AD45DB /* NotificationsReceiver.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */; };
+		EAC46D392A7ED6C600AD45DB /* RoutingActive.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAC46D382A7ED6C600AD45DB /* RoutingActive.swift */; };
 		EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0632023FAE100688BC6 /* AppDelegate.swift */; };
 		EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */; };
 		EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */; };
@@ -143,6 +148,10 @@
 		EAC2F202203BA2A9007D97FC /* NotificationsReceiver.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsReceiver.swift; sourceTree = "<group>"; };
 		EAC2F204203BAB5C007D97FC /* NotificationsVCProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsVCProtocol.swift; sourceTree = "<group>"; };
 		EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocalNotificationManager.swift; sourceTree = "<group>"; };
+		EAC46D2E2A7CD39D00AD45DB /* MeditationNavigating.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationNavigating.swift; sourceTree = "<group>"; };
+		EAC46D302A7E0B9B00AD45DB /* EmotionRouting.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionRouting.swift; sourceTree = "<group>"; };
+		EAC46D322A7E0EC200AD45DB /* EmotionRouter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EmotionRouter.swift; sourceTree = "<group>"; };
+		EAC46D382A7ED6C600AD45DB /* RoutingActive.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoutingActive.swift; sourceTree = "<group>"; };
 		EAFBB3642A3E52E200F3E2AB /* MeditationListView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListView.swift; sourceTree = "<group>"; };
 		EAFBB3672A3E5A6F00F3E2AB /* MeditationListViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListViewModel.swift; sourceTree = "<group>"; };
 		EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = EmotionConfig.plist; sourceTree = "<group>"; };
@@ -186,8 +195,11 @@
 				EA0F3C7127AF8CC800D4EE43 /* MarcusJrApp.swift */,
 				EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */,
 				EAC46D282A79F02B00AD45DB /* LocalNotificationManager.swift */,
+				EAC46D322A7E0EC200AD45DB /* EmotionRouter.swift */,
 				EAA0EF312A5A3E91007E1E96 /* CoreDataFactory */,
+				EAC46D372A7ED5E800AD45DB /* Environment */,
 				EAAB8FC72A3581E300B453BB /* Model */,
+				EAC46D2D2A7CD36A00AD45DB /* Protocol */,
 				EA0F3C7327AF8DA700D4EE43 /* Views */,
 				EAFBB3662A3E5A4200F3E2AB /* ViewModel */,
 				EAFBB3692A41050500F3E2AB /* EmotionConfig.plist */,
@@ -372,6 +384,23 @@
 			path = "Other Controllers";
 			sourceTree = "<group>";
 		};
+		EAC46D2D2A7CD36A00AD45DB /* Protocol */ = {
+			isa = PBXGroup;
+			children = (
+				EAC46D2E2A7CD39D00AD45DB /* MeditationNavigating.swift */,
+				EAC46D302A7E0B9B00AD45DB /* EmotionRouting.swift */,
+			);
+			path = Protocol;
+			sourceTree = "<group>";
+		};
+		EAC46D372A7ED5E800AD45DB /* Environment */ = {
+			isa = PBXGroup;
+			children = (
+				EAC46D382A7ED6C600AD45DB /* RoutingActive.swift */,
+			);
+			path = Environment;
+			sourceTree = "<group>";
+		};
 		EAFBB3662A3E5A4200F3E2AB /* ViewModel */ = {
 			isa = PBXGroup;
 			children = (
@@ -514,6 +543,7 @@
 				EAA0EF372A5B69FF007E1E96 /* ReflectionTimeFactory.swift in Sources */,
 				EAA0EF352A5A464B007E1E96 /* MeditationFactory.swift in Sources */,
 				EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */,
+				EAC46D362A7E1CA200AD45DB /* NotificationsReceiver.swift in Sources */,
 				EAFBB3632A39742000F3E2AB /* AppDelegate.swift in Sources */,
 				EA4969A32A509C6D0021E5D5 /* MeditationViewModel.swift in Sources */,
 				EAC46D272A771E5C00AD45DB /* NotificationsSetup.swift in Sources */,
@@ -534,8 +564,12 @@
 				EAAB8FC92A35821700B453BB /* Emotion.swift in Sources */,
 				EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */,
 				EAA0EF2E2A57EA82007E1E96 /* MarcusJr.xcdatamodeld in Sources */,
+				EAC46D392A7ED6C600AD45DB /* RoutingActive.swift in Sources */,
 				EAA8D5022A510EE800F242B7 /* MeditationDatesView.swift in Sources */,
+				EAC46D2F2A7CD39D00AD45DB /* MeditationNavigating.swift in Sources */,
+				EAC46D332A7E0EC200AD45DB /* EmotionRouter.swift in Sources */,
 				EAB257B027C448260023D78A /* MarcusAurelius.swift in Sources */,
+				EAC46D312A7E0B9B00AD45DB /* EmotionRouting.swift in Sources */,
 				EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

@@ -8,10 +8,13 @@
 
 import SwiftUI
 
-struct OpeningMarcusView: View {
+struct OpeningMarcusView: View, MeditationNavigating {
     
     @State private var showMarcus = true
     @State private var showBeginButton = false
+    @State private var navigationActive = false
+
+    @EnvironmentObject var routingState: RoutingState
     
     var marcusQuotation: String
     
@@ -31,11 +34,29 @@ struct OpeningMarcusView: View {
                     MarcusQuotationView(showMarcus: $showMarcus, marcusQuotation: marcusQuotation, authorNotationText: authorNotationText)
                         .padding([.top])
                     
-                    BeginMeditationButtonView(showBeginButton: $showBeginButton, buttonText: buttonText)
+                    BeginMeditationButtonView(showBeginButton: $showBeginButton, navigationActive: $navigationActive, buttonText: buttonText)
                         .padding([.top, .bottom])
+                    
+                }
+            }
+            //Text("I will deal with your horseshit presently!")
+        }
+        .onAppear {
+            if routingState.isActive {
+                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
+                    route(using: meditationId, through: emotionText)
                 }
             }
         }
+        .onChange(of: routingState.isActive) { isActive in
+            if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
+                route(using: meditationId, through: emotionText)
+            }
+        }
+    }
+    
+    func route(using meditationId: String, through emotionText: String) {
+        navigationActive = true
     }
     
 }

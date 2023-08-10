@@ -8,12 +8,15 @@
 
 import SwiftUI
 
-struct MeditationDatesView: View {
+struct MeditationDatesView: View, MeditationNavigating {
     
     @StateObject var viewModel: MeditationDatesViewModel
-    
     @State var selectedDate: Date = .now
+    
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var routingState: RoutingState
+    
+    @Binding var isShowingMeditationList: Bool
     
     var body: some View {
         VStack {
@@ -72,28 +75,44 @@ struct MeditationDatesView: View {
                 .foregroundColor(Color(uiColor: .label))
         }))
         .navigationBarBackButtonHidden()
-    }
-}
-
-struct MeditationDatesView_Previews: PreviewProvider {
-
-    static var meditation: Meditation {
-        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
-        meditation.localizedId = "01Be_unattached"
-        meditation.visitedAfterFinalTime = false
-        return meditation
-    }
-
-    static var previews: some View {
-        Group {
-            NavigationView {
-                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
+        .onAppear {
+            if routingState.isActive {
+                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
+                    route(using: meditationId, through: emotionText)
+                }
             }
-
-            NavigationView {
-                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
+        }
+        .onChange(of: routingState.isActive) { isActive in
+            if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
+                route(using: meditationId, through: emotionText)
             }
-            .previewInterfaceOrientation(.landscapeLeft)
         }
     }
+    
+    func route(using meditationId: String, through emotionText: String) {
+        isShowingMeditationList = false
+    }
 }
+
+//struct MeditationDatesView_Previews: PreviewProvider {
+//
+//    static var meditation: Meditation {
+//        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+//        meditation.localizedId = "01Be_unattached"
+//        meditation.visitedAfterFinalTime = false
+//        return meditation
+//    }
+////
+//    static var previews: some View {
+//        Group {
+//            NavigationView {
+//                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
+//            }
+//
+//            NavigationView {
+//                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
+//            }
+//            .previewInterfaceOrientation(.landscapeLeft)
+//        }
+//    }
+//}

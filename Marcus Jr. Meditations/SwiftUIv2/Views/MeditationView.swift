@@ -9,10 +9,14 @@
 import SwiftUI
 import UIKit
 
-struct MeditationView: View {
-    
+struct MeditationView: View, MeditationNavigating {
+
     @StateObject var viewModel: MeditationViewModel
+    
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var routingState: RoutingState
+    
+    @Binding var isShowingMeditationList: Bool
 
     var body: some View {
         VStack {
@@ -44,7 +48,8 @@ struct MeditationView: View {
             }))
             .navigationBarBackButtonHidden()
             
-            NavigationLink(destination: viewModel.meditationDatesView(), isActive: $viewModel.dateSettingAllowed) { EmptyView() }
+            NavigationLink(destination: viewModel.meditationDatesView(isShowingMeditationList: $isShowingMeditationList), isActive: $viewModel.dateSettingAllowed) { EmptyView() }
+                .isDetailLink(false)
             
             MarcusCommonButton(title: "Set Meditation Times") {
                 if !viewModel.dateSettingAllowed {
@@ -66,6 +71,30 @@ struct MeditationView: View {
                 Text(viewModel.alertInfo?.message ?? "")
             })
             .padding([.bottom])
+            .onAppear {
+                if routingState.isActive {
+                    if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
+                        route(using: meditationId, through: emotionText)
+                    }
+                }
+            }
+            .onChange(of: routingState.isActive) { isActive in
+                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
+                    route(using: meditationId, through: emotionText)
+                }
+            }
+        }
+    }
+    
+    func route(using meditationId: String, through emotionText: String) {
+        if !viewModel.isRoutedToMeditation(from: meditationId) {
+            isShowingMeditationList = false
+        } else if viewModel.isRoutedToMeditation(from: meditationId) {
+            // TODO: Refactor this
+            NotificationsReceiver.sharedInstance.routingState.isActive = false
+            NotificationsReceiver.sharedInstance.routingState.meditationId = nil
+            NotificationsReceiver.sharedInstance.routingState.emotionText = nil
+            UINavigationBar.setAnimationsEnabled(true)
         }
     }
     
@@ -76,18 +105,18 @@ struct MeditationView: View {
     }
 }
 
-struct MeditationView_Previews: PreviewProvider {
-    
-    static var meditation: Meditation {
-        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
-        meditation.localizedId = "01Be_unattached"
-        meditation.visitedAfterFinalTime = false
-        return meditation
-    }
-    
-    static var previews: some View {
-        NavigationView {
-            MeditationView(viewModel: MeditationViewModel(meditation: meditation, emotion: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
-        }
-    }
-}
+//struct MeditationView_Previews: PreviewProvider {
+//    
+//    static var meditation: Meditation {
+//        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+//        meditation.localizedId = "01Be_unattached"
+//        meditation.visitedAfterFinalTime = false
+//        return meditation
+//    }
+//    
+//    static var previews: some View {
+//        NavigationView {
+//            MeditationView(viewModel: MeditationViewModel(meditation: meditation, emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
+//        }
+//    }
+//}

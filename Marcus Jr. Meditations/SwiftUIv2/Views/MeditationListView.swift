@@ -8,18 +8,22 @@
 
 import SwiftUI
 
-struct MeditationListView: View {
-    
+struct MeditationListView: View, MeditationNavigating {
+
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject var routingState: RoutingState
     @StateObject var viewModel: MeditationListViewModel
+    
+    @Binding var isShowingMeditationList: Bool
     
     var body: some View {
         VStack {
             if let meditationVM = viewModel.meditationVM {
-                let meditationView = MeditationView(viewModel: meditationVM)
+                let meditationView = MeditationView(viewModel: meditationVM, isShowingMeditationList: $isShowingMeditationList)
                 NavigationLink(destination: meditationView, isActive: $viewModel.meditationSelected) { EmptyView() }
+                    .isDetailLink(false)
             }
             
             List(viewModel.meditationSummaries, id: \.self.0) { summary in
@@ -52,6 +56,30 @@ struct MeditationListView: View {
                 .foregroundColor(Color(uiColor: .label))
         }))
         .navigationBarBackButtonHidden()
+        .onAppear {
+            if routingState.isActive {
+                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
+                    route(using: meditationId, through: emotionText)
+                }
+            }
+        }
+        .onChange(of: routingState.isActive) { isActive in
+            if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
+                route(using: meditationId, through: emotionText)
+            }
+        }
+    }
+    
+    func route(using meditationId: String, through emotionText: String) {
+
+            if !viewModel.isRoutedEmotionCorrect(from: emotionText) {
+                isShowingMeditationList = false
+            } else {
+                DispatchQueue.main.async {
+                    viewModel.selectMeditation(from: meditationId)
+                }
+            }
+    
     }
 }
 

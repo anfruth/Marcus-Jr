@@ -36,5 +36,5 @@ final class EmotionsViewModel: ObservableObject {
         EmotionFactory.sharedInstance.createEmotionsIfNeeded()
         return EmotionFactory.sharedInstance.emotionDescriptions
     }()
-    
+
 }

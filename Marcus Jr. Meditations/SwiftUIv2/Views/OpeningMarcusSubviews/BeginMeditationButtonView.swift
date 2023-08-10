@@ -11,7 +11,7 @@ import SwiftUI
 struct BeginMeditationButtonView: View {
     
     @Binding var showBeginButton: Bool
-    @State private var navigationActive = false
+    @Binding var navigationActive: Bool
     
     let buttonText: String
     
@@ -20,7 +20,7 @@ struct BeginMeditationButtonView: View {
         VStack {
             NavigationLink(destination: EmotionsView(viewModel: EmotionsViewModel()),
                            isActive: $navigationActive) { EmptyView() }
-
+            
             MarcusCommonButton(title: buttonText) {
                 navigationActive = true
             }
@@ -33,6 +33,6 @@ struct BeginMeditationButtonView: View {
 
 struct BeginMeditationButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        BeginMeditationButtonView(showBeginButton: .constant(true), buttonText: "Begin Meditations")
+        BeginMeditationButtonView(showBeginButton: .constant(true), navigationActive: .constant(false), buttonText: "Begin Meditations")
     }
 }

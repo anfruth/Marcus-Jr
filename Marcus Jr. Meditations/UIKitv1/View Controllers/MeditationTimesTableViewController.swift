@@ -227,7 +227,6 @@ class MeditationTimesTableViewController: UITableViewController, NotificationsVC
         }))
         
         present(alert, animated: true, completion: nil)
-
     }
     
     private func disableSelectTimeButton() {

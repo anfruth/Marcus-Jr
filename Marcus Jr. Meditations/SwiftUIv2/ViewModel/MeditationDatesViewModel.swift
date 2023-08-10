@@ -8,7 +8,7 @@
 
 import Foundation
 
-final class MeditationDatesViewModel: ObservableObject {
+final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     
     @Published var datesToDisplay: [String]
     @Published var showDuplicateMeditationError = false
@@ -21,16 +21,18 @@ final class MeditationDatesViewModel: ObservableObject {
     
     private var dates = [Date]()
     private let meditation: Meditation
-    private let emotionDescription: EmotionDescription
+    let emotionDescription: EmotionDescription
     
     init(dates: [Date], meditation: Meditation, selectedDate: Date,
-         notificationManager: MeditationNotifiable, emotion: EmotionDescription) {
+         notificationManager: MeditationNotifiable, emotionDescription: EmotionDescription) {
         self.dates = dates
         self.meditation = meditation
         self.selectedDate = selectedDate
         self.notificationManager = notificationManager
-        self.emotionDescription = emotion
-        datesToDisplay = []
+        self.emotionDescription = emotionDescription
+        self.datesToDisplay = []
+        
+        super.init(emotion: emotionDescription.emotion ?? "")
         
         loadInitialListOfDates()
         datesToDisplay = formattedDates

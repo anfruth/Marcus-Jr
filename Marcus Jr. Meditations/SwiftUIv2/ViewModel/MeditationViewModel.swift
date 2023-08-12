@@ -13,16 +13,6 @@ import SwiftUI
 
 final class MeditationViewModel: EmotionRouter, ObservableObject {
     
-    struct AlertInfo {
-        let title: String
-        let message: String
-        let acceptActionOption: String
-        let declineActionOption: String?
-        ///  Bool is true if  settings url should be opened.
-        let acceptAction: (() -> Bool)?
-        let declineAction: (() -> Void)?
-    }
-    
     @Published var dateSettingAllowed: Bool = false
     @Published var showAlert: Bool = false
     

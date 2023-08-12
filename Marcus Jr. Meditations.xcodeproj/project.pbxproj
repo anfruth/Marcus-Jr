@@ -42,6 +42,7 @@
 		EA5106C22037ED21003135BA /* SanFranciscoDisplay-Semibold.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AD2037ED21003135BA /* SanFranciscoDisplay-Semibold.otf */; };
 		EA5106C32037ED21003135BA /* SanFranciscoText-Heavy.otf in Resources */ = {isa = PBXBuildFile; fileRef = EA5106AE2037ED21003135BA /* SanFranciscoText-Heavy.otf */; };
 		EA6492C820FAAF280089D28C /* MarcusManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA6492C720FAAF280089D28C /* MarcusManager.swift */; };
+		EA95F1ED2A88177B00E51121 /* AlertInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA95F1EC2A88177B00E51121 /* AlertInfo.swift */; };
 		EA9615942A2837A400049827 /* MarcusQuotationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA9615932A2837A400049827 /* MarcusQuotationView.swift */; };
 		EAA0EF2E2A57EA82007E1E96 /* MarcusJr.xcdatamodeld in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF2C2A57EA82007E1E96 /* MarcusJr.xcdatamodeld */; };
 		EAA0EF302A5A2B27007E1E96 /* DataController.swift in Sources */ = {isa = PBXBuildFile; fileRef = EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */; };
@@ -134,6 +135,7 @@
 		EA6492C720FAAF280089D28C /* MarcusManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusManager.swift; sourceTree = "<group>"; };
 		EA723E6F203005A600E09C48 /* MeditationListConfiguration.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListConfiguration.swift; sourceTree = "<group>"; };
 		EA7BE0002038119700072AFE /* DailyExerciseViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseViewController.swift; sourceTree = "<group>"; };
+		EA95F1EC2A88177B00E51121 /* AlertInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AlertInfo.swift; sourceTree = "<group>"; };
 		EA9615932A2837A400049827 /* MarcusQuotationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MarcusQuotationView.swift; sourceTree = "<group>"; };
 		EAA0EF2D2A57EA82007E1E96 /* MarcusJr.xcdatamodel */ = {isa = PBXFileReference; lastKnownFileType = wrapper.xcdatamodel; path = MarcusJr.xcdatamodel; sourceTree = "<group>"; };
 		EAA0EF2F2A5A2B27007E1E96 /* DataController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DataController.swift; sourceTree = "<group>"; };
@@ -332,6 +334,7 @@
 		EAAB8FC72A3581E300B453BB /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				EA95F1EC2A88177B00E51121 /* AlertInfo.swift */,
 				EAAB8FC82A35821700B453BB /* Emotion.swift */,
 				EAA0EF2C2A57EA82007E1E96 /* MarcusJr.xcdatamodeld */,
 			);
@@ -554,6 +557,7 @@
 				EA49699F2A47D0050021E5D5 /* EmotionsLazyGrid.swift in Sources */,
 				EAFBB3652A3E52E200F3E2AB /* MeditationListView.swift in Sources */,
 				EAFBB3682A3E5A6F00F3E2AB /* MeditationListViewModel.swift in Sources */,
+				EA95F1ED2A88177B00E51121 /* AlertInfo.swift in Sources */,
 				EAFBB36C2A41208D00F3E2AB /* EmotionsViewModel.swift in Sources */,
 				EA4969A12A4AB04A0021E5D5 /* MeditationView.swift in Sources */,
 				EA0F3C7227AF8CC800D4EE43 /* MarcusJrApp.swift in Sources */,

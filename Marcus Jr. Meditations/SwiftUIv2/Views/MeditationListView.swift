@@ -54,6 +54,9 @@ struct MeditationListView: View, MeditationNavigating {
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))
+        }), trailing: Button(action: { }, label: {
+            Image(systemName: "arrow.clockwise")
+                .foregroundColor(.red)
         }))
         .navigationBarBackButtonHidden()
         .onAppear {

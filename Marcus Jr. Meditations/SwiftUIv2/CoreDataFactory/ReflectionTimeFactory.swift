@@ -47,6 +47,21 @@ final class ReflectionTimeFactory {
         save()
     }
     
+    func deleteAllRelectionTime(from meditation: Meditation) throws {
+        // consider adding back reflection times in case merge fails to avoid invalid state
+        meditation.reflectionTimes = nil
+        save()
+        
+        let request: NSFetchRequest<any NSFetchRequestResult> = NSFetchRequest(entityName: "ReflectionTimeDescription")
+        request.predicate = NSPredicate(format: "meditation == %@", meditation)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        let batchResults = try moc.execute(deleteRequest) as? NSBatchDeleteResult
+        let changes = [NSDeletedObjectsKey: batchResults?.result as? [NSManagedObjectID] ?? []]
+        NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [moc])
+    }
+    
     private func fetch(request: NSFetchRequest<ReflectionTimeDescription>) -> [ReflectionTimeDescription] {
         
         var reflectionTimes: [ReflectionTimeDescription] = []

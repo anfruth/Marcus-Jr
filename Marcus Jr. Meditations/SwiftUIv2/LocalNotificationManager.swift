@@ -11,7 +11,7 @@ import UserNotifications
 
 protocol MeditationNotifiable {
     func addNotification(using configuration: NotificationConfig)
-    func deleteNotification()
+    func deleteNotifications(with configurations: [NotificationConfig])
 }
 
 struct NotificationConfig {
@@ -38,8 +38,12 @@ final class LocalNotificationManager: MeditationNotifiable {
         }
     }
     
-    func deleteNotification() {
-//        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: notificationIDsToDelete)
+    func deleteNotifications(with configurations: [NotificationConfig]) {
+        let ids = configurations.map {
+            return "\($0.emotion)$\($0.exercise)$\($0.date.description)"
+        }
+        
+        UNUserNotificationCenter.current().removePendingNotificationRequests(withIdentifiers: ids)
     }
     
     private func getContentForNotification(for exercise: String) -> UNMutableNotificationContent {

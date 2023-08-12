@@ -10,11 +10,13 @@ import Foundation
 
 final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     
+    @Published var showAlert = false
     @Published var datesToDisplay: [String]
     @Published var showDuplicateMeditationError = false
     @Published var showMaxMeditationError = false
     
     private let notificationManager: MeditationNotifiable
+    private(set) var alertInfo: AlertInfo?
     
     var selectedDate: Date
     let maxMeditationTimes = 50
@@ -77,11 +79,53 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     }
     
     func delete(at index: Int) {
+        guard let exercise = meditation.localizedId, let emotion = emotionDescription.emotion else {
+            // maybe add error showing something fatal. This should never be called.
+            return
+        }
+        
         let date = dates[index]
         showDuplicateMeditationError = false
         dates.remove(at: index)
         datesToDisplay = formattedDates
+    
+        let notificationConfig = NotificationConfig(exercise: exercise, date: date, emotion: emotion)
         
+        notificationManager.deleteNotifications(with: [notificationConfig])
         ReflectionTimeFactory.sharedInstance.deleteRelectionTime(from: meditation, on: date)
+    }
+    
+    func deleteAllDates() {
+        alertInfo = AlertInfo(title: NSLocalizedString("Delete Meditation Times", comment: "Delete all comment"),
+                              message: NSLocalizedString("Are you sure you want to delete all your meditation times for this meditation?", comment: "Are you sure comment"),
+                              acceptActionOption: NSLocalizedString("Delete", comment: "Delete comment"),
+                              declineActionOption: "Back",
+                              acceptAction:
+                                { [weak self] in
+                                    guard let self else { return false }
+                                    guard let exercise = meditation.localizedId, let emotion = emotionDescription.emotion else {
+                                        // maybe add error showing something fatal. This should never be called.
+                                        return false
+                                    }
+                                    let notificationConfigs = dates.map {
+                                        NotificationConfig(exercise: exercise, date: $0, emotion: emotion)
+                                    }
+                                    notificationManager.deleteNotifications(with: notificationConfigs)
+                                    dates.removeAll()
+                                    datesToDisplay = formattedDates
+            
+                                    do {
+                                        try ReflectionTimeFactory.sharedInstance.deleteAllRelectionTime(from: meditation)
+                                    } catch {
+                                        print(error.localizedDescription)
+                                        print("failed to batch delete meditation dates")
+                                    }
+                                        
+                                    return false
+                                },
+                              declineAction: nil
+        )
+        
+        showAlert = true
     }
 }

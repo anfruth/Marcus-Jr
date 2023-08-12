@@ -73,8 +73,21 @@ struct MeditationDatesView: View, MeditationNavigating {
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))
+        }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
+            Image(systemName: "arrow.clockwise")
+                .foregroundColor(.primary)
         }))
         .navigationBarBackButtonHidden()
+        .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
+            Button(viewModel.alertInfo?.acceptActionOption ?? "") {
+                _ = viewModel.alertInfo?.acceptAction?()
+            }
+            Button(viewModel.alertInfo?.declineActionOption ?? "") {
+                viewModel.alertInfo?.declineAction?()
+            }
+        }, message: {
+            Text(viewModel.alertInfo?.message ?? "")
+        })
         .onAppear {
             if routingState.isActive {
                 if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {

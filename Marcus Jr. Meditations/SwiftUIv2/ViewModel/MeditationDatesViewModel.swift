@@ -47,6 +47,13 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         }
     }
     
+    func reflectionTimeComplete(from index: Int) -> Bool {
+        guard index < dates.count else { return true }
+        
+        let meditationDate = dates[index]
+        return Date.now > meditationDate
+    }
+    
     func loadInitialListOfDates() {
         let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
         dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }
@@ -75,24 +82,28 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         datesToDisplay = formattedDates
         
         notificationManager.addNotification(using: NotificationConfig(exercise: exercise, date: date, emotion: emotion))
-        ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date)
+        ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date, emotion: emotionDescription)
     }
     
     func delete(at index: Int) {
-        guard let exercise = meditation.localizedId, let emotion = emotionDescription.emotion else {
+        guard let exercise = meditation.localizedId else {
             // maybe add error showing something fatal. This should never be called.
             return
         }
         
+        guard index < dates.count else { return }
         let date = dates[index]
         showDuplicateMeditationError = false
         dates.remove(at: index)
         datesToDisplay = formattedDates
     
+        // Cannot assume current routed emotion is the same emotion used when reflection time was created.
+        guard let reflectionTime = ReflectionTimeFactory.sharedInstance.getReflectionTime(from: meditation, on: date) else { return }
+        guard let emotionDescription = reflectionTime.routedEmotion, let emotion = emotionDescription.emotion else { return }
         let notificationConfig = NotificationConfig(exercise: exercise, date: date, emotion: emotion)
         
         notificationManager.deleteNotifications(with: [notificationConfig])
-        ReflectionTimeFactory.sharedInstance.deleteRelectionTime(from: meditation, on: date)
+        ReflectionTimeFactory.sharedInstance.delete(reflectionTime: reflectionTime)
     }
     
     func deleteAllDates() {
@@ -103,13 +114,18 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
                               acceptAction:
                                 { [weak self] in
                                     guard let self else { return false }
-                                    guard let exercise = meditation.localizedId, let emotion = emotionDescription.emotion else {
+                                    guard let exercise = meditation.localizedId else {
                                         // maybe add error showing something fatal. This should never be called.
                                         return false
                                     }
-                                    let notificationConfigs = dates.map {
-                                        NotificationConfig(exercise: exercise, date: $0, emotion: emotion)
+                                    
+                                    let reflectionTimes = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
+            
+                                    let notificationConfigs: [NotificationConfig] = reflectionTimes.compactMap {
+                                        guard let date = $0.meditationDate, let routedEmotion = $0.routedEmotion?.emotion else { return nil }
+                                        return NotificationConfig(exercise: exercise, date: date, emotion: routedEmotion)
                                     }
+            
                                     notificationManager.deleteNotifications(with: notificationConfigs)
                                     dates.removeAll()
                                     datesToDisplay = formattedDates

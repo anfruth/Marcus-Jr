@@ -55,6 +55,8 @@ struct MeditationDatesView: View, MeditationNavigating {
                         }
                         .buttonStyle(.plain)
                         Text(viewModel.datesToDisplay[i])
+                            .foregroundColor(viewModel.reflectionTimeComplete(from: i) ? .gray : Color(uiColor: .label))
+                            .strikethrough(viewModel.reflectionTimeComplete(from: i), color: .black)
                     }
                 }
                 .onDelete { indexSet in

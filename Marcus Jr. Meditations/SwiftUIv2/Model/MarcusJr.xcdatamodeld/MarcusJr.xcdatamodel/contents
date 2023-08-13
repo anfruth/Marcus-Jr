@@ -35,6 +35,7 @@
     <entity name="ReflectionTimeDescription" representedClassName="ReflectionTimeDescription" syncable="YES" codeGenerationType="class">
         <attribute name="meditationDate" attributeType="Date" usesScalarValueType="NO"/>
         <relationship name="meditation" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="Meditation" inverseName="reflectionTimes" inverseEntity="Meditation"/>
+        <relationship name="routedEmotion" optional="YES" maxCount="1" deletionRule="Nullify" destinationEntity="EmotionDescription"/>
         <fetchIndex name="byMeditationDate">
             <fetchIndexElement property="meditationDate" type="Binary" order="descending"/>
         </fetchIndex>

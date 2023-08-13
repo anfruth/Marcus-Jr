@@ -27,28 +27,37 @@ final class ReflectionTimeFactory {
         return fetch(request: request)
     }
     
-    func createReflectionTime(from meditation: Meditation, on date: Date) {
+    func createReflectionTime(from meditation: Meditation, on date: Date, emotion: EmotionDescription) {
         let reflectionTimeDescription = ReflectionTimeDescription(context: moc)
         
         reflectionTimeDescription.meditationDate = date
         reflectionTimeDescription.meditation = meditation
+        reflectionTimeDescription.routedEmotion = emotion
         
         save()
     }
     
-    func deleteRelectionTime(from meditation: Meditation, on date: Date) {
+    func getReflectionTime(from meditation: Meditation, on date: Date) -> ReflectionTimeDescription? {
         let request = ReflectionTimeDescription.fetchRequest()
         request.predicate = NSPredicate(format: "meditation == %@ AND meditationDate == %@", meditation, date as NSDate)
         request.fetchBatchSize = 1
         
-        guard let reflectionTimeDescription = fetch(request: request).first else { return }
-        moc.delete(reflectionTimeDescription)
-        
+        guard let reflectionTimeDescription = fetch(request: request).first else { return nil }
+        return reflectionTimeDescription
+    }
+    
+    
+    func delete(reflectionTime: ReflectionTimeDescription) {
+        moc.delete(reflectionTime)
         save()
     }
     
     func deleteAllRelectionTime(from meditation: Meditation) throws {
         // consider adding back reflection times in case merge fails to avoid invalid state
+        meditation.reflectionTimes?.forEach {
+            guard let reflectionTime = $0 as? ReflectionTimeDescription else { return }
+            reflectionTime.routedEmotion = nil
+        }
         meditation.reflectionTimes = nil
         save()
         

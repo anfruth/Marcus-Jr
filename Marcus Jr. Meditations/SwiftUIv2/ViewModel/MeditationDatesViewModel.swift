@@ -19,7 +19,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     private(set) var alertInfo: AlertInfo?
     
     var selectedDate: Date
-    let maxMeditationTimes = 50
+    let maxMeditationTimes = 10
     
     private var dates = [Date]()
     private let meditation: Meditation

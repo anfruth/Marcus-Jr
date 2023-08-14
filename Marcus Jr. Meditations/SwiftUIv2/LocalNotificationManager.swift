@@ -10,7 +10,7 @@ import Foundation
 import UserNotifications
 
 protocol MeditationNotifiable {
-    func addNotification(using configuration: NotificationConfig)
+    func addNotification(using configuration: NotificationConfig) async throws
     func deleteNotifications(with configurations: [NotificationConfig])
 }
 
@@ -22,7 +22,13 @@ struct NotificationConfig {
 
 final class LocalNotificationManager: MeditationNotifiable {
     
-    func addNotification(using configuration: NotificationConfig) {
+    let systemMaximumLocalNotifications = 64
+    
+    func addNotification(using configuration: NotificationConfig) async throws {
+        
+        let requests = await UNUserNotificationCenter.current().pendingNotificationRequests()
+        if requests.count >= systemMaximumLocalNotifications { throw NSError(domain: "Max Notifications", code: 100) }
+        
         let content = getContentForNotification(for: configuration.exercise)
         let trigger = getTriggerForNotification(date: configuration.date)
 

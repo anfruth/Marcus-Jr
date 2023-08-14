@@ -20,7 +20,7 @@ struct MeditationDatesView: View, MeditationNavigating {
     
     var body: some View {
         VStack {
-            DatePicker("Choose Time:", selection: $selectedDate)
+            DatePicker("Choose Time:", selection: $selectedDate, in: (viewModel.nextMinute(from: Date.now))...)
                 .padding()
                 .datePickerStyle(.compact)
             
@@ -67,7 +67,9 @@ struct MeditationDatesView: View, MeditationNavigating {
             }
             .listStyle(.plain)
             MarcusCommonButton(title: "Add Meditation Time") {
-                viewModel.insert(date: selectedDate)
+                Task {
+                    await viewModel.insert(date: selectedDate)
+                }
             }
             .padding([.bottom])
         }
@@ -84,8 +86,10 @@ struct MeditationDatesView: View, MeditationNavigating {
             Button(viewModel.alertInfo?.acceptActionOption ?? "") {
                 _ = viewModel.alertInfo?.acceptAction?()
             }
-            Button(viewModel.alertInfo?.declineActionOption ?? "") {
-                viewModel.alertInfo?.declineAction?()
+            if let declineActionOption = viewModel.alertInfo?.declineActionOption {
+                Button(declineActionOption) {
+                    viewModel.alertInfo?.declineAction?()
+                }
             }
         }, message: {
             Text(viewModel.alertInfo?.message ?? "")

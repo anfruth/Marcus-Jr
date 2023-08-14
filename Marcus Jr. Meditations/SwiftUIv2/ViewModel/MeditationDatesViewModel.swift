@@ -42,7 +42,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     
     // inefficient way of maintaining sorted list, but list will be too small to matter.
     private var formattedDates: [String] {
-        return dates.sorted().map {
+        return dates.map {
             return DateFormatter.localizedString(from: $0, dateStyle: .medium, timeStyle: .short)
         }
     }
@@ -54,12 +54,20 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         return Date.now > meditationDate
     }
     
-    func loadInitialListOfDates() {
-        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
-        dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }
+    // TODO: Consider testing other calendars besides Gregorian
+    func nextMinute(from date: Date) -> Date {
+        let roundedDownMinutes = (date.timeIntervalSinceReferenceDate / 60).rounded(.down)
+        let roundedDownMinutesInSeconds = roundedDownMinutes * 60
+        return Date(timeIntervalSinceReferenceDate: roundedDownMinutesInSeconds + 60)
     }
     
-    func insert(date: Date) {
+    func loadInitialListOfDates() {
+        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
+        dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }.sorted(by: >)
+    }
+    
+    @MainActor
+    func insert(date: Date) async {
         showMaxMeditationError = false
         showDuplicateMeditationError = false
         
@@ -78,12 +86,27 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
             return
         }
         
+        do {
+            try await notificationManager.addNotification(using: NotificationConfig(exercise: exercise, date: date, emotion: emotion))
+        } catch {
+            alertInfo = AlertInfo(title: NSLocalizedString("Meditation Time Limitation Reached", comment: "Maximum meditation times"),
+                                  message: NSLocalizedString("You are only allowed to have a maximum of 64 unfinished meditation times app-wide. Please either wait for your current meditation times to complete or delete any meditation times in occuring in the future.", comment: "Are you sure comment"),
+                                  acceptActionOption: NSLocalizedString("Ok", comment: "Ok comment"),
+                                  declineActionOption: nil,
+                                  acceptAction: nil,
+                                  declineAction: nil
+                        )
+            showAlert = true
+            return
+        }
+        
         dates.append(date)
+        dates.sort(by: >)
         datesToDisplay = formattedDates
         
-        notificationManager.addNotification(using: NotificationConfig(exercise: exercise, date: date, emotion: emotion))
         ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date, emotion: emotionDescription)
     }
+
     
     func delete(at index: Int) {
         guard let exercise = meditation.localizedId else {
@@ -95,6 +118,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         let date = dates[index]
         showDuplicateMeditationError = false
         dates.remove(at: index)
+        dates.sort(by: >)
         datesToDisplay = formattedDates
     
         // Cannot assume current routed emotion is the same emotion used when reflection time was created.

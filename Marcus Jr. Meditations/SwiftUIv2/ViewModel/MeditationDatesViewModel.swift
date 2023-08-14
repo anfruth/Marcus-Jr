@@ -14,11 +14,11 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     @Published var datesToDisplay: [String]
     @Published var showDuplicateMeditationError = false
     @Published var showMaxMeditationError = false
+    @Published var selectedDate: Date
     
     private let notificationManager: MeditationNotifiable
     private(set) var alertInfo: AlertInfo?
     
-    var selectedDate: Date
     let maxMeditationTimes = 10
     
     private var dates = [Date]()
@@ -38,6 +38,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         
         loadInitialListOfDates()
         datesToDisplay = formattedDates
+        self.selectedDate = nextMinute(from: selectedDate)
     }
     
     // inefficient way of maintaining sorted list, but list will be too small to matter.
@@ -54,7 +55,6 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         return Date.now > meditationDate
     }
     
-    // TODO: Consider testing other calendars besides Gregorian
     func nextMinute(from date: Date) -> Date {
         let roundedDownMinutes = (date.timeIntervalSinceReferenceDate / 60).rounded(.down)
         let roundedDownMinutesInSeconds = roundedDownMinutes * 60

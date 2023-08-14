@@ -11,7 +11,6 @@ import SwiftUI
 struct MeditationDatesView: View, MeditationNavigating {
     
     @StateObject var viewModel: MeditationDatesViewModel
-    @State var selectedDate: Date = .now
     
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var routingState: RoutingState
@@ -20,7 +19,7 @@ struct MeditationDatesView: View, MeditationNavigating {
     
     var body: some View {
         VStack {
-            DatePicker("Choose Time:", selection: $selectedDate, in: (viewModel.nextMinute(from: Date.now))...)
+            DatePicker("Choose Time:", selection: $viewModel.selectedDate, in: (viewModel.nextMinute(from: Date.now))...)
                 .padding()
                 .datePickerStyle(.compact)
             
@@ -68,7 +67,7 @@ struct MeditationDatesView: View, MeditationNavigating {
             .listStyle(.plain)
             MarcusCommonButton(title: "Add Meditation Time") {
                 Task {
-                    await viewModel.insert(date: selectedDate)
+                    await viewModel.insert(date: viewModel.selectedDate)
                 }
             }
             .padding([.bottom])

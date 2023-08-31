@@ -77,6 +77,8 @@ struct MeditationView: View, MeditationNavigating {
                         route(using: meditationId, through: emotionText)
                     }
                 }
+                
+                viewModel.markAsCompleteIfComplete(timeVisited: Date.now)
             }
             .onChange(of: routingState.isActive) { isActive in
                 if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {

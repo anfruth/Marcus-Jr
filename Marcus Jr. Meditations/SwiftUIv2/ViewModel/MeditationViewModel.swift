@@ -75,7 +75,6 @@ final class MeditationViewModel: EmotionRouter, ObservableObject {
         return NSLocalizedString((meditation.localizedId ?? "") + "_action", comment: "Meditation Action")
     }
     
-    
     func getNotificationPermissionIfNeeded() async {
         let userNotificationSettings = await UNUserNotificationCenter.current().notificationSettings()
         await MainActor.run {
@@ -94,6 +93,17 @@ final class MeditationViewModel: EmotionRouter, ObservableObject {
     
     func isRoutedToMeditation(from meditationId: String) -> Bool {
         return meditation.localizedId == meditationId
+    }
+    
+    func markAsCompleteIfComplete(timeVisited: Date) {
+        guard let reflectionTimes = meditation.reflectionTimes?.allObjects as? [ReflectionTimeDescription], reflectionTimes.count > 0 else { return }
+        let sortedReflectionTimes = reflectionTimes.sorted(by: {
+            $0.meditationDate ?? Date() > $1.meditationDate ?? Date()
+        })
+        guard let lastReflectionTimeDate = sortedReflectionTimes[0].meditationDate else { return }
+        if timeVisited > lastReflectionTimeDate {
+            MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: true)
+        }
     }
     
     private func presentCorrectAlert(authorizationStatus: UNAuthorizationStatus) {

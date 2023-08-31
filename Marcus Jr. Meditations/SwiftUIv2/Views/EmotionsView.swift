@@ -27,7 +27,8 @@ struct EmotionsView: View, MeditationNavigating {
                 
                 if let selectedEmotion = viewModel.selectedEmotion {
                     let meditationListViewModel = MeditationListViewModel(emotionDescription: selectedEmotion,
-                                                                          moc: moc)
+                                                                          moc: moc,
+                                                                        notificationManager: LocalNotificationManager())
                     let destination = MeditationListView(viewModel: meditationListViewModel, isShowingMeditationList: $viewModel.isShowingMeditationList)
                     NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
                         .isDetailLink(false)

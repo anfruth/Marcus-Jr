@@ -26,18 +26,20 @@ struct MeditationListView: View, MeditationNavigating {
                     .isDetailLink(false)
             }
             
-            List(viewModel.meditationSummaries, id: \.self.0) { summary in
+            List(viewModel.meditationSummaries, id: \.meditationID) { summary in
                 VStack {
                     Spacer()
                     Button {
-                        viewModel.selectMeditation(from: summary.1)
+                        viewModel.selectMeditation(from: summary.index)
                     } label: {
                         ZStack {
                             Rectangle()
                                 .cornerRadius(8)
                                 .foregroundColor(Color(.secondarySystemBackground))
                                 .shadow(radius: 5, x: 2, y: 3)
-                            Text(summary.0)
+                            Text(summary.meditationID)
+                                .foregroundColor(summary.isComplete ? .gray : Color(uiColor: .label))
+                                .strikethrough(summary.isComplete, color: .black)
                                 .frame(maxWidth: .infinity, alignment: .leading)
                                 .padding([.top, .bottom], 10)
                                 .padding([.leading, .trailing], 20)
@@ -54,17 +56,32 @@ struct MeditationListView: View, MeditationNavigating {
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))
-        }), trailing: Button(action: { }, label: {
+        }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
             Image(systemName: "arrow.clockwise")
-                .foregroundColor(.red)
+                .foregroundColor(.primary)
         }))
         .navigationBarBackButtonHidden()
+        .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
+            let acceptOption = viewModel.alertInfo?.acceptActionOption ?? ""
+            Button(acceptOption, role: acceptOption == "Delete" ? .destructive : nil) {
+                _ = viewModel.alertInfo?.acceptAction?()
+            }
+            if let declineActionOption = viewModel.alertInfo?.declineActionOption {
+                Button(declineActionOption, role: acceptOption == "Delete" ? .cancel : nil) {
+                    viewModel.alertInfo?.declineAction?()
+                }
+            }
+        }, message: {
+            Text(viewModel.alertInfo?.message ?? "")
+        })
         .onAppear {
             if routingState.isActive {
                 if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
                     route(using: meditationId, through: emotionText)
                 }
             }
+            
+            viewModel.updateMeditationSummaries()
         }
         .onChange(of: routingState.isActive) { isActive in
             if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {

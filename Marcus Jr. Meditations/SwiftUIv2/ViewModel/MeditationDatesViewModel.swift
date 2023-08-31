@@ -21,9 +21,18 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     
     let maxMeditationTimes = 10
     
-    private var dates = [Date]()
+    private var dates = [Date]() {
+        didSet {
+            if dates.isEmpty {
+                MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false)
+            }
+        }
+    }
     private let meditation: Meditation
     let emotionDescription: EmotionDescription
+    
+    // TODO: Handle MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false) when at 0 meditation times case, all scenarios. Maybe didSet on dates.G
+    // a meditation is only finished if all reflection times have passed. If no reflection times, it is not finished.
     
     init(dates: [Date], meditation: Meditation, selectedDate: Date,
          notificationManager: MeditationNotifiable, emotionDescription: EmotionDescription) {
@@ -90,7 +99,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
             try await notificationManager.addNotification(using: NotificationConfig(exercise: exercise, date: date, emotion: emotion))
         } catch {
             alertInfo = AlertInfo(title: NSLocalizedString("Meditation Time Limitation Reached", comment: "Maximum meditation times"),
-                                  message: NSLocalizedString("You are only allowed to have a maximum of 64 unfinished meditation times app-wide. Please either wait for your current meditation times to complete or delete any meditation times in occuring in the future.", comment: "Are you sure comment"),
+                                  message: NSLocalizedString("You are only allowed to have a maximum of 64 unfinished meditation times app-wide. Please either wait for your current meditation times to complete or delete any meditation times occuring in the future.", comment: "Are you sure comment"),
                                   acceptActionOption: NSLocalizedString("Ok", comment: "Ok comment"),
                                   declineActionOption: nil,
                                   acceptAction: nil,
@@ -105,6 +114,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         datesToDisplay = formattedDates
         
         ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date, emotion: emotionDescription)
+        MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false)
     }
 
     
@@ -120,6 +130,10 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         dates.remove(at: index)
         dates.sort(by: >)
         datesToDisplay = formattedDates
+        
+        if !dates.isEmpty && reflectionTimeComplete(from: dates.count - 1) {
+            MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: true)
+        }
     
         // Cannot assume current routed emotion is the same emotion used when reflection time was created.
         guard let reflectionTime = ReflectionTimeFactory.sharedInstance.getReflectionTime(from: meditation, on: date) else { return }
@@ -150,12 +164,11 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
                                         return NotificationConfig(exercise: exercise, date: date, emotion: routedEmotion)
                                     }
             
-                                    notificationManager.deleteNotifications(with: notificationConfigs)
-                                    dates.removeAll()
-                                    datesToDisplay = formattedDates
-            
                                     do {
                                         try ReflectionTimeFactory.sharedInstance.deleteAllRelectionTime(from: meditation)
+                                        notificationManager.deleteNotifications(with: notificationConfigs)
+                                        dates.removeAll()
+                                        datesToDisplay = formattedDates
                                     } catch {
                                         print(error.localizedDescription)
                                         print("failed to batch delete meditation dates")

@@ -48,6 +48,16 @@ final class MeditationFactory {
         }
     }
     
+    func markCompletionStatus(meditation: Meditation, finished: Bool) {
+        meditation.visitedAfterFinalTime = finished
+        
+        do {
+            try moc.save()
+        } catch {
+            print(error.localizedDescription)
+        }
+    }
+    
     private func createMeditationsIfNeeded(from emotionDescription: EmotionDescription) -> [Meditation] {
         
         var linkedMeditationsSet = Set<String>() // set of localization ids from disk

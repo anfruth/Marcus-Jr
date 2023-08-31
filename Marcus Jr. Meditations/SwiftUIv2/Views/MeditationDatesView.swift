@@ -82,11 +82,11 @@ struct MeditationDatesView: View, MeditationNavigating {
         }))
         .navigationBarBackButtonHidden()
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
-            Button(viewModel.alertInfo?.acceptActionOption ?? "") {
+            Button(viewModel.alertInfo?.acceptActionOption ?? "", role: .destructive) {
                 _ = viewModel.alertInfo?.acceptAction?()
             }
             if let declineActionOption = viewModel.alertInfo?.declineActionOption {
-                Button(declineActionOption) {
+                Button(declineActionOption, role: .cancel) {
                     viewModel.alertInfo?.declineAction?()
                 }
             }

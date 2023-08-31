@@ -27,6 +27,14 @@ final class ReflectionTimeFactory {
         return fetch(request: request)
     }
     
+    func loadReflectionTimes(from emotion: EmotionDescription) -> [ReflectionTimeDescription] {
+        let request = ReflectionTimeDescription.fetchRequest()
+        guard let meditations = emotion.meditations else { return [] }
+        request.predicate = NSPredicate(format: "meditation IN %@", meditations)
+        
+        return fetch(request: request)
+    }
+    
     func createReflectionTime(from meditation: Meditation, on date: Date, emotion: EmotionDescription) {
         let reflectionTimeDescription = ReflectionTimeDescription(context: moc)
         
@@ -46,7 +54,6 @@ final class ReflectionTimeFactory {
         return reflectionTimeDescription
     }
     
-    
     func delete(reflectionTime: ReflectionTimeDescription) {
         moc.delete(reflectionTime)
         save()
@@ -63,6 +70,30 @@ final class ReflectionTimeFactory {
         
         let request: NSFetchRequest<any NSFetchRequestResult> = NSFetchRequest(entityName: "ReflectionTimeDescription")
         request.predicate = NSPredicate(format: "meditation == %@", meditation)
+        let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
+        deleteRequest.resultType = .resultTypeObjectIDs
+        
+        let batchResults = try moc.execute(deleteRequest) as? NSBatchDeleteResult
+        let changes = [NSDeletedObjectsKey: batchResults?.result as? [NSManagedObjectID] ?? []]
+        NSManagedObjectContext.mergeChanges(fromRemoteContextSave: changes, into: [moc])
+    }
+    
+    func deleteAllRelectionTime(from emotion: EmotionDescription) throws {
+        guard let meditations = emotion.meditations?.allObjects as? [Meditation] else { return }
+        // consider adding back reflection times in case merge fails to avoid invalid state
+        meditations.forEach { meditation in
+            MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false)
+            meditation.reflectionTimes?.forEach {
+                guard let reflectionTime = $0 as? ReflectionTimeDescription else { return }
+                reflectionTime.routedEmotion = nil
+            }
+            meditation.reflectionTimes = nil
+        }
+
+        save()
+        
+        let request: NSFetchRequest<any NSFetchRequestResult> = NSFetchRequest(entityName: "ReflectionTimeDescription")
+        request.predicate = NSPredicate(format: "meditation IN %@", meditations)
         let deleteRequest = NSBatchDeleteRequest(fetchRequest: request)
         deleteRequest.resultType = .resultTypeObjectIDs
         

@@ -78,8 +78,10 @@ struct MeditationDatesView: View, MeditationNavigating {
                 .foregroundColor(Color(uiColor: .label))
         }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
             Image(systemName: "arrow.clockwise")
-                .foregroundColor(.primary)
-        }))
+                .foregroundColor(viewModel.datesToDisplay.isEmpty ? .gray : .primary)
+        })
+            .disabled(viewModel.datesToDisplay.isEmpty)
+        )
         .navigationBarBackButtonHidden()
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
             Button(viewModel.alertInfo?.acceptActionOption ?? "", role: .destructive) {

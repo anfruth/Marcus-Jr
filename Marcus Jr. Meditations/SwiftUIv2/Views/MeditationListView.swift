@@ -63,19 +63,18 @@ struct MeditationListView: View, MeditationNavigating {
                     .listRowSeparator(.hidden)
                 }
                 .listStyle(.plain)
-                
             }
-            
         }
         .navigationTitle(viewModel.emotionText)
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")
                 .foregroundColor(Color(uiColor: .label))
         }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
-            
             Image(systemName: "arrow.clockwise")
-                .foregroundColor(.primary)
-        }))
+                .foregroundColor(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1  ? .gray : .primary)
+        })
+            .disabled(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1 )
+        )
         .navigationBarBackButtonHidden()
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
             let acceptOption = viewModel.alertInfo?.acceptActionOption ?? ""

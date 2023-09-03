@@ -60,6 +60,13 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
         return meditations[index].visitedAfterFinalTime
     }
     
+    func showSingleSelectedMeditationPreview(from index: Int) {
+        if index < meditations.count {
+            let meditationSummary = getMeditationSummaries()[index]
+            meditationSummaries = [meditationSummary]
+        }
+    }
+    
     func selectMeditation(from index: Int) {
         if index < meditations.count {
             meditationSelected = true

@@ -36,7 +36,6 @@ struct OpeningMarcusView: View, MeditationNavigating {
                     
                     BeginMeditationButtonView(showBeginButton: $showBeginButton, navigationActive: $navigationActive, buttonText: buttonText)
                         .padding([.top, .bottom])
-                    
                 }
             }
         }

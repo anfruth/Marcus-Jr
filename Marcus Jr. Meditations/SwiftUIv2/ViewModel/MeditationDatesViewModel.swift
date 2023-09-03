@@ -77,8 +77,14 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     
     @MainActor
     func insert(date: Date) async {
+        var date = date
+        let currentDate = Date.now
         showMaxMeditationError = false
         showDuplicateMeditationError = false
+        
+        if date < currentDate {
+            date = nextMinute(from: currentDate)
+        }
         
         if dates.count >= maxMeditationTimes {
             showMaxMeditationError = true

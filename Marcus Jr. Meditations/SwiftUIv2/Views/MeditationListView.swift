@@ -34,7 +34,6 @@ struct MeditationListView: View, MeditationNavigating {
                     .multilineTextAlignment(.center)
                     .padding()
             } else {
-                
                 List(viewModel.meditationSummaries, id: \.meditationID) { summary in
                     VStack {
                         Spacer()

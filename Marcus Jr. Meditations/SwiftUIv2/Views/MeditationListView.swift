@@ -79,13 +79,8 @@ struct MeditationListView: View, MeditationNavigating {
         .navigationBarBackButtonHidden()
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
             let acceptOption = viewModel.alertInfo?.acceptActionOption ?? ""
-            Button(acceptOption, role: acceptOption == "Delete" ? .destructive : nil) {
+            Button(acceptOption, role: .destructive) {
                 _ = viewModel.alertInfo?.acceptAction?()
-            }
-            if let declineActionOption = viewModel.alertInfo?.declineActionOption {
-                Button(declineActionOption, role: acceptOption == "Delete" ? .cancel : nil) {
-                    viewModel.alertInfo?.declineAction?()
-                }
             }
         }, message: {
             Text(viewModel.alertInfo?.message ?? "")

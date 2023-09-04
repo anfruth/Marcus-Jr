@@ -94,7 +94,7 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
     func deleteAllDates() {
         alertInfo = AlertInfo(title: NSLocalizedString("Reset Meditations", comment: "Reset Meditations comment"),
                               message: NSLocalizedString("Are you sure you want to reset all your meditations for this emotion?", comment: "Are you sure comment"),
-                              acceptActionOption: NSLocalizedString("Delete", comment: "Delete comment"),
+                              acceptActionOption: NSLocalizedString("Reset", comment: "Reset comment"),
                               declineActionOption: "Back",
                               acceptAction:
                                 { [weak self] in

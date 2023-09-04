@@ -107,18 +107,20 @@ struct MeditationView: View, MeditationNavigating {
     }
 }
 
-//struct MeditationView_Previews: PreviewProvider {
-//    
-//    static var meditation: Meditation {
-//        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
-//        meditation.localizedId = "01Be_unattached"
-//        meditation.visitedAfterFinalTime = false
-//        return meditation
-//    }
-//    
-//    static var previews: some View {
-//        NavigationView {
-//            MeditationView(viewModel: MeditationViewModel(meditation: meditation, emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
-//        }
-//    }
-//}
+struct MeditationView_Previews: PreviewProvider {
+    
+    static var meditation: Meditation {
+        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+        meditation.localizedId = "01Be_unattached"
+        meditation.visitedAfterFinalTime = false
+        return meditation
+    }
+    
+    static var previews: some View {
+        NavigationView {
+            MeditationView(viewModel: MeditationViewModel(meditation: meditation, emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)), isShowingMeditationList: .constant(true))
+                .environmentObject(NotificationsReceiver.sharedInstance.routingState)
+        }
+        .navigationViewStyle(.stack)
+    }
+}

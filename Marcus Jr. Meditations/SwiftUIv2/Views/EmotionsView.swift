@@ -81,12 +81,16 @@ struct EmotionsView_Previews: PreviewProvider {
         Group {
             NavigationView {
                 EmotionsView(viewModel: EmotionsViewModel())
+                    .environmentObject(NotificationsReceiver.sharedInstance.routingState)
             }
+            .navigationViewStyle(.stack)
             
             NavigationView {
                 EmotionsView(viewModel: EmotionsViewModel())
                     .previewInterfaceOrientation(.landscapeLeft)
+                    .environmentObject(NotificationsReceiver.sharedInstance.routingState)
             }
+            .navigationViewStyle(.stack)
         }
     }
 }

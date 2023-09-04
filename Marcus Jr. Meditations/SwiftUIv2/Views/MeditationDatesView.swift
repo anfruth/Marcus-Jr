@@ -13,6 +13,7 @@ struct MeditationDatesView: View, MeditationNavigating {
     @StateObject var viewModel: MeditationDatesViewModel
     
     @Environment(\.dismiss) private var dismiss
+    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var routingState: RoutingState
     
     @Binding var isShowingMeditationList: Bool
@@ -54,8 +55,8 @@ struct MeditationDatesView: View, MeditationNavigating {
                         }
                         .buttonStyle(.plain)
                         Text(viewModel.datesToDisplay[i])
-                            .foregroundColor(viewModel.reflectionTimeComplete(from: i) ? .gray : Color(uiColor: .label))
-                            .strikethrough(viewModel.reflectionTimeComplete(from: i), color: .black)
+                            .foregroundColor(viewModel.reflectionTimeComplete(from: i) ? Color(uiColor: .systemGray) : Color(uiColor: .label))
+                            .strikethrough(viewModel.reflectionTimeComplete(from: i), color: colorScheme == .light ? .black : .white)
                     }
                 }
                 .onDelete { indexSet in
@@ -78,7 +79,7 @@ struct MeditationDatesView: View, MeditationNavigating {
                 .foregroundColor(Color(uiColor: .label))
         }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
             Image(systemName: "arrow.clockwise")
-                .foregroundColor(viewModel.datesToDisplay.isEmpty ? .gray : .primary)
+                .foregroundColor(viewModel.datesToDisplay.isEmpty ? Color(uiColor: .systemGray) : .primary)
         })
             .disabled(viewModel.datesToDisplay.isEmpty)
         )
@@ -114,25 +115,29 @@ struct MeditationDatesView: View, MeditationNavigating {
     }
 }
 
-//struct MeditationDatesView_Previews: PreviewProvider {
+struct MeditationDatesView_Previews: PreviewProvider {
+
+    static var meditation: Meditation {
+        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
+        meditation.localizedId = "01Be_unattached"
+        meditation.visitedAfterFinalTime = false
+        return meditation
+    }
 //
-//    static var meditation: Meditation {
-//        let meditation = Meditation(context: DataController.sharedInstance.container.viewContext)
-//        meditation.localizedId = "01Be_unattached"
-//        meditation.visitedAfterFinalTime = false
-//        return meditation
-//    }
-////
-//    static var previews: some View {
-//        Group {
-//            NavigationView {
-//                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
-//            }
-//
-//            NavigationView {
-//                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)))
-//            }
-//            .previewInterfaceOrientation(.landscapeLeft)
-//        }
-//    }
-//}
+    static var previews: some View {
+        Group {
+            NavigationView {
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [Date.now], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)), isShowingMeditationList: .constant(true))
+                    .environmentObject(NotificationsReceiver.sharedInstance.routingState)
+            }
+            .navigationViewStyle(.stack)
+
+            NavigationView {
+                MeditationDatesView(viewModel: MeditationDatesViewModel(dates: [Date.now], meditation: meditation, selectedDate: .now, notificationManager: LocalNotificationManager(), emotionDescription: EmotionDescription(context: DataController.sharedInstance.container.viewContext)), isShowingMeditationList: .constant(true))
+                    .environmentObject(NotificationsReceiver.sharedInstance.routingState)
+            }
+            .previewInterfaceOrientation(.landscapeLeft)
+            .navigationViewStyle(.stack)
+        }
+    }
+}

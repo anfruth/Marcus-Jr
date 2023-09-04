@@ -64,9 +64,11 @@ struct OpeningMarcusView_Previews: PreviewProvider {
     static var previews: some View {
         Group {
             OpeningMarcusView(marcusQuotation: "\"Men seek retirement in the country, on the sea-coast, in the mountains; and you too have frequent longings for such distractions. Yet surely this is great folly, since you may retire into yourself at any hour you please. Nowhere can a man find any retreat more quiet and more full of leisure than in his own soul; especially when there is that within it on which, if he but look, he is straightway quite at rest.\"")
+                .environmentObject(NotificationsReceiver.sharedInstance.routingState)
             
             OpeningMarcusView(marcusQuotation: "\"Men seek retirement in the country, on the sea-coast, in the mountains; and you too have frequent longings for such distractions. Yet surely this is great folly, since you may retire into yourself at any hour you please. Nowhere can a man find any retreat more quiet and more full of leisure than in his own soul; especially when there is that within it on which, if he but look, he is straightway quite at rest.\"")
                 .previewInterfaceOrientation(.landscapeLeft)
+                .environmentObject(NotificationsReceiver.sharedInstance.routingState)
         }
     }
 }

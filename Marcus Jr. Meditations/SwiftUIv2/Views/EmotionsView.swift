@@ -42,16 +42,10 @@ struct EmotionsView: View, MeditationNavigating {
         .navigationBarBackButtonHidden()
         .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
         .onAppear {
-            if routingState.isActive {
-                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
-                    route(using: meditationId, through: emotionText)
-                }
-            }
+            handleRoutingOnAppear()
         }
         .onChange(of: routingState.isActive) { isActive in
-            if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
-                route(using: meditationId, through: emotionText)
-            }
+            handleRoutingOnChange()
         }
     }
     

@@ -86,18 +86,11 @@ struct MeditationListView: View, MeditationNavigating {
             Text(viewModel.alertInfo?.message ?? "")
         })
         .onAppear {
-            if routingState.isActive {
-                if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText {
-                    route(using: meditationId, through: emotionText)
-                }
-            }
-            
+            handleRoutingOnAppear()
             viewModel.updateMeditationSummaries()
         }
         .onChange(of: routingState.isActive) { isActive in
-            if let meditationId = routingState.meditationId, let emotionText = routingState.emotionText, isActive {
-                route(using: meditationId, through: emotionText)
-            }
+            handleRoutingOnChange()
         }
     }
     

@@ -13,7 +13,6 @@ struct MeditationListView: View, MeditationNavigating {
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
     @Environment(\.dismiss) private var dismiss
-    @Environment(\.colorScheme) private var colorScheme
     @EnvironmentObject var routingState: RoutingState
     @StateObject var viewModel: MeditationListViewModel
     
@@ -46,18 +45,7 @@ struct MeditationListView: View, MeditationNavigating {
                                 viewModel.selectMeditation(from: summary.index)
                             }
                         } label: {
-                            ZStack {
-                                Rectangle()
-                                    .cornerRadius(8)
-                                    .foregroundColor(Color(.secondarySystemBackground))
-                                    .shadow(radius: 5, x: 2, y: 3)
-                                Text(summary.meditationID)
-                                    .foregroundColor(summary.isComplete ? Color(uiColor: .systemGray) :  Color(uiColor: .label))
-                                    .strikethrough(summary.isComplete, color: colorScheme == .light ? .black : .white)
-                                    .frame(maxWidth: .infinity, alignment: .leading)
-                                    .padding([.top, .bottom], 10)
-                                    .padding([.leading, .trailing], 20)
-                            }
+                            MeditationListCellView(summary: summary)
                             Spacer(minLength: 5)
                         }
                     }

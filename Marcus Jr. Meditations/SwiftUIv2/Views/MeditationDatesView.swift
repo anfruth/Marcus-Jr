@@ -11,9 +11,9 @@ import SwiftUI
 struct MeditationDatesView: View, MeditationNavigating {
     
     @StateObject var viewModel: MeditationDatesViewModel
-    
-    @Environment(\.dismiss) private var dismiss
+
     @Environment(\.colorScheme) private var colorScheme
+    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var routingState: RoutingState
     
     @Binding var isShowingMeditationList: Bool

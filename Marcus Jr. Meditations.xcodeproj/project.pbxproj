@@ -14,6 +14,7 @@
 		EA0FF06E2023FAE100688BC6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF06C2023FAE100688BC6 /* LaunchScreen.storyboard */; };
 		EA0FF0792023FAE200688BC6 /* Marcus_Jr__MeditationsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA0FF0782023FAE200688BC6 /* Marcus_Jr__MeditationsTests.swift */; };
 		EA0FF098202C181A00688BC6 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = EA0FF097202C181A00688BC6 /* Localizable.strings */; };
+		EA12A0942ADB5E470075387A /* MeditationListCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA12A0932ADB5E460075387A /* MeditationListCellView.swift */; };
 		EA318F1F2A31778800DB8678 /* BeginMeditationButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA318F1E2A31778800DB8678 /* BeginMeditationButtonView.swift */; };
 		EA318F212A31859400DB8678 /* EmotionsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA318F202A31859400DB8678 /* EmotionsView.swift */; };
 		EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */ = {isa = PBXBuildFile; fileRef = EA49699C2A47C6B70021E5D5 /* EmotionGridCellView.swift */; };
@@ -97,6 +98,7 @@
 		EA0FF093202AC6B200688BC6 /* MeditationListTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListTableController.swift; sourceTree = "<group>"; };
 		EA0FF095202AE26400688BC6 /* DailyMeditationCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyMeditationCell.swift; sourceTree = "<group>"; };
 		EA0FF097202C181A00688BC6 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
+		EA12A0932ADB5E460075387A /* MeditationListCellView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListCellView.swift; sourceTree = "<group>"; };
 		EA1D07D3205DD19E007D973A /* MeditationModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationModel.swift; sourceTree = "<group>"; };
 		EA1D07D5205EED7C007D973A /* MeditationListModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MeditationListModel.swift; sourceTree = "<group>"; };
 		EA1D07D7205F4A84007D973A /* DailyExerciseContainerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DailyExerciseContainerViewController.swift; sourceTree = "<group>"; };
@@ -219,6 +221,7 @@
 				EAA8D5012A510EE800F242B7 /* MeditationDatesView.swift */,
 				EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */,
 				EA49699B2A47C5310021E5D5 /* EmotionsSubviews */,
+				EA12A0922ADB5DEB0075387A /* MeditationListSubviews */,
 				EAA8D4FE2A5102DD00F242B7 /* Common */,
 			);
 			path = Views;
@@ -264,6 +267,14 @@
 				EA0FF07A2023FAE200688BC6 /* Info.plist */,
 			);
 			path = "Marcus Jr. MeditationsTests";
+			sourceTree = "<group>";
+		};
+		EA12A0922ADB5DEB0075387A /* MeditationListSubviews */ = {
+			isa = PBXGroup;
+			children = (
+				EA12A0932ADB5E460075387A /* MeditationListCellView.swift */,
+			);
+			path = MeditationListSubviews;
 			sourceTree = "<group>";
 		};
 		EA318F1D2A31773300DB8678 /* OpeningMarcusSubviews */ = {
@@ -543,6 +554,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				EA12A0942ADB5E470075387A /* MeditationListCellView.swift in Sources */,
 				EAA0EF372A5B69FF007E1E96 /* ReflectionTimeFactory.swift in Sources */,
 				EAA0EF352A5A464B007E1E96 /* MeditationFactory.swift in Sources */,
 				EA49699D2A47C6B70021E5D5 /* EmotionGridCellView.swift in Sources */,

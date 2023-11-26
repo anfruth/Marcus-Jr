@@ -48,5 +48,12 @@ final class EmotionsViewModel: ObservableObject, RoutingResettable {
             self?.isShowingMeditationList = true
         }
     }
+    
+    func selectEmotion(from index: Int) {
+        selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: Emotion.allCases[index])
+        if let selectedEmotion {
+            emotionsInGrid = [selectedEmotion]
+        }
+    }
 
 }

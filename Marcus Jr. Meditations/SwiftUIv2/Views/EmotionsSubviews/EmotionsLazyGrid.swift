@@ -37,10 +37,7 @@ struct EmotionsLazyGrid: View {
         return {
             if viewModel.emotionsInGrid.count != 1 {
                 withAnimation(animation) {
-                    viewModel.selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: Emotion.allCases[index]) // TODO: fix this, take out of view
-                    if let selectedEmotion = viewModel.selectedEmotion {
-                        viewModel.emotionsInGrid = [selectedEmotion]
-                    }
+                    viewModel.selectEmotion(from: index)
                 }
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {

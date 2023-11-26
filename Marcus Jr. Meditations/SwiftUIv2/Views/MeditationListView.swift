@@ -30,15 +30,7 @@ struct MeditationListView: View, MeditationNavigating {
             }
         }
         .navigationTitle(viewModel.emotionText)
-        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Color(uiColor: .label))
-        }), trailing: Button(action: { viewModel.deleteAllDates() }, label: {
-            Image(systemName: "arrow.clockwise")
-                .foregroundColor(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1  ? Color(uiColor: .systemGray) : .primary)
-        })
-            .disabled(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1)
-        )
+        .navigationBarItems(leading: leftButton, trailing: rightButton)
         .navigationBarBackButtonHidden()
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
             let acceptOption = viewModel.alertInfo?.acceptActionOption ?? ""
@@ -55,6 +47,24 @@ struct MeditationListView: View, MeditationNavigating {
         .onChange(of: routingState.isActive) { isActive in
             handleRoutingOnChange()
         }
+    }
+    
+    @ViewBuilder
+    private var leftButton: some View {
+        Button(action: { dismiss() }, label: {
+            Image(systemName: "chevron.left")
+                .foregroundColor(viewModel.meditationSummaries.count == 1 ? Color(uiColor: .systemGray) : .primary)
+        })
+        .disabled(viewModel.meditationSummaries.count == 1)
+    }
+    
+    @ViewBuilder
+    private var rightButton: some View {
+        Button(action: { viewModel.deleteAllDates() }, label: {
+            Image(systemName: "arrow.clockwise")
+                .foregroundColor(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1 ? Color(uiColor: .systemGray) : .primary)
+        })
+        .disabled(!viewModel.anyMeditationComplete() || viewModel.meditationSummaries.count == 1)
     }
     
     func route(using meditationId: String, through emotionText: String) {

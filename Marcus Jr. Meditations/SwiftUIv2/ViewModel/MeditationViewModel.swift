@@ -11,7 +11,7 @@ import UIKit
 import UserNotifications
 import SwiftUI
 
-final class MeditationViewModel: EmotionRouter, ObservableObject {
+final class MeditationViewModel: EmotionRouter, ObservableObject, RoutingResettable {
     
     @Published var dateSettingAllowed: Bool = false
     @Published var showAlert: Bool = false

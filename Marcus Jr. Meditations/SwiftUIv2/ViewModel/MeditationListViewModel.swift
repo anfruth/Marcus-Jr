@@ -23,7 +23,6 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
     @Published var meditationSummaries: [Summary] = []
     
     private let emotionDescription: EmotionDescription
-    private let moc: NSManagedObjectContext
     private(set) var alertInfo: AlertInfo?
     private let notificationManager: MeditationNotifiable
     
@@ -41,9 +40,8 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
         }
     }
     
-    init(emotionDescription: EmotionDescription, moc: NSManagedObjectContext, notificationManager: MeditationNotifiable) {
+    init(emotionDescription: EmotionDescription, notificationManager: MeditationNotifiable) {
         self.emotionDescription = emotionDescription
-        self.moc = moc
         self.notificationManager = notificationManager
         
         super.init(emotion: emotionDescription.emotion ?? "")

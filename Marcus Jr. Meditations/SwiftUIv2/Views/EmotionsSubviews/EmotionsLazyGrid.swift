@@ -11,7 +11,7 @@ import SwiftUI
 struct EmotionsLazyGrid: View {
     
     @Environment(\.managedObjectContext) var moc
-    @ObservedObject var viewModel: EmotionsViewModel
+    @StateObject var viewModel: EmotionsViewModel
     
     let animation: Animation
     let proxyHeight: Double

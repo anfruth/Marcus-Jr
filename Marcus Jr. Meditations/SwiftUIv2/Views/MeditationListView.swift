@@ -10,48 +10,23 @@ import SwiftUI
 
 struct MeditationListView: View, MeditationNavigating {
     
-    // TODO: Refactor out knowledge of emotion model from View -> VM
-    
     @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var routingState: RoutingState
     @StateObject var viewModel: MeditationListViewModel
     
     @Binding var isShowingMeditationList: Bool
     
-    let animation = Animation.linear(duration: 1.0)
-    
     var body: some View {
         VStack {
             if let meditationVM = viewModel.meditationVM {
                 let meditationView = MeditationView(viewModel: meditationVM, isShowingMeditationList: $isShowingMeditationList)
                 NavigationLink(destination: meditationView, isActive: $viewModel.meditationSelected) { EmptyView() }
-                    .isDetailLink(false)
             }
             
             if viewModel.meditationSummaries.count == 1 {
-                Text(viewModel.meditationSummaries[0].meditationID)
-                    .font(.title)
-                    .multilineTextAlignment(.center)
-                    .padding()
+                MeditationPreviewText(viewModel: viewModel)
             } else {
-                List(viewModel.meditationSummaries, id: \.meditationID) { summary in
-                    VStack {
-                        Spacer()
-                        Button {
-                            withAnimation(animation) {
-                                viewModel.showSingleSelectedMeditationPreview(from: summary.index)
-                            }
-                            DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                                viewModel.selectMeditation(from: summary.index)
-                            }
-                        } label: {
-                            MeditationListCellView(summary: summary)
-                            Spacer(minLength: 5)
-                        }
-                    }
-                    .listRowSeparator(.hidden)
-                }
-                .listStyle(.plain)
+                InnerMeditationListView(viewModel: viewModel, animation: .linear(duration: 1.0))
             }
         }
         .navigationTitle(viewModel.emotionText)
@@ -105,7 +80,6 @@ struct MeditationListView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationView {
             MeditationListView(viewModel: MeditationListViewModel(emotionDescription: Self.emotion,
-                                                                  moc: DataController.sharedInstance.container.viewContext,
                                                                   notificationManager: LocalNotificationManager()),
                                isShowingMeditationList: .constant(true))
             .environmentObject(NotificationsReceiver.sharedInstance.routingState)

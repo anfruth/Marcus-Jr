@@ -9,7 +9,7 @@
 import Foundation
 import CoreData
 
-final class EmotionsViewModel: ObservableObject {
+final class EmotionsViewModel: ObservableObject, RoutingResettable {
     
     @Published var emotionsInGrid: [EmotionDescription] = []
     @Published var selectedEmotion: EmotionDescription?
@@ -36,5 +36,17 @@ final class EmotionsViewModel: ObservableObject {
         EmotionFactory.sharedInstance.createEmotionsIfNeeded()
         return EmotionFactory.sharedInstance.emotionDescriptions
     }()
+    
+    func selectEmotion(from emotionText: String) {
+        guard let emotion = Emotion(rawValue: emotionText) else {
+            completeRouting()
+            return
+        }
+        
+        DispatchQueue.main.async { [weak self] in
+            self?.selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: emotion)
+            self?.isShowingMeditationList = true
+        }
+    }
 
 }

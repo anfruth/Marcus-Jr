@@ -13,7 +13,6 @@ struct EmotionsView: View, MeditationNavigating {
     // TODO: Refactor out knowledge of emotion model from View -> VM
     
     @StateObject var viewModel: EmotionsViewModel
-    @Environment(\.managedObjectContext) var moc
     @EnvironmentObject var routingState: RoutingState
     
     let animation = Animation.easeOut(duration: 0.8)
@@ -27,7 +26,6 @@ struct EmotionsView: View, MeditationNavigating {
                 
                 if let selectedEmotion = viewModel.selectedEmotion {
                     let meditationListViewModel = MeditationListViewModel(emotionDescription: selectedEmotion,
-                                                                          moc: moc,
                                                                         notificationManager: LocalNotificationManager())
                     let destination = MeditationListView(viewModel: meditationListViewModel, isShowingMeditationList: $viewModel.isShowingMeditationList)
                     NavigationLink(destination: destination, isActive: $viewModel.isShowingMeditationList) { EmptyView() }
@@ -48,24 +46,9 @@ struct EmotionsView: View, MeditationNavigating {
             handleRoutingOnChange()
         }
     }
-    
-    
-    // TODO: Refactor out knowledge of emotion model from View -> VM
-    func route(using meditationId: String, through emotionText: String) {
-        // something like viewModel.setSelectedEmotion(from emotionText: String)
-        guard let emotion = Emotion(rawValue: emotionText) else {
-            // TODO: Refactor this
-            NotificationsReceiver.sharedInstance.routingState.isActive = false
-            NotificationsReceiver.sharedInstance.routingState.meditationId = nil
-            NotificationsReceiver.sharedInstance.routingState.emotionText = nil
-            UINavigationBar.setAnimationsEnabled(true)
-            return
-        }
-        
-        DispatchQueue.main.async {
-            viewModel.selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: emotion)
-            viewModel.isShowingMeditationList = true
-        }
+
+    func route(using meditationId: String, through emotionText: String) {        
+        viewModel.selectEmotion(from: emotionText)
     }
 
 }

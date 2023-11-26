@@ -12,63 +12,22 @@ import UIKit
 struct MeditationView: View, MeditationNavigating {
 
     @StateObject var viewModel: MeditationViewModel
-    
-    @Environment(\.dismiss) private var dismiss
     @EnvironmentObject var routingState: RoutingState
     
     @Binding var isShowingMeditationList: Bool
 
     var body: some View {
-        ScrollView {
-            VStack(alignment: .leading, spacing: 5) {
-                HStack {
-                    Spacer()
-                    Text("Quotation:")
-                        .bold()
-                    Spacer()
-                }
-                Text(viewModel.quotation)
-                    .padding()
-                
-                if viewModel.commentaryAvailable {
-                    HStack {
-                        Spacer()
-                        Text("Commentary:")
-                            .bold()
-                        Spacer()
+        VStack {
+            MeditationContentContainer(viewModel: viewModel)
+            
+            NavigationLink(destination: viewModel.meditationDatesView(isShowingMeditationList: $isShowingMeditationList), isActive: $viewModel.dateSettingAllowed) { EmptyView() }
+                .isDetailLink(false)
+            
+            MarcusCommonButton(title: "Set Meditation Times") {
+                if !viewModel.dateSettingAllowed {
+                    Task {
+                        await viewModel.getNotificationPermissionIfNeeded()
                     }
-                    Text(viewModel.commentary)
-                        .padding()
-                }
-                
-                if viewModel.actionAvailable {
-                    HStack {
-                        Spacer()
-                        Text("Action:")
-                            .bold()
-                        Spacer()
-                    }
-                    Text(viewModel.action)
-                        .padding()
-                    
-                }
-            }
-        }
-        .padding([.top, .bottom])
-        .navigationTitle(viewModel.enchiridionChapter)
-        .navigationBarItems(leading: Button(action: { dismiss() }, label: {
-            Image(systemName: "chevron.left")
-                .foregroundColor(Color(uiColor: .label))
-        }))
-        .navigationBarBackButtonHidden()
-        
-        NavigationLink(destination: viewModel.meditationDatesView(isShowingMeditationList: $isShowingMeditationList), isActive: $viewModel.dateSettingAllowed) { EmptyView() }
-            .isDetailLink(false)
-        
-        MarcusCommonButton(title: "Set Meditation Times") {
-            if !viewModel.dateSettingAllowed {
-                Task { @MainActor in
-                    await viewModel.getNotificationPermissionIfNeeded()
                 }
             }
         }
@@ -84,7 +43,6 @@ struct MeditationView: View, MeditationNavigating {
         }, message: {
             Text(viewModel.alertInfo?.message ?? "")
         })
-        .padding([.bottom])
         .onAppear {
             handleRoutingOnAppear()
             viewModel.markAsCompleteIfComplete(timeVisited: Date.now)
@@ -98,11 +56,7 @@ struct MeditationView: View, MeditationNavigating {
         if !viewModel.isRoutedToMeditation(from: meditationId) {
             isShowingMeditationList = false
         } else if viewModel.isRoutedToMeditation(from: meditationId) {
-            // TODO: Refactor this
-            NotificationsReceiver.sharedInstance.routingState.isActive = false
-            NotificationsReceiver.sharedInstance.routingState.meditationId = nil
-            NotificationsReceiver.sharedInstance.routingState.emotionText = nil
-            UINavigationBar.setAnimationsEnabled(true)
+            viewModel.completeRouting()
         }
     }
     

@@ -31,6 +31,8 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     private let meditation: Meditation
     let emotionDescription: EmotionDescription
     
+    lazy var reflectionFactory = ReflectionTimeFactory(moc: DataController.sharedInstance.container.viewContext)
+    
     // TODO: Handle MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false) when at 0 meditation times case, all scenarios. Maybe didSet on dates.G
     // a meditation is only finished if all reflection times have passed. If no reflection times, it is not finished.
     
@@ -71,7 +73,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
     }
     
     func loadInitialListOfDates() {
-        let reflectionTimeDescriptions = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
+        let reflectionTimeDescriptions = reflectionFactory.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
         dates = reflectionTimeDescriptions.compactMap { $0.meditationDate }.sorted(by: >)
     }
     
@@ -119,7 +121,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         dates.sort(by: >)
         datesToDisplay = formattedDates
         
-        ReflectionTimeFactory.sharedInstance.createReflectionTime(from: meditation, on: date, emotion: emotionDescription)
+        reflectionFactory.createReflectionTime(from: meditation, on: date, emotion: emotionDescription)
         MeditationFactory.sharedInstance.markCompletionStatus(meditation: meditation, finished: false)
     }
 
@@ -142,12 +144,12 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
         }
     
         // Cannot assume current routed emotion is the same emotion used when reflection time was created.
-        guard let reflectionTime = ReflectionTimeFactory.sharedInstance.getReflectionTime(from: meditation, on: date) else { return }
+        guard let reflectionTime = reflectionFactory.getReflectionTime(from: meditation, on: date) else { return }
         guard let emotionDescription = reflectionTime.routedEmotion, let emotion = emotionDescription.emotion else { return }
         let notificationConfig = NotificationConfig(exercise: exercise, date: date, emotion: emotion)
         
         notificationManager.deleteNotifications(with: [notificationConfig])
-        ReflectionTimeFactory.sharedInstance.delete(reflectionTime: reflectionTime)
+        reflectionFactory.delete(reflectionTime: reflectionTime)
     }
     
     func deleteAllDates() {
@@ -163,7 +165,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
                                         return false
                                     }
                                     
-                                    let reflectionTimes = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
+                                    let reflectionTimes = reflectionFactory.loadReflectionTimes(from: meditation, maxReflections: maxMeditationTimes)
             
                                     let notificationConfigs: [NotificationConfig] = reflectionTimes.compactMap {
                                         guard let date = $0.meditationDate, let routedEmotion = $0.routedEmotion?.emotion else { return nil }
@@ -171,7 +173,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
                                     }
             
                                     do {
-                                        try ReflectionTimeFactory.sharedInstance.deleteAllRelectionTime(from: meditation)
+                                        try reflectionFactory.deleteAllRelectionTime(from: meditation)
                                         notificationManager.deleteNotifications(with: notificationConfigs)
                                         dates.removeAll()
                                         datesToDisplay = formattedDates

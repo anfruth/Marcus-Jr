@@ -11,11 +11,9 @@ import CoreData
 
 final class ReflectionTimeFactory {
     
-    static var sharedInstance = ReflectionTimeFactory(moc: DataController.sharedInstance.container.viewContext)
-    
     let moc: NSManagedObjectContext
     
-    private init(moc: NSManagedObjectContext) {
+    init(moc: NSManagedObjectContext) {
         self.moc = moc
     }
     

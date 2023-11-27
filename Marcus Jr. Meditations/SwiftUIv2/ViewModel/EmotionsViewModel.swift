@@ -32,9 +32,11 @@ final class EmotionsViewModel: ObservableObject, RoutingResettable {
         return sorted
     }()
     
+    lazy var emotionFactory = EmotionFactory(moc: DataController.sharedInstance.container.viewContext)
+    
     lazy private var emotionDescriptions: [EmotionDescription] = {
-        EmotionFactory.sharedInstance.createEmotionsIfNeeded()
-        return EmotionFactory.sharedInstance.emotionDescriptions
+        emotionFactory.createEmotionsIfNeeded()
+        return emotionFactory.emotionDescriptions
     }()
     
     func selectEmotion(from emotionText: String) {
@@ -44,13 +46,13 @@ final class EmotionsViewModel: ObservableObject, RoutingResettable {
         }
         
         DispatchQueue.main.async { [weak self] in
-            self?.selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: emotion)
+            self?.selectedEmotion = self?.emotionFactory.getEmotionDescription(from: emotion)
             self?.isShowingMeditationList = true
         }
     }
     
     func selectEmotion(from index: Int) {
-        selectedEmotion = EmotionFactory.sharedInstance.getEmotionDescription(from: Emotion.allCases[index])
+        selectedEmotion = emotionFactory.getEmotionDescription(from: Emotion.allCases[index])
         if let selectedEmotion {
             emotionsInGrid = [selectedEmotion]
         }

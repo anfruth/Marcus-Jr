@@ -11,13 +11,11 @@ import CoreData
 
 final class EmotionFactory {
     
-    static var sharedInstance = EmotionFactory(moc: DataController.sharedInstance.container.viewContext)
-    
     private(set) var emotionDescriptions: [EmotionDescription] = []
     
     private let moc: NSManagedObjectContext
     
-    private init(moc: NSManagedObjectContext) {
+    init(moc: NSManagedObjectContext) {
         self.moc = moc
     }
     

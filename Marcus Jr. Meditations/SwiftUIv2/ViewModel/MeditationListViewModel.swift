@@ -32,6 +32,8 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
     
     lazy var emotionText = emotionDescription.emotion ?? ""
     
+    lazy var reflectionFactory = ReflectionTimeFactory(moc: DataController.sharedInstance.container.viewContext)
+    
     private func getMeditationSummaries() -> [Summary] {
         return meditations.enumerated().map { (index, meditation) in
             let id = NSLocalizedString(meditation.localizedId ?? "", comment: "Meditation Summary")
@@ -98,7 +100,7 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
                                 { [weak self] in
                                 guard let self else { return false }
                                 
-                                let reflectionTimes = ReflectionTimeFactory.sharedInstance.loadReflectionTimes(from: emotionDescription)
+                                let reflectionTimes = reflectionFactory.loadReflectionTimes(from: emotionDescription)
                                 
                                 let notificationConfigs: [NotificationConfig] = reflectionTimes.compactMap {
                                     guard let date = $0.meditationDate, let routedEmotion = $0.routedEmotion?.emotion, let exercise = $0.meditation?.localizedId else { return nil }
@@ -106,7 +108,7 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
                                 }
                                 
                                 do {
-                                    try ReflectionTimeFactory.sharedInstance.deleteAllRelectionTime(from: emotionDescription)
+                                    try reflectionFactory.deleteAllRelectionTime(from: emotionDescription)
                                     notificationManager.deleteNotifications(with: notificationConfigs)
                                     meditationSummaries = getMeditationSummaries()
                                 } catch {

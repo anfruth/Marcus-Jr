@@ -14,7 +14,7 @@ struct InnerMeditationViewFormat: View {
     let description: String
     
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             HStack {
                 Spacer()
                 Text(title)

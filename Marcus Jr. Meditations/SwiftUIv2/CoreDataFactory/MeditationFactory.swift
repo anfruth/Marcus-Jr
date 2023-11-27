@@ -25,7 +25,6 @@ final class MeditationFactory {
     
     private func loadAllMeditationsIntoMemory() {
         let request = Meditation.fetchRequest()
-        //request.predicate = NSPredicate(format: "emotions contains[cd]")
         
         var meditations: [Meditation] = []
         
@@ -125,8 +124,7 @@ final class MeditationFactory {
             print(error.localizedDescription)
         }
         
-       // guard let emotionEnum = convert(from: emotionDescription) else { return false }
-        return meditations// == getMeditationIds(from: emotionEnum).count
+        return meditations
     }
     
     private func getMeditationIds(from emotion: Emotion) -> [String] {

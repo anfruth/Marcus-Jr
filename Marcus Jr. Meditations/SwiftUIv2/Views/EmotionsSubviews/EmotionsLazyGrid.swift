@@ -42,9 +42,6 @@ struct EmotionsLazyGrid: View {
                 
                 DispatchQueue.main.asyncAfter(deadline: .now() + 0.8) {
                     viewModel.isShowingMeditationList = true
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 0.5) {
-                        viewModel.emotionsInGrid = viewModel.sortedEmotionDescriptions
-                    }
                 }
             }
         }

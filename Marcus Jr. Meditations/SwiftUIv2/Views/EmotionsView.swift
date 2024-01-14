@@ -36,11 +36,12 @@ struct EmotionsView: View, MeditationNavigating {
                 EmotionsLazyGrid(viewModel: viewModel, animation: animation, proxyHeight: proxy.size.height)
             }
         }
-        .navigationTitle(viewModel.emotionsInGrid.count != 1 ? "Choose Emotion" : "")
+        .navigationTitle("Choose Emotion")
         .navigationBarBackButtonHidden()
-        .ignoresSafeArea(edges: viewModel.emotionsInGrid.count != 1 ? [.leading, .trailing, .bottom] : [.all])
+        .ignoresSafeArea(edges: [.leading, .trailing, .bottom])
         .onAppear {
             handleRoutingOnAppear()
+            viewModel.emotionsInGrid = viewModel.sortedEmotionDescriptions
         }
         .onChange(of: routingState.isActive) { isActive in
             handleRoutingOnChange()

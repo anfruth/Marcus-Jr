@@ -26,7 +26,7 @@ struct MeditationListView: View, MeditationNavigating {
             if viewModel.meditationSummaries.count == 1 {
                 MeditationPreviewText(viewModel: viewModel)
             } else {
-                InnerMeditationListView(viewModel: viewModel, animation: .linear(duration: 1.0))
+                InnerMeditationListView(viewModel: viewModel, animation: .linear(duration: 0.5))
             }
         }
         .navigationTitle(viewModel.emotionText)

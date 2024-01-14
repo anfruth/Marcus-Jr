@@ -14,24 +14,28 @@ struct InnerMeditationListView: View {
     let animation: Animation
     
     var body: some View {
-        List(viewModel.meditationSummaries, id: \.meditationID) { summary in
-            VStack {
-                Spacer()
-                Button {
-                    withAnimation(animation) {
-                        viewModel.showSingleSelectedMeditationPreview(from: summary.index)
+        if viewModel.meditationSummaries.count == 1 {
+            EmptyView()
+        } else {
+            List(viewModel.meditationSummaries, id: \.meditationID) { summary in
+                VStack {
+                    Spacer()
+                    Button {
+                        withAnimation(animation) {
+                            viewModel.showSingleSelectedMeditationPreview(from: summary.index)
+                        }
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
+                            viewModel.selectMeditation(from: summary.index)
+                        }
+                    } label: {
+                        MeditationListCellView(summary: summary)
+                        Spacer(minLength: 5)
                     }
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 3.0) {
-                        viewModel.selectMeditation(from: summary.index)
-                    }
-                } label: {
-                    MeditationListCellView(summary: summary)
-                    Spacer(minLength: 5)
                 }
+                .listRowSeparator(.hidden)
             }
-            .listRowSeparator(.hidden)
+            .listStyle(.plain)
         }
-        .listStyle(.plain)
     }
 }
 

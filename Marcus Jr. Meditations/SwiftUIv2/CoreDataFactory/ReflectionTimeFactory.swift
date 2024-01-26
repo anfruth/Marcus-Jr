@@ -105,9 +105,7 @@ final class ReflectionTimeFactory {
         var reflectionTimes: [ReflectionTimeDescription] = []
         do {
             reflectionTimes = try moc.fetch(request)
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         
         return reflectionTimes
     }
@@ -115,8 +113,6 @@ final class ReflectionTimeFactory {
     private func save() {
         do {
             try moc.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
     }
 }

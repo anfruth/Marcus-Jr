@@ -28,9 +28,7 @@ final class EmotionFactory {
         
         do {
             results = try moc.fetch(request)
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         
         if results.isEmpty {
             results = Emotion.allCases.map { emotion in
@@ -41,9 +39,7 @@ final class EmotionFactory {
             
             do {
                 try moc.save()
-            } catch {
-                print(error.localizedDescription)
-            }
+            } catch {}
         }
         
         emotionDescriptions = results

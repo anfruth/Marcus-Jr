@@ -177,10 +177,7 @@ final class MeditationDatesViewModel: EmotionRouter, ObservableObject {
                                         notificationManager.deleteNotifications(with: notificationConfigs)
                                         dates.removeAll()
                                         datesToDisplay = formattedDates
-                                    } catch {
-                                        print(error.localizedDescription)
-                                        print("failed to batch delete meditation dates")
-                                    }
+                                    } catch {}
                                         
                                     return false
                                 },

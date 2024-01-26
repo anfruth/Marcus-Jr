@@ -111,10 +111,7 @@ final class MeditationListViewModel: EmotionRouter, ObservableObject {
                                     try reflectionFactory.deleteAllRelectionTime(from: emotionDescription)
                                     notificationManager.deleteNotifications(with: notificationConfigs)
                                     meditationSummaries = getMeditationSummaries()
-                                } catch {
-                                    print(error.localizedDescription)
-                                    print("failed to batch delete meditation dates")
-                                }
+                                } catch {}
                                 
                                 return false
                                 },

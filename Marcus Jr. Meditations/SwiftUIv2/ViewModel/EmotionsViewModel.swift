@@ -45,7 +45,7 @@ final class EmotionsViewModel: ObservableObject, RoutingResettable {
             return
         }
         
-        DispatchQueue.main.async { [weak self] in
+        DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) { [weak self] in
             self?.selectedEmotion = self?.emotionFactory.getEmotionDescription(from: emotion)
             self?.isShowingMeditationList = true
         }

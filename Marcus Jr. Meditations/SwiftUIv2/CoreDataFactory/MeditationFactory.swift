@@ -30,9 +30,7 @@ final class MeditationFactory {
         
         do {
             meditations = try moc.fetch(request)
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         
         meditations.forEach { meditation in
             if let localizedId = meditation.localizedId {
@@ -52,9 +50,7 @@ final class MeditationFactory {
         
         do {
             try moc.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
     }
     
     private func createMeditationsIfNeeded(from emotionDescription: EmotionDescription) -> [Meditation] {
@@ -105,9 +101,7 @@ final class MeditationFactory {
             
         do {
             try moc.save()
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         
         return linkedMeditations
     }
@@ -120,9 +114,7 @@ final class MeditationFactory {
         
         do {
             meditations = try moc.fetch(request)
-        } catch {
-            print(error.localizedDescription)
-        }
+        } catch {}
         
         return meditations
     }

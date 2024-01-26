@@ -68,11 +68,10 @@ struct MeditationListView: View, MeditationNavigating {
     }
     
     func route(using meditationId: String, through emotionText: String) {
-        
         if !viewModel.isRoutedEmotionCorrect(from: emotionText) {
             isShowingMeditationList = false
         } else {
-            DispatchQueue.main.async {
+            DispatchQueue.main.asyncAfter(deadline: .now() + 0.2) {
                 viewModel.selectMeditation(from: meditationId)
             }
         }

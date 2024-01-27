@@ -27,7 +27,7 @@ struct MarcusCommonButton: View {
                         .fontWeight(.semibold)
                         .frame(width: proxy.size.width - 60, height: 45)
                 }
-                .background(.selection)
+                .background(.blue)
                 .cornerRadius(8)
                 
                 Spacer()

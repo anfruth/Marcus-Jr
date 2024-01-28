@@ -28,7 +28,6 @@ struct MeditationContentContainer: View {
                 }
             }
         }
-        .padding(.bottom)
         .navigationTitle(viewModel.enchiridionChapter)
         .navigationBarItems(leading: Button(action: { dismiss() }, label: {
             Image(systemName: "chevron.left")

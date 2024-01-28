@@ -30,6 +30,7 @@ struct MeditationView: View, MeditationNavigating {
                     }
                 }
             }
+            .padding()
         }
         .alert(viewModel.alertInfo?.title ?? "", isPresented: $viewModel.showAlert, actions: {
             Button(viewModel.alertInfo?.acceptActionOption ?? "") {
